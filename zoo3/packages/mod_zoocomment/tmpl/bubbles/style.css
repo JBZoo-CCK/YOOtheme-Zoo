@@ -1,0 +1,58 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only */
+
+.grid-block:before,
+.grid-block:after {
+	content: "";
+    display: table;
+}
+.grid-block:after { clear: both; }
+
+.grid-box { float: left; }
+
+.width20 { width: 20%; }
+.width25 { width: 25%; }
+.width33 { width: 33.333%; }
+.width50 { width: 50%; }
+
+.zoo-comments-bubbles { margin: 0 -5px; }
+
+.zoo-comments-bubbles .content {
+	position: relative;
+	margin: 0 5px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background: #FFF;
+	-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.zoo-comments-bubbles .content:after {
+	content:"";
+	position: absolute;
+	left: 18px;
+	bottom: -11px;
+	width: 16px;
+	height: 11px;
+	background: url(images/arrow.png) 0 0 no-repeat;
+}
+
+.zoo-comments-bubbles .meta {
+	margin: 10px 5px 0 5px;
+	overflow: hidden;
+}
+
+.zoo-comments-bubbles .image {
+	display: block;
+	margin-right: 10px;
+	float: left;
+}
+
+.zoo-comments-bubbles .author,
+.zoo-comments-bubbles .time { display: block; }
+
+.zoo-comments-bubbles .author { margin-top: 5px; }
+.zoo-comments-bubbles .time {
+	margin-top: -5px;
+	font-size: 11px;
+}

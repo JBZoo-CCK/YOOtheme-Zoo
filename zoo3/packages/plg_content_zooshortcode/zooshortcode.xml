@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade" >
+	<name>Content - ZOO Shortcode</name>
+	<author>YOOtheme</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Shortcode plugin for ZOO developed by YOOtheme (http://www.yootheme.com) Usage: {zooitem OR zoocategory: ID OR alias} Optionally: {zooitem: ID text: MYTEXT}</description>
+	<files>
+		<filename plugin="zooshortcode">zooshortcode.php</filename>
+	</files>
+</extension>

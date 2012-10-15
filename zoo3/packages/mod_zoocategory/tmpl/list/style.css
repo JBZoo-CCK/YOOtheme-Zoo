@@ -1,0 +1,12 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only */
+
+ul.zoo-category-list,
+ul.zoo-category-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.zoo-category-list ul { padding: 0 0 0 15px; }
+
+ul.zoo-category-list li > a { display: block; }

@@ -1,0 +1,10 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * googlemaps
+ */
+
+.yoo-zoo .element-googlemaps img {
+    max-width: none;
+}
+

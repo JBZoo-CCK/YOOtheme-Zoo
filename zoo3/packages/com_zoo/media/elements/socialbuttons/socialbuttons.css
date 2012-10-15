@@ -1,0 +1,12 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * social buttons
+ */
+
+.yoo-zoo.socialbuttons { margin-top: 15px; }
+
+.yoo-zoo.socialbuttons > div {
+	margin-right: 10px;
+	float: left;
+}

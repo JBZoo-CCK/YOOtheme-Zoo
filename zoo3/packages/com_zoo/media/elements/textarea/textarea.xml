@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="textarea" group="Form" orderable="true">
+	<name>Textarea</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>HTML Textarea</description>
+	<params>
+		<param name="default" type="text" default="" label="Default" description="" />
+		<param name="jplugins" type="radio" default="1" label="Load Plugins" description="JOOMLA_CONTENT_COMPONENT">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+	<params group="render">
+		<param name="separated_by" type="zoolist" default="Div" label="Separated by" description="CHOOSE_SEPARATOR_REPEATED_ELEMENTS">
+			<option name="COM_ZOO_NONE"><![CDATA[tag=[%s]]]></option>
+			<option name="Paragraph"><![CDATA[tag=[<p>%s</p>]]]></option>
+			<option name="Div"><![CDATA[tag=[<div>%s</div>]]]></option>
+			<option name="List Item"><![CDATA[tag=[<li>%s</li>]]]></option>
+			<option name="Unordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul>%s</ul>]]]></option>
+			<option name="Ordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ol>%s</ol>]]]></option>
+		</param>
+		<param name="display" type="list" default="all" label="Display" description="CHOOSE_RENDERING_MODE_ELEMENT_POSITION">
+			<option value="all">all</option>
+			<option value="first">first</option>
+			<option value="all_without_first">all without first</option>
+		</param>
+	</params>
+</element>

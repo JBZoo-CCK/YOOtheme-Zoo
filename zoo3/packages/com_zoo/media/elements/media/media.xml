@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="media" group="Media">
+	<name>Media</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description></description>
+	<params>
+		<param name="defaultwidth" type="text" default="" label="Default Width" description="" />
+		<param name="defaultheight" type="text" default="" label="Default Height" description="" />
+		<param name="defaultautoplay" type="radio" default="0" label="Default Autoplay" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

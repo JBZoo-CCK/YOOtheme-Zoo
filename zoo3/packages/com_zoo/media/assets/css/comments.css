@@ -1,0 +1,116 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * comments
+ */
+
+#yoo-zoo #comments { margin-top: 20px; }
+
+#yoo-zoo #comments p.comments-meta { margin: 0 0 10px 0; }
+
+#yoo-zoo #comments ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/*
+ * comment
+ */
+
+/* head */
+#yoo-zoo #comments .comment-head {
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 1px solid #e6e6e6;
+	background: #fafafa;
+	overflow: hidden;
+}
+
+#yoo-zoo #comments .comment-byadmin .comment-head {
+	border: 1px solid #dce6b4;
+	background: #f0f5d7;
+}
+
+#yoo-zoo #comments .comment-head .avatar {
+	margin-right: 10px;
+	float: left;
+}
+
+#yoo-zoo #comments .comment-head .author {
+	margin: 8px 0 0 0;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 1.0);
+}
+
+#yoo-zoo #comments .comment-head .meta {
+	margin-top: 3px;
+	font-size: 11px;
+}
+
+/* body */
+#yoo-zoo #comments .comment-body {
+	margin-bottom: 20px;
+	padding: 0 10px;
+}
+
+#yoo-zoo #comments .comment-body .content { text-align: justify; }
+
+#yoo-zoo #comments .comment-body .reply { margin: 10px 0 0 0; }
+
+#yoo-zoo #comments .no-response .comment-body .reply { display: none; }
+
+#yoo-zoo #comments .comment-body .moderation {
+	margin: 10px 0 0 0;
+	font-size: 14px;
+	font-style: italic;
+}
+
+/* children */
+#yoo-zoo #comments ul.level1 ul {
+	padding-left: 55px;
+	background: url(../images/arrow.png) 0 0 no-repeat;
+}
+
+/*
+ * respond
+ */
+
+#yoo-zoo #comments #respond { padding-left: 2px; }
+
+#yoo-zoo #comments #respond form div { margin: 10px 0; }
+
+#yoo-zoo #comments #respond h3 {
+	margin: 0 0 10px 0;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: normal;
+}
+
+#yoo-zoo #comments #respond p.user { margin: 0; }
+
+#yoo-zoo #comments #respond p.connects { margin: 5px 0 0 0; }
+
+#yoo-zoo #comments #respond input[type='text'] {
+	width: 200px;
+	height: 25px;
+	padding-left: 5px;
+	line-height: 25px;
+}
+
+#yoo-zoo #comments #respond textarea {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 400px;
+	height: 100px;
+}
+
+/* direct reply */
+#yoo-zoo #comments ul #respond {
+	margin: 0 0 30px 0;
+	padding-left: 10px;
+}

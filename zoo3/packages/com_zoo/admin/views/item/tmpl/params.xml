@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Item Edit Form</name>
+	<params addpath="/administrator/components/com_zoo/joomla/elements">
+		<param name="created_by" type="zooitemauthor" default="" label="Author" description="DETAILAUTHOR" />
+		<param name="created_by_alias" type="text" size="20" default="" label="Author Alias" description="DETAILAUTHORALIAS" />
+		<param name="access" type="zooaccesslevel" default="0" label="Access Level" description="DETAILACCESS" />
+		<param name="created" type="zoocalendar" default="" label="Created Date" description="DETAILCREATED" />
+		<param name="publish_up" type="zoocalendar" default="" label="Start Publishing" description="DETAILSTART" />
+		<param name="publish_down" type="zoocalendar" default="" label="Finish Publishing" description="DETAILFINISH" />
+	</params>
+	<params group="metadata">
+		<param name="title" type="text" size="20" default="" label="Title" description="Title" />
+		<param name="description" type="textarea" rows="5" cols="30" default="" label="Description" description="METADESC" />
+		<param name="keywords" type="textarea" rows="5" cols="30" default="" label="Keywords" description="METAKEYS" />
+		<param name="robots" type="text" size="20" default="" label="Robots" description="METAROBOTS" />
+		<param name="author" type="text" size="20" default="" label="Author" description="METAAUTHOR" />
+	</params>
+</form>

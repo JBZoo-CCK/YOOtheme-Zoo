@@ -1,0 +1,1 @@
+ZOOs buildin elements are located here. You can either put your custom elements in here or into the applications elements folder.

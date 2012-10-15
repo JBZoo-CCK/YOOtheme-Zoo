@@ -1,0 +1,77 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * download
+ */
+
+/* display: image link */
+.yoo-zoo.element-download-type {
+	display: block;
+	width: 100px;
+	height: 100px;
+	background: url(../images/download_type_default.png) 0 0 no-repeat;
+}
+
+.yoo-zoo.element-download-type-zip { background-image: url(../images/download_type_zip.png); }
+.yoo-zoo.element-download-type-tar { background-image: url(../images/download_type_tar.png); }
+.yoo-zoo.element-download-type-rar { background-image: url(../images/download_type_rar.png); }
+.yoo-zoo.element-download-type-bz2 { background-image: url(../images/download_type_bz2.png); }
+.yoo-zoo.element-download-type-gz { background-image: url(../images/download_type_gz.png); }
+.yoo-zoo.element-download-type-targz { background-image: url(../images/download_type_tgz.png); }
+.yoo-zoo.element-download-type-doc { background-image: url(../images/download_type_doc.png); }
+.yoo-zoo.element-download-type-jp2,
+.yoo-zoo.element-download-type-jpg,
+.yoo-zoo.element-download-type-jpe,
+.yoo-zoo.element-download-type-jpeg { background-image: url(../images/download_type_jpeg.png); }
+.yoo-zoo.element-download-type-mov { background-image: url(../images/download_type_mov.png); }
+.yoo-zoo.element-download-type-mp3 { background-image: url(../images/download_type_mp3.png); }
+.yoo-zoo.element-download-type-mp2,
+.yoo-zoo.element-download-type-mpe,
+.yoo-zoo.element-download-type-mpeg,
+.yoo-zoo.element-download-type-mpg { background-image: url(../images/download_type_mpeg.png); }
+.yoo-zoo.element-download-type-pdf { background-image: url(../images/download_type_pdf.png); }
+.yoo-zoo.element-download-type-png { background-image: url(../images/download_type_png.png); }
+.yoo-zoo.element-download-type-ppt { background-image: url(../images/download_type_ppt.png); }
+.yoo-zoo.element-download-type-psd { background-image: url(../images/download_type_psd.png); }
+.yoo-zoo.element-download-type-rtf { background-image: url(../images/download_type_rtf.png); }
+.yoo-zoo.element-download-type-tif,
+.yoo-zoo.element-download-type-tiff { background-image: url(../images/download_type_tiff.png); }
+.yoo-zoo.element-download-type-wav { background-image: url(../images/download_type_wav.png); }
+.yoo-zoo.element-download-type-wmv { background-image: url(../images/download_type_wmv.png); }
+.yoo-zoo.element-download-type-xls { background-image: url(../images/download_type_xls.png); }
+
+/* display: button link */
+.yoo-zoo.element-download-button,
+.yoo-zoo.element-download-button span { display: block; }
+
+.yoo-zoo.element-download-button {
+	width: 100px;
+	background: url(../images/download_button.png) 0 0 no-repeat;
+}
+
+.yoo-zoo.element-download-button:link,
+.yoo-zoo.element-download-button:visited { color: #646464; }
+
+.yoo-zoo.element-download-button:hover {
+	color: #505050;
+	text-decoration: none;
+}
+
+.yoo-zoo.element-download-button > span {
+	padding: 0px 26px 0px 11px;
+	background: url(../images/download_button.png) 100% -30px no-repeat;
+}
+
+.yoo-zoo.element-download-button > span > span {
+	height: 25px;
+	padding-right: 4px;
+	background: url(../images/download_button.png) 0 -60px repeat-x;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+.yoo-zoo.element-download-button:hover { background-position: 0 -90px; }
+.yoo-zoo.element-download-button:hover > span { background-position: 100% -120px; }
+.yoo-zoo.element-download-button:hover > span > span { background-position: 0 -150px; }

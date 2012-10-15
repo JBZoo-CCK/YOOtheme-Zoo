@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="download" group="Media">
+	<name>Download</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>File Download</description>
+	<params>
+		<param name="download_mode" type="list" default="1" label="Download Mode" description="The download mode">
+			<option value="0">Direct</option>
+			<option value="1">Attachment</option>
+			<option value="2">Protected</option>
+		</param>
+		<param name="upload_extensions" type="text" default="png,jpg,doc,mp3,mov,avi,mpg,zip,rar,gz" label="Legal Extensions" description="UPLOAD_EXTENSION_DESCRIPTION" />
+        <param name="upload_directory" type="text" default="images/zoo/uploads/" label="Upload Directory" description="UPLOAD_DIR_DESCRIPTION" />
+		<param name="max_upload_size" type="text" default="512" label="MAX UPLOAD SIZE KB" description="UPLOAD_MAX_SIZE_DESCRIPTION" />
+	</params>
+	<params group="render">
+		<param name="display" type="list" default="full" label="Display" description="CHOOSE_RENDERING_MODE_ELEMENT_POSITION">
+			<option value="default">Text link</option>
+			<option value="imagelink">Image link</option>
+			<option value="buttonlink">Button link</option>
+			<option value="filesize">File size</option>
+			<option value="filehits">File hits</option>
+			<option value="download_limit">Download limit</option>
+		</param>
+		<param name="download_name" type="text" default="Download {filename}" label="Download Name" description="DISPLAY_TEXT_LINK" />
+	</params>
+</element>

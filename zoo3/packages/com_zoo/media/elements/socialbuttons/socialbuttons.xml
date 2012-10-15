@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="socialbuttons" group="Social">
+	<name>Social Buttons</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Social Buttons (Facebook I Like, Google +1, Tweet button)</description>
+	<params>
+		<param name="default" type="radio" default="1" label="Enabled By Default" description="Enabled by default">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="google" type="radio" default="1" label="Google +1 Button" description="Enable Google +1 Button">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="twitter" type="radio" default="1" label="Tweet Button" description="Enable Tweet Button">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="facebook" type="radio" default="1" label="Facebook Like Button" description="Enable Facebook Like Button">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="locale" type="radio" default="0" label="Language" description="Choose display language of button">
+			<option value="0">Joomla</option>
+			<option value="1">Browser</option>
+		</param>
+	</params>
+	<params group="render">
+		<param name="ggsize" type="list" default="medium" label="Google Button Size" description="The button size to load">
+			<option value="small">Small</option>
+			<option value="medium">Medium</option>
+			<option value="standard">Standard</option>
+			<option value="tall">Tall</option>
+		</param>
+		<param name="ggannotation" type="list" default="none" label="Google Annotation" description="Sets the annotation to display next to the button.">
+			<option value="none">COM_ZOO_NONE</option>
+			<option value="bubble">Bubble</option>
+			<option value="inline">Inline</option>
+		</param>
+		<param name="ggwidth" type="text" default="" label="Google Width" description="GOOGLE_WIDTH_DESCRIPTION" />
+		<param name="fbheight" type="text" default="20" label="Facebook Height" description="Height of the I like button" />
+		<param name="fbwidth" type="text" default="100" label="Facebook Width" description="Width of the I like button" />
+		<param name="fbshow_faces" type="radio" default="false" label="Facebook Show Faces" description="Show profile pictures below the button.">
+			<option value="false">JNO</option>
+			<option value="true">JYES</option>
+		</param>
+		<param name="fblayout" type="list" default="button_count" label="Facebook Layout" description="FACEBOOK_LAYOUT_DESCRIPTION">
+			<option value="standard">standard</option>
+			<option value="button_count">button_count</option>
+			<option value="box_count">box_count</option>
+		</param>
+		<param name="fbaction" type="list" default="like" label="Facebook Action" description="The verb to display in the button.">
+			<option value="like">like</option>
+			<option value="recommend">recommend</option>
+		</param>
+		<param name="fbcolorscheme" type="list" default="light" label="Facebook Color Scheme" description="The colorscheme of the plugin.">
+			<option value="light">light</option>
+			<option value="dark">dark</option>
+		</param>
+		<param name="fbref" type="text" default="" label="Facebook Ref" description="A label for tracking referrals" />
+		<param name="twvia" type="text" default="" label="Twitter Via User" description="Screen name of the user to attribute the Tweet to" />
+		<param name="twtext" type="text" default="" label="Twitter Tweet text" description="Default Tweet text" />
+		<param name="twrelated" type="text" default="" label="Twitter Recommended Accounts" description="Related accounts" />
+		<param name="twcount" type="list" default="none" label="Twitter Count Box Position" description="Count box position" >
+			<option value="none">COM_ZOO_NONE</option>
+			<option value="horizontal">Horizontal</option>
+			<option value="vertical">Vertical</option>
+		</param>
+	</params>
+</element>

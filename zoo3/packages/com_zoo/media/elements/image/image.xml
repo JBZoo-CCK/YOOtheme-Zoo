@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="image" group="Media">
+	<name>Image</name>
+	<author>YOOtheme</author>
+	<creationDate>July 2011</creationDate>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>HTML Image</description>
+	<params>
+        <param name="upload_directory" type="text" default="images/zoo/uploads/" label="Upload Directory" description="UPLOAD_DIR_DESCRIPTION" />
+		<param name="max_upload_size" type="text" default="512" label="MAX UPLOAD SIZE KB" description="UPLOAD_MAX_SIZE_DESCRIPTION" />
+	</params>
+	<params group="render">
+		<param name="width" type="text" default="" label="RESIZE WIDTH PX" description="DYNAMICALLY_RESIZE_IMAGE_WIDTH" />
+		<param name="height" type="text" default="" label="RESIZE HEIGHT PX" description="DYNAMICALLY_RESIZE_IMAGE_HEIGHT" />
+		<param name="link_to_item" type="radio" default="1" label="Link to item" description="Image is linked to item view.">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

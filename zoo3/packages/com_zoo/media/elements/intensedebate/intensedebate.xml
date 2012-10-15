@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="intensedebate" group="Web Service">
+	<name>IntenseDebate</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>IntenseDebate Comments (http://www.intensedebate.com/)</description>
+	<params>
+		<param name="account" type="text" default="" label="IntenseDebate Account" description="Get one at: http://www.intensedebate.com/" />
+		<param name="default" type="radio" default="1" label="Enabled By Default" description="Enabled by default">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </param>
+	</params>
+</element>

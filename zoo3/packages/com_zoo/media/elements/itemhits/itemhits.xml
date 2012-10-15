@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemhits" group="Core" hidden="true" orderable="true">
+	<name>Item Hits</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Item Hits Core System</description>
+</element>

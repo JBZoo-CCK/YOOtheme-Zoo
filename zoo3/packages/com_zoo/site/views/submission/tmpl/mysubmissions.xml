@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+
+	<layout title="My Submissions">
+		<message><![CDATA[Displays an overview of users submitted articles]]></message>
+	</layout>
+	<state>
+		<name>My Submissions</name>
+		<description>Displays an overview of users submitted articles.</description>
+	</state>
+
+	<fields name="params">
+		<fieldset name="params" addfieldpath="/administrator/components/com_zoo/joomla/fields">
+			<field name="submission" type="hidden" label="" required="false" description="" />
+			<field name="application" type="zoosubmission" label="Choose Submission" required="true" description="Choose the submission to be shown" />
+			<field name="order" type="list" default="" label="Item Order" description="ITEM_ORDER">
+				<option value="">Latest first</option>
+				<option value="date">Latest last</option>
+				<option value="alpha">Alphabetical</option>
+				<option value="ralpha">Reverse Alphabetical</option>
+				<option value="hits">Most Hits</option>
+				<option value="rhits">Least Hits</option>
+			</field>
+		</fieldset>
+	</fields>
+
+</metadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Item">
+		<message><![CDATA[Displays a single item]]></message>
+	</layout>
+
+	<fields name="params">
+		<fieldset name="params"	addfieldpath="/administrator/components/com_zoo/joomla/fields">
+			<field name="item_id" type="hidden" label="" required="false" description="" />
+			<field name="application" type="zooapplication" label="Application / Item" required="true" description="Set an Application and Item" items="true" />
+		</fieldset>
+	</fields>
+
+</metadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" method="upgrade" client="administrator" >
+	<name>ZOO Quick Icons</name>
+	<author>YOOtheme</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Quick Icons module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<files>
+		<filename module="mod_zooquickicon">mod_zooquickicon.php</filename>
+	</files>
+</extension>

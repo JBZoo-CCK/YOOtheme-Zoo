@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemname" group="Core" hidden="true">
+	<name>Item Print</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Item Print Layout</description>
+	<params group="render">
+		<param name="showicon" type="radio" default="0" label="Show Icon" description="ShowHide print icon">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="showcomments" type="radio" default="1" label="Show Comments" description="Show/Hide comments when printing">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

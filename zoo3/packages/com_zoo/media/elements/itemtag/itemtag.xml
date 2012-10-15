@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemtag" group="Core" hidden="true">
+	<name>Item Tag</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Item Tag Core System</description>
+	<params group="render">
+		<param name="linked" type="radio" default="1" label="Link Tag" description="Wrap tag in with a link">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="separated_by" type="zoolist" default="Space" label="Separated by" description="CHOOSE_SEPARATOR_REPEATED_ELEMENTS">
+			<option name="Space"><![CDATA[separator=[ ]]]></option>
+			<option name="Comma"><![CDATA[separator=[, ]]]></option>
+			<option name="Hyphen"><![CDATA[separator=[ - ]]]></option>
+			<option name="Pipe"><![CDATA[separator=[ | ]]]></option>
+			<option name="Break"><![CDATA[separator=[<br />]]]></option>
+			<option name="Span"><![CDATA[tag=[<span>%s</span>]]]></option>
+			<option name="Paragraph"><![CDATA[tag=[<p>%s</p>]]]></option>
+			<option name="Div"><![CDATA[tag=[<div>%s</div>]]]></option>
+			<option name="List Item"><![CDATA[tag=[<li>%s</li>]]]></option>
+			<option name="Unordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul>%s</ul>]]]></option>
+			<option name="Ordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ol>%s</ol>]]]></option>
+			<option name="Warp Item"><![CDATA[tag=[<article class="item">%s</article>]]]></option>
+		</param>
+	</params>
+</element>

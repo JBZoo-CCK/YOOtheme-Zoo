@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+
+	<layout title="Submission">
+		<message><![CDATA[Displays a submission form for a single item]]></message>
+	</layout>
+	<state>
+		<name>Submission</name>
+		<description>Displays a submission form for a single item.</description>
+	</state>
+
+	<fields name="params">
+		<fieldset name="params" addfieldpath="/administrator/components/com_zoo/joomla/fields">
+			<field name="type" type="hidden" label="" required="false" description="" />
+			<field name="submission" type="hidden" label="" required="false" description="" />
+			<field name="application" type="zoosubmission" label="Choose Type" required="true" description="Choose the submittable item type" types="true" />
+			<field name="redirect" published="true" type="menuitem" default="" label="SUBMISSION_REDIRECT" description="SUBMISSION_REDIRECT_DESC">
+				<option value="">- Select Item -</option>
+			</field>
+		</fieldset>
+	</fields>
+
+</metadata>

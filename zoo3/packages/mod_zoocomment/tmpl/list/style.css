@@ -1,0 +1,36 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only */
+
+.zoo-comments-list > article {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	overflow: hidden;
+}
+
+.zoo-comments-list > article:first-child {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.zoo-comments-list img {
+	margin-right: 10px;
+	float: left;
+}
+
+.zoo-comments-list .author {
+	margin: 2px 0 0 0;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.zoo-comments-list .meta {
+	margin: 0;
+	font-size: 11px;
+	line-height: 13px;
+	font-style: italic;
+	color: #999;
+}
+
+.zoo-comments-list .content p { margin: 5px 0 0 0; }
+

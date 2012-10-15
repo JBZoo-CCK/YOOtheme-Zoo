@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application>
+	<name>Pages</name>
+	<group>page</group>
+	<version>2.5.0</version>
+	<creationDate>August 2011</creationDate>
+	<author>YOOtheme</author>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license><![CDATA[
+			http://www.gnu.org/licenses/gpl.html GNU/GPL
+			]]>
+	</license>
+	<description><![CDATA[
+				This is the pages app for ZOO 2.0 developed by YOOtheme.
+				<br /><strong>NOTE:</strong> The icon of this app is copyrighted by YOOtheme. Re-use is strictly prohibited.
+				]]>
+	</description>
+	<params group="application-config">
+	</params>
+	<params group="category-config"></params>
+	<params group="item-config"></params>
+	<params group="application-content"></params>
+	<params group="category-content"></params>
+	<params group="item-content"></params>
+</application>

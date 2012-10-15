@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renderer>
+	<positions layout="full">
+		<position name="top">Top</position>
+		<position name="title">Title</position>
+		<position name="subtitle">Subtitle</position>
+		<position name="date">Date</position>
+		<position name="meta">Meta</position>
+		<position name="media">Media</position>
+		<position name="content">Content</position>
+		<position name="taxonomy">Taxonomy</position>
+		<position name="bottom">Bottom</position>
+		<position name="related">Related</position>
+		<position name="author">Author</position>
+	</positions>
+	<positions layout="teaser">
+		<position name="title">Title</position>
+		<position name="subtitle">Subtitle</position>
+		<position name="date">Date</position>
+		<position name="meta">Meta</position>
+		<position name="media">Media</position>
+		<position name="content">Content</position>
+		<position name="links">Links</position>
+	</positions>
+	<positions layout="feed">
+		<position name="description">Description</position>
+	</positions>
+	<positions layout="submission">
+		<position name="content">Content</position>
+		<position name="media">Media</position>
+		<position name="meta">Meta</position>
+		<position name="administration">Administration</position>
+	</positions>
+</renderer>
