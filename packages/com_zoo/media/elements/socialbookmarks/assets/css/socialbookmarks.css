@@ -1,0 +1,30 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * social bookmarks
+ */
+
+.yoo-zoo.socialbookmarks { overflow: hidden; }
+
+.yoo-zoo.socialbookmarks a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 0px 7px 0px 0px;
+	background: url(../images/socialbookmarks.png) 0 0 no-repeat;
+	float: left;
+}
+.yoo-zoo.socialbookmarks a:last-child { margin-right: 0px; }
+
+.yoo-zoo.socialbookmarks a.facebook { background-position: 0 0; }
+.yoo-zoo.socialbookmarks a.twitter { background-position: 0 -25px; }
+.yoo-zoo.socialbookmarks a.google { background-position: 0 -50px; }
+.yoo-zoo.socialbookmarks a.technorati { background-position: 0 -75px; }
+.yoo-zoo.socialbookmarks a.delicious { background-position: 0 -100px; }
+.yoo-zoo.socialbookmarks a.digg { background-position: 0 -125px; }
+.yoo-zoo.socialbookmarks a.stumbleupon { background-position: 0 -150px; }
+.yoo-zoo.socialbookmarks a.reddit { background-position: 0 -175px; }
+.yoo-zoo.socialbookmarks a.myspace { background-position: 0 -200px; }
+.yoo-zoo.socialbookmarks a.yahoo { background-position: 0 -225px; }
+.yoo-zoo.socialbookmarks a.live { background-position: 0 -250px; }
+.yoo-zoo.socialbookmarks a.email { background-position: 0 -275px; }

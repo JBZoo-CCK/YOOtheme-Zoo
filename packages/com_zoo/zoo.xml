@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>com_zoo</name>
+	<author>YOOtheme</author>
+	<creationDate>September 2012</creationDate>
+	<updateUrl>http://www.yootheme.com/updates</updateUrl>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>ZOO component for Joomla 2.5+ developed by YOOtheme (http://www.yootheme.com)</description>
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB.com_zoo.ini</language>
+	</languages>
+	<scriptfile>file.script.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">installation/install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">installation/uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<filename>zoo.php</filename>
+        <folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>partials</folder>
+		<folder>renderer</folder>
+		<folder>sef_ext</folder>
+		<folder>views</folder>
+	</files>
+	<media destination="zoo" folder="media">
+		<filename>index.html</filename>
+		<folder>assets</folder>
+		<folder>elements</folder>
+		<folder>libraries</folder>
+	</media>
+	<administration>
+		<menu img="components/com_zoo/assets/images/zoo_16.png">com_zoo</menu>
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_zoo.ini</language>
+			<language tag="en-GB">en-GB.com_zoo.sys.ini</language>
+		</languages>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>config.php</filename>
+			<filename>zoo.php</filename>
+			<folder>assets</folder>
+			<folder>classes</folder>
+			<folder>controllers</folder>
+			<folder>events</folder>
+			<folder>framework</folder>
+			<folder>helpers</folder>
+			<folder>installation</folder>
+			<folder>joomla</folder>
+			<folder>libraries</folder>
+			<folder>partials</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+</extension>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="search" method="upgrade" >
+	<name>ZOO Search</name>
+	<author>YOOtheme</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Search plugin for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<files>
+		<filename plugin="zoosearch">zoosearch.php</filename>
+		<filename>changelog.php</filename>
+		<folder>renderer</folder>
+	</files>
+	<config>
+		<fields name="params" >
+			<fieldset name="basic">
+				<field name="search_fulltext" type="radio" default="0" label="Full-text Search" description="Uses MySQL's search feature for natural language full-text searches">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="search_limit" type="text" size="5" default="50" label="Search Limit" description="Number of Search items to return"/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

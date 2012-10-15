@@ -1,0 +1,61 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * author
+ */
+
+#yoo-zoo .author div.box {
+	margin-bottom: 20px;
+	background: #fafafa;
+	border-top: 1px solid #c8c8c8;
+}
+
+#yoo-zoo .author div.box > div {
+	padding: 15px 0px 15px 15px;
+	border-bottom: 1px solid #c8c8c8;
+	overflow: hidden;
+}
+
+/* position: media */
+#yoo-zoo .author div.box div.pos-media {
+	margin: 0px 15px 0px 0px;
+	padding: 3px;
+	border: 1px solid #E6E6E6;
+	background: #ffffff;
+	float: left;
+}
+
+/* position: title */
+#yoo-zoo .author div.box h4.pos-title {
+	margin: 5px 0px 0px 0px;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 18px;
+	color: #323232;
+}
+
+/* position: description */
+#yoo-zoo .author div.box div.pos-description { margin-top: 10px; }
+
+/* element type: textarea */
+#yoo-zoo .author div.box div.pos-description .element-textarea > * { margin: 0px 0px 8px 0px; }
+#yoo-zoo .author div.box div.pos-description .element-textarea *:last-child { margin-bottom: 0px; }
+
+/* position: links */
+#yoo-zoo .author div.box p.pos-links { margin: 10px 0px 0px 0px; }
+
+#yoo-zoo .author div.box p.pos-links span a:after {
+	content: " »";
+	font-size: 14px;
+}
+
+#yoo-zoo .items .element-relateditems > div {
+	padding: 30px 7px 10px 7px;
+	margin-bottom: 10px;
+	background: url(../images/separator.png) 50% 0 no-repeat;
+	overflow: hidden;
+}
+#yoo-zoo .items .element-relateditems > div:first-child {
+	padding-top: 0;
+	background: none;
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="Rating" group="Social" orderable="true">
+	<name>Rating</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Rating</description>
+	<params>
+		<param name="stars" type="list" default="5" label="Stars" description="">
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+			<option value="5">J5</option>
+			<option value="6">J6</option>
+			<option value="7">J7</option>
+			<option value="8">J8</option>
+			<option value="9">J9</option>
+			<option value="10">J10</option>
+		</param>
+		<param name="allow_vote" type="zooaccesslevel" default="" label="Allow Vote For" description="" />
+	</params>
+	<params group="render">
+		<param name="rating_disabled" type="radio" default="0" label="Enable Rating" description="">
+			<option value="1">JNO</option>
+			<option value="0">JYES</option>
+		</param>
+		<param name="show_message" type="radio" default="1" label="Show Message" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

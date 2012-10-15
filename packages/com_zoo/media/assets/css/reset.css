@@ -1,0 +1,163 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * reset
+ */
+ 
+.yoo-zoo div,
+.yoo-zoo dl,
+.yoo-zoo dt,
+.yoo-zoo dd,
+.yoo-zoo ul,
+.yoo-zoo ol,
+.yoo-zoo li,
+.yoo-zoo h1,
+.yoo-zoo h2,
+.yoo-zoo h3,
+.yoo-zoo h4,
+.yoo-zoo h5,
+.yoo-zoo h6,
+.yoo-zoo pre,
+.yoo-zoo form,
+.yoo-zoo fieldset,
+.yoo-zoo input,
+.yoo-zoo textarea,
+.yoo-zoo p,
+.yoo-zoo blockquote,
+.yoo-zoo th,
+.yoo-zoo td {
+	margin: 0; 
+	padding: 0;
+}
+
+.yoo-zoo fieldset, .yoo-zoo img { border: 0; }
+.yoo-zoo a:focus { outline: none; }
+ 
+/*
+ * default values
+ */
+
+.yoo-zoo p {
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+ 
+.yoo-zoo ul, .yoo-zoo ol, .yoo-zoo dl {
+	margin: 10px 0;
+	padding-left: 30px
+}
+
+.yoo-zoo dl { margin: 10px 0; }
+.yoo-zoo dd { padding-left: 40px; }
+ 
+.yoo-zoo td, .yoo-zoo th { padding: 1px; }
+ 
+.yoo-zoo a:link, .yoo-zoo a:visited { text-decoration: none; }
+.yoo-zoo a:hover { text-decoration: underline; }
+ 
+.yoo-zoo fieldset {
+	margin: 10px 0 10px 0;
+	padding: 0 10px 10px 10px;
+	border: 1px solid #c8c8c8;
+}
+
+.yoo-zoo legend {
+	padding: 0 10px 0 10px;
+	background: #ffffff;
+}
+
+.yoo-zoo form div { margin: 10px 0 10px 0; }
+
+.yoo-zoo textarea { padding: 1px 0 1px 5px; }
+
+.yoo-zoo option { padding: 0 0 1px 5px; }
+
+.yoo-zoo input[type='hidden'] { display: none; }
+
+.yoo-zoo input[type='text'],
+.yoo-zoo input[type='password'] { padding: 1px 0 1px 5px; }
+
+.yoo-zoo button,
+.yoo-zoo input[type='button'],
+.yoo-zoo input[type='submit'] {
+	padding: 2px 4px 2px 1px;
+	line-height: 100%;
+}
+
+.yoo-zoo input[type='button'],
+.yoo-zoo input[type='submit'],
+.yoo-zoo input[type='checkbox'],
+.yoo-zoo input[type='image'],
+.yoo-zoo input[type='radio'],
+.yoo-zoo input[type='reset'],
+.yoo-zoo select,
+.yoo-zoo button { cursor: pointer; }
+ 
+.yoo-zoo textarea,
+.yoo-zoo input[type='text'],
+.yoo-zoo input[type='password'],
+.yoo-zoo select {
+	border: 1px solid #c8c8c8;
+	background: #ffffff;
+}
+ 
+.yoo-zoo textarea:hover,
+.yoo-zoo input[type='text']:hover,
+.yoo-zoo input[type='password']:hover,
+.yoo-zoo select:hover { border-color: #aaaaaa; }
+ 
+.yoo-zoo textarea:focus,
+.yoo-zoo input[type='text']:focus,
+.yoo-zoo input[type='password']:focus,
+.yoo-zoo select:focus {
+	border-color: #8c8c8c;
+	outline: 2px solid #dcdcdc;
+}
+ 
+.yoo-zoo h1, .yoo-zoo h2, .yoo-zoo h3, .yoo-zoo h4, .yoo-zoo h5, .yoo-zoo h6 {
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+.yoo-zoo h1 { font-size: 36px; line-height: 36px; margin-top: 25px; }
+.yoo-zoo h2 { font-size: 24px; line-height: 24px; margin-top: 25px; }
+.yoo-zoo h3 { font-size: 18px; line-height: 18px; margin-top: 15px; }
+.yoo-zoo h4 { font-size: 16px; line-height: 16px; margin-top: 15px; }
+.yoo-zoo h5 { font-size: 14px; line-height: 14px; margin-top: 10px; }
+.yoo-zoo h6 { font-size: 14px; line-height: 14px; margin-top: 10px; }
+
+.yoo-zoo hr {
+	margin: 15px 0 15px 0;
+	display: block;
+	background: #c8c8c8;
+	height: 1px;
+	border: none;
+}
+ 
+.yoo-zoo q { font-style: italic; }
+
+.yoo-zoo blockquote {
+	margin: 10px 0 10px 15px;
+	font-style: italic;
+	font-size: 130%
+}
+.yoo-zoo blockquote > *:first-child:first-letter { font-size: 150% }
+ 
+.yoo-zoo pre {
+	margin: 10px 0 10px 0px;
+	padding: 5px 0 5px 10px;
+	border: 1px dotted #aab4be;
+	border-left: 20px solid #b4b4b4;
+	background: #fafafa;
+	font-size: 90%;
+	color: #2E8B57;
+	font-family: "Courier New", Courier, monospace;
+	white-space: pre-wrap;
+}
+ 
+.yoo-zoo acronym, .yoo-zoo abbr {
+	border-bottom: 1px dashed #969696;
+	cursor: help;
+	font-variant: small-caps;
+	text-transform: lowercase;
+}

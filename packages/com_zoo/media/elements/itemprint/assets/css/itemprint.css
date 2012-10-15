@@ -1,0 +1,12 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * itemprint
+ */
+
+.element-itemprint a.element-print-button {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url(../images/printer.png) 0 0 no-repeat;
+}

@@ -1,0 +1,27 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only */
+
+.zoo-tagcloud {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.zoo-tagcloud li {
+	display: inline;
+	line-height: 20px;
+	vertical-align: middle;
+}
+
+.zoo-tagcloud a { white-space: nowrap; }
+
+.zoo-tagcloud .weight1 a { font-size: 11px; }
+.zoo-tagcloud .weight2 a { font-size: 12px; }
+.zoo-tagcloud .weight3 a { font-size: 13px; }
+.zoo-tagcloud .weight4 a { font-size: 14px; }
+.zoo-tagcloud .weight5 a { font-size: 15px; }
+.zoo-tagcloud .weight6 a { font-size: 16px; }
+.zoo-tagcloud .weight7 a { font-size: 18px; }
+.zoo-tagcloud .weight8 a { font-size: 20px; }
+.zoo-tagcloud .weight9 a { font-size: 23px; letter-spacing: -1px; }
+.zoo-tagcloud .weight10 a { font-size: 26px; letter-spacing: -1px; }

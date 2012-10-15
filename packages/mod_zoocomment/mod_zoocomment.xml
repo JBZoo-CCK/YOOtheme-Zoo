@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" method="upgrade" client="site">
+	<name>ZOO Comment</name>
+	<author>YOOtheme</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Comment module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<files>
+		<filename module="mod_zoocomment">mod_zoocomment.php</filename>
+		<filename>changelog.php</filename>
+		<folder>fields</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params" >
+			<fieldset name="basic" addfieldpath="/modules/mod_zoocomment/fields">
+				<field name="theme" type="template" default="" label="Theme" description="Visual style" />
+				<field name="mode" type="hidden" label="" required="false" description="" />
+				<field name="type" type="hidden" label="" required="false" description="" />
+				<field name="category" type="hidden" label="" required="false" description="" />
+				<field name="item_id" type="hidden" label="" required="false" description="" />
+				<field name="application" type="zooapplication" default="" label="Application / Category" description="APPLICATION_DESCRIPTION" categories="true" frontpage="true" />
+				<field name="subcategories" type="radio" default="0" label="Include Subcategories" description="SUBCATEGORY_DESCRIPTION">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="count" type="text" default="10" size="5" label="Comments Count" description="Maximum number of comments to display" />
+				<field name="show_avatar" type="radio" default="1" label="Show Avatar" description="SHOW_AVATAR_DESCRIPTION">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="avatar_size" type="text" default="40" label="Avatar Size" description="AVATAR_SIZE_DESCRIPTION" />
+				<field name="show_author" type="radio" default="1" label="Show Author" description="SHOW_AUTHOR_DESCRIPTION">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_meta" type="radio" default="1" label="Show Meta Data" description="SHOW_META_DESCRIPTION">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

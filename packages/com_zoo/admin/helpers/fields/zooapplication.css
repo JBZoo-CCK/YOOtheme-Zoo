@@ -1,0 +1,18 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * zooapplication
+ */
+
+div.zoo-application { float: left; }
+
+div.zoo-application > * { margin-top: 5px; }
+
+div.zoo-application > * {
+	float: none;
+	display: block;
+}
+
+div.zoo-application .item input { margin: 0 5px 0 0; }
+
+div.zoo-application .hidden { display: none; }

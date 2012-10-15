@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" method="upgrade" client="site">
+	<name>ZOO Category</name>
+	<author>YOOtheme</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Category module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<files>
+		<filename module="mod_zoocategory">mod_zoocategory.php</filename>
+		<filename>changelog.php</filename>
+        <filename>helper.php</filename>
+		<folder>fields</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_zoocategory/fields">
+				<field name="theme" type="template" default="" label="Theme" description="Visual style" />
+				<field name="mode" type="hidden" label="" required="false" description="" />
+				<field name="type" type="hidden" label="" required="false" description="" />
+				<field name="category" type="hidden" label="" required="false" description="" />
+				<field name="item_id" type="hidden" label="" required="false" description="" />
+				<field name="application" type="zooapplication" default="" label="Category" description="APPLICATION_DESCRIPTION" categories="true" frontpage="true" />
+				<field name="depth" type="text" default="0" size="5" label="Max Depth" description="MAX_DEPTH_DESCRIPTION" />
+				<field name="add_count" type="radio" default="0" label="Show Item Count" description="SHOW_ITEM_COUNT_DESCRIPTION">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="menu_item" type="zoomenuitem" default="" state="1" label="Menu Item" description="MENUITEM_DESCRIPTION" />
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

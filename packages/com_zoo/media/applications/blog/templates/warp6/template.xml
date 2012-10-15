@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>Warp6</name>
+	<version>2.5.0</version>
+	<creationDate>June 2011</creationDate>
+	<author>YOOtheme</author>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license></license>
+	<description>Warp6 template for the Blog App</description>
+	<params group="category">
+		<param name="show_title" type="radio" default="1" label="Title" description="Show/Hide title">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_description" type="radio" default="1" label="Description" description="Show/Hide description">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_image" type="radio" default="1" label="Image" description="Show/Hide image">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="alignment" type="list" default="left" label="Alignment" description="IMAGE_AND_CONTENT_ALIGNEMENT">
+			<option value="left">Image Left</option>
+			<option value="right">Image Right</option>
+			<option value="center">All Centered</option>
+		</param>
+		<param name="date" type="list" default="0" label="Display Date" description="Choose date to be displayed.">
+			<option value="0">COM_ZOO_NONE</option>
+			<option value="created">Creation Date</option>
+			<option value="publishup">Publish Up Date</option>
+		</param>
+		<param name="date_format" type="list" default="0" label="Date Format" description="Choose date format to be displayed.">
+			<option value="%d||%B||%Y">dd/Month/YYYY</option>
+			<option value="%d||%b">dd/MMM</option>
+			<option value="%b||%d">MMM/dd</option>
+		</param>
+		<param name="@spacer" type="spacer" />
+		<param name="items_cols" type="radio" default="1" label="Items Columns" description="COLUMNS_PER_ROW_DESCRIPTION">
+			<option value="1">J1</option>
+			<option value="2">J2</option>
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+		</param>
+		<param name="items_order" type="list" default="0" label="Items Order" description="ITEMS_ORDER_ACROSS_DOWN">
+			<option value="0">Across</option>
+			<option value="1">Down</option>
+		</param>
+	</params>
+	<params group="item">
+		<param name="teaseritem_media_alignment" type="list" default="left" label="Teaser Media Alignment" description="MEDIA_ELEMENT_OF_TEASER_ITEM_ALIGNEMENT">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+			<option value="above">Above Title</option>
+		</param>
+		<param name="@spacer" type="spacer" />
+		<param name="item_media_alignment" type="list" default="left" label="Item Media Alignment" description="MEDIA_ELEMENT_ALIGNEMENT">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+			<option value="above">Above Title</option>
+		</param>
+	</params>
+</template>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="maps" group="Web Service">
+	<name>Google Maps</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Google Maps (http://maps.google.com/)</description>
+	<params>
+		<param name="locale" type="text" default="en" label="Directions language" description="DIRECTIONS_LANGUAGE_DESCRIPTION" />
+		<param name="key" type="text" default="" label="API Key" description="GOOGLE_API_KEY_DESCRIPTION" />
+	</params>
+	<params group="render">
+		<param name="layout" type="zoolayout" default="" label="Layout" description="OVERRIDE_DEFAULT_OUTPUT" constraint="googlemaps" />
+		<param name="information" type="text" default="" label="Information" description="Place an information above the map" />
+		<param name="marker_popup" type="list" default="0" label="Marker popup on load" description="Show marker popup on load" >
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</param>
+		<param name="main_icon" type="list" default="1" label="Marker icon" description="Select a marker icon" >
+			<option value="red-dot">Red dot</option>
+			<option value="orange-dot">Orange dot</option>
+			<option value="yellow-dot">Yellow dot</option>
+			<option value="pink-dot">Pink dot</option>
+			<option value="blue-dot">Blue dot</option>
+			<option value="ltblue-dot">Lightblue dot</option>
+			<option value="green-dot">Green dot</option>
+			<option value="purple-dot">Purple dot</option>
+			<option value="red-pushpin">Red pushpin</option>
+			<option value="ylw-pushpin">Yellow pushpin</option>
+			<option value="pink-pushpin">Pink pushpin</option>
+			<option value="blue-pushpin">Blue pushpin</option>
+			<option value="ltblu-pushpin">Lightblue pushpin</option>
+			<option value="grn-pushpin">Green pushpin</option>
+			<option value="purple-pushpin">Purple pushpin</option>
+		</param>
+		<param name="zoom_level" type="text" default="13" label="Map zoom level" description="Define map zoom level" />
+		<param name="map_controls" type="list" default="2" label="Map zoom controls" description="Show map zoom controls" >
+			<option value="0">COM_ZOO_NONE</option>
+			<option value="1">Small</option>
+			<option value="2">Large</option>
+		</param>
+		<param name="scroll_wheel_zoom" type="radio" default="1" label="Map scroll wheel zoom" description="Enable/Disable map scroll wheel zooming" >
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</param>
+		<param name="map_type" type="list" default="0" label="Map type on load" description="Define the default map type" >
+			<option value="0">Normal</option>
+			<option value="1">Satellite</option>
+			<option value="2">Hybrid</option>
+			<option value="3">Terrain</option>
+		</param>
+		<param name="type_controls" type="radio" default="1" label="Map type controls" description="Show map type controls" >
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</param>
+		<param name="directions" type="radio" default="1" label="Show directions" description="Show directions input field" >
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</param>
+		<param name="width_unit" type="radio" default="px" label="Map Width Unit" description="MAP_WIDTH_LENGTH_UNIT">
+			<option value="px">Pixel</option>
+			<option value="%">Percent</option>
+		</param>
+		<param name="width" type="text" default="500" label="Map Width" description="Width of the map" />
+		<param name="height" type="text" default="400" label="MAP HEIGHT PX" description="Height of the map" />
+	</params>
+</element>

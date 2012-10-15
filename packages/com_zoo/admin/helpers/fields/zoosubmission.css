@@ -1,0 +1,16 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * zoosubmission
+ */
+
+div.zoo-submission { float: left; }
+
+div.zoo-submission > * { margin-top: 5px; }
+
+div.zoo-submission select {
+	display: block;
+	float: none;
+}
+
+div.zoo-submission .hidden { display: none; }

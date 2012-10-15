@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+
+	<layout title="Frontpage">
+		<message><![CDATA[Displays the frontpage of a application]]></message>
+	</layout>
+
+	<fields name="params">
+		<fieldset name="params"	addfieldpath="/administrator/components/com_zoo/joomla/fields">
+			<field name="application" type="zooapplication" label="Application" required="true" description="Set a Application" />
+		</fieldset>
+	</fields>
+
+</metadata>

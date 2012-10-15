@@ -1,0 +1,94 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * Default Style Sheet
+ */
+
+
+/* General
+----------------------------------------------------------------------------------------------------*/
+
+/* Position Headings */
+.yoo-zoo .item .element > h3,
+.yoo-zoo .item .pos-related > h3 { margin-top: 0px; }
+
+/* Element Type: Textarea */
+.yoo-zoo .item .element-textarea > * { margin: 8px 0 0 0; }
+.yoo-zoo .item .element-textarea > *:first-child { margin-top: 0; }
+
+
+/* Positions
+----------------------------------------------------------------------------------------------------*/
+
+/* Position: Top */
+.yoo-zoo .item .pos-top .element { margin-bottom: 15px; }
+
+/* Position: Subtitle */
+.yoo-zoo .item .pos-subtitle {
+	margin: 0 0 8px 0;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+/* Position: Media */
+.yoo-zoo .item .media-top .element { margin-bottom: 15px; }
+.yoo-zoo .item .media-bottom .element { margin-top: 15px; }
+.yoo-zoo .item .pos-media a,
+.yoo-zoo .item .pos-media img { display: block; }
+
+/* Position: Content */
+.yoo-zoo .item .pos-content .element { margin-top: 15px; }
+.yoo-zoo .item .pos-content .element:first-child { margin-top: 0; }
+
+/* Position: Taxonomy + Bottom + Related */
+.yoo-zoo .item .pos-taxonomy,
+.yoo-zoo .item .pos-bottom .element,
+.yoo-zoo .item .pos-related { margin-top: 15px; }
+
+.yoo-zoo .item .pos-taxonomy strong { font-weight: normal; }
+
+
+/* Author
+----------------------------------------------------------------------------------------------------*/
+
+/* Full Layout */
+#system.yoo-zoo > .author-box { margin-top: 0; }
+
+/* Teaser Layout */
+.yoo-zoo .author-box .element-relateditems > div {
+	width: 100%;
+	margin-bottom: 10px;
+	float: left;
+}
+.yoo-zoo .author-box .element-relateditems > div:last-child { margin-bottom: 0; }
+
+/* Element Type: Textarea */
+.yoo-zoo .author-box .element-textarea > * { margin: 8px 0 0 0; }
+.yoo-zoo .author-box .element-textarea > *:first-child { margin-top: 0; }
+
+/* Positions */
+.yoo-zoo .author-box .author-media {
+	margin-right: 15px;
+	float: left;
+}
+.yoo-zoo .author-box .author-media > a { display: block; }
+
+.yoo-zoo .author-box .author-links { margin: 10px 0 0 0; }
+
+.yoo-zoo .author-box .author-links a { margin-right: 15px; }
+.yoo-zoo .author-box .author-links a:after {
+	content: " »";
+	font-size: 16px;
+}
+
+
+/* Responsive
+----------------------------------------------------------------------------------------------------*/
+
+/* Hide from IE8 */
+@media (min-width: 1px) {
+	.yoo-zoo img {
+		max-width: 100%;
+		height: auto;
+	}
+}

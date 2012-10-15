@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="socialbookmarks" group="Social">
+	<name>Social Bookmarks</name>
+	<author>YOOtheme</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Social Bookmarks</description>
+	<params>
+		<param name="default" type="radio" default="1" label="Enabled By Default" description="Enabled by default">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="google" type="radio" default="1" label="Google" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="technorati" type="radio" default="1" label="Technorati" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="yahoo" type="radio" default="1" label="Yahoo" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="delicious" type="radio" default="1" label="Delicious" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="stumbleupon" type="radio" default="1" label="StumbleUpon" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="digg" type="radio" default="1" label="digg" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="facebook" type="radio" default="1" label="Facebook" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="reddit" type="radio" default="1" label="Reddit" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="myspace" type="radio" default="1" label="Myspace" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="live" type="radio" default="1" label="Windows live" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="twitter" type="radio" default="1" label="Twitter" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+		<param name="email" type="radio" default="1" label="Email" description="">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

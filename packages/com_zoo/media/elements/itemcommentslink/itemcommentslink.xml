@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemcommentslink" group="Core" hidden="true">
+	<name>Item Comments Link</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Item Comments Link Core System</description>
+	<params group="render">
+		<param name="single_comment_text" type="text" default="%s Comment" label="Single Comment Text" description="SINGLE_COMMENT" />
+		<param name="multiple_comments_text" type="text" default="%s Comments" label="Multiple Comments Text" description="MULTIPLE_COMMENTS" />
+		<param name="no_comments_text" type="text" default="No Comments" label="No Comments Text" description="his text will be displayed, if there are no comments." />
+	</params>
+</element>

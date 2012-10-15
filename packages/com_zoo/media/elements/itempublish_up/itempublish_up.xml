@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itempublish_up" group="Core" hidden="true" orderable="true">
+	<name>Item Publish Up</name>
+	<author>YOOtheme</author>
+	<creationDate>November 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Item Publish Up Core System</description>
+	<params group="render">
+		<param name="date_format" type="list" default="0" label="Date Format" description="CHOOSE_DATE_FORMAT">
+			<option value="%A, %d %B %Y">%A, %d %B %Y</option>
+			<option value="%A, %d %B %Y %H:%M">%A, %d %B %Y %H:%M</option>
+			<option value="%d %B %Y">%d %B %Y</option>
+			<option value="%d.%m.%y">%d.%m.%y</option>
+			<option value="%Y-%m-%d">%Y-%M-%D</option>
+			<option value="custom">custom format</option>
+		</param>
+		<param name="custom_format" type="text" default="" label="Custom format" description="CHOOSE_CUSTOM_FORMAT" />
+	</params>
+</element>

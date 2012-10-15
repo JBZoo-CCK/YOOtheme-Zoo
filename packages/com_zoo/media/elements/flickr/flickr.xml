@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="flickr" group="Web Service">
+	<name>Flickr</name>
+	<author>YOOtheme</author>
+	<creationDate>August 2011</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Flickr Photo Sharing (http://www.flickr.com/)</description>
+	<params>
+		<param name="height" type="text" default="500" label="Height" description="Height of the Flickr slideshow" />
+		<param name="width" type="text" default="500" label="Width" description="Width of the Flickr slideshow" />
+	</params>
+</element>

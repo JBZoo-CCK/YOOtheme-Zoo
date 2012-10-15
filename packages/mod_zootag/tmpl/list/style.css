@@ -1,0 +1,21 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only */
+
+ul.zoo-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.zoo-list > li {
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px solid #ddd;
+}
+
+ul.zoo-list > li:first-child {
+	margin-top: 0;
+	padding-top: 0;
+	border: none;
+}
+
+ul.zoo-list > li > a:first-child { display: block; }

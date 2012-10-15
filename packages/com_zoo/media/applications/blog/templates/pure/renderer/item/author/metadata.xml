@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout name="full">
+		<name>Full</name>
+		<description>An author is rendered with the full layout in the item view.</description>
+	</layout>
+	<layout name="related" type="related">
+		<name>Related</name>
+		<description>Choose this layout to render a related author.</description>
+	</layout>
+	<layout name="submission" type="submission">
+		<name>Submission</name>
+		<description>An author is rendered with the submission layout in the submission view.</description>
+	</layout>
+</metadata>

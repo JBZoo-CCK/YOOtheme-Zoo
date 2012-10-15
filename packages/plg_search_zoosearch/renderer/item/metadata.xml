@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout name="default">
+		<name>Default</name>
+		<description>An item is rendered with the default layout in all default module themes.</description>
+	</layout>
+</metadata>
