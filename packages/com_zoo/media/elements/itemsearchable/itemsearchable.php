@@ -62,7 +62,7 @@ class ElementItemSearchable extends Element implements iSubmittable {
 			String - html
 	*/
 	public function renderSubmission($params = array()) {
-		return $this->app->html->_('control.booleanlist', $this->getControlName('value'), null, $this->_item->searchable);
+		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), null, $this->_item->searchable);
 	}
 
 	/*

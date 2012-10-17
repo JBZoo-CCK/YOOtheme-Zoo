@@ -84,7 +84,7 @@ class CategoryController extends AppController {
 		$this->app->zoo->toolbarHelp();
 
 		// select published state
-		$this->lists['select_published'] = $this->app->html->_('control.booleanlist', 'published', 'class="inputbox"', $this->category->published);
+		$this->lists['select_published'] = $this->app->html->_('select.booleanlist', 'published', 'class="inputbox"', $this->category->published);
 
 		// get categories and exclude the current category
 		$categories = $this->application->getCategories();

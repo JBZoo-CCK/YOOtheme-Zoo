@@ -106,7 +106,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		$data = json_encode(array(
 			'lat' => $center['lat'],
 			'lng' => $center['lng'],
-			'popup' => $params->get('marker_popup'),
+			'popup' => (boolean) $params->get('marker_popup'),
 			'text' => $this->app->googlemaps->stripText($marker_text),
 			'zoom' => (int) $params->get('zoom_level'),
 			'mapCtrl' => $params->get('map_controls'),

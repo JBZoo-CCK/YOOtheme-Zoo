@@ -278,7 +278,7 @@ class UpdateHelper extends AppHelper {
 			if ($url = current($xml->xpath('//updateUrl'))) {
 
 				// create check url
-				$url = sprintf('%s?application=%s&version=%s&format=raw', $url, $this->app->joomla->isVersion('1.5') ? 'zoo_j15' : 'zoo_j17', urlencode(current($xml->xpath('//version'))));
+				$url = sprintf('%s?application=%s&version=%s&format=raw', $url, 'zoo_j17', urlencode(current($xml->xpath('//version'))));
 
 				// only check once a day
 				$hash = md5($url.date('Y-m-d'));

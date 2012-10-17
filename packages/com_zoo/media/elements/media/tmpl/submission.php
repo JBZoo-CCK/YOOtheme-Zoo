@@ -38,7 +38,7 @@ defined('_JEXEC') or die('Restricted access');
 
 			<div class="row">
 				<strong><?php echo JText::_('AutoPlay'); ?></strong>
-				<?php echo $this->app->html->_('control.booleanlist', $this->getControlName('autoplay'), '', $this->get('autoplay', $this->config->get('defaultautoplay', false))) ?>
+				<?php echo $this->app->html->_('select.booleanlist', $this->getControlName('autoplay'), '', $this->get('autoplay', $this->config->get('defaultautoplay', false))) ?>
 			</div>
 		</div>
 	</div>

@@ -15,7 +15,7 @@
 	<params group="render">
 		<param name="layout" type="zoolayout" default="" label="Layout" description="OVERRIDE_DEFAULT_OUTPUT" constraint="googlemaps" />
 		<param name="information" type="text" default="" label="Information" description="Place an information above the map" />
-		<param name="marker_popup" type="list" default="0" label="Marker popup on load" description="Show marker popup on load" >
+		<param name="marker_popup" type="radio" default="0" label="Marker popup on load" description="Show marker popup on load" >
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</param>

@@ -5,7 +5,9 @@
 * @copyright Copyright (C) YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
-jimport('joomla.application.component.controller');
+
+jimport('cms.controller.legacy');
+jimport('legacy.controller.legacy');
 
 /**
  * The base Controller Class

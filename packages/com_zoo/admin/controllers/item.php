@@ -239,14 +239,14 @@ class ItemController extends AppController {
 		$this->app->zoo->toolbarHelp();
 
 		// published select
-		$this->lists['select_published'] = $this->app->html->_('control.booleanlist', 'state', null, $this->item->state);
+		$this->lists['select_published'] = $this->app->html->_('select.booleanlist', 'state', null, $this->item->state);
 
 		// published searchable
-		$this->lists['select_searchable'] = $this->app->html->_('control.booleanlist', 'searchable', null, $this->item->searchable);
+		$this->lists['select_searchable'] = $this->app->html->_('select.booleanlist', 'searchable', null, $this->item->searchable);
 
 		// categories select
 		$related_categories = $this->item->getRelatedCategoryIds();
-		$this->lists['select_frontpage']  = $this->app->html->_('control.booleanlist', 'frontpage', null, in_array(0, $related_categories));
+		$this->lists['select_frontpage']  = $this->app->html->_('select.booleanlist', 'frontpage', null, in_array(0, $related_categories));
 		$this->lists['select_categories'] = count($this->application->getCategoryTree()) > 1 ?
 				$this->app->html->_('zoo.categorylist', $this->application, array(), 'categories[]', 'size="15" multiple="multiple"', 'value', 'text', $related_categories)
 				: '<a href="'.$this->app->link(array('controller' => 'category'), false).'" >'.JText::_('Please add categories first').'</a>';
@@ -256,7 +256,7 @@ class ItemController extends AppController {
 		$this->lists['most_used_tags'] = $this->app->table->tag->getAll($this->application->id, null, null, 'items DESC, a.name ASC', null, self::MAX_MOST_USED_TAGS);
 
 		// comments enabled select
-		$this->lists['select_enable_comments'] = $this->app->html->_('control.booleanlist', 'params[enable_comments]', null, $this->params->get('config.enable_comments', 1));
+		$this->lists['select_enable_comments'] = $this->app->html->_('select.booleanlist', 'params[enable_comments]', null, $this->params->get('config.enable_comments', 1));
 
 		// display view
 		$this->getView()->setLayout('edit')->display();

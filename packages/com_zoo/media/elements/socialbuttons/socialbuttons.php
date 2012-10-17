@@ -47,6 +47,9 @@ class ElementSocialbuttons extends Element implements iSubmittable {
 			$item_route = JRoute::_($this->app->route->item($this->_item, false), true, -1);
 			$locale		= $this->config->get('locale') ? '' : str_replace('-', '_', $this->app->system->getLanguage()->getTag());
 
+			// Facebook and Google only seem to support es_ES
+			$locale		= (substr($locale, 0, 3) == 'es_') ? 'es_ES' : $locale;
+
 			// add assets
 			$this->app->document->addStylesheet('elements:socialbuttons/socialbuttons.css');
 
@@ -124,7 +127,7 @@ class ElementSocialbuttons extends Element implements iSubmittable {
 	       String - html
 	*/
 	public function edit() {
-		return $this->app->html->_('control.booleanlist', $this->getControlName('value'), '', $this->get('value', $this->config->get('default')));
+		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), '', $this->get('value', $this->config->get('default')));
 	}
 
 	/*

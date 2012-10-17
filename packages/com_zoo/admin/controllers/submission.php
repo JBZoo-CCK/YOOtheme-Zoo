@@ -98,16 +98,16 @@ class SubmissionController extends AppController {
 		$this->app->zoo->toolbarHelp();
 
         // published select
-		$this->lists['select_published'] = $this->app->html->_('control.booleanlist', 'state', null, $this->submission->state);
+		$this->lists['select_published'] = $this->app->html->_('select.booleanlist', 'state', null, $this->submission->state);
 
 		// access select
 		$this->lists['select_access'] = $this->app->html->_('zoo.accesslevel', array(), 'access', 'class="inputbox"', 'value', 'text',$this->submission->access);
 
         // tooltip select
-		$this->lists['select_tooltip'] = $this->app->html->_('control.booleanlist', 'params[show_tooltip]', null, $this->submission->showTooltip());
+		$this->lists['select_tooltip'] = $this->app->html->_('select.booleanlist', 'params[show_tooltip]', null, $this->submission->showTooltip());
 
 		// item edit select
-		$this->lists['select_item_edit'] = $this->app->html->_('control.booleanlist', 'params[item_edit]', null, $this->submission->getParams()->get('item_edit', false));
+		$this->lists['select_item_edit'] = $this->app->html->_('select.booleanlist', 'params[item_edit]', null, $this->submission->getParams()->get('item_edit', false));
 
 		// Only on 2.5
 		$this->lists['select_item_captcha'] = false;

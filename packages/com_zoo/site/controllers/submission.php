@@ -578,7 +578,11 @@ class SubmissionController extends AppController {
 				return $this->app->route->mysubmissions($this->submission);
 			case 'itemedit':
 				// Redirect to the item
-				return $this->app->route->item($this->item);
+				if ($this->item->getState() == 1) {
+					return $this->app->route->item($this->item);
+				} else {
+					return $this->app->route->submission($this->submission, $this->type->id, null, $this->item_id);
+				}
 			default:
 				// Custom redirect
 				return base64_decode($this->redirectTo);

@@ -9,7 +9,7 @@
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<description>ZOO component for Joomla 2.5+ developed by YOOtheme (http://www.yootheme.com)</description>
 	<languages folder="site/language">
 		<language tag="en-GB">en-GB.com_zoo.ini</language>
@@ -52,6 +52,7 @@
 			<filename>index.html</filename>
 			<filename>config.php</filename>
 			<filename>zoo.php</filename>
+			<filename>README.markdown</filename>
 			<folder>assets</folder>
 			<folder>classes</folder>
 			<folder>controllers</folder>

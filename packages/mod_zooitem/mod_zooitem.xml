@@ -8,15 +8,17 @@
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<description>Item module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename module="mod_zooitem">mod_zooitem.php</filename>
 		<filename>changelog.php</filename>
+		<filename>file.script.php</filename>
 		<folder>fields</folder>
 		<folder>renderer</folder>
 		<folder>tmpl</folder>
 	</files>
+	<scriptfile>file.script.php</scriptfile>
 	<config>
 		<fields name="params" >
 			<fieldset name="basic" addfieldpath="/modules/mod_zooitem/fields">
