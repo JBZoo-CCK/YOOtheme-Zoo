@@ -12,7 +12,7 @@ $this->app->document->addScript('fields:zoofeed.js');
 ?>
 
 <div class="zoo-feed">
-	<?php echo $this->app->html->_('control.booleanlist', $control_name.'['.$name.']', null, $value); ?>
+	<?php echo $this->app->html->_('select.booleanlist', $control_name.'['.$name.']', null, $value); ?>
 	<div class="input">
 		<div class="input">
 		<?php echo '<label class="hasTip" title="'.JText::_('OPTIONAL_FEED_TITLE').'" for="feed-title">'.JText::_('Feed title').'</label>'; ?>

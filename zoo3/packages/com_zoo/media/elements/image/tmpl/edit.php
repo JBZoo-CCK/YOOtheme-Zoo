@@ -42,7 +42,7 @@ defined('_JEXEC') or die('Restricted access');
 
 			<div class="row">
 				<strong><?php echo JText::_('New window'); ?></strong>
-				<?php echo $this->app->html->_('control.booleanlist', $this->getControlName('target'), $this->get('target'), $this->get('target')); ?>
+				<?php echo $this->app->html->_('select.booleanlist', $this->getControlName('target'), $this->get('target'), $this->get('target')); ?>
 			</div>
 
 			<div class="row">

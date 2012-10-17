@@ -65,7 +65,7 @@ class ElementItemFrontpage extends Element implements iSubmittable {
 	*/
 	public function renderSubmission($params = array()) {
 		$frontpage = isset($this->_frontpage) ? $this->_frontpage : in_array(0, $this->_item->getRelatedCategoryIds());
-		return $this->app->html->_('control.booleanlist', $this->getControlName('value'), null, $frontpage);
+		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), null, $frontpage);
 	}
 
 	/*

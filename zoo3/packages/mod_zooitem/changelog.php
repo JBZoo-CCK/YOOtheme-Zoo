@@ -14,6 +14,12 @@ defined('_JEXEC') or die('Restricted access');
 Changelog
 ------------
 
+3.0.1
+# fixed problem with module loosing custom positions after upgrade
+
+3.0.0
+^ Joomla 3.0 conversion
+
 2.6.0
 - removed matchHeight scripts (using ZOOs own now)
 

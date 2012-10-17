@@ -1595,9 +1595,10 @@ ul.parameter-form .radio,
 ul.parameter-form .checkbox { padding-left: 0; }
 
 ul.parameter-form input[type="radio"] {
-	margin: 3px 3px 0px 5px;
-	vertical-align: baseline;
+	margin: 0px 0px 0px 10px;
+	vertical-align: text-top;
 }
+ul.parameter-form input[type="radio"]:first-child { margin: 0; }
 
 /*
  * global parameters
@@ -2698,3 +2699,19 @@ span.hide-update-notification {
 }
 
 #adminForm .toggle-editor.pull-right a { margin-left: 5px; }
+
+#adminForm .creation-form .controls {
+	padding-top: 6px;
+	display: inline-block;
+}
+
+#adminForm label.radio {
+	margin-right: 10px;
+	font-size: 12px;
+	vertical-align: middle;
+}
+#adminForm .parameter-form label.radio { font-size: 11px; }
+#adminForm label.radio input {
+	vertical-align: text-top;
+	margin: 0 3px 0 0;
+}

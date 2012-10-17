@@ -5,6 +5,7 @@
  */
 
 #item-order { float: left; }
+#item-order .type:first-child { padding-top: 0; }
 #item-order .type { padding: 3px 0; }
 #item-order label { float: none; }
 #item-order .chzn-container { margin-top: 5px; }

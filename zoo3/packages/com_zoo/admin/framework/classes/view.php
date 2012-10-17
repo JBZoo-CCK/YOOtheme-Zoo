@@ -6,7 +6,8 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-jimport('joomla.application.component.view');
+jimport('cms.view.legacy');
+jimport('legacy.view.legacy');
 
 /**
  * Base View class

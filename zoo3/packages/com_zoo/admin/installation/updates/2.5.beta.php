@@ -178,21 +178,12 @@ class Update25BETA implements iUpdate {
 		}
 
 		// remove zoo tools
-		$xml = array();
-		$xml[] = '<module name="mod_zooaccordion" folder="additional/zooaccordion">ZOO Accordion Module</module>';
-		$xml[] = '<module name="mod_zoocarousel" folder="additional/zoocarousel">ZOO Carousel Module</module>';
-		$xml[] = '<module name="mod_zoodrawer" folder="additional/zoodrawer">ZOO Drawer Module</module>';
-		$xml[] = '<module name="mod_zoomaps" folder="additional/zoomaps">ZOO Maps Module</module>';
-		$xml[] = '<module name="mod_zooscroller" folder="additional/zooscroller">ZOO Scroller Module</module>';
-		$xml[] = '<module name="mod_zooslider" folder="additional/zooslider">ZOO Slider Module</module>';
-
 		jimport('joomla.installer.installer');
-		$app->loader->register('AdditionalExtension', 'component.admin:installation/zooinstall.php');
-		$parent = new JInstaller();
-		foreach ($xml as $data) {
-			$data = simplexml_load_string($data);
-			$ext = new AdditionalExtension($app, $parent, $data);
-			$ext->uninstall();
+		$uninstaller = new JInstaller();
+		if ($ids = $app->database->queryResultArray('SELECT extension_id as id FROM #__extensions WHERE element in ("mod_zooaccordion", "mod_zoocarousel", "mod_zoodrawer", "mod_zoomaps", "mod_zooscroller", "mod_zooslider")') and is_array($ids)) {
+			foreach ($ids as $id) {
+				$uninstaller->uninstall('module', $id, 0);
+			}
 		}
 
 	}

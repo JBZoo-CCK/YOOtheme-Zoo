@@ -44,7 +44,7 @@ class ElementAddthis extends Element implements iSubmittable {
 	       String - html
 	*/
 	public function edit() {
-		return $this->app->html->_('control.booleanlist', $this->getControlName('value'), '', $this->get('value', $this->config->get('default')));
+		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), '', $this->get('value', $this->config->get('default')));
 	}
 
 	/*
