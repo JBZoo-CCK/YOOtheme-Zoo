@@ -460,11 +460,14 @@ class DefaultController extends AppController {
 
 		// set title
 		if ($feed_title) {
-			$this->app->document->setTitle($this->app->zoo->buildPageTitle(html_entity_decode($this->getView()->escape($feed_title))));
+			$this->app->system->document->setTitle($this->app->zoo->buildPageTitle(html_entity_decode($this->getView()->escape($feed_title))));
 		}
 
 		// set feed link
-		$this->app->document->link =  $this->app->link(array('task' => 'category'));
+		$this->app->system->document->setLink($this->app->link(array('task' => 'category')));
+
+        // set feed description
+        $this->app->system->document->setDescription(htmlentities($this->app->system->document->getDescription(), ENT_COMPAT, 'UTF-8'));
 
 		// set renderer
 		$renderer = $this->app->renderer->create('item')->addPath(array($this->app->path->path('component.site:'), $this->application->getTemplate()->getPath()));
@@ -480,7 +483,7 @@ class DefaultController extends AppController {
 			$item->description = $this->_relToAbs($renderer->render('item.feed', array('item' => $feed_item)));
 
 			// add to feed document
-			$this->app->document->addItem($item);
+			$this->app->system->document->addItem($item);
 		}
 
 	}

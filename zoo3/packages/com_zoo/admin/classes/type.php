@@ -286,7 +286,7 @@ class Type {
 		if (isset($data['identifier'])) {
 
 			// check identifier
-			if ($data['identifier'] == '' || $data['identifier'] != $this->app->string->sluggify($data['identifier'])) {
+			if ($data['identifier'] == '' || $data['identifier'] != $this->app->string->sluggify($data['identifier'], true)) {
 				throw new TypeException('Invalid identifier');
 			}
 

@@ -132,14 +132,13 @@ class AppAlias {
 	public function getUniqueAlias($id, $alias = '') {
 
 		if (empty($alias) && $id) {
-			$alias = JFilterOutput::stringURLSafe($this->_table->get($id)->name);
+			$alias = $this->string->sluggify($this->_table->get($id)->name);
 		}
 
 		if (!empty($alias)) {
-			$i = 2;
 			$new_alias = $alias;
 			while ($this->checkAliasExists($new_alias, $id)) {
-				$new_alias = $alias.'-'.$i++;
+				$new_alias = JString::increment($new_alias, 'dash');
 			}
 			return $new_alias;
 		}

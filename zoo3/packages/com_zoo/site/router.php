@@ -61,24 +61,20 @@ function ZooBuildRoute(&$query) {
 
 		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['alpha_char'])) {
 			$segments[] = $task;
-
-			// Set app alias in the url only if we can't get the app_id from the menu item
-			if (!$app->menu->getActive() || !$app->menu->getActive()->params->get('application')) {
-				if(isset($query['application'])){
-					$segments[] = $app->alias->application->translateIDToAlias((int) $query['application']);
-				}
-			}
-
+            if (!($menu = $app->system->application->getMenu('site') and $menu instanceof JMenu and isset($query['Itemid']) and $item = $menu->getItem($query['Itemid']) and @$item->component == 'com_zoo' and $item->params->get('application')) && isset($query['app_id'])) {
+                // Set app alias in the url only if we can't get the app_id from the menu item
+                $segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
+            }
 			$segments[] = $query['alpha_char'];
-			
+
 			unset($query['task']);
 			unset($query['view']);
 			unset($query['alpha_char']);
-			
+
 			// Unset app id only if present to avoid notice error
 			if(isset($query['app_id'])) {
-				unset($query['app_id']);	
-			}			
+				unset($query['app_id']);
+			}
 
 			// pagination
 			if (isset($query['page'])) {
@@ -92,13 +88,12 @@ function ZooBuildRoute(&$query) {
 
 		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['tag']) && isset($query['app_id'])) {
 			$segments[] = $task;
-			// Set app alias in the url only if we can't get the app_id from the menu item
-			if (!$app->menu->getActive() || !$app->menu->getActive()->params->get('application')) {
-				if(isset($query['application'])){
-					$segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
-				}
-			}
+            if (!($menu = $app->system->application->getMenu('site') and $menu instanceof JMenu and isset($query['Itemid']) and $item = $menu->getItem($query['Itemid']) and @$item->component == 'com_zoo' and $item->params->get('application')) && isset($query['app_id'])) {
+                // Set app alias in the url only if we can't get the app_id from the menu item
+                $segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
+            }
 			$segments[] = $query['tag'];
+
 			unset($query['task']);
 			unset($query['view']);
 			unset($query['tag']);
@@ -239,7 +234,7 @@ function ZooParseRoute($segments) {
 				$vars['alpha_char'] = (string) $segments[1];
 				$vars['page']       = (int) $segments[2];
 			}
-			
+
 		} else {
 		// Otherwise search the id in the url
 			if ($count == 3 && $segments[0] == $task) {
@@ -261,7 +256,7 @@ function ZooParseRoute($segments) {
 
 		// if a menu item is set, avoid using app alias in the url
 		if ($menu_item = $app->menu->getActive()) {
-			
+
 			if ($count == 2 && $segments[0] == $task) {
 				$vars['task']   = $task;
 				$vars['app_id']	= $menu_item->params->get('application');

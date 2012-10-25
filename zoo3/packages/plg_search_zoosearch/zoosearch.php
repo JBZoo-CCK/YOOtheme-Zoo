@@ -73,7 +73,7 @@ class plgSearchZoosearch extends JPlugin {
 	   Returns:
 	      Array - Search results
 	*/
-	public function onSearch($text, $phrase = '', $ordering = '', $areas = null) {
+	public function onContentSearch($text, $phrase = '', $ordering = '', $areas = null) {
 		$db	  = $this->app->database;
 
 		// init vars
@@ -195,13 +195,6 @@ class plgSearchZoosearch extends JPlugin {
 		}
 
 		return $rows;
-	}
-
-	/*
-		onSearch - Joomla 1.6
-	*/
-	public function onContentSearch($text, $phrase = '', $ordering = '', $areas = null) {
-		return $this->onSearch($text, $phrase, $ordering, $areas);
 	}
 
 	public function registerZOOEvents() {

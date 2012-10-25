@@ -6,12 +6,18 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: LayoutEvent
-		Layout events.
-*/
+/**
+ * Deals with item events.
+ * 
+ * @package Component.Events
+ */
 class LayoutEvent {
 
+	/**
+	 * Add extra layouts from modules and plugins
+	 *
+	 * @param  AppEvent $event The event object
+	 */
 	public static function init($event) {
 
 		$app = $event->getSubject();

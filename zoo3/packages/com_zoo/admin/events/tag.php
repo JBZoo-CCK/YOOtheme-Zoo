@@ -6,12 +6,18 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: TagEvent
-		Tag events.
-*/
+/**
+ * Deals with element events.
+ * 
+ * @package Component.Events
+ */
 class TagEvent {
 
+	/**
+	 * Placeholder for the saved event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		$tags = (array) $event->getSubject();
@@ -19,6 +25,11 @@ class TagEvent {
 
 	}
 
+	/**
+	 * Placeholder for the deleted event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$tags = (array) $event->getSubject();

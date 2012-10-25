@@ -35,7 +35,7 @@ class CategoryModuleHelper extends AppHelper {
 			$current = $current_id == $category->id;
 			$active = $current || in_array($current_id, array_keys($category->getChildren(true)));
 			$parent = $category->hasChildren() && !($max_depth && $max_depth < $depth + 1);
-			$url = $menu_item ? $this->app->link(array('task' => 'category', 'category_id' => $category->id, 'Itemid' => $menu_item)) : $this->app->route->category($category);
+			$url = $this->app->route->category($category, true, $menu_item);
 			$class = ' class="'.($flat ? '' : 'level'.$level).($parent ? ' parent' : '').($current ? ' current' : '').($active ? ' active' : '').'"';
 
 			$result[] = "<li$class>";

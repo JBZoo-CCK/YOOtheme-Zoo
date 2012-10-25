@@ -119,22 +119,28 @@ class RouteHelper extends AppHelper {
 	 *
 	 * @param Category $category
 	 * @param boolean $route If it should be run through JRoute::_()
+     * @param int $force_id
 	 *
 	 * @return string the route
 	 * @since 2.0
 	 */
-	public function category($category, $route = true) {
+	public function category($category, $route = true, $force_id = 0) {
 
-		$key = $this->_active_menu_item_id.'-category-'.$category->application_id.'_'.$category->id.'_'.$route;
+		$key = $this->_active_menu_item_id.'-category-'.$category->application_id.'_'.$category->id.'_'.$route.'_'.$force_id;
 		if ($this->_cache && $link = $this->_cache->get($key)) {
 			return $link;
 		}
+
+        if (!$force_id && $this->app->request->getBool('f') && $this->app->request->getString('category_id') == $category->id) {
+            $force_id = $this->app->request->getInt('Itemid');
+        }
 
 		$this->app->table->application->get($category->application_id)->getCategoryTree(true);
 
 		// Priority 1: direct link to category
 		if ($menu_item = $this->_find('category', $category->id)) {
-			$link = $menu_item->link.'&Itemid='.$menu_item->id;
+			$link = $menu_item->link;
+            $itemid = $menu_item->id;
 		} else {
 
 			// build category link
@@ -142,14 +148,23 @@ class RouteHelper extends AppHelper {
 
 			// Priority 2: find in category path
 			if ($menu_item = $this->_findInCategoryPath($category)) {
-				$link .= '&Itemid='.$menu_item->id;
+                $itemid = $menu_item->id;
 			} else {
 				// Priority 3: link to frontpage || Priority 4: current item id
 				if ($menu_item = $this->_find('frontpage', $category->application_id) or $menu_item = $this->app->menu->getActive()) {
-					$link .= '&Itemid='.$menu_item->id;
+                    $itemid = $menu_item->id;
 				}
 			}
 		}
+
+        if ($force_id && $force_id != $itemid) {
+            $itemid = $force_id;
+            $link .= '&f=1';
+        }
+
+        if ($itemid) {
+            $link .= '&Itemid='.$itemid;
+        }
 
 		if ($route) {
 			$link = JRoute::_($link);
@@ -396,24 +411,37 @@ class RouteHelper extends AppHelper {
 	 *
 	 * @param int $application_id
 	 * @param string $tag
+     * @param int $force_id
 	 *
 	 * @return string the route
 	 * @since 2.0
 	 */
-	public function tag($application_id, $tag) {
+	public function tag($application_id, $tag, $force_id = 0) {
 
-		$key = $this->_active_menu_item_id.'-tag-'.$application_id.'_'.$tag;
+		$key = $this->_active_menu_item_id.'-tag-'.$application_id.'_'.$tag.'_'.$force_id;
 		if ($this->_cache && $link = $this->_cache->get($key)) {
 			return $link;
 		}
+
+        if (!$force_id && $this->app->request->getBool('f') && $this->app->request->getString('tag') == $tag) {
+            $force_id = $this->app->request->getInt('Itemid');
+        }
 
 		// build tag link
 		$link = $this->getLinkBase().'&task=tag&tag='.$tag.'&app_id='.$application_id;
 
 		// Priority 1: link to frontpage || Priority 2: current item id
+        $item_id = '';
 		if ($menu_item = $this->_find('frontpage', $application_id) or $menu_item = $this->app->menu->getActive()) {
-			$link .= '&Itemid='.$menu_item->id;
+            if ($force_id && $force_id != $menu_item->id) {
+                $item_id = '&Itemid='.$force_id;
+                $link .= '&f=1';
+            } else {
+                $item_id = '&Itemid='.$menu_item->id;
+            }
 		}
+
+        $link .= $item_id;
 
 		// store link for future lookups
 		if ($this->_cache) {

@@ -432,4 +432,17 @@ class CommentController extends AppController {
 /*
 	Class: CommentControllerException
 */
-class CommentControllerException extends AppException {}
+class CommentControllerException extends AppException {
+
+	/**
+	 * Converts the exception to a human readable string
+	 *
+	 * @return string The error message
+	 *
+	 * @since 1.0.0
+	 */
+	public function __toString() {
+		return JText::_($this->getMessage());
+	}
+
+}

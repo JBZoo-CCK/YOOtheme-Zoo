@@ -121,7 +121,8 @@ class ItemController extends AppController {
 		if ($search) {
 			$from   .= ' LEFT JOIN '.ZOO_TABLE_TAG.' AS t ON a.id = t.item_id';
 			$where[] = '(LOWER(a.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false)
-				. ' OR LOWER(t.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false).')';
+				. ' OR LOWER(t.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false)
+				. ' OR LOWER(a.alias) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false) . ')';
 		}
 
 		$options = array(

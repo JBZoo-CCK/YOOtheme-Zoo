@@ -20,7 +20,6 @@
 			<option value="2">approval required only once</option>
 		</param>
 		<param name="time_between_user_posts" type="text" size="55" default="120" label="Time between user posts" description="TIME_BEFORE_ALLOWED_POST_AGAIN" />
-		<param name="captcha" type="zooplugin" default="" label="Enable Captcha" description="Enabled Captcha on comment submission" folder="captcha" />
 		<param name="@spacer" type="spacer" />
 		<param name="email_notification" type="text" size="55" default="" label="Email Notification" description="EMAIL_NOTIFICATION_DESCRIPTION" />
 		<param name="email_reply_notification"  type="radio" default="0" label="Email on reply" description="EMAIL_REPLY_DESCRIPTION">
@@ -75,6 +74,8 @@
 		</param>
 		<param name="mollom_public_key" type="text" size="55" default="" label="Mollom Public Key" description="The Mollom public key." />
 		<param name="mollom_private_key" type="text" size="55" default="" label="Mollom Private Key" description="The Mollom private key." />
+		<param name="@spacer" type="spacer" />
+		<param name="captcha" type="zooplugin" default="" label="Enable Captcha" description="Enabled Captcha on comment submission" folder="captcha" />
 		<param name="@spacer" type="spacer" />
 		<param name="blacklist" type="textarea" cols="40" rows="10" default="" label="Blacklist" description="BLACKLIST_DESCRIPTION" />
 	</params>

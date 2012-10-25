@@ -27,7 +27,7 @@ JFilterOutput::objectHTMLSafe($this->type, ENT_QUOTES);
 			<strong><?php echo JText::_('Name'); ?></strong>
 			<div id="name-edit">
 				<div class="row">
-					<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->type->name; ?>" />
+					<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo htmlspecialchars($this->type->name, ENT_QUOTES, 'UTF-8'); ?>" />
 					<span class="message-name"><?php echo JText::_('Please enter valid name.'); ?></span>
 				</div>
 				<div class="slug">
@@ -57,7 +57,7 @@ JFilterOutput::objectHTMLSafe($this->type, ENT_QUOTES);
 <script type="text/javascript">
 	jQuery(function($) {
 		$('#adminForm').EditType();
-		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->edit; ?>, edit_field_name: 'identifier' });
+		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->edit; ?>, edit_field_name: 'identifier', force_safe: 1 });
 		$('#name-edit').find('input[name="name"]').focus();
 	});
 </script>

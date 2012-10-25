@@ -70,8 +70,9 @@ class ElementRating extends Element {
 		$stars      = $this->config->get('stars');
 		$allow_vote = $this->config->get('allow_vote');
 
-		$disabled     = $params->get('rating_disabled', false);
-		$show_message = $params->get('show_message', false);
+		$disabled     	= $params->get('rating_disabled', false);
+		$show_message 	= $params->get('show_message', false);
+		$show_microdata = $params->get('show_microdata', false);
 
 		// init vars
 		$link = $this->app->link(array('task' => 'callelement', 'format' => 'raw', 'item_id' => $this->_item->id, 'element' => $this->identifier), false);
@@ -81,7 +82,7 @@ class ElementRating extends Element {
 
 		// render layout
 		if ($layout = $this->getLayout()) {
-			return $this->renderLayout($layout, compact('instance', 'stars', 'allow_vote', 'disabled', 'show_message', 'rating', 'votes', 'link'));
+			return $this->renderLayout($layout, compact('instance', 'stars', 'allow_vote', 'disabled', 'show_message', 'show_microdata', 'rating', 'votes', 'link'));
 		}
 
 		return null;
