@@ -59,58 +59,24 @@ class StringHelper extends AppHelper {
 	}
 
 	/**
-	 * Get the transliteration array
-	 *
-	 * @return array Transliteration
-	 */
-	public function getTransliteration() {
-		return array(
-			'-' => array('\''),
-			'a' => array('à', 'á', 'â', 'ã', 'ą', 'å', 'a', 'a'),
-			'ae' => array('ä', 'æ'),
-			'c' => array('c', 'c', 'ç', 'č', 'ć'),
-			'd' => array('d', 'd'),
-			'e' => array('è', 'é', 'ê', 'ë', 'e', 'ě', 'ę'),
-			'g' => array('g', 'ğ'),
-			'i' => array('ì', 'í', 'î', 'ï', 'ı'),
-			'l' => array('l', 'l', 'l', 'ł'),
-			'n' => array('ñ', 'n', 'n', 'ń'),
-			'o' => array('ò', 'ó', 'ô', 'õ', 'ø', 'o', 'ó', 'ó'),
-			'oe' => array('ö', 'œ'),
-			'r' => array('r', 'ř'),
-			's' => array('š', 's', 's', 'ş', 'ś'),
-			't' => array('t', 't', 't'),
-			'u' => array('ù', 'ú', 'û', 'u', 'µ'),
-			'ue' => array('ü'),
-			'y' => array('ÿ', 'ý'),
-			'z' => array('ž', 'z', 'z', 'ż', 'ź'),
-			'th' => array('þ'),
-			'dh' => array('ð'),
-			'ss' => array('ß')
-		);
-	}
-
-	/**
 	 * Sluggifies the input string.
 	 *
-	 * @param string $string input string
+	 * @param string $string 		input string
+	 * @param bool   $force_safe 	Do we have to enforce ASCII instead of UTF8 (default: false)
 	 *
 	 * @return string sluggified string
 	 * @since 2.0
 	 */
-	public function sluggify($string) {
+	public function sluggify($string, $force_safe = false) {
 
 		$string = $this->strtolower((string) $string);
+        $string = $this->str_ireplace(array('$',','), '', $string);
 
-		foreach ($this->getTransliteration() as $replace => $keys) {
-			foreach ($keys as $search) {
-				$string = str_replace($search, $replace, $string);
-			}
+		if ($force_safe) {
+			$string = JFilterOutput::stringURLSafe($string);
+		} else {
+			$string = $this->app->system->application->stringURLSafe($string);
 		}
-
-		$string = preg_replace(array('/\s+/', '/[^\x{00C0}-\x{00D6}x{00D8}-\x{00F6}\x{00F8}-\x{00FF}\x{0370}-\x{1FFF}\x{4E00}-\x{9FAF}a-z0-9\-]/ui'), array('-', ''), $string);
-		$string = preg_replace('/[-]+/u', '-', $string);
-		$string = trim($string, '-');
 
 		return trim($string);
 	}

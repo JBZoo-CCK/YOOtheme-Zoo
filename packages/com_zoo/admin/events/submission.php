@@ -6,24 +6,40 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: SubmissionEvent
-		Submission events.
-*/
+/**
+ * Deals with submission events.
+ * 
+ * @package Component.Events
+ */
 class SubmissionEvent {
 
+	/**
+	 * Placeholder for the init event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function init($event) {
 
 		$submission = $event->getSubject();
 
 	}
 
+	/**
+	 * Placeholder for the beforeSave event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function beforeSave($event) {
 
 		$submission = $event->getSubject();
 
 	}
 
+	/**
+	 * Sends notification emails to the submission notification recipients
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		$submission = $event->getSubject();
@@ -39,6 +55,11 @@ class SubmissionEvent {
 
 	}
 
+	/**
+	 * Placeholder for the deleted event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$submission = $event->getSubject();

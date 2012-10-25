@@ -301,7 +301,7 @@ class ManagerController extends AppController {
 		}
 
 		// filter identifier
-		$post['identifier'] = $this->app->string->sluggify($post['identifier'] == '' ? $post['name'] : $post['identifier']);
+		$post['identifier'] = $this->app->string->sluggify($post['identifier'] == '' ? $post['name'] : $post['identifier'], true);
 
 		try {
 
@@ -890,6 +890,12 @@ class ManagerController extends AppController {
 
 	public function enableRouteCaching() {
 		$this->_toggleRouteCaching(true);
+	}
+
+	public function getAlias() {
+		$name 		= $this->app->request->getString('name', '');
+		$force_safe = $this->app->request->getBool('force_safe', false);
+		echo json_encode($this->app->string->sluggify($name, $force_safe));
 	}
 
 	protected function _toggleRouteCaching($state) {

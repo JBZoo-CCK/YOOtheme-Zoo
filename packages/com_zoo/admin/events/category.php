@@ -6,18 +6,29 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: CategoryEvent
-		Category events.
-*/
+/**
+ * Deals with category events.
+ * 
+ * @package Component.Events
+ */
 class CategoryEvent {
 
+	/**
+	 * Placeholder for the init event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function init($event) {
 
 		$category = $event->getSubject();
 
 	}
 
+	/**
+	 * Trigger joomla content plugins on the category contents and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		$category = $event->getSubject();
@@ -29,6 +40,11 @@ class CategoryEvent {
 		$category->app->route->clearCache();
 	}
 
+	/**
+	 * Trigger joomla content plugins on the category contents and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$category = $event->getSubject();
@@ -40,6 +56,11 @@ class CategoryEvent {
 
 	}
 
+	/**
+	 * Trigger joomla content plugins on the category contents and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function stateChanged($event) {
 
 		$category = $event->getSubject();

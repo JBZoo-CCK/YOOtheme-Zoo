@@ -38,7 +38,7 @@ if ($this->submission->showTooltip()) {
 
 		// Captcha support
 		if ($this->captcha) {
-			$this->app->html->_('behavior.mootools');
+			$this->app->html->_('behavior.framework');
 			echo $this->captcha->display('captcha', 'captcha', 'captcha');
 		}
 	?>

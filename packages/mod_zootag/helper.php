@@ -53,7 +53,7 @@ class TagModuleHelper extends AppHelper {
 			// attach font size, href
 			foreach ($tags as $tag) {
 				$tag->weight = $font_span ? round(self::MIN_FONT_WEIGHT + (($tag->items - $min_count) / $font_span) * $font_class_span) : 1;
-				$tag->href   = $menu_item ? sprintf('index.php?option=com_zoo&task=tag&tag=%s&app_id=%d%s', $tag->name, $application->id, $itemid) : $this->app->route->tag($application->id, $tag->name);
+				$tag->href   = $this->app->route->tag($application->id, $tag->name, (int) $menu_item);
 			}
 
 			$this->orderTags($tags, $params->get('order'));

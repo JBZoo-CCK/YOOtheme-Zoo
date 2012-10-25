@@ -6,12 +6,19 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: ApplicationEvent
-		Application events.
-*/
+/**
+ * Deals with application events.
+ * 
+ * @package Component.Events
+ */
 class ApplicationEvent {
 
+	/**
+	 * When an application is loaded on the frontend, 
+	 * load the language files from the app folder too
+	 *
+	 * @param  AppEvent 	$event The event triggered
+	 */
 	public static function init($event) {
 
 		$application = $event->getSubject();
@@ -23,6 +30,11 @@ class ApplicationEvent {
 
 	}
 
+	/**
+	 * Placeholder for the saved event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		$application = $event->getSubject();
@@ -30,12 +42,22 @@ class ApplicationEvent {
 
 	}
 
+	/**
+	 * Placeholder for the deleted event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$application = $event->getSubject();
 
 	}
 
+	/**
+	 * Placeholder for the installed event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function installed($event) {
 
 		$application = $event->getSubject();
@@ -43,6 +65,11 @@ class ApplicationEvent {
 
 	}
 
+	/**
+	 * Placeholder for the addmenuitems event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function addmenuitems($event) {
 
 		$application = $event->getSubject();

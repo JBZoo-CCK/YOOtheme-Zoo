@@ -1,11 +1,18 @@
 # ZOO #
 
-- Version: 3.0.1
+- Version: 3.0.2
 - Date: October 2012
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.0.2
+	+ items in the item view can now be found via alias
+	+ the rating element now has an option for Googles Micro Data
+    ^ ZOO allows for unicode slugs/aliases now
+	# fixed Joomla 3.0 conversion related bugs
+    # fixed problems prev/next buttons
 
 	3.0.1
 	^ updated jQuery UI to 1.9

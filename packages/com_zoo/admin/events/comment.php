@@ -6,18 +6,30 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: CommentEvent
-		Comment events.
-*/
+/**
+ * Deals with comment events.
+ * 
+ * @package Component.Events
+ */
 class CommentEvent {
 
+	/**
+	 * Placeholder for the init event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function init($event) {
 
 		$comment = $event->getSubject();
 
 	}
 
+	/**
+	 * Subscribes authors to the comments, sends notifications emails and
+	 * triggers joomla content plugins on the comment
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		// init vars
@@ -51,6 +63,11 @@ class CommentEvent {
 
 	}
 
+	/**
+	 * Triggers joomla content plugins on the comment
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$comment = $event->getSubject();
@@ -60,6 +77,11 @@ class CommentEvent {
 
 	}
 
+	/**
+	 * Triggers joomla content plugins on the comment
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function stateChanged($event) {
 
 		$comment = $event->getSubject();

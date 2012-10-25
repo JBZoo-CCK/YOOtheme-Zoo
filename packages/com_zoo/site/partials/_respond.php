@@ -88,7 +88,7 @@ $this->app->document->addScript('assets:js/placeholder.js');
 			</div>
 
 			<?php if($captcha): ?>
-				<?php $this->app->html->_('behavior.mootools'); ?>
+				<?php $this->app->html->_('behavior.framework'); ?>
 				<div class="captcha">
 					<?php
 					echo $captcha->display('captcha', 'captcha', 'captcha');

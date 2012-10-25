@@ -6,18 +6,29 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: ItemEvent
-		Item events.
-*/
+/**
+ * Deals with item events.
+ * 
+ * @package Component.Events
+ */
 class ItemEvent {
 
+	/**
+	 * Placeholder for the init event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function init($event) {
 
 		$item = $event->getSubject();
 
 	}
 
+	/**
+	 * Triggers joomla content plugins on the item and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function saved($event) {
 
 		$item = $event->getSubject();
@@ -30,6 +41,12 @@ class ItemEvent {
 
 	}
 
+	/**
+	 * Triggers joomla content plugins on the item and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
+
 	public static function deleted($event) {
 
 		$item = $event->getSubject();
@@ -39,6 +56,12 @@ class ItemEvent {
 
 		$item->app->route->clearCache();
 	}
+
+	/**
+	 * Triggers joomla content plugins on the item and clears the route cache
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 
 	public static function stateChanged($event) {
 
@@ -51,12 +74,22 @@ class ItemEvent {
 		$item->app->route->clearCache();
 	}
 
+	/**
+	 * Placeholder for the beforeDisplay event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function beforeDisplay($event) {
 
 		$item = $event->getSubject();
 
 	}
 
+	/**
+	 * Placeholder for the afterDisplay event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function afterDisplay($event) {
 
 		$item = $event->getSubject();

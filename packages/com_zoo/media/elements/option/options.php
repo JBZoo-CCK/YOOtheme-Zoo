@@ -9,6 +9,7 @@
 // get element from parent parameter form
 $element = $parent->element;
 $config  = $element->config;
+$url = $this->app->link(array('controller' => 'manager', 'format' => 'raw', 'task' => 'getalias', 'force_safe' => 1), false);
 
 // init vars
 $id = uniqid('option-');
@@ -29,5 +30,5 @@ $i  = 0;
 </div>
 
 <script type="text/javascript">
-	jQuery('#<?php echo $id; ?>').ElementSelect({variable: '<?php echo $control_name; ?>'});
+	jQuery('#<?php echo $id; ?>').ElementSelect({variable: '<?php echo $control_name; ?>', url : '<?php echo $url; ?>'});
 </script>

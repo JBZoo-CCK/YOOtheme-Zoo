@@ -27,7 +27,6 @@ $zoo->document->addScript('assets:js/accordionmenu.js');
 $zoo->document->addScript('assets:js/placeholder.js');
 $zoo->document->addScript('assets:js/default.js');
 $zoo->document->addStylesheet('assets:css/ui.css');
-$zoo->document->addScriptDeclaration("jQuery.String = {}; jQuery.String.transliteration = ".json_encode($zoo->string->getTransliteration()));
 
 // add behavior modal
 $zoo->html->_('behavior.modal', 'a.modal');

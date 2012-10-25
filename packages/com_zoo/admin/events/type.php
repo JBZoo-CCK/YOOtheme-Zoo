@@ -6,12 +6,18 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-/*
-	Class: TypeEvent
-		Type events.
-*/
+/**
+ * Deals with element events.
+ * 
+ * @package Component.Events
+ */
 class TypeEvent {
 
+	/**
+	 * Cleans and saves positions for templates, modules, plugins and submission layouts
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function beforesave($event) {
 
 		$type = $event->getSubject();
@@ -62,8 +68,18 @@ class TypeEvent {
 
 	}
 
+	/**
+	 * Placeholder for the aftersave event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function aftersave($event) {}
 
+	/**
+	 * Copies the positions configuration upon type copy for templates, modules and plugins
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function copied($event) {
 
 		$type = $event->getSubject();
@@ -95,6 +111,11 @@ class TypeEvent {
 
 	}
 
+	/**
+	 * Sanitize layout positions upon delete for templates, modules, plugins and submissions
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function deleted($event) {
 
 		$type = $event->getSubject();
@@ -137,6 +158,11 @@ class TypeEvent {
 
 	}
 
+	/**
+	 * Placeholder for the editDisplay event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
 	public static function editDisplay($event) {
 
 		$type = $event->getSubject();

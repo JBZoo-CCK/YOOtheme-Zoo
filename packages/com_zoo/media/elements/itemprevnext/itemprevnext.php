@@ -25,8 +25,8 @@ class ElementItemPrevNext extends Element {
 			Boolean - true, on success
 	*/
 	public function hasValue($params = array()) {
-		$items = $this->_getAdjacentItems();
-		return !empty($items);
+		@list($prev, $next) = $this->_getAdjacentItems();
+		return $prev || $next;
 	}
 
 	protected function _getAdjacentItems() {
@@ -34,21 +34,13 @@ class ElementItemPrevNext extends Element {
 
 			// get category_id
 			if (!$category_id = $this->app->request->getInt('category_id')) {
-				if (($menu = $this->app->menu->getActive()) && in_array(@$menu->query['view'], array('category', 'frontpage')) && ($menu_params = $this->app->parameter->create($menu->params))) {
-					$category_id = $menu_params->get('category');
-				} else {
-					if ($category = $this->_item->getPrimaryCategory()) {
-						$category_id = $category->id;
-					}
-				}
+				$category_id = (int) $this->_item->getPrimaryCategoryId();
 			}
 
 			if ($category = $this->app->table->category->get((int) $category_id)) {
-				$category_params = $category->getParams('site');
-				$order = $category_params->get('config.item_order');
+				$order = $category->getParams('site')->get('config.item_order');
 			} else {
-				$params = $this->_item->getApplication()->getParams('frontpage');
-				$order = $params->get('config.item_order');
+				$order = $this->_item->getApplication()->getParams('frontpage')->get('config.item_order');
 			}
 
 			$this->_items = $this->app->table->item->getPrevNext($this->_item->getApplication()->id, (int) $category_id, $this->_item->id, true, null, $order);

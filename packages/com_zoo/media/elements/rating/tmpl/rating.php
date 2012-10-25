@@ -37,6 +37,18 @@ $id = $this->identifier.'-'.uniqid();
 		<?php echo $rating.'/<strong>'.$stars.'</strong> '.JText::sprintf('rating %s votes', $votes); ?>
 	</div>
 	<?php endif; ?>
+
+	<?php if ($show_microdata) : ?>
+	<div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+		<meta itemprop="itemreviewed" content="<?php echo $this->getItem()->name; ?>" />
+		<div itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+			<meta itemprop="average" content="<?php echo number_format($rating, 1); ?>" />
+			<meta itemprop="best" content="<?php echo $stars; ?>" />
+		</div>
+		<meta itemprop="votes" content="<?php echo $votes; ?>"/>
+	</div>
+	<?php endif; ?>
+
 </div>
 <?php if (!$disabled) : ?>
 	<script type="text/javascript">
