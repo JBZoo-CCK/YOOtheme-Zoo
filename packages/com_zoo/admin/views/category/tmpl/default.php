@@ -10,8 +10,8 @@
 defined('_JEXEC') or die('Restricted access');
 
 // disable category sorting if there are more than a thousand categories
-if (!$enable_category_sorting = count($this->categories) <= 1000) {
-	$this->app->error->raiseNotice(0, 'Category Sorting disabled (more than 1000 categories)');
+if (!$enable_category_sorting = count($this->categories) <= 2500) {
+	$this->app->error->raiseNotice(0, 'Category Sorting disabled (more than 2500 categories)');
 }
 
 // add js

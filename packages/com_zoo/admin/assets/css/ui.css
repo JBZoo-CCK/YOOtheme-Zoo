@@ -980,6 +980,7 @@ fieldset {
 
 .creation-form input { margin: 0; }
 
+.creation-form .chzn-container-active ul.chzn-choices,
 .creation-form textarea:focus,
 .creation-form input[type='text']:focus,
 .creation-form input[type='password']:focus,
@@ -999,6 +1000,33 @@ fieldset {
 	border-radius: 3px;
 }
 
+/* chosen select */
+.creation-form ul.chzn-choices {
+    border: 1px solid #CCC;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+    padding: 2px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition: border linear .2s, box-shadow linear .2s;
+	-moz-transition: border linear .2s, box-shadow linear .2s;
+	-o-transition: border linear .2s, box-shadow linear .2s;
+	transition: border linear .2s, box-shadow linear .2s;
+    background-image: none;
+}
+
+.creation-form ul.chzn-choices li.search-choice {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.creation-form ul.chzn-choices .search-choice a.search-choice-close { top: 6px; }
+.creation-form ul.chzn-choices .search-field input { height: 20px; }
+
 /* textarea */
 .creation-form textarea {
 	width: 400px;
@@ -1009,6 +1037,8 @@ fieldset {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
+    display: block;
+    float: none;
 }
 
 /* select */
@@ -1404,6 +1434,16 @@ div.repeat-elements p.add a {}
 }
 
 .creation-form .element div.row.short > input { width: 140px; }
+
+/* categories (chosen) */
+.creation-form .element-categories,
+.creation-form .element-categories > div,
+.creation-form .element-parent-item,
+.creation-form .element-parent-item > div,
+.creation-form .element-primary-category,
+.creation-form .element-primary-category > div {
+	overflow: visible;
+}
 
 /* more-options */
 .creation-form .element .more-options {
@@ -2536,10 +2576,7 @@ fieldset .element-date img {
 	vertical-align: middle;
 }
 
-fieldset .element-textarea textarea {
-	float: none;
-	margin: 0px;
-}
+fieldset .element-textarea textarea { margin: 0px; }
 
 fieldset .element-checkbox > div > div {
 	padding-top: 6px;

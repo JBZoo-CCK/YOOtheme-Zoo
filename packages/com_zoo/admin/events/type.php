@@ -8,7 +8,7 @@
 
 /**
  * Deals with element events.
- * 
+ *
  * @package Component.Events
  */
 class TypeEvent {
@@ -65,6 +65,24 @@ class TypeEvent {
 			}
 
 		}
+
+		// Fix option values
+		foreach ($type->getElements() as $element) {
+			if ($element instanceof ElementOption) {
+				$options = $element->getConfig()->get('option', array());
+
+				foreach ($options as &$option) {
+					if (!strlen(trim($option['value']))) {
+						$option['value'] = $app->string->sluggify($option['name']);
+					}
+					$option['value'] = $app->string->sluggify($option['value']);
+				}
+				$elements = $type->elements;
+				$elements[$element->identifier]['option'] = $options;
+				$type->elements = $elements;
+			}
+		}
+		$type->clearElements();
 
 	}
 
@@ -150,8 +168,7 @@ class TypeEvent {
 		if (!empty($applications)) {
 			$submissions = $table->all(array('conditions' => 'application_id IN ('.implode(',', $applications).')'));
 			foreach ($submissions as $submission) {
-				$submission->getParams()
-					->remove('form.'.$type->identifier);
+				$submission->getParams()->remove('form.'.$type->identifier);
 				$table->save($submission);
 			}
 		}

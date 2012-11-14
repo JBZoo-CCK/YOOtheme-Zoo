@@ -262,7 +262,7 @@ class ElementRelatedItems extends Element implements iSubmittable {
 		$messages    = array('required' => 'Please select at least one related item.');
 
         $items = (array) $this->app->validator
-				->create('foreach', null, $options, $messages)
+				->create('foreach', $this->app->validator->create('integer'), $options, $messages)
 				->clean($value->get('item'));
 
 		$table = $this->app->table->item;

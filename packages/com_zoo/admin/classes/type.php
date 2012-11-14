@@ -334,6 +334,9 @@ class Type {
 	 */
 	public function save() {
 
+		// trigger before save event
+		$this->app->event->dispatcher->notify($this->app->event->create($this, 'type:beforesave'));
+
 		$old_identifier = $this->id;
 		$rename = false;
 
@@ -387,6 +390,9 @@ class Type {
 					." AND b.application_group=".$db->quote($group);
 			$db->query($query);
 		}
+
+		// trigger after save event
+		$this->app->event->dispatcher->notify($this->app->event->create($this, 'type:aftersave'));
 
 		return $this;
 	}

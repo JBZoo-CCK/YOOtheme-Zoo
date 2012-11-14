@@ -315,7 +315,7 @@ class SubmissionController extends AppController {
 
                 // save to default category
 				if (!$edit && ($category = $this->submission->getForm($this->type->id)->get('category'))) {
-					$this->app->category->saveCategoryItemRelations($this->item->id, array($category));
+					$this->app->category->saveCategoryItemRelations($this->item, array($category));
 				}
 
                 // set redirect message

@@ -135,6 +135,7 @@ class RouteHelper extends AppHelper {
             $force_id = $this->app->request->getInt('Itemid');
         }
 
+        $itemid = null;
 		$this->app->table->application->get($category->application_id)->getCategoryTree(true);
 
 		// Priority 1: direct link to category

@@ -8,7 +8,6 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-
 ?>
 
 <div id="<?php echo $this->identifier; ?>">

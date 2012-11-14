@@ -23,9 +23,7 @@ function ZooBuildRoute(&$query) {
 			if (@$query['task'] == $task) {
 				$segments[] = $task;
 			}
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['layout']);
+			unset($query['task'], $query['view'], $query['layout']);
 
 			// pagination
 			if (isset($query['page'])) {
@@ -44,10 +42,7 @@ function ZooBuildRoute(&$query) {
 			if (@$query['category_id']) {
 				$segments[] = $app->alias->category->translateIDToAlias((int) $query['category_id']);
 			}
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['layout']);
-			unset($query['category_id']);
+			unset($query['task'], $query['view'], $query['layout'], $query['category_id']);
 
 			// pagination
 			if (isset($query['page'])) {
@@ -59,22 +54,21 @@ function ZooBuildRoute(&$query) {
 	// alpha index
 	$task = 'alphaindex';
 
-		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['alpha_char'])) {
+		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['alpha_char'], $query['app_id'])) {
 			$segments[] = $task;
-            if (!($menu = $app->system->application->getMenu('site') and $menu instanceof JMenu and isset($query['Itemid']) and $item = $menu->getItem($query['Itemid']) and @$item->component == 'com_zoo' and $item->params->get('application')) && isset($query['app_id'])) {
+            if (!($menu = $app->system->application->getMenu('site')
+                    and $menu instanceof JMenu
+                    and isset($query['Itemid'])
+                    and $item = $menu->getItem($query['Itemid'])
+                    and @$item->component == 'com_zoo'
+                    and $app_id = $item->params->get('application')
+                    and $query['app_id'] == $app_id)) {
                 // Set app alias in the url only if we can't get the app_id from the menu item
                 $segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
             }
 			$segments[] = $query['alpha_char'];
 
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['alpha_char']);
-
-			// Unset app id only if present to avoid notice error
-			if(isset($query['app_id'])) {
-				unset($query['app_id']);
-			}
+			unset($query['task'], $query['view'], $query['alpha_char'], $query['app_id']);
 
 			// pagination
 			if (isset($query['page'])) {
@@ -86,22 +80,21 @@ function ZooBuildRoute(&$query) {
 	// tag
 	$task = 'tag';
 
-		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['tag']) && isset($query['app_id'])) {
+		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['tag'], $query['app_id'])) {
 			$segments[] = $task;
-            if (!($menu = $app->system->application->getMenu('site') and $menu instanceof JMenu and isset($query['Itemid']) and $item = $menu->getItem($query['Itemid']) and @$item->component == 'com_zoo' and $item->params->get('application')) && isset($query['app_id'])) {
+            if (!($menu = $app->system->application->getMenu('site')
+                    and $menu instanceof JMenu
+                    and isset($query['Itemid'])
+                    and $item = $menu->getItem($query['Itemid'])
+                    and @$item->component == 'com_zoo'
+                    and $app_id = $item->params->get('application')
+                    and $query['app_id'] == $app_id)) {
                 // Set app alias in the url only if we can't get the app_id from the menu item
                 $segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
             }
 			$segments[] = $query['tag'];
 
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['tag']);
-
-			// Unset app id only if present to avoid notice error
-			if(isset($query['app_id'])) {
-				unset($query['app_id']);
-			}
+			unset($query['task'], $query['view'], $query['tag'], $query['app_id']);
 
 			// pagination
 			if (isset($query['page'])) {
@@ -118,27 +111,20 @@ function ZooBuildRoute(&$query) {
 				$segments[] = $task;
 				$segments[] = $app->alias->item->translateIDToAlias((int) $query['item_id']);
 			}
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['layout']);
-			unset($query['item_id']);
+			unset($query['task'], $query['view'], $query['layout'], $query['item_id']);
 		}
 
 	// feed
 	$task = 'feed';
 
-		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['type']) && isset($query['app_id']) && isset($query['category_id'])) {
+		if ((@$query['task'] == $task || @$query['view'] == $task) && isset($query['type'], $query['app_id'], $query['category_id'])) {
 			$segments[] = $task;
 			$segments[] = $query['type'];
 			$segments[] = $app->alias->application->translateIDToAlias((int) $query['app_id']);
 			if ($query['category_id']) {
 				$segments[] = $app->alias->category->translateIDToAlias((int) $query['category_id']);
 			}
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['type']);
-			unset($query['app_id']);
-			unset($query['category_id']);
+			unset($query['task'], $query['view'], $query['type'], $query['app_id'], $query['category_id']);
 		}
 
 	// submission
@@ -151,13 +137,7 @@ function ZooBuildRoute(&$query) {
 			$segments[] = $query['type_id'];
 			$segments[] = $query['submission_hash'];
 			$segments[] = $app->alias->item->translateIDToAlias((int) @$query['item_id']);
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['layout']);
-			unset($query['submission_id']);
-            unset($query['type_id']);
-            unset($query['submission_hash']);
-            unset($query['item_id']);
+			unset($query['task'], $query['view'], $query['layout'], $query['submission_id'], $query['type_id'], $query['submission_hash'], $query['item_id']);
 		}
 
 	// submission mysubmissions
@@ -167,10 +147,7 @@ function ZooBuildRoute(&$query) {
 			$segments[] = $task;
 			$segments[] = @$query['layout'];
 			$segments[] = $app->alias->submission->translateIDToAlias((int) @$query['submission_id']);
-			unset($query['task']);
-			unset($query['view']);
-			unset($query['layout']);
-			unset($query['submission_id']);
+			unset($query['task'], $query['view'], $query['layout'], $query['submission_id']);
 		}
 
 	$app->event->dispatcher->notify($app->event->create(null, 'application:sefbuildroute', array('segments' => &$segments, 'query' => &$query)));
@@ -220,71 +197,57 @@ function ZooParseRoute($segments) {
 	// alpha index (with optional pagination)
 	$task = 'alphaindex';
 
-		// if a menu item is set, avoid using app alias in the url
-		if ($menu_item = $app->menu->getActive()) {
-			if ($count == 2 && $segments[0] == $task) {
-				$vars['task']       = $task;
-				$vars['alpha_char'] = (string) $segments[1];
-				$vars['app_id'] = $menu_item->params->get('application');
-			}
+        if ($count == 2 && $segments[0] == $task && $menu_item = $app->menu->getActive()) {
+            $vars['task']       = $task;
+            $vars['alpha_char'] = (string) $segments[1];
+            $vars['app_id'] = $menu_item->params->get('application');
+        }
 
-			if ($count == 3 && $segments[0] == $task) {
-				$vars['task']       = $task;
-				$vars['app_id']		= $menu_item->params->get('application');
-				$vars['alpha_char'] = (string) $segments[1];
-				$vars['page']       = (int) $segments[2];
-			}
+        if ($count == 3 && $segments[0] == $task) {
+            $vars['task']           = $task;
+            if (!$vars['app_id'] = (int) $app->alias->application->translateAliasToID($segments[1]) and $menu_item = $app->menu->getActive()) {
+                $vars['app_id']     = $menu_item->params->get('application');
+                $vars['alpha_char'] = (string) $segments[1];
+                $vars['page']       = (int) $segments[2];
+            } else {
+                $vars['alpha_char'] = (string) $segments[2];
+            }
+        }
 
-		} else {
-		// Otherwise search the id in the url
-			if ($count == 3 && $segments[0] == $task) {
-				$vars['task']       = $task;
-				$vars['alpha_char'] = (string) $segments[2];
-				$vars['app_id'] = (int) $app->alias->application->translateAliasToID($segments[1]);
-			}
-
-			if ($count == 4 && $segments[0] == $task) {
-				$vars['task']       = $task;
-				$vars['app_id']		= (int) $app->alias->application->translateAliasToID($segments[1]);
-				$vars['alpha_char'] = (string) $segments[2];
-				$vars['page']       = (int) $segments[3];
-			}
-		}
+        if ($count == 4 && $segments[0] == $task) {
+            $vars['task']       = $task;
+            $vars['app_id']		= (int) $app->alias->application->translateAliasToID($segments[1]);
+            $vars['alpha_char'] = (string) $segments[2];
+            $vars['page']       = (int) $segments[3];
+        }
 
 	// tag (with optional pagination)
 	$task = 'tag';
 
 		// if a menu item is set, avoid using app alias in the url
-		if ($menu_item = $app->menu->getActive()) {
+        if ($count == 2 && $segments[0] == $task && $menu_item = $app->menu->getActive()) {
+            $vars['task']   = $task;
+            $vars['app_id']	= $menu_item->params->get('application');
+            $vars['tag']    = (string) $segments[1];
+        }
 
-			if ($count == 2 && $segments[0] == $task) {
-				$vars['task']   = $task;
-				$vars['app_id']	= $menu_item->params->get('application');
-				$vars['tag']    = (string) $segments[1];
-			}
+        if ($count == 3 && $segments[0] == $task) {
+            $vars['task']       = $task;
+            if (!$vars['app_id'] = (int) $app->alias->application->translateAliasToID($segments[1]) and $menu_item = $app->menu->getActive()) {
+                $vars['app_id'] = $menu_item->params->get('application');
+                $vars['tag']    = (string) $segments[1];
+                $vars['page']   = (int) $segments[2];
+            } else {
+                $vars['tag']    = (string) $segments[2];
+            }
+        }
 
-			if ($count == 3 && $segments[0] == $task) {
-				$vars['task']   = $task;
-				$vars['app_id']	= $menu_item->params->get('application');
-				$vars['tag']    = (string) $segments[1];
-				$vars['page']   = (int) $segments[2];
-			}
-
-		} else {
-		// Otherwise search the id in the url
-			if ($count == 3 && $segments[0] == $task) {
-				$vars['task']   = $task;
-				$vars['app_id']	= (int) $app->alias->application->translateAliasToID($segments[1]);
-				$vars['tag']    = (string) $segments[2];
-			}
-
-			if ($count == 4 && $segments[0] == $task) {
-				$vars['task']   = $task;
-				$vars['app_id']	= (int) $app->alias->application->translateAliasToID($segments[1]);
-				$vars['tag']    = (string) $segments[2];
-				$vars['page']   = (int) $segments[3];
-			}
-		}
+        if ($count == 4 && $segments[0] == $task) {
+            $vars['task']   = $task;
+            $vars['app_id']	= (int) $app->alias->application->translateAliasToID($segments[1]);
+            $vars['tag']    = (string) $segments[2];
+            $vars['page']   = (int) $segments[3];
+        }
 
 	// item
 	$task = 'item';

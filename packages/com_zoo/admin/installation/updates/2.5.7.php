@@ -55,7 +55,7 @@ class Update257 implements iUpdate {
 						if ($metadata->get('type') == 'submission') {
 							$config = $renderer->getConfig('item');
 							$config = $app->data->create($config);
-							if (isset($config[$application->getGroup().'.'.$type->id.'.'.$layout]) && isset($config[$application->getGroup().'.'.$type->id.'.'.$layout]['content'])) {
+							if (isset($config[$application->getGroup().'.'.$type->id.'.'.$layout], $config[$application->getGroup().'.'.$type->id.'.'.$layout]['content'])) {
 								if (@$config[$application->getGroup().'.'.$type->id.'.'.$layout]['content']['0']['element'] != '_itemname') {
 									array_unshift($config[$application->getGroup().'.'.$type->id.'.'.$layout]['content'], array('altlabel' => '', 'required' => '1', 'element' => '_itemname'));
 								}

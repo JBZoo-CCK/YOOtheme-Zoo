@@ -154,14 +154,14 @@ class HTMLHelper extends AppHelper {
 	 * @return string category select list html
 	 * @since 2.0
 	 */
-	public function categoryList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false, $category = 0) {
+	public function categoryList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false, $category = 0, $prefix = '-&nbsp;', $spacer = '.&nbsp;&nbsp;&nbsp;', $indent = '&nbsp;&nbsp;') {
 
 		// set options
 		settype($options, 'array');
 		reset($options);
 
 		// get category tree list
-		$list = $this->app->tree->buildList($category, $application->getCategoryTree(), array(), '-&nbsp;', '.&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;');
+		$list = $this->app->tree->buildList($category, $application->getCategoryTree(), array(), $prefix, $spacer, $indent);
 
 		// create options
 		foreach ($list as $category) {

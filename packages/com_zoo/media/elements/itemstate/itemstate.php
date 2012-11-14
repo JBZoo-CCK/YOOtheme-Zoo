@@ -91,7 +91,7 @@ class ElementItemState extends Element implements iSubmittable {
 			Array - cleaned value
 	*/
 	public function validateSubmission($value, $params) {
-        return (array) $value;
+        return array('value' => (boolean) $value->get('value'));
 	}
 
 	/*

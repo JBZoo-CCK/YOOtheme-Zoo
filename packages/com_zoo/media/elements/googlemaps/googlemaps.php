@@ -191,7 +191,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 			Array - cleaned value
 	*/
 	public function validateSubmission($value, $params) {
-        $validator = $this->app->validator->create('', array('required' => $params->get('required')), array('required' => 'Please enter a location'));
+        $validator = $this->app->validator->create('textfilter', array('required' => $params->get('required')), array('required' => 'Please enter a location'));
         $clean = $validator->clean($value->get('location'));
 		return array('location' => $clean);
 	}

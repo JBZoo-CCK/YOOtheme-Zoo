@@ -136,7 +136,12 @@ class ElementItemTag extends Element implements iSubmittable{
 			Array - cleaned value
 	*/
 	public function validateSubmission($value, $params) {
-		return (array) $value;
+		$values = (array) $value;
+		foreach ($values as $value) {
+			$value = $this->app->validator->create('textfilter')->clean($value);
+		}
+
+		return $values;
 	}
 
 	/*

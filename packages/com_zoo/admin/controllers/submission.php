@@ -163,6 +163,11 @@ class SubmissionController extends AppController {
 			// bind submission data
 			self::bind($submission, $post, array('params'));
 
+			// Force alias to be set
+			if (!strlen(trim($submission->alias))) {
+				$submission->alias = $this->app->string->sluggify($submission->name);
+			}
+			
             // generate unique slug
             $submission->alias = $this->app->alias->submission->getUniqueAlias($submission->id, $this->app->string->sluggify($submission->alias));
 

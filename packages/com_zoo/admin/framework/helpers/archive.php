@@ -1208,9 +1208,7 @@ class Archive_Tar
                 }
             }
 
-            unset($p_temp_list);
-            unset($p_hdir);
-            unset($p_hitem);
+            unset($p_temp_list, $p_hdir, $p_hitem);
         }
       }
 

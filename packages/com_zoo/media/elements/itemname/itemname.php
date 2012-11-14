@@ -91,7 +91,7 @@ class ElementItemName extends Element implements iSubmittable {
 			Array - cleaned value
 	*/
 	public function validateSubmission($value, $params) {
-		return array('value' => $this->app->validator->create('string', array('required' => $params->get('required')))->clean($value->get('value')));
+		return array('value' => $this->app->validator->create('textfilter', array('required' => $params->get('required')))->clean($value->get('value')));
 	}
 
 	/*

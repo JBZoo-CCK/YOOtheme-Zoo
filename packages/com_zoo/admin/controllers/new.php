@@ -91,6 +91,12 @@ class NewController extends AppController {
 			// bind post
 			self::bind($this->application, $post, array('params'));
 
+			// Force alias
+			if (!strlen(trim($this->application->alias))) {
+				$this->application->alias = $this->app->string->sluggify($this->application->name);
+			}
+			$this->application->alias = $this->app->alias->application->getUniqueAlias($this->application->id, $this->app->string->sluggify($this->application->alias));
+
 			// set params
 			$params = $this->application
 				->getParams()

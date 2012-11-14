@@ -36,7 +36,7 @@ class TreeHelper extends AppHelper {
 
 		foreach ($objects as $object) {
 			// set parent and child relations
-			if (isset($object->$parent_property) && isset($objects[$object->$parent_property])) {
+			if (isset($object->$parent_property, $objects[$object->$parent_property])) {
 				$object->setParent($objects[$object->$parent_property]);
 				$objects[$object->$parent_property]->addChild($object);
 			}

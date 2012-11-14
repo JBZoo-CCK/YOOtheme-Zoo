@@ -87,6 +87,7 @@ class SubmissionHelper extends AppHelper {
 		$item_link = JURI::root().'administrator/index.php?'.http_build_query(array(
 				'option' => $this->app->component->self->name,
 				'controller' => 'item',
+                'changeapp' => $item->application_id,
 				'task' => 'edit',
 				'cid[]' => $item->id,
 			), '', '&');

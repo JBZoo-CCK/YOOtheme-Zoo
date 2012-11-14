@@ -101,7 +101,7 @@ class ElementItemFrontpage extends Element implements iSubmittable {
 		} else {
 			$ids = array_filter($ids);
 		}
-		$this->app->category->saveCategoryItemRelations((int) $this->_item->id, $ids);
+		$this->app->category->saveCategoryItemRelations($this->_item, $ids);
 	}
 
 	/*

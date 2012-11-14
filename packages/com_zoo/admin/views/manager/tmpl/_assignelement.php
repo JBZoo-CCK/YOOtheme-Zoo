@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // get elements meta data
-$name = isset($position) && isset($index) ? 'positions['.$position.']['.$index.']' : 'elements['.$element->identifier.']';
+$name = isset($position, $index) ? 'positions['.$position.']['.$index.']' : 'elements['.$element->identifier.']';
 $form = $element->getConfigForm();
 $form->layout_path = $this->path;
 $form->selectable_types = $element->config->get('selectable_types', array());

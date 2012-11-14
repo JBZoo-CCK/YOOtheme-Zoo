@@ -92,8 +92,8 @@ class GooglemapsHelper extends AppHelper {
 
 				case 'OK':
 
-					if (isset($result->results) && ($result = array_pop($result->results))) {
-						if (isset($result->geometry->location->lat) && isset($result->geometry->location->lng)) {
+					if (isset($result->results) && $result = array_pop($result->results)) {
+						if (isset($result->geometry->location->lat, $result->geometry->location->lng)) {
 							$coordinates['lat'] = $result->geometry->location->lat;
 							$coordinates['lng'] = $result->geometry->location->lng;
 						}
