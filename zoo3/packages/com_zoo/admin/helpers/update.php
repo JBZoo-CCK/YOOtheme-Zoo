@@ -163,7 +163,7 @@ class UpdateHelper extends AppHelper {
 			$db = $this->app->database;
 
 			// read index.sql
-			$buffer = file_get_contents($this->app->path->path('component.admin:installation/index.sql'));
+			$buffer = JFile::read($this->app->path->path('component.admin:installation/index.sql'));
 
 			// Create an array of queries from the sql file
 			jimport('joomla.installer.helper');

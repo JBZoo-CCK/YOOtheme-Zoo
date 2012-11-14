@@ -1,11 +1,16 @@
 # ZOO #
 
-- Version: 3.0.4
+- Version: 3.0.5
 - Date: October 2012
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.0.5
+    # fixed Select Element submission
+    # fixed settings on GoogleMaps element
+    # fixed issue with element position assignment
 
     3.0.4
     + added chosen.js to category select field (item/category edit view)

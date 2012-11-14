@@ -148,7 +148,7 @@ abstract class ElementOption extends Element implements iSubmittable {
 				->create('foreach', $this->app->validator->create('string', $options, $messages), $options, $messages)
 				->clean($value->get('option'));
 
-        $config_options = array_map(create_function('$o', 'return @$o["name"];'), $this->config->get('option', array()));
+        $config_options = array_map(create_function('$o', 'return @$o["value"];'), $this->config->get('option', array()));
         foreach ($option as $key => $value) {
             if (!in_array($value, $config_options)) {
                 unset($option[$key]);
