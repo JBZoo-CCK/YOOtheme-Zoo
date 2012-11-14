@@ -123,7 +123,7 @@ class ElementItemCategory extends Element implements iSubmittable {
 			if (in_array('0', $this->_item->getRelatedCategoryIds())) {
 				$this->_categories[] = 0;
 			}
-			$this->app->category->saveCategoryItemRelations($this->_item->id, $this->_categories);
+			$this->app->category->saveCategoryItemRelations($this->_item, $this->_categories);
 		}
 	}
 

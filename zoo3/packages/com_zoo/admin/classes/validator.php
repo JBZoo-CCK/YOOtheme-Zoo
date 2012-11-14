@@ -15,7 +15,7 @@ class AppValidator {
 
     /**
      * Reference to the global App object
-     * 
+     *
      * @var App
      * @since 2.0
      */
@@ -25,7 +25,7 @@ class AppValidator {
 
     /**
      * List of messages to return for the validation
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -33,7 +33,7 @@ class AppValidator {
 
     /**
      * List of options for the validation
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -41,7 +41,7 @@ class AppValidator {
 
     /**
      * Class Constructor
-     * 
+     *
      * @param array $options  The list of options to use for the validation (array('requred' , 'trim', 'empty_value'))
      * @param array $messages Associative array of text messages for the validation (array('requred' , 'invalid'))
      */
@@ -61,10 +61,10 @@ class AppValidator {
 
     /**
      * Configure the validation
-     * 
+     *
      * @param  array  $options  The list of options
      * @param  array  $messages The list of messages
-     * 
+     *
      * @see AppValidator::__construct()
      *
      * @since 2.0
@@ -75,9 +75,9 @@ class AppValidator {
 
     /**
      * Clean a value using the options set in the validator
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return mixed        The cleaned value
      *
      * @since 2.0
@@ -102,7 +102,7 @@ class AppValidator {
 
     /**
      * Add a message
-     * 
+     *
      * @param string $name  The key of the message
      * @param string $value The message
      *
@@ -120,9 +120,9 @@ class AppValidator {
 
     /**
      * Get a message string
-     * 
+     *
      * @param  string $name The key of the message
-     * 
+     *
      * @return string       The message
      *
      * @see AppValidator::__construct()
@@ -135,9 +135,9 @@ class AppValidator {
 
     /**
      * Check if a value is empty (either null, an empty array or an emtpy string)
-     * 
+     *
      * @param  mixed  $value A value to check
-     * 
+     *
      * @return boolean        If the value is empty
      *
      * @since 2.0
@@ -148,9 +148,9 @@ class AppValidator {
 
     /**
      * If the validator has a given option
-     * 
+     *
      * @param  string  $name The option key
-     * 
+     *
      * @return boolean       True if that option is set
      *
      * @since 2.0
@@ -161,9 +161,9 @@ class AppValidator {
 
     /**
      * Get an option valu
-     * 
+     *
      * @param  string $name The option key
-     * 
+     *
      * @return mixed       The option value
      *
      * @since 2.0
@@ -177,7 +177,7 @@ class AppValidator {
 
     /**
      * Add an option to the validator
-     * 
+     *
      * @param string $name  The option key
      * @param mixed  $value The option value
      *
@@ -194,7 +194,7 @@ class AppValidator {
 
     /**
      * Set a a list of options
-     * 
+     *
      * @param array $options The list of options to set
      *
      * @see AppValidator::__construct()
@@ -208,13 +208,13 @@ class AppValidator {
 
     /**
      * Remove an option
-     * 
+     *
      * @param  string $name The option key
-     * 
+     *
      * @see AppValidator::__construct()
      *
      * @since 2.0
-     */     
+     */
 	public function removeOption($name) {
 		if (isset($this->_options[$name])) {
 			unset($this->_options);
@@ -223,7 +223,7 @@ class AppValidator {
 
     /**
      * Get the "empty_value" option status
-     * 
+     *
      * @return boolean  If the "empty_value" option is set
      *
      * @since 2.0
@@ -234,9 +234,9 @@ class AppValidator {
 
     /**
      * perform a clean operation
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return mixed        the cleaned value
      *
      * @since 2.0
@@ -256,9 +256,9 @@ class AppValidatorPass extends AppValidator {
 
     /**
      * Clean the value
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return mixed        The cleaned value
      *
      * @see AppValidator::clean()
@@ -271,9 +271,9 @@ class AppValidatorPass extends AppValidator {
 
     /**
      * Perform the actual clean operation
-     * 
+     *
      * @param  mixed $value the value to clean
-     * 
+     *
      * @return mixed        The cleaned value
      *
      * @since 2.0
@@ -292,9 +292,9 @@ class AppValidatorString extends AppValidator {
 
     /**
      * Clean a value, forcing it to be a string
-     * 
+     *
      * @param  mixed $value the value to clean
-     * 
+     *
      * @return string        the clean value as a string
      *
      * @see AppValidator::clean()
@@ -309,7 +309,7 @@ class AppValidatorString extends AppValidator {
 
     /**
      * Get the string emtpy value
-     * 
+     *
      * @return string the empty string
      *
      * @since 2.0
@@ -321,6 +321,32 @@ class AppValidatorString extends AppValidator {
 }
 
 /**
+ * TextFilter Validator
+ *
+ * @package Component.Classes.Validators
+ */
+class AppValidatorTextFilter extends AppValidatorString {
+
+    /**
+     * Clean a value, using joomla's textfilters options
+     *
+     * @param  mixed $value the value to clean
+     *
+     * @return string        the clean value as a string
+     *
+     * @see AppValidator::clean()
+     *
+     * @since 2.0
+     */
+    protected function _doClean($value) {
+        $clean = parent::_doClean($value);
+        $clean = $this->app->string->applyTextFilters($clean);
+
+        return $clean;
+    }
+}
+
+/**
  * Integer Validator
  *
  * @package Component.Classes.Validators
@@ -328,11 +354,11 @@ class AppValidatorString extends AppValidator {
 class AppValidatorInteger extends AppValidator {
 
     /**
-     * Configure the validator, adding the "number" Message 
-     * 
+     * Configure the validator, adding the "number" Message
+     *
      * @param  array  $options  The list of options to add
      * @param  array  $messages The list of messages to add
-     * 
+     *
      * @since 2.0
      */
     protected function _configure($options = array(), $messages = array()) {
@@ -341,9 +367,9 @@ class AppValidatorInteger extends AppValidator {
 
     /**
      * Performs the clean operation, forcing the value to be an integer
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return int        The clean value as an integer
      *
      * @since 2.0
@@ -361,7 +387,7 @@ class AppValidatorInteger extends AppValidator {
 
     /**
      * Get the integer empty value, 0
-     * 
+     *
      * @return int Returns 0
      *
      * @since 2.0
@@ -381,10 +407,10 @@ class AppValidatorNumber extends AppValidator {
 
     /**
      * Configure the validator, adding the "number" message
-     * 
+     *
      * @param  array  $options  The list of options to add
      * @param  array  $messages The list of messages to add
-     * 
+     *
      * @since 2.0
      */
     protected function _configure($options = array(), $messages = array()) {
@@ -393,9 +419,9 @@ class AppValidatorNumber extends AppValidator {
 
     /**
      * Perform the actual clean, forcing it to be a float number
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return float        The value to clean, as a float
      *
      * @since 2.0
@@ -413,7 +439,7 @@ class AppValidatorNumber extends AppValidator {
 
     /**
      * Get the empty value as a float, 0.0
-     * 
+     *
      * @return float Returns 0.0
      *
      * @since 2.0
@@ -433,10 +459,10 @@ class AppValidatorFile extends AppValidator {
 
     /**
      * Configure the Validator, adding options and messages regarding file validation
-     * 
+     *
      * @param  array  $options  The list of options to add
      * @param  array  $messages The list of messages to add
-     * 
+     *
      * @throws AppValidatorException    If file uploads are disabled
      *
      * @since 2.0
@@ -465,9 +491,9 @@ class AppValidatorFile extends AppValidator {
 
     /**
      * Clean the file value
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return mixed        The cleaned value
      *
      * @see AppValidator::clean()
@@ -544,9 +570,9 @@ class AppValidatorFile extends AppValidator {
 
     /**
      * Get the mime type for a group
-     * 
+     *
      * @param  string $group The group
-     * 
+     *
      * @return array        The list of mime types
      *
      * @see FilesystemHelper::getMimeMapping()
@@ -562,9 +588,9 @@ class AppValidatorFile extends AppValidator {
 
     /**
      * Get the size string in bytes
-     * 
+     *
      * @param  string $size_str The size to convert (Mb, GB, KB)
-     * 
+     *
      * @return int           The size in bytes
      *
      * @since 2.0
@@ -589,10 +615,10 @@ class AppValidatorDate extends AppValidatorString {
 
     /**
      * Configure the validator, adding options and messages for the date validation
-     * 
+     *
      * @param  array  $options  The list of options
      * @param  array  $messages The list of messages
-     * 
+     *
      * @since 2.0
      */
     protected function _configure($options = array(), $messages = array()) {
@@ -605,9 +631,9 @@ class AppValidatorDate extends AppValidatorString {
 
     /**
      * Performs the real clean, convering the value to the configured date format
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return string        The cleaned value
      *
      * @throws AppValidatorException If the format is not configured or the date is not in a recognized format
@@ -649,13 +675,13 @@ abstract class AppValidatorRegex extends AppValidatorString {
 
     /**
      * Performs the real clean, checking the pattern
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return string        The cleaned regexp
      *
      * @throws AppValidatorException If no pattern is configured
-     * 
+     *
      * @since 2.0
      */
     protected function _doClean($value) {
@@ -673,7 +699,7 @@ abstract class AppValidatorRegex extends AppValidatorString {
 
     /**
      * Set a pattern for the regular expression
-     * 
+     *
      * @param string $pattern The regular expression pattern
      *
      * @return AppValidatorRegex $this for chaining support
@@ -687,7 +713,7 @@ abstract class AppValidatorRegex extends AppValidatorString {
 
     /**
      * Get the regular expression pattern
-     * 
+     *
      * @return string The regular expression pattern
      *
      * @since 2.0
@@ -709,10 +735,10 @@ class AppValidatorEmail extends AppValidatorRegex {
 
     /**
      * Configure the validator, adding the email regexp and the message for an invalid email
-     * 
+     *
      * @param  array  $options  The list of options
      * @param  array  $messages The list of messages
-     * 
+     *
      * @since 2.0
      */
     protected function _configure($options = array(), $messages = array()) {
@@ -733,10 +759,10 @@ class AppValidatorUrl extends AppValidatorRegex {
 
     /**
      * Configure the validator, adding the protocol options, the url regexp and the message
-     * 
+     *
      * @param  array  $options  The list of options
      * @param  array  $messages The list of messages
-     * 
+     *
      * @since 2.0
      */
     protected function _configure($options = array(), $messages = array()) {
@@ -750,13 +776,13 @@ class AppValidatorUrl extends AppValidatorRegex {
 /**
  * Validator to clean multiple values
  *
- * @package Component.Classes.Validators 
+ * @package Component.Classes.Validators
  */
 class AppValidatorForeach extends AppValidator {
 
     /**
      * The validator to use to validate each item in the lsit
-     * 
+     *
      * @var AppValidator
      * @since 2.0
      */
@@ -764,7 +790,7 @@ class AppValidatorForeach extends AppValidator {
 
     /**
      * Class Constructor
-     * 
+     *
      * @param AppValidator $validator The validator to use
      * @param array  $options   The list of options
      * @param array  $messages  The list of messages
@@ -779,7 +805,7 @@ class AppValidatorForeach extends AppValidator {
 
     /**
      * Get the validator we're using for validating the single items
-     * 
+     *
      * @return AppValidator The validator
      *
      * @since 2.0
@@ -796,9 +822,9 @@ class AppValidatorForeach extends AppValidator {
 
     /**
      * Performs the cleaning on each item
-     * 
+     *
      * @param  mixed $value The value to clean
-     * 
+     *
      * @return mixed        The cleaned value
      *
      * @since 2.0
@@ -822,7 +848,7 @@ class AppValidatorForeach extends AppValidator {
 
     /**
      * Get the empty value, i.e.: an empty array
-     * 
+     *
      * @return array The empty array
      *
      * @since 2.0
@@ -842,7 +868,7 @@ class AppValidatorException extends AppException {
 
     /**
      * Converts the exception to string using the error string
-     * 
+     *
      * @return string The error message
      */
 	public function __toString() {

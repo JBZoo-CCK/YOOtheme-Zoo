@@ -41,7 +41,7 @@ class TwitterHelper extends AppHelper {
 
 		$oauth_token = null;
 		$oauth_token_secret = null;
-		if (isset($_SESSION['twitter_oauth_token']) && isset($_SESSION['twitter_oauth_token_secret'])) {
+		if (isset($_SESSION['twitter_oauth_token'], $_SESSION['twitter_oauth_token_secret'])) {
 			$oauth_token = $_SESSION['twitter_oauth_token'];
 			$oauth_token_secret = $_SESSION['twitter_oauth_token_secret'];
 		}

@@ -8,21 +8,21 @@
 
 /**
  * Helper to deal with HTTP requests
- * 
+ *
  * @package Framework.Helpers
  */
 class HttpHelper extends AppHelper {
 
 	/**
 	 * The current transport class
-	 * 
+	 *
 	 * @var AppHttp
 	 */
 	public $transport;
 
 	/**
 	 * Available transport classes
-	 * 
+	 *
 	 * @var array
 	 * @since 1.0.0
 	 */
@@ -30,7 +30,7 @@ class HttpHelper extends AppHelper {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param App $app A reference to the global App object
 	 */
 	public function __construct($app) {
@@ -48,14 +48,14 @@ class HttpHelper extends AppHelper {
 
 	/**
 	 * Execute a GET http request
-	 * 
+	 *
 	 * @param string $url The url to GET
-	 * @param array $options Options for the request 
-	 * 
+	 * @param array $options Options for the request
+	 *
 	 * @see AppHttp::request()
-	 * 
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function get($url, $options = array()) {
@@ -64,15 +64,15 @@ class HttpHelper extends AppHelper {
 
 	/**
 	 * Execute a POST http request
-	 * 
+	 *
 	 * @param string $url The url to POST to
 	 * @param mixed $data The data to POST
-	 * @param array $options Options for the request 
-	 * 
+	 * @param array $options Options for the request
+	 *
 	 * @see AppHttp::request()
-	 * 
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function post($url, $data = null, $options = array()) {
@@ -81,15 +81,15 @@ class HttpHelper extends AppHelper {
 
 	/**
 	 * Execute a PUT http request
-	 * 
+	 *
 	 * @param string $url The url to PUT
 	 * @param mixed $data The data to PUT
-	 * @param array $options Options for the request 
-	 * 
+	 * @param array $options Options for the request
+	 *
 	 * @see AppHttp::request()
-	 * 
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function put($url, $data = null, $options = array()) {
@@ -98,12 +98,12 @@ class HttpHelper extends AppHelper {
 
 	/**
 	 * Execute a general http request
-	 * 
-	 * @param string $url The url to 
-	 * @param array $options Options for the request 
-	 * 
+	 *
+	 * @param string $url The url to
+	 * @param array $options Options for the request
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function request($url, $options = array()) {
@@ -124,12 +124,12 @@ class AppHttpCurl extends AppHttp {
 
 	/**
 	 * Execute a general http request
-	 * 
-	 * @param string $url The url to 
-	 * @param array $options Options for the request 
-	 * 
+	 *
+	 * @param string $url The url to
+	 * @param array $options Options for the request
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function request($url, $options = array()) {
@@ -177,9 +177,9 @@ class AppHttpCurl extends AppHttp {
 
 	/**
 	 * Checks if CURL is available on the system
-	 * 
+	 *
 	 * @return boolean If CURL library is loaded
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function available() {
@@ -195,12 +195,12 @@ class AppHttpStreams extends AppHttp {
 
 	/**
 	 * Execute a general http request
-	 * 
-	 * @param string $url The url to 
-	 * @param array $options Options for the request 
-	 * 
+	 *
+	 * @param string $url The url to
+	 * @param array $options Options for the request
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function request($url, $options = array()) {
@@ -245,9 +245,9 @@ class AppHttpStreams extends AppHttp {
 
 	/**
 	 * Check if it's possible to fopen and fread streams and if streams are available
-	 * 
+	 *
 	 * @return If streams can be used
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function available() {
@@ -263,12 +263,12 @@ class AppHttpSocket extends AppHttp {
 
 	/**
 	 * Execute a general http request
-	 * 
-	 * @param string $url The url to 
-	 * @param array $options Options for the request 
-	 * 
+	 *
+	 * @param string $url The url to
+	 * @param array $options Options for the request
+	 *
 	 * @return string The result of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function request($url, $options = array()) {
@@ -303,9 +303,9 @@ class AppHttpSocket extends AppHttp {
 
 	/**
 	 * Checks if it's possible to open socket connections
-	 * 
+	 *
 	 * @return If it's possible to use sockets
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function available() {
@@ -317,14 +317,14 @@ class AppHttpSocket extends AppHttp {
 
 /**
  * HTTP base class
- * 
+ *
  * Based on HTTP Socket connection class (http://cakephp.org, Cake Software Foundation, Inc., MIT License)
- */		
+ */
 class AppHttp {
 
     /**
 	 * Default values for the request
-	 * 
+	 *
 	 * @var array
 	 * @since 1.0.0
 	 */
@@ -344,7 +344,7 @@ class AppHttp {
 
 	/**
 	 * Default request responses variables
-	 * 
+	 *
 	 * @var array
 	 * @since 1.0.0
 	 */
@@ -358,7 +358,7 @@ class AppHttp {
 
 	/**
 	 * Line break to use
-	 * 
+	 *
 	 * @var string
 	 * @since 1.0.0
 	 */
@@ -366,11 +366,11 @@ class AppHttp {
 
 	/**
 	 * Build cookie headers for the request
-	 * 
+	 *
 	 * @param array $cookies An associative array that represents the list of cookies ( $name => array('value' => $value))
-	 * 
+	 *
 	 * @return string The header for the request
-	 *  
+	 *
 	 * @since 1.0.0
 	 */
 	public function buildCookies($cookies) {
@@ -384,11 +384,11 @@ class AppHttp {
 
 	/**
 	 * Parse the cookies in a header
-	 * 
+	 *
 	 * @param string $header The header of a request
-	 * 
+	 *
 	 * @return array The array of cookies parsed
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function parseCookies($header) {
@@ -429,13 +429,13 @@ class AppHttp {
 
 	/**
 	 * Parses the given http request url and options to build the http request string
-	 * 
+	 *
 	 * @param string $url The url of the request
 	 * @param array $options A list of options for the request
-	 * 
+	 *
 	 * @return array An associative array representing the request
-	 * 
-	 * @since 1.0.0 
+	 *
+	 * @since 1.0.0
 	 */
 	protected function _parseRequest($url, $options = array()) {
 
@@ -449,11 +449,11 @@ class AppHttp {
 			$request['header'] = array_merge(array('Host' => $request['url']['host']), $request['header']);
 		}
 
-		if (isset($request['auth']['user']) && isset($request['auth']['pass'])) {
+		if (isset($request['auth']['user'], $request['auth']['pass'])) {
 			$request['header']['Authorization'] = $request['auth']['method'].' '.base64_encode($request['auth']['user'].':'.$request['auth']['pass']);
 		}
 
-		if (isset($request['url']['user']) && isset($request['url']['pass'])) {
+		if (isset($request['url']['user'], $request['url']['pass'])) {
 			$request['header']['Authorization'] = $request['auth']['method'].' '.base64_encode($request['url']['user'].':'.$request['url']['pass']);
 		}
 
@@ -486,11 +486,11 @@ class AppHttp {
 
 	/**
 	 * Parses the given http response and breaks it down in parts
-	 * 
+	 *
 	 * @param mixed The response
-	 * 
+	 *
 	 * @return array An associative array representing the response
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _parseResponse($res) {
@@ -538,12 +538,12 @@ class AppHttp {
 
 	/**
 	 * Build the header for a request
-	 * 
+	 *
 	 * @param array|string $header The header of the request
 	 * @param string $mode The mode of the header (default: standard)
-	 * 
+	 *
 	 * @return string The header of the request
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _buildHeader($header, $mode = 'standard') {
@@ -573,11 +573,11 @@ class AppHttp {
 
 	/**
 	 * Parse a string based header into an array
-	 * 
+	 *
 	 * @param string $header The header
-	 * 
+	 *
 	 * @return array An array representing the header
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _parseHeader($header) {
@@ -627,11 +627,11 @@ class AppHttp {
 
 	/**
 	 * Decode a chunked message body
-	 * 
+	 *
 	 * @param string $body The chunked message body
-	 * 
+	 *
 	 * @return string The decoded message
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _decodeChunkedBody($body) {
@@ -682,11 +682,11 @@ class AppHttp {
 
 	/**
 	 * Parse an URL and return its parts as an array
-	 * 
+	 *
 	 * @param string $url The url to parse
-	 * 
+	 *
 	 * @return array The parts of the url
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _parseUrl($url) {
@@ -719,12 +719,12 @@ class AppHttp {
 
 	/**
 	 * Escape a given token according to RFC 2616 (HTTP 1.1 specs)
-	 * 
+	 *
 	 * @param string $token The token to escape
 	 * @param array $chars The chars to escape
-	 * 
+	 *
 	 * @return string The escaped token
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _escapeToken($token, $chars = null) {
@@ -735,12 +735,12 @@ class AppHttp {
 
 	/**
 	 * Unescape a given token according to RFC 2616 (HTTP 1.1 specs)
-	 * 
+	 *
 	 * @param string $token The token to unescape
 	 * @param array $chars The characters to unescape
-	 * 
+	 *
 	 * @return string The unescaped token
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _unescapeToken($token, $chars = null) {
@@ -751,12 +751,12 @@ class AppHttp {
 
 	/**
 	 * Get escape chars according to RFC 2616 (HTTP 1.1 specs)
-	 * 
+	 *
 	 * @param boolean $hex If we have to use the hex codification
 	 * @param array $chars An alternative list of characters to escape
-	 * 
+	 *
 	 * @return array The list of escaped characters
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _tokenEscapeChars($hex = true, $chars = null) {

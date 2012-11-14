@@ -37,7 +37,7 @@ $this->app->document->addScript('assets:js/type.js');
 						if ($this->config && isset($this->config[$position])) {
 							$i = 0;
 							foreach ($this->config[$position] as $data) {
-								if (isset($data['element']) && isset($elements[$data['element']])) {
+								if (isset($data['element'], $elements[$data['element']])) {
 									$element = $elements[$data['element']];
 
 									// render partial

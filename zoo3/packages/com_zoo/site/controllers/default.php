@@ -467,7 +467,7 @@ class DefaultController extends AppController {
 		$this->app->system->document->setLink($this->app->link(array('task' => 'category')));
 
         // set feed description
-        $this->app->system->document->setDescription(htmlentities($this->app->system->document->getDescription(), ENT_COMPAT, 'UTF-8'));
+        $this->app->system->document->setDescription(html_entity_decode($this->getView()->escape($this->app->system->document->getDescription())));
 
 		// set renderer
 		$renderer = $this->app->renderer->create('item')->addPath(array($this->app->path->path('component.site:'), $this->application->getTemplate()->getPath()));

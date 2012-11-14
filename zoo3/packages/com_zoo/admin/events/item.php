@@ -97,4 +97,18 @@ class ItemEvent {
 
 	}
 
+	/**
+	 * Placeholder for the beforeSaveCategoryRelations event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
+	public static function beforeSaveCategoryRelations($event) {
+
+		// The item
+		$item 		= $event->getSubject();
+		// The list of category ids
+		$categories = $event['categories'];
+
+	}
+
 }

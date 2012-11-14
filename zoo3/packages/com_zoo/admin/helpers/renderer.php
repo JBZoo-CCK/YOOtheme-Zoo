@@ -336,26 +336,15 @@ abstract class PositionRenderer extends AppRenderer {
 
 		// parse positions xml
 		if ($xml = simplexml_load_file($this->_getPath($path.'/'.$this->_xml_file))) {
-			foreach ($xml->children() as $pos) {
-				if ((string) $pos->attributes()->layout == $layout) {
-					$positions['name'] = $layout;
+            if ($pos = current($xml->xpath('//positions[@layout="'.$layout.'"]'))) {
 
-					foreach ($pos->children() as $child) {
+                $positions['name'] = ($name = current($pos->xpath('//name')) ? (string) $name : $layout);
+                $positions['positions'] = array();
 
-						if ($child->getName() == 'name') {
-							$positions['name'] = (string) $child;
-						}
-
-						if ($child->getName() == 'position') {
-							if ($child->attributes()->name) {
-								$name = (string) $child->attributes()->name;
-								$positions['positions'][$name] = (string) $child;
-							}
-						}
-					}
-
-					break;
-				}
+                foreach ($pos->xpath('//position[@name]') as $position) {
+                    $name = (string) $position->attributes()->name;
+                    $positions['positions'][$name] = (string) $position;
+                }
 			}
 		}
 

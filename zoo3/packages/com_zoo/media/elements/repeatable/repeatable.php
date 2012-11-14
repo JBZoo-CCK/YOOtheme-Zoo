@@ -259,7 +259,7 @@ abstract class ElementRepeatable extends Element implements Countable, SeekableI
 			Array - cleaned value
 	*/
 	public function _validateSubmission($value, $params) {
-		return array('value' => $this->app->validator->create('string', array('required' => $params->get('required')))->clean($value->get('value')));
+		return array('value' => $this->app->validator->create('textfilter', array('required' => $params->get('required')))->clean($value->get('value')));
 	}
 
 	/*
@@ -302,7 +302,7 @@ abstract class ElementRepeatable extends Element implements Countable, SeekableI
 	}
 
 	public function valid() {
-		if ($this->_position == 0 && (!isset($this->_item->elements[$this->identifier]) || !isset($this->_item->elements[$this->identifier][0]))) {
+		if ($this->_position == 0 && !(isset($this->_item->elements[$this->identifier], $this->_item->elements[$this->identifier][0]))) {
 			parent::set(0, array());
 		}
 
@@ -318,7 +318,7 @@ abstract class ElementRepeatable extends Element implements Countable, SeekableI
 	}
 
 	public function count() {
-		if (isset($this->_item) && isset($this->_item->elements[$this->identifier])) {
+		if (isset($this->_item, $this->_item->elements[$this->identifier])) {
 			return count($this->_item->elements[$this->identifier]);
 		}
 		return 0;

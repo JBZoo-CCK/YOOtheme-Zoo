@@ -71,14 +71,14 @@ class CategoryHelper extends AppHelper {
 	/**
 	 * Method to add category related items.
 	 *
-	 * @param int $item_id The items id
-	 * @param array $categories category ids
+	 * @param Item  $item 		The item
+	 * @param array $categories The category ids
 	 *
 	 * @return boolean true on success
 	 *
 	 * @since 2.0
 	 */
-	public function saveCategoryItemRelations($item_id, $categories) {
+	public function saveCategoryItemRelations($item, $categories) {
 
 		//init vars
 		$db = $this->app->database;
@@ -87,16 +87,20 @@ class CategoryHelper extends AppHelper {
 			$categories = array($categories);
 		}
 
+		// trigger an event to let 3rd party extend the category list
+		$this->app->event->dispatcher->notify($this->app->event->create($item, 'item:beforeSaveCategoryRelations', array('categories' => &$categories)));
+
 		$categories = array_unique($categories);
 
 		// delete category to item relations
 		$query = "DELETE FROM ".ZOO_TABLE_CATEGORY_ITEM
-				." WHERE item_id=".(int) $item_id;
+				." WHERE item_id=".(int) $item->id;
 
 		// execute database query
 		$db->query($query);
 
-		$query_string = '(%s,'.(int) $item_id.')';
+		// Generate the sql query for the categories
+		$query_string = '(%s,'.(int) $item->id.')';
 		$category_strings = array();
 		foreach ($categories as $category) {
 			if (is_numeric($category)) {

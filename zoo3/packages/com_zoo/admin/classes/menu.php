@@ -15,7 +15,7 @@ class AppMenu extends AppTree {
 
 	/**
 	 * The name of the menu
-	 * 
+	 *
 	 * @var string
 	 * @since 2.0
 	 */
@@ -23,7 +23,7 @@ class AppMenu extends AppTree {
 
 	/**
 	 * Class constructor
-	 * 
+	 *
 	 * @param string $name The name of the menu
 	 */
 	public function __construct($name) {
@@ -34,7 +34,7 @@ class AppMenu extends AppTree {
 
 	/**
 	 * Render the menu
-	 * 
+	 *
 	 * @return string The html code for the menu
 	 *
 	 * @since 2.0
@@ -69,11 +69,11 @@ class AppMenu extends AppTree {
 
 	/**
 	 * Call a method on evey child of the tree
-	 * 
+	 *
 	 * @param  SimpleXMLElement $xml      The xml to traverse
 	 * @param  function         $callback The method to call on each child
 	 * @param  array            $args     The arguments to pass on to the callback
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	protected function _map(SimpleXMLElement $xml, $callback, $args = array()) {
@@ -109,7 +109,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Id of the menu item
-	 * 
+	 *
 	 * @var int
 	 * @since 2.0
 	 */
@@ -117,7 +117,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Name of the menu item
-	 * 
+	 *
 	 * @var string
 	 * @since 2.0
 	 */
@@ -125,7 +125,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Url of the menu item
-	 * 
+	 *
 	 * @var string
 	 * @since 2.0
 	 */
@@ -133,7 +133,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Attributes to apply to the item
-	 * 
+	 *
 	 * @var array
 	 * @since 2.0
 	 */
@@ -141,7 +141,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Class contructor
-	 * 
+	 *
 	 * @param int 	 $id         Id of the menu item
 	 * @param string $name       Name of the menu item
 	 * @param string $link       Link of the menu item
@@ -156,9 +156,9 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Get the name of the menu Item
-	 * 
+	 *
 	 * @return string The name of the meu item
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function getName() {
@@ -167,11 +167,11 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Set the name of the menu item
-	 * 
+	 *
 	 * @param string $name The name
 	 *
 	 * @return AppMenuItem $this for chaining support
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function setName($name) {
@@ -181,7 +181,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Get the id of the menu item
-	 * 
+	 *
 	 * @return int The menu item id
 	 *
 	 * @since 2.0
@@ -192,9 +192,9 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Get an attribute for the menu item
-	 * 
+	 *
 	 * @param  string $key The key to fetch
-	 * 
+	 *
 	 * @return string      The value for the attribute
 	 *
 	 * @since 2.0
@@ -210,7 +210,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Set an attribute for the menu item
-	 * 
+	 *
 	 * @param string $key   The key
 	 * @param string $value The value
 	 *
@@ -225,7 +225,7 @@ class AppMenuItem extends AppTreeItem {
 
 	/**
 	 * Render the single menu item
-	 * 
+	 *
 	 * @return string The html for this menu item
 	 *
 	 * @since 2.0
@@ -254,13 +254,13 @@ class AppMenuItem extends AppTreeItem {
  * A decorator class for the menus
  */
 class AppMenuDecorator {
-	
+
     /**
      * Add item index and level to class attribute
-     * 
+     *
      * @param  SimpleXMLElement $node The node to add the index and level to
      * @param  array            $args Callback arguments
-     * 
+     *
      * @since 	2.0
      */
 	public static function index(SimpleXMLElement $node, $args) {
@@ -303,10 +303,7 @@ class AppMenuDecorator {
 			}
 		}
 
-		unset($node->attributes()->level);
-		unset($node->attributes()->order);
-		unset($node->attributes()->first);
-		unset($node->attributes()->last);
+		unset($node->attributes()->level, $node->attributes()->order, $node->attributes()->first, $node->attributes()->last);
 
 	}
 

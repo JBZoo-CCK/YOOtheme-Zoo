@@ -45,7 +45,7 @@ class ImportHelper extends AppHelper {
 		}
 
 		// import frontpage
-		if (isset($data['categories']) && isset($data['categories']['_root']) && $import_frontpage) {
+		if (isset($data['categories'], $data['categories']['_root']) && $import_frontpage) {
 			$this->_importFrontpage($application, $data['categories']['_root']);
 		}
 
@@ -201,7 +201,7 @@ class ImportHelper extends AppHelper {
 		$item_objects = array();
 		foreach ($items as $alias => $item) {
 
-			if (isset($item['group']) && isset($types[$item['group']]) && !empty($types[$item['group']]) && ($type = $app_types[$types[$item['group']]])) {
+			if (isset($item['group'], $types[$item['group']]) && !empty($types[$item['group']]) && $type = $app_types[$types[$item['group']]]) {
 
 				$item_obj = $this->app->object->create('Item');
 				$item_obj->alias = $this->app->string->sluggify($alias);
@@ -274,7 +274,7 @@ class ImportHelper extends AppHelper {
 				// save item -> category relationship
 				if (isset($item['categories'])) {
 
-					if (isset($item['config']['primary_category']) && isset($categories[$item['config']['primary_category']])) {
+					if (isset($item['config']['primary_category'], $categories[$item['config']['primary_category']])) {
 						$item_obj->getParams()->set('config.primary_category', $categories[$item['config']['primary_category']]->id);
 					} else if (isset($item['config']['primary_category']) && $id = $this->app->alias->category->translateAliasToID($item['config']['primary_category'])) {
 						$item_obj->getParams()->set('config.primary_category', $id);
@@ -290,7 +290,7 @@ class ImportHelper extends AppHelper {
 					}
 
 					if (!empty($item_categories)) {
-						$this->app->category->saveCategoryItemRelations($item_obj->id, $item_categories);
+						$this->app->category->saveCategoryItemRelations($item_obj, $item_categories);
 					}
 				}
 
@@ -497,12 +497,13 @@ class ImportHelper extends AppHelper {
 				$item = false;
 
 				// First check: is there an _id specified? if so, try to load the item
-				if (array_key_exists('_id', $assignments)) {
-					$columns = $assignments['_id'];
-					$column = current($columns);
-					$id = (int) @$data[$column];
-					if ($id) {
+				if (isset($assignments['_id']) && is_array($assignments['_id'])) {
+					$column = current($assignments['_id']);
+					if ($id = (int) @$data[$column]) {
 						$item = $item_table->get($id);
+                        if ($item->application_id != $application->id) {
+                            $item = false;
+                        }
 					}
 				}
 
@@ -684,7 +685,7 @@ class ImportHelper extends AppHelper {
 						// add category to item relations
 						if (!empty($related_categories)) {
 
-							$this->app->category->saveCategoryItemRelations($item->id, $related_categories);
+							$this->app->category->saveCategoryItemRelations($item, $related_categories);
 
 							// make first category found primary category
 							if (!$item->getPrimaryCategoryId()) {

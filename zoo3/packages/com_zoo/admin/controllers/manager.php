@@ -311,14 +311,8 @@ class ManagerController extends AppController {
 			// ensure unique identifier
  			$this->app->type->setUniqueIndentifier($type);
 
-			// trigger before save event
-			$this->app->event->dispatcher->notify($this->app->event->create($type, 'type:beforesave'));
-
 			// save type
             $type->save();
-
-			// trigger after save event
-			$this->app->event->dispatcher->notify($this->app->event->create($type, 'type:aftersave'));
 
 			// set redirect message
 			$msg = JText::_('Type Saved');
@@ -443,6 +437,8 @@ class ManagerController extends AppController {
 
 			// save types elements
 			$type = $this->application->getType($cid);
+
+			// bind and save elements
 			$type->bindElements($post)->save();
 
 			// reset related item search data

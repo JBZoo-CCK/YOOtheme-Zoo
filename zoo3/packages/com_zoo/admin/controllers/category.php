@@ -99,7 +99,7 @@ class CategoryController extends AppController {
 		}
 
 		// select parent category
-		$this->lists['select_parent'] = $this->app->html->_('zoo.genericlist', $options, 'parent', 'class="inputbox" size="10"', 'value', 'text', $this->category->parent);
+		$this->lists['select_parent'] = $this->app->html->_('zoo.genericlist', $options, 'parent', 'class="inputbox" size="10" data-no_results_text="'.JText::_('No results match').'"', 'value', 'text', $this->category->parent);
 
 		// display view
 		$this->getView()->setLayout('edit')->display();
@@ -125,6 +125,12 @@ class CategoryController extends AppController {
 			// get category and bind post data
 			$category = ($cid) ? $this->table->get($cid) : $this->app->object->create('Category');
 			self::bind($category, $post, array('params'));
+
+			// Force alias to be set
+			if (!strlen(trim($category->alias))) {
+				$category->alias = $this->app->string->sluggify($category->name);
+			}
+
 			$category->alias = $this->app->alias->category->getUniqueAlias($category->id, $this->app->string->sluggify($category->alias));
 			$category->getParams()
 				->remove('content.')

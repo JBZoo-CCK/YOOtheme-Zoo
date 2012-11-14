@@ -81,4 +81,21 @@ class StringHelper extends AppHelper {
 		return trim($string);
 	}
 
+    /**
+     * Apply Joomla text filters based on the user's groups
+     *
+     * @param  string $string The string to clean
+     *
+     * @return string         The cleaned string
+     */
+    public function applyTextFilters($string) {
+
+        // Apply the textfilters (let's reuse Joomla's ContentHelper class)
+        if (!class_exists('ContentHelper')) {
+            require_once JPATH_SITE . '/administrator/components/com_content/helpers/content.php';
+        }
+
+        return ContentHelper::filterText((string) $string);
+    }
+
 }

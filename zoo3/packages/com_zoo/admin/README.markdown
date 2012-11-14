@@ -1,11 +1,19 @@
 # ZOO #
 
-- Version: 3.0.2
+- Version: 3.0.4
 - Date: October 2012
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.0.4
+    + added chosen.js to category select field (item/category edit view)
+    + added Joomla textfiltering to frontend submission
+
+    3.0.3
+    # fixed problem with slug generation
+    # fixed problem with deleting codemirror editor
 
 	3.0.2
 	+ items in the item view can now be found via alias

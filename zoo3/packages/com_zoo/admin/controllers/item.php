@@ -249,10 +249,9 @@ class ItemController extends AppController {
 		$related_categories = $this->item->getRelatedCategoryIds();
 		$this->lists['select_frontpage']  = $this->app->html->_('select.booleanlist', 'frontpage', null, in_array(0, $related_categories));
 		$this->lists['select_categories'] = count($this->application->getCategoryTree()) > 1 ?
-				$this->app->html->_('zoo.categorylist', $this->application, array(), 'categories[]', 'size="15" multiple="multiple"', 'value', 'text', $related_categories)
+				$this->app->html->_('zoo.categorylist', $this->application, array(), 'categories[]', 'size="15" multiple="multiple" data-no_results_text="'.JText::_('No results match0r').'" data-placeholder="'.JText::_('Select Category').'"', 'value', 'text', $related_categories, false, false, 0 ,'<sup>|_</sup>&nbsp;', '.&nbsp;&nbsp;&nbsp;', '')
 				: '<a href="'.$this->app->link(array('controller' => 'category'), false).'" >'.JText::_('Please add categories first').'</a>';
-		$this->lists['select_primary_category'] = $this->app->html->_('zoo.categorylist', $this->application, array($this->app->html->_('select.option', '', JText::_('COM_ZOO_NONE'))), 'params[primary_category]', '', 'value', 'text', $this->params->get('config.primary_category'));
-
+		$this->lists['select_primary_category'] = $this->app->html->_('zoo.categorylist', $this->application, array($this->app->html->_('select.option', '', JText::_('COM_ZOO_NONE'))), 'params[primary_category]', 'data-no_results_text="'.JText::_('No results match').'"', 'value', 'text', $this->params->get('config.primary_category'), false, false, 0 ,'<sup>|_</sup>&nbsp;', '.&nbsp;&nbsp;&nbsp;', '');
 		// most used tags
 		$this->lists['most_used_tags'] = $this->app->table->tag->getAll($this->application->id, null, null, 'items DESC, a.name ASC', null, self::MAX_MOST_USED_TAGS);
 
@@ -306,6 +305,9 @@ class ItemController extends AppController {
 			}
 
 			// set alias
+			if (!strlen(trim($item->alias))) {
+				$item->alias = $this->app->string->sluggify($item->name);
+			}
 			$item->alias = $this->app->alias->item->getUniqueAlias($item->id, $this->app->string->sluggify($item->alias));
 
 			// set modified
@@ -368,7 +370,7 @@ class ItemController extends AppController {
 			if ($frontpage) {
 				$categories[] = 0;
 			}
-			$this->app->category->saveCategoryItemRelations($item->id, $categories);
+			$this->app->category->saveCategoryItemRelations($item, $categories);
 
 			// set redirect message
 			$msg = JText::_('Item Saved');
@@ -441,7 +443,7 @@ class ItemController extends AppController {
 				$this->table->save($item);
 
 				// save category relations
-				$this->app->category->saveCategoryItemRelations($item->id, $categories);
+				$this->app->category->saveCategoryItemRelations($item, $categories);
 			}
 
 			// set redirect message
@@ -713,7 +715,7 @@ class ItemController extends AppController {
 					array_push($categories, '0');
 				}
 
-				$this->app->category->saveCategoryItemRelations($item->id, $categories);
+				$this->app->category->saveCategoryItemRelations($item, $categories);
 
 			}
 

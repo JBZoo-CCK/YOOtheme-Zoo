@@ -154,7 +154,7 @@ class BackupHelper extends AppHelper {
 		$header[] = '-- http://www.yootheme.com';
 		$header[] = '--';
 		$header[] = '-- Host: '.trim(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
-		$header[] = '-- Creation Date: '.$this->app->date->create()->toFormat();
+		$header[] = '-- Creation Date: '.$this->app->date->create()->format('%Y-%m-%d %H:%M:%S');
 		$header[] = '-- Server Software: '.trim(isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '');
 		$header[] = "\n";
 		$header[] = '-- ';
