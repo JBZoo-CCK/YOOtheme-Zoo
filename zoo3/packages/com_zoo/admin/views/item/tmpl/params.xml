@@ -2,18 +2,18 @@
 <form>
 	<name>Item Edit Form</name>
 	<params addpath="/administrator/components/com_zoo/joomla/elements">
-		<param name="created_by" type="zooitemauthor" default="" label="Author" description="DETAILAUTHOR" />
-		<param name="created_by_alias" type="text" size="20" default="" label="Author Alias" description="DETAILAUTHORALIAS" />
-		<param name="access" type="zooaccesslevel" default="0" label="Access Level" description="DETAILACCESS" />
-		<param name="created" type="zoocalendar" default="" label="Created Date" description="DETAILCREATED" />
-		<param name="publish_up" type="zoocalendar" default="" label="Start Publishing" description="DETAILSTART" />
-		<param name="publish_down" type="zoocalendar" default="" label="Finish Publishing" description="DETAILFINISH" />
+		<param name="created_by" type="zooitemauthor" default="" label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_DESC" />
+		<param name="created_by_alias" type="text" size="20" default="" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
+		<param name="access" type="zooaccesslevel" default="0" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
+		<param name="created" type="zoocalendar" default="" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" />
+		<param name="publish_up" type="zoocalendar" default="" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
+		<param name="publish_down" type="zoocalendar" default="" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
 	</params>
 	<params group="metadata">
-		<param name="title" type="text" size="20" default="" label="Title" description="Title" />
-		<param name="description" type="textarea" rows="5" cols="30" default="" label="Description" description="METADESC" />
-		<param name="keywords" type="textarea" rows="5" cols="30" default="" label="Keywords" description="METAKEYS" />
-		<param name="robots" type="text" size="20" default="" label="Robots" description="METAROBOTS" />
-		<param name="author" type="text" size="20" default="" label="Author" description="METAAUTHOR" />
+		<param name="title" type="text" size="20" default="" label="Title" description="JFIELD_TITLE_DESC" />
+		<param name="description" type="textarea" rows="5" cols="30" default="" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+		<param name="keywords" type="textarea" rows="5" cols="30" default="" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+		<param name="robots" type="text" size="20" default="" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC" />
+		<param name="author" type="text" size="20" default="" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
 	</params>
 </form>

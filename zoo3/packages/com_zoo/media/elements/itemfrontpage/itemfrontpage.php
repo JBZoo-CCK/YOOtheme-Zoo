@@ -95,7 +95,7 @@ class ElementItemFrontpage extends Element implements iSubmittable {
 			void
 	*/
 	public function afterSubmissionSave() {
-		$ids = $this->_item->getRelatedCategoryIds();
+		$ids = $this->app->category->getItemsRelatedCategoryIds($this->_item->id);
 		if ($this->_frontpage) {
 			$ids[] = '0';
 		} else {

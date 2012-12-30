@@ -557,7 +557,7 @@ class AppValidatorFile extends AppValidator {
 
         // check file size
         if ($this->hasOption('max_size') && $this->getOption('max_size') < (int) $value['size']) {
-			throw new AppValidatorException(sprintf(JTEXT::_($this->getMessage('max_size')), ($this->getOption('max_size') / 1024)));
+			throw new AppValidatorException(sprintf(JText::_($this->getMessage('max_size')), ($this->getOption('max_size') / 1024)));
         }
 
 		// check extension
@@ -743,7 +743,7 @@ class AppValidatorEmail extends AppValidatorRegex {
      */
     protected function _configure($options = array(), $messages = array()) {
         $this->setPattern(self::REGEX_EMAIL);
-        $this->addMessage('pattern', JText::_('Please enter a valid email address.'));
+        $this->addMessage('pattern', 'Please enter a valid email address.');
     }
 
 }
@@ -768,7 +768,7 @@ class AppValidatorUrl extends AppValidatorRegex {
     protected function _configure($options = array(), $messages = array()) {
         $this->addOption('protocols', array('http', 'https', 'ftp', 'ftps'));
         $this->setPattern(sprintf(self::REGEX_URL, implode('|', $this->getOption('protocols'))));
-        $this->addMessage('pattern', JText::_('Please enter a valid URL.'));
+        $this->addMessage('pattern', 'Please enter a valid URL.');
     }
 
 }

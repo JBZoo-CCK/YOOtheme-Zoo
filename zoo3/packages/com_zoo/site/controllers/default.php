@@ -162,7 +162,7 @@ class DefaultController extends AppController {
 		// get page title, if exists
 		$title = $this->item->getParams()->get('metadata.title');
 		$title = empty($title) ? $this->item->name : $title;
-		if (($menu = $this->app->menu->getActive()) && @$menu->query['view'] == 'item' && $this->app->parameter->create($menu->params)->get('item_id') == $itemid) {
+		if ($menu = $this->app->menu->getActive() and @$menu->query['view'] == 'item' and $this->app->parameter->create($menu->params)->get('item_id') == $itemid) {
 			if ($page_title = $this->app->parameter->create($menu->params)->get('page_title')) {
 				$title = $page_title;
 			}
@@ -252,7 +252,7 @@ class DefaultController extends AppController {
 		$description = $params->get('metadata.description');
 		$keywords    = $params->get('metadata.keywords');
 
-		if (($menu = $this->app->menu->getActive()) && in_array(@$menu->query['view'], array('category', 'frontpage')) && ($menu_params = $this->app->parameter->create($menu->params)) && $menu_params->get('category') == $category_id) {
+		if ($menu = $this->app->menu->getActive() and in_array(@$menu->query['view'], array('category', 'frontpage')) and $menu_params = $this->app->parameter->create($menu->params) and $menu_params->get('category') == $category_id) {
 
 			if ($page_title = $menu_params->get('page_title') or $page_title = $menu->title) {
 				$title = $page_title;
@@ -464,7 +464,7 @@ class DefaultController extends AppController {
 		}
 
 		// set feed link
-		$this->app->system->document->setLink($this->app->link(array('task' => 'category')));
+		$this->app->system->document->setLink(JRoute::_($category_id ? $this->app->route->category($category) : $this->app->route->frontpage($this->application->id)));
 
         // set feed description
         $this->app->system->document->setDescription(html_entity_decode($this->getView()->escape($this->app->system->document->getDescription())));
@@ -489,38 +489,7 @@ class DefaultController extends AppController {
 	}
 
 	protected function _getAlphaindex() {
-
-		// set alphaindex
-		$alpha_index = $this->app->alphaindex->create($this->application->getPath().'/config/alphaindex.xml');
-
-		// add categories
-		$add_alpha_index = $this->application->getParams('site')->get('config.alpha_index', 0);
-
-		if ($add_alpha_index == 1 || $add_alpha_index == 3) {
-			$alpha_index->addObjects(array_filter($this->categories, create_function('$category', 'return $category->id != 0 && $category->totalItemCount();')), 'name');
-		}
-		// add items
-		if ($add_alpha_index == 2 || $add_alpha_index == 3) {
-
-			$db = $this->app->database;
-
-			// get date
-			$date = $this->app->date->create();
-			$now  = $db->Quote($date->toSQL());
-			$null = $db->Quote($db->getNullDate());
-
-			$query = 'SELECT DISTINCT BINARY CONVERT(LOWER(LEFT(name, 1)) USING utf8) letter'
-					.' FROM ' . ZOO_TABLE_ITEM
-					.' WHERE id IN (SELECT item_id FROM ' . ZOO_TABLE_CATEGORY_ITEM . ')'
-					.' AND application_id = '.(int) $this->application->id
-					.' AND '.$this->app->user->getDBAccessString()
-					.' AND state = 1'
-					.' AND (publish_up = '.$null.' OR publish_up <= '.$now.')'
-					.' AND (publish_down = '.$null.' OR publish_down >= '.$now.')';
-
-			$alpha_index->addObjects($db->queryObjectList($query), 'letter');
-		}
-		return $alpha_index;
+        return $this->app->application->getAlphaIndex($this->application);
 	}
 
 	protected function _relToAbs($text)	{

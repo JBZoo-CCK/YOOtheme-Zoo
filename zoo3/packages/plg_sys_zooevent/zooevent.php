@@ -59,6 +59,7 @@ class plgSystemZooevent extends JPlugin {
 //		$zoo->event->dispatcher->connect('application:saved', array('ApplicationEvent', 'saved'));
 //		$zoo->event->dispatcher->connect('application:deleted', array('ApplicationEvent', 'deleted'));
 //		$zoo->event->dispatcher->connect('application:addmenuitems', array('ApplicationEvent', 'addmenuitems'));
+//		$zoo->event->dispatcher->connect('application:configparams', array('ApplicationEvent', 'configparams'));
 //
 //		$zoo->event->register('CategoryEvent');
 //		$zoo->event->dispatcher->connect('category:init', array('CategoryEvent', 'init'));

@@ -292,18 +292,19 @@ class HTMLHelper extends AppHelper {
 	 * @param string $selected The selected value
 	 * @param string $idtag
 	 * @param boolean $translate
+     * @param boolean $published
 	 *
 	 * @return string the module select list html output
 	 * @since 2.0
 	 */
-	public function moduleList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public function moduleList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false, $published = false) {
 
 		// set options
 		settype($options, 'array');
 		reset($options);
 
 		// get modules
-		$modules = $this->app->module->load();
+		$modules = $this->app->module->load($published);
 
 		if (count($modules)) {
 

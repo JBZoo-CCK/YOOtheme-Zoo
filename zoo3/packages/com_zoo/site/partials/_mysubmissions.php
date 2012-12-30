@@ -22,7 +22,7 @@ $mysubmissions_link = $this->app->route->mysubmissions($this->submission);
 
 		<?php if($this->show_add): ?>
 		<div class="submission-add">
-			<div class="trigger" title="<?php echo JText::_('Add Item'); ?>"><?php echo JText::_('Add Item'); ?></div>
+			<a href="javascript:void(0);" class="trigger" title="<?php echo JText::_('Add Item'); ?>"><?php echo JText::_('Add Item'); ?></a>
 			<div class="links">
 			<?php foreach($this->types as $id => $type) : ?>
 				<?php $add_link = $this->app->route->submission($this->submission, $id, null, 0, 'mysubmissions'); ?>

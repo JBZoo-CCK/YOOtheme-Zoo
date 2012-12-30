@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="search" method="upgrade" >
-	<name>ZOO Search</name>
+	<name>Search - ZOO</name>
 	<author>YOOtheme</author>
 	<creationDate>October 2012</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>

@@ -8,7 +8,7 @@
 
 /**
  * Deals with item events.
- * 
+ *
  * @package Component.Events
  */
 class ItemEvent {
@@ -34,11 +34,17 @@ class ItemEvent {
 		$item = $event->getSubject();
 		$new = $event['new'];
 
-		JPluginHelper::importPlugin('content');
-		JDispatcher::getInstance()->trigger('onContentAfterSave', array($item->app->component->self->name.'.item', &$item, $new));
+		// Trigger the onFinderAfterSave event.
+        JPluginHelper::importPlugin('finder');
+		JDispatcher::getInstance()->trigger('onFinderAfterSave', array($item->app->component->self->name.'.item', &$item, $new));
 
+        // clear item route cache on save
 		$item->app->route->clearCache();
 
+        // geocode googlemaps elements (tries to workaround googles ('You are over your quota' error)
+        foreach ($item->getElementsByType('googlemaps') as $element) {
+            $element->geocode();
+        }
 	}
 
 	/**
@@ -51,8 +57,9 @@ class ItemEvent {
 
 		$item = $event->getSubject();
 
-		JPluginHelper::importPlugin('content');
-		JDispatcher::getInstance()->trigger('onContentAfterDelete', array($item->app->component->self->name.'.item', &$item));
+		// Trigger the onFinderAfterSave event.
+        JPluginHelper::importPlugin('finder');
+		JDispatcher::getInstance()->trigger('onFinderAfterDelete', array($item->app->component->self->name.'.item', &$item));
 
 		$item->app->route->clearCache();
 	}

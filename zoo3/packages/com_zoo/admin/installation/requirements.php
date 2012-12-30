@@ -66,7 +66,7 @@ class AppRequirements {
 	}
 
 	function checkAPC() {
-		return extension_loaded('apc') && @apc_cache_info() !== false;
+		return extension_loaded('apc') && class_exists('APCIterator');
 	}
 
 	function _return_bytes ($size_str) {
@@ -151,7 +151,7 @@ class AppRequirements {
 
 		if (extension_loaded('apc')) {
 			$status = $this->checkAPC();
-			$info 	= 'It is recommended to turn on APC.';
+			$info 	= 'It is recommended to turn on APC (version 3.1.1+).';
 			$this->_addRecommendedResult('Alternative PHP Cache (APC) enabled', $status, $info);
 		}
 

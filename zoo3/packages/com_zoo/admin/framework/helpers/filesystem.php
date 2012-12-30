@@ -327,6 +327,7 @@ class FilesystemHelper extends AppHelper {
 		$mimes['dcl'][] = 'text/x-dcl';
 		$mimes['dcm'][] = 'image/x-dcm';
 		$mimes['dcr'][] = 'application/x-director';
+		$mimes['dd2'][] = 'application/vnd.oma.dd2+xml';
 		$mimes['deb'][] = 'application/x-deb';
 		$mimes['der'][] = 'application/x-x509-ca-cert';
 		$mimes['desktop'][] = 'application/x-desktop';
@@ -445,6 +446,7 @@ class FilesystemHelper extends AppHelper {
 		$mimes['m'][] = 'text/x-objcsrc';
 		$mimes['m15'][] = 'audio/x-mod';
 		$mimes['m3u'][] = 'audio/x-mpegurl';
+        $mimes['m4v'][] = 'video/x-m4v';
 		$mimes['man'][] = 'application/x-troff-man';
 		$mimes['md'][] = 'application/x-genesis-rom';
 		$mimes['me'][] = 'text/x-troff-me';
@@ -493,6 +495,9 @@ class FilesystemHelper extends AppHelper {
 		$mimes['ods'][] = 'application/vnd.oasis.opendocument.spreadsheet';
 		$mimes['odt'][] = 'application/vnd.oasis.opendocument.text';
 		$mimes['ogg'][] = 'application/ogg';
+		$mimes['ogx'][] = 'application/ogg';
+		$mimes['oga'][] = 'audio/ogg';
+		$mimes['ogv'][] = 'video/ogg';
 		$mimes['old'][] = 'application/x-trash';
 		$mimes['oleo'][] = 'application/x-oleo';
 		$mimes['otg'][] = 'application/vnd.oasis.opendocument.graphics-template';

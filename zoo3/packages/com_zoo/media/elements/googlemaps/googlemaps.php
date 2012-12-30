@@ -86,7 +86,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		// get map center coordinates
 		try {
 
-			$center = $this->app->googlemaps->locate($location, $cache, $key);
+			$center = $this->app->googlemaps->locate($location, $cache);
 
 		} catch (GooglemapsHelperException $e) {
 			$this->app->system->application->enqueueMessage($e, 'notice');
@@ -195,5 +195,30 @@ class ElementGooglemaps extends Element implements iSubmittable {
         $clean = $validator->clean($value->get('location'));
 		return array('location' => $clean);
 	}
+
+    public function geocode() {
+
+        if (!$location = $this->get('location')) {
+            return;
+        }
+
+        // get geocode cache
+        $cache = $this->app->cache->create($this->app->path->path('cache:') . '/geocode_cache');
+        if (!$cache->check()) {
+            return;
+        }
+
+        // get map center coordinates
+        try {
+
+            $this->app->googlemaps->locate($location, $cache);
+
+        } catch (GooglemapsHelperException $e) {
+            return;
+        }
+
+        // save location to geocode cache
+        if ($cache) $cache->save();
+    }
 
 }

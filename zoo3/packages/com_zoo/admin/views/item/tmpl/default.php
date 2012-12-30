@@ -100,9 +100,9 @@ $this->app->document->addScript('assets:js/item.js');
 				$now		  = $this->app->date->create()->toUnix();
 				$publish_up   = $this->app->date->create($row->publish_up);
 				$publish_down = $this->app->date->create($row->publish_down);
-//				$offset		  = $this->app->date->getOffset();
-//				$publish_up->setOffset($offset);
-//				$publish_down->setOffset($offset);
+				$offset		  = $this->app->date->getOffset();
+				$publish_up->setTimezone(new DateTimeZone($offset));
+				$publish_down->setTimezone(new DateTimeZone($offset));
 
 				$img = '';
 				$alt = '';
@@ -146,7 +146,7 @@ $this->app->document->addScript('assets:js/item.js');
 					if ($row->publish_up == $nullDate) {
 						$times .= JText::_( 'Start: Always' );
 					} else {
-						$times .= JText::_( 'Start' ) .": ". $publish_up->format('%Y-%m-%d %H:%M:%S');
+						$times .= JText::_( 'Start' ) .": ". $publish_up->format('Y-m-d H:i:s', true);
 					}
 				}
 
@@ -154,7 +154,7 @@ $this->app->document->addScript('assets:js/item.js');
 					if ($row->publish_down == $nullDate) {
 						$times .= "<br />". JText::_( 'Finish No Expiry' );
 					} else {
-						$times .= "<br />". JText::_( 'Finish' ) .": ". $publish_down->format('%Y-%m-%d %H:%M:%S');
+						$times .= "<br />". JText::_( 'Finish' ) .": ". $publish_down->format('Y-m-d H:i:s', true);
 					}
 				}
 
@@ -164,8 +164,8 @@ $this->app->document->addScript('assets:js/item.js');
 					if (isset($this->users[$row->created_by])) {
 						$author = $this->users[$row->created_by]->name;
 
-						if ($this->app->user->get()->authorise('com_users', 'manage')) {
-							$author = '<a href="'.$this->app->component->users->link(array('task' => 'edit', 'cid[]' => $row->created_by)).'" title="'.JText::_('Edit User').'">'. $author.'</a>';
+						if ($this->app->user->get()->authorise('core.edit', 'com_users')) {
+							$author = '<a href="'.$this->app->component->users->link(array('task' => 'edit', 'layout' => 'edit', 'view' => 'user', 'id' => $row->created_by)).'" title="'.JText::_('Edit User').'">'. $author.'</a>';
 						}
 					} else {
 						$author = JText::_('Guest');
