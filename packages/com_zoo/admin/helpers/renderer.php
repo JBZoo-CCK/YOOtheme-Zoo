@@ -188,8 +188,8 @@ class AppRenderer {
 		if (!isset($this->_layout_paths[$layout])) {
 			// init vars
 			$parts = explode($this->_separator, $layout);
-			$this->_layout = preg_replace('/[^A-Z0-9_\.-]/i', '', array_pop($parts));
-			$this->_layout_paths[$layout] = $this->_path->path(implode('/', $parts).'/'.$this->_layout.$this->_extension);
+			$this->_layout = preg_replace('/[^A-Z0-9_\.-]/i', '', end($parts));
+			$this->_layout_paths[$layout] = $this->_path->path(implode('/', $parts).$this->_extension);
 		}
 
 		return $this->_layout_paths[$layout];

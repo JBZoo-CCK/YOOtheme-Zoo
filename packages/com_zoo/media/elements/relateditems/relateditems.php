@@ -225,8 +225,7 @@ class ElementRelatedItems extends Element implements iSubmittable {
 		$query = array('controller' => 'item', 'task' => 'element', 'tmpl' => 'component', 'func' => 'selectRelateditem', 'object' => $this->identifier);
 
 		// filter types
-		$selectable_types = $this->config->get('selectable_type', array());
-		foreach ($selectable_types as $key => $selectable_type) {
+		foreach ($this->config->get('selectable_types', array()) as $key => $selectable_type) {
 			$query["type_filter[$key]"] = $selectable_type;
 		}
 
@@ -266,8 +265,7 @@ class ElementRelatedItems extends Element implements iSubmittable {
 				->clean($value->get('item'));
 
 		$table = $this->app->table->item;
-		$selectable_types = $this->config->get('selectable_type', array());
-        if (!empty($selectable_types)) {
+        if ($selectable_types = $this->config->get('selectable_types', array()) and !empty($selectable_types)) {
 			foreach ($items as $item) {
 				if (!empty($item) && !in_array($table->get($item)->type, $selectable_types)) {
 					throw new AppValidatorException('Please choose a correct related item.');

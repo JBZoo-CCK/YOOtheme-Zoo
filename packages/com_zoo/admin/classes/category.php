@@ -318,7 +318,7 @@ class Category {
 		if ($this->published != $val) {
 
 			// set state
-			$old_state   = $this->state;
+			$old_state   = $this->published;
 			$this->published = $val;
 
 			// autosave category ?

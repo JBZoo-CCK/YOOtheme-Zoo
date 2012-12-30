@@ -23,7 +23,7 @@ class ElementItemCommentsLink extends Element {
 			Boolean - true, on success
 	*/
 	public function hasValue($params = array()) {
-		return $this->_item && $this->_item->getApplication()->isCommentsEnabled() && ($this->_item->isCommentsEnabled() || $this->_item->getCommentsCount(1));
+		return $this->_item && $this->_item->getApplication()->isCommentsEnabled() && ($this->_item->isCommentsEnabled() || $this->_item->getCommentsCount());
 	}
 
 	/*
@@ -51,7 +51,7 @@ class ElementItemCommentsLink extends Element {
 
 		if (!empty($this->_item)) {
 			$params = $this->app->data->create($params);
-			$comment_count = $this->_item->getCommentsCount(1);
+			$comment_count = $this->_item->getCommentsCount();
 
 			if ($comment_count == 0) {
 				$text = $params->get('no_comments_text', JText::_('No comments'));

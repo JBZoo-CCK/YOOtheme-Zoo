@@ -58,4 +58,40 @@ class ApplicationHelper extends AppHelper {
 		return $apps;
 	}
 
+    public function getAlphaIndex($application) {
+
+		// set alphaindex
+		$alpha_index = $this->app->alphaindex->create($application->getPath().'/config/alphaindex.xml');
+
+		// add categories
+		$add_alpha_index = $application->getParams('site')->get('config.alpha_index', 0);
+
+		if ($add_alpha_index == 1 || $add_alpha_index == 3) {
+            $categories = $application->getCategoryTree(true, $this->app->user->get(), true);
+			$alpha_index->addObjects(array_filter($categories, create_function('$category', 'return $category->id != 0 && $category->totalItemCount();')), 'name');
+		}
+		// add items
+		if ($add_alpha_index == 2 || $add_alpha_index == 3) {
+
+			$db = $this->app->database;
+
+			// get date
+			$date = $this->app->date->create();
+			$now  = $db->Quote($date->toSQL());
+			$null = $db->Quote($db->getNullDate());
+
+			$query = 'SELECT DISTINCT BINARY CONVERT(LOWER(LEFT(name, 1)) USING utf8) letter'
+					.' FROM ' . ZOO_TABLE_ITEM
+					.' WHERE id IN (SELECT item_id FROM ' . ZOO_TABLE_CATEGORY_ITEM . ')'
+					.' AND application_id = '.(int) $application->id
+					.' AND '.$this->app->user->getDBAccessString()
+					.' AND state = 1'
+					.' AND (publish_up = '.$null.' OR publish_up <= '.$now.')'
+					.' AND (publish_down = '.$null.' OR publish_down >= '.$now.')';
+
+			$alpha_index->addObjects($db->queryObjectList($query), 'letter');
+		}
+		return $alpha_index;
+	}
+
 }

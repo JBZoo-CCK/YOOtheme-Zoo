@@ -41,7 +41,7 @@ class AppExporterJoomla extends AppExporter {
 	 */
 	public function export() {
 
-		$categories = $this->app->database->queryObjectList('SELECT * FROM #__categories ORDER BY lft ASC', 'id');
+		$categories = $this->app->database->queryObjectList('SELECT * FROM #__categories WHERE published != -2 ORDER BY lft ASC', 'id');
 
 		$category_aliases = array();
 		$ordered_categories = array();

@@ -38,7 +38,7 @@ class ElementRelatedCategories extends Element implements iSubmittable {
 			String - html
 	*/
 	public function render($params = array()) {
-		
+
 		$params = $this->app->data->create($params);
 		$category_links = array();
 		$categories = $this->app->table->category->getById($this->get('category', array()), true);

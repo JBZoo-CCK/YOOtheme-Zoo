@@ -27,7 +27,7 @@ class CacheHelper extends AppHelper {
 	 */
 	public function create($file, $hash = true, $lifetime = null, $type = 'file') {
 
-		if ($type == 'apc' && extension_loaded('apc') && @apc_cache_info() !== false) {
+		if ($type == 'apc' && extension_loaded('apc') && class_exists('APCIterator')) {
 			$cache = $this->app->object->create('AppApcCache', array(md5($file), $lifetime));
 		} else {
 			$cache = $this->app->object->create('AppCache', array($file, $hash, $lifetime));
@@ -256,7 +256,7 @@ class AppApcCache {
     }
 
     public function clear() {
-        $cache = new APCIterator('user', '/^'.preg_quote($this->_prefix).'-/');
+        $cache = new APCIterator('user', '/^'.preg_quote($this->prefix, '/').'-/');
 
         foreach ($cache as $entry) {
 			apc_delete($entry['key']);

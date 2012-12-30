@@ -13,6 +13,28 @@
 class ElementJoomlamodule extends Element implements iSubmittable {
 
 	/*
+		Function: hasValue
+			Checks if the element's value is set.
+
+	   Parameters:
+			$params - render parameter
+
+		Returns:
+			Boolean - true, on success
+	*/
+	public function hasValue($params = array()) {
+		// get modules
+		$modules = $this->app->module->load(true);
+		$value   = $this->get('value', $this->config->get('default'));
+
+		if ($value && isset($modules[$value])) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/*
 		Function: render
 			Renders the element.
 
@@ -25,27 +47,24 @@ class ElementJoomlamodule extends Element implements iSubmittable {
 	public function render($params = array()) {
 
 		// get modules
-		$modules = $this->app->module->load();
+		$modules = $this->app->module->load(true);
 		$value   = $this->get('value', $this->config->get('default'));
 
 		if ($value && isset($modules[$value])) {
-			if ($modules[$value]->published) {
+			$rendered = JModuleHelper::renderModule($modules[$value]);
 
-				$rendered = JModuleHelper::renderModule($modules[$value]);
+			if (isset($modules[$value]->params)) {
+				$module_params = $this->app->parameter->create($modules[$value]->params);
+				if ($moduleclass_sfx = $module_params->get('moduleclass_sfx')) {
+					$html[] = '<div class="'.$moduleclass_sfx.'">';
+					$html[] = $rendered;
+					$html[] = '</div>';
 
-				if (isset($modules[$value]->params)) {
-					$module_params = $this->app->parameter->create($modules[$value]->params);
-					if ($moduleclass_sfx = $module_params->get('moduleclass_sfx')) {
-						$html[] = '<div class="'.$moduleclass_sfx.'">';
-						$html[] = $rendered;
-						$html[] = '</div>';
-
-						return implode("\n", $html);
-					}
+					return implode("\n", $html);
 				}
-
-				return $rendered;
 			}
+
+			return $rendered;
 		}
 
 		return null;

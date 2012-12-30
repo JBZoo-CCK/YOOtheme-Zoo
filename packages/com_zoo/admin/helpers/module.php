@@ -21,7 +21,7 @@ class ModuleHelper extends AppHelper {
 	 * @return boolean true on success
 	 * @since 2.0
 	 */
-	public function load() {
+	public function load($published = false) {
 		static $modules;
 
 		if (isset($modules)) {
@@ -29,12 +29,27 @@ class ModuleHelper extends AppHelper {
 		}
 
 		$db = $this->app->database;
+
 		$query = "SELECT id, title, module, position, content, showtitle, params, published"
 				." FROM #__modules AS m"
 				." LEFT JOIN #__modules_menu AS mm ON mm.moduleid = m.id"
 				." WHERE "
-				."m.".$this->app->user->getDBAccessString()
-				." AND m.client_id = 0"
+				."m.".$this->app->user->getDBAccessString();
+
+		// Fetch only published modules
+		if ($published) {
+
+            // get date
+            $date = $this->app->date->create();
+            $now  = $db->Quote($date->toSQL());
+            $null = $db->Quote($db->getNullDate());
+
+			$query .= " AND published = 1"
+					. " AND (publish_up = ".$null." OR publish_up <= ".$now.")"
+					. " AND (publish_down = ".$null." OR publish_down >= ".$now.")";
+		}
+
+		$query .= " AND m.client_id = 0"
 				." ORDER BY position, ordering";
 
 		$db->setQuery($query);

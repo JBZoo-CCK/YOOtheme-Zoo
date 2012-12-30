@@ -65,8 +65,13 @@ class ItemRenderer extends PositionRenderer {
 	public function checkPosition($position) {
 
 		$user = $this->app->user->get();
-		foreach ($this->_getConfigPosition($position) as $data) {
+		foreach ($this->_getConfigPosition($position) as $index => $data) {
             if ($element = $this->_item->getElement($data['element'])) {
+
+                $data['_layout'] = $this->_layout;
+                $data['_position'] = $position;
+                $data['_index'] = $index;
+
                 if ($element->canAccess($user) && $element->hasValue($this->app->data->create($data))) {
 
 					// trigger elements beforedisplay event
@@ -106,7 +111,7 @@ class ItemRenderer extends PositionRenderer {
 				$parts = explode('.', $dir);
 				$this->_layout = array_pop($parts);
 			}
-			
+
 			// proceede with checking
 			foreach ($positions['positions'] as $position => $title) {
 				if ($this->checkPosition($position)) {
@@ -141,12 +146,16 @@ class ItemRenderer extends PositionRenderer {
 		$layout = $this->_layout;
 
 		// render elements
-		foreach ($this->_getConfigPosition($position) as $data) {
+		foreach ($this->_getConfigPosition($position) as $index => $data) {
             if ($element = $this->_item->getElement($data['element'])) {
 
 				if (!$element->canAccess($user)) {
 					continue;
 				}
+
+                $data['_layout'] = $this->_layout;
+                $data['_position'] = $position;
+                $data['_index'] = $index;
 
                 // set params
                 $params = array_merge($data, $args);

@@ -20,4 +20,4 @@ foreach ($application->getTypes() as $type) {
 	$options[] = $this->app->html->_('select.option', $type->id, JText::_($type->name));
 }
 
-echo $this->app->html->_('select.genericlist', $options, $control_name.'[selectable_type][]', $attributes, 'value', 'text', $config->get('selectable_type', array()));
+echo $this->app->html->_('select.genericlist', $options, $control_name.'[selectable_types][]', $attributes, 'value', 'text', $config->get('selectable_types', array()));

@@ -91,7 +91,7 @@ class CommentController extends AppController {
 			'select'     => 'a.*',
 			'from'       => ZOO_TABLE_COMMENT.' AS a LEFT JOIN '.ZOO_TABLE_ITEM.' AS b ON a.item_id = b.id',
 			'conditions' => array(implode(' AND ', $where)),
-			'order'      => 'created DESC');
+			'order'      => 'a.created DESC');
 
 		// query comment table
 		$count = $this->table->count($options);

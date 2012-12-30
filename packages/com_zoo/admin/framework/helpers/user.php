@@ -206,7 +206,7 @@ class UserAppHelper extends AppHelper {
 	 * @since 1.0.0
 	 */
     public function isJoomlaAdmin(JUser $user) {
-		return $user->authorise('core.login.admin');
+		return $user->authorise('core.login.admin', 'root.1');
     }
 
 	/**
@@ -219,7 +219,7 @@ class UserAppHelper extends AppHelper {
 	 * @since 1.0.0
 	 */
     public function isJoomlaSuperAdmin(JUser $user) {
-		return $user->authorise('core.admin');
+		return $user->authorise('core.admin', 'root.1');
     }
 
 	/**

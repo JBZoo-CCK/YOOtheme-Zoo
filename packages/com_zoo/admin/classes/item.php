@@ -15,7 +15,7 @@ class Item {
 
     /**
      * The id of the item
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -23,7 +23,7 @@ class Item {
 
     /**
      * The id of the application the item belongs to
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -31,7 +31,7 @@ class Item {
 
     /**
      * The type identifier of the Item
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -39,7 +39,7 @@ class Item {
 
     /**
      * The name of the item
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -47,7 +47,7 @@ class Item {
 
     /**
      * The alias of the item
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -55,7 +55,7 @@ class Item {
 
     /**
      * The creation date of the item in mysql DATETIME format
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -63,7 +63,7 @@ class Item {
 
     /**
      * The last modified date of the item in mysql DATETIME format
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -71,7 +71,7 @@ class Item {
 
     /**
      * The id of the user that last modified the item
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -79,7 +79,7 @@ class Item {
 
     /**
      * The date from which the item should be published
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -87,7 +87,7 @@ class Item {
 
     /**
      * The date up until the item should be published
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -95,7 +95,7 @@ class Item {
 
    	/**
    	 * The item priority. An higher priority means that an item should be shown before
-   	 * 
+   	 *
    	 * @var int
    	 * @since 2.0
    	 */
@@ -103,7 +103,7 @@ class Item {
 
     /**
      * Hits count for the item
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -111,7 +111,7 @@ class Item {
 
     /**
      * Item published state
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -119,7 +119,7 @@ class Item {
 
     /**
      * If an item should be searchable
-     * 
+     *
      * @var boolean
      * @since 2.0
      */
@@ -127,7 +127,7 @@ class Item {
 
     /**
      * The access level required to see this item
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -135,7 +135,7 @@ class Item {
 
     /**
      * The id of the user that created the item
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -143,7 +143,7 @@ class Item {
 
     /**
      * The name of the user that created the item
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -151,7 +151,7 @@ class Item {
 
     /**
      * The item parameters
-     * 
+     *
      * @var ParameterData
      * @since 2.0
      */
@@ -159,7 +159,7 @@ class Item {
 
     /**
      * The elements of the item encoded in json format
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -167,7 +167,7 @@ class Item {
 
     /**
      * A reference to the global App object
-     * 
+     *
      * @var App
      * @since 2.0
      */
@@ -175,7 +175,7 @@ class Item {
 
     /**
      * The item type
-     * 
+     *
      * @var Type
      * @since 2.0
      */
@@ -183,7 +183,7 @@ class Item {
 
     /**
      * The list of elements of the item
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -191,7 +191,7 @@ class Item {
 
     /**
      * The list of tags for this item
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -199,7 +199,7 @@ class Item {
 
     /**
      * The primary category for this item
-     * 
+     *
      * @var Category
      * @since 2.0
      */
@@ -207,7 +207,7 @@ class Item {
 
     /**
      * The related categories for this item
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -215,7 +215,7 @@ class Item {
 
     /**
      * The ids of the realated categories for this item
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -239,7 +239,7 @@ class Item {
 
 	/**
 	 * Get the Application which the item belongs to
-	 * 
+	 *
 	 * @return Application The application
 	 *
 	 * @since 2.0
@@ -250,7 +250,7 @@ class Item {
 
 	/**
 	 * Get the item Type
-	 * 
+	 *
 	 * @return Type The item Type
 	 *
 	 * @since 2.0
@@ -266,7 +266,7 @@ class Item {
 
 	/**
 	 * Get the name of the user that created the item
-	 * 
+	 *
 	 * @return string The name of the author
 	 *
 	 * @since 2.0
@@ -289,7 +289,7 @@ class Item {
 
 	/**
 	 * Get the item published state
-	 * 
+	 *
 	 * @return int The item state
 	 *
 	 * @since 2.0
@@ -300,7 +300,7 @@ class Item {
 
 	/**
 	 * Set the item published state
-	 * 
+	 *
 	 * @param int  $state The new item state
 	 * @param boolean $save  If the change should be saved to the database
 	 *
@@ -330,7 +330,7 @@ class Item {
 
 	/**
 	 * If an item is searchable
-	 * 
+	 *
 	 * @return boolean If an item is searchable
 	 *
 	 * @since 2.0
@@ -341,7 +341,7 @@ class Item {
 
 	/**
 	 * Set if an item should be searchable
-	 * 
+	 *
 	 * @param boolean $val If the item should be searchable
 	 *
 	 * @return Item $this for chaining support
@@ -355,9 +355,9 @@ class Item {
 
 	/**
 	 * Get an element object out of this item
-	 * 
+	 *
 	 * @param  string $identifier The element identifier
-	 * 
+	 *
 	 * @return Element             The element object
 	 *
 	 * @since 2.0
@@ -379,9 +379,9 @@ class Item {
 
 	/**
 	 * Get a list of the Core Elements
-	 * 
+	 *
 	 * @return array The list of core elements
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function getCoreElements() {
@@ -400,7 +400,7 @@ class Item {
 
 	/**
 	 * Get the list of elements
-	 * 
+	 *
 	 * @return array The element list
 	 *
 	 * @since 2.0
@@ -422,8 +422,19 @@ class Item {
 	}
 
 	/**
+	 * Get a list of elements filtered by type
+	 *
+	 * @return array The element list
+	 *
+	 * @since 3.0.6
+	 */
+    public function getElementsByType($type) {
+        return array_filter($this->getElements(), create_function('$element', 'return $element->getElementType() == "'.$type.'";'));
+    }
+
+	/**
 	 * Get a list of elements that support submissions
-	 * 
+	 *
 	 * @return array The submittable elements
 	 *
 	 * @since 2.0
@@ -434,9 +445,9 @@ class Item {
 
 	/**
 	 * Get the related categories for this item
-	 * 
+	 *
 	 * @param  boolean $published Fetch only the published categories
-	 * 
+	 *
 	 * @return array             The list of categories
 	 *
 	 * @since 2.0
@@ -450,9 +461,9 @@ class Item {
 
 	/**
 	 * Get the related categories ids
-	 * 
+	 *
 	 * @param  boolean $published Fetch the ids of the published categories only
-	 * 
+	 *
 	 * @return array             The list of categories ids
 	 *
 	 * @since 2.0
@@ -466,7 +477,7 @@ class Item {
 
 	/**
 	 * Get the primary category
-	 * 
+	 *
 	 * @return Category Get the primary category
 	 *
 	 * @since 2.0
@@ -484,7 +495,7 @@ class Item {
 
 	/**
 	 * Get the id of the primary category
-	 * 
+	 *
 	 * @return int The id of the primary category
 	 *
 	 * @since 2.0
@@ -495,9 +506,9 @@ class Item {
 
 	/**
 	 * Get the parameters for the item
-	 * 
+	 *
 	 * @param  string $for The scope for the parameters (could be 'site' or all)
-	 * 
+	 *
 	 * @return ParameterData      The parameters
 	 *
 	 * @since 2.0
@@ -517,7 +528,7 @@ class Item {
 
 	/**
 	 * Get the tags
-	 * 
+	 *
 	 * @return array The list of tags
 	 *
 	 * @since 2.0
@@ -533,11 +544,11 @@ class Item {
 
 	/**
 	 * The the item tags
-	 * 
+	 *
 	 * @param array $tags The tags
 	 *
 	 * @return Item $this for chaining support
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function setTags($tags = array()) {
@@ -549,9 +560,9 @@ class Item {
 
 	/**
 	 * Check if the given usen can access this item
-	 * 
+	 *
 	 * @param  JUser $user The user to check
-	 * 
+	 *
 	 * @return boolean       If the user can access the item
 	 *
 	 * @since 2.0
@@ -562,7 +573,7 @@ class Item {
 
 	/**
 	 * Raise the hit count for this item saving hit to the database
-	 * 
+	 *
 	 * @return boolean If the operation was successful
 	 *
 	 * @since 2.0
@@ -573,7 +584,7 @@ class Item {
 
 	/**
 	 * Get the list of comments
-	 * 
+	 *
 	 * @return array The list of comments
 	 *
 	 * @since 2.0
@@ -584,7 +595,7 @@ class Item {
 
 	/**
 	 * Get the comment list as a tree
-	 * 
+	 *
 	 * @return array The comment tree
 	 *
 	 * @since 2.0
@@ -595,20 +606,20 @@ class Item {
 
 	/**
 	 * Get the total number of comments
-	 * 
+	 *
 	 * @param  int $state The state of the comments (Default: 1 => approved)
-	 * 
+	 *
 	 * @return int         The total number of comments
 	 *
 	 * @since 2.0
 	 */
 	public function getCommentsCount($state = 1) {
-		return $this->app->table->comment->count(array('conditions' => array('item_id = ? AND state = ?', $this->id, $state)));
+		return $this->app->table->comment->count(array('select' => 'id', 'conditions' => array('item_id = ? AND state = ?', $this->id, $state)));
 	}
 
 	/**
 	 * Check if the item is published (including the publish dates)
-	 * 
+	 *
 	 * @return boolean True if the item is published
 	 *
 	 * @since 2.0
@@ -626,7 +637,7 @@ class Item {
 
 	/**
 	 * Check if the comments are enabled for this item and in the global app config
-	 * 
+	 *
 	 * @return boolean If the comments are enabled
 	 *
 	 * @since 2.0
@@ -637,10 +648,10 @@ class Item {
 
 	/**
 	 * Set an email address as a subscriber to the item comments
-	 * 
+	 *
 	 * @param  string $mail The email to subscribe
 	 * @param  string $name The name of the owner of the email
-	 * 
+	 *
 	 * @return Item       $this for chaining support
 	 *
 	 * @since 2.0
@@ -658,9 +669,9 @@ class Item {
 
 	/**
 	 * Unsubscribe the email from the list of subscribers
-	 * 
+	 *
 	 * @param  string $mail The email to unsubscribe
-	 * 
+	 *
 	 * @return Item       $this for chaining support
 	 *
 	 * @since 2.0
@@ -678,7 +689,7 @@ class Item {
 
 	/**
 	 * Get the list of the subscribers for this item
-	 * 
+	 *
 	 * @return array The list of subscribers
 	 *
 	 * @since 2.0

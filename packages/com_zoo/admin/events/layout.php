@@ -8,7 +8,7 @@
 
 /**
  * Deals with item events.
- * 
+ *
  * @package Component.Events
  */
 class LayoutEvent {
@@ -38,7 +38,7 @@ class LayoutEvent {
 				if ($app->path->path("plugins:$plugin_type/$plugin/renderer")) {
 					$resource = "plugins:$plugin_type/$plugin/$plugin.xml";
 					$name = ($xml = simplexml_load_file($app->path->path($resource))) && $xml->getName() == 'extension' ? (string) $xml->name : $plugin;
-					$name = preg_replace('/^\w* - (.*)/i', '$1', $name);
+					$name = rtrim($name, ' - ZOO');
 					$extensions[$name] = array('type' => 'plugin', 'name' => $name, 'path' => $app->path->path("plugins:$plugin_type/$plugin"));
 				}
 			}

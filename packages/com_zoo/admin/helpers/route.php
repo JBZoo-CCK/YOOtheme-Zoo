@@ -63,7 +63,7 @@ class RouteHelper extends AppHelper {
 		}
 
 		if ($app->request->getCmd('task') == 'category' || $app->request->getCmd('view') == 'category') {
-			$this->_category_id = (int) $app->request->getInt('category_id', $app->system->application->getParams()->get('category'));
+			$this->_category_id = (int) $app->request->getInt('category_id', (method_exists($app->system->application, 'getParams') ? $app->system->application->getParams()->get('category') : null));
 		}
 
 		if ($menu_item = $app->menu->getActive()) {

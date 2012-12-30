@@ -8,14 +8,14 @@
 
 /**
  * Class for reading and writing in various formats
- * 
+ *
  * @package Framework.Classes
  */
 class AppData extends ArrayObject {
 
 	/**
 	 * Class constructor
-	 * 
+	 *
 	 * @param array $data The data array
 	 */
 	public function __construct($data = array()) {
@@ -24,11 +24,11 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Checks if the given key is present
-	 * 
+	 *
 	 * @param string $name The key to check
-	 * 
+	 *
 	 * @return boolean If the key was found
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function has($name) {
@@ -37,12 +37,12 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Get a value from the data given its key
-	 * 
+	 *
 	 * @param string $key The key used to fetch the data
 	 * @param mixed $default The default value
-	 * 
+	 *
 	 * @return mixed The fetched value
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function get($key, $default = null) {
@@ -56,40 +56,40 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Set a value in the data
-	 * 
+	 *
 	 * @param string $name The key used to set the value
 	 * @param mixed $value The value to set
-	 * 
+	 *
 	 * @return AppData The AppData object itself to allow chaining
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function set($name, $value) {
 		$this->offsetSet($name, $value);
 		return $this;
 	}
-	
+
 	/**
 	 * Remove a value from the data
-	 * 
+	 *
 	 * @param string $name The key of the data to remove
-	 * 
+	 *
 	 * @return AppData The AppData object itself to allow chaining
-	 * 
-	 * @since 1.0.0 
+	 *
+	 * @since 1.0.0
 	 */
 	public function remove($name) {
 		$this->offsetUnset($name);
 		return $this;
 	}
-	
+
 	/**
 	 * Magic method to allow for correct isset() calls
-	 * 
+	 *
 	 * @param string $name The key to search for
-	 * 
+	 *
 	 * @return boolean If the value was found
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function __isset($name) {
@@ -98,11 +98,11 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Magic method to get values as object properties
-	 * 
+	 *
 	 * @param string $name The key of the data to fetch
-	 * 
+	 *
 	 * @return mixed The value for the given key
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function __get($name) {
@@ -111,10 +111,10 @@ class AppData extends ArrayObject {
 
  	/**
 	 * Magic method to set values through object properties
-	 * 
+	 *
 	 * @param string $name The key of the data to set
 	 * @param mixed $value The value to set
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function __set($name, $value) {
@@ -123,9 +123,9 @@ class AppData extends ArrayObject {
 
  	/**
 	 * Magic method to unset values using unset()
-	 * 
+	 *
 	 * @param string $name The key of the data to set
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function __unset($name) {
@@ -134,12 +134,12 @@ class AppData extends ArrayObject {
 
  	/**
 	 * Magic method to convert the data to a string
-	 * 
+	 *
 	 * Returns a serialized version of the data contained in
 	 * the data object using serialize()
-	 * 
+	 *
 	 * @return string A serialized version of the data
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
     public function __toString() {
@@ -148,11 +148,11 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Utility Method to serialize the given data
-	 * 
+	 *
 	 * @param mixed $data The data to serialize
-	 * 
+	 *
 	 * @return string The serialized data
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function _write($data) {
@@ -161,21 +161,21 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Find a key in the data recursively
-	 * 
-	 * This method finds the given key, searching also in any array or 
-	 * object that's nested under the current data object. 
 	 *
-	 * Example: 
+	 * This method finds the given key, searching also in any array or
+	 * object that's nested under the current data object.
+	 *
+	 * Example:
 	 * <code>
 	 * $data->find('parentkey.subkey');
 	 * </code>
-	 * 
+	 *
 	 * @param string $key The key to search for. Can be composed using $separator as the key/subkey separator
 	 * @param mixed $default The default value
 	 * @param string $separator The separator to use when searching for subkeys. Default is '.'
-	 * 
+	 *
 	 * @return mixed The searched value
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function find($key, $default = null, $separator = '.') {
@@ -196,12 +196,22 @@ class AppData extends ArrayObject {
 
 			// handle ArrayObject and Array
 			if (($data instanceof ArrayObject || is_array($data)) && isset($data[$part])) {
+
+                if ($data[$part] === null) {
+                    return $default;
+                }
+
 				$data =& $data[$part];
 				continue;
 			}
 
 			// handle object
 			if (is_object($data) && isset($data->$part)) {
+
+                if ($data->$part === null) {
+                    return $default;
+                }
+
 				$data =& $data->$part;
 				continue;
 			}
@@ -215,12 +225,12 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Find a value also in nested arrays/objects
-	 * 
+	 *
 	 * @param mixed $needle The value to search for
-	 * 
+	 *
 	 * @return string The key of that value
-	 * 
-	 * @since 1.0.0 
+	 *
+	 * @since 1.0.0
 	 */
 	public function searchRecursive($needle) {
 		$aIt = new RecursiveArrayIterator($this);
@@ -239,9 +249,9 @@ class AppData extends ArrayObject {
 
 	/**
 	 * Return flattened array copy. Keys are <b>NOT</b> preserved.
-	 * 
+	 *
 	 * @return array The flattened array copy
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function flattenRecursive() {

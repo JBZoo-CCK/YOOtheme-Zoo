@@ -8,13 +8,13 @@
 
 /**
  * Deals with application events.
- * 
+ *
  * @package Component.Events
  */
 class ApplicationEvent {
 
 	/**
-	 * When an application is loaded on the frontend, 
+	 * When an application is loaded on the frontend,
 	 * load the language files from the app folder too
 	 *
 	 * @param  AppEvent 	$event The event triggered
@@ -81,6 +81,24 @@ class ApplicationEvent {
 
 		// return the tab object
 		$event['tab'] = $tab;
+	}
+
+	/**
+	 * Placeholder for the configParams event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
+	public static function configParams($event) {
+
+		$application = $event->getSubject();
+
+		// set events ReturnValue after modifying $params
+		$params = $event->getReturnValue();
+
+        $params[] = '<application><params group="application-config"><param name="test" type="text" size="3" default="15" label="Test Param" description="Test Param Description" /></params></application>';
+
+		$event->setReturnValue($params);
+
 	}
 
 }

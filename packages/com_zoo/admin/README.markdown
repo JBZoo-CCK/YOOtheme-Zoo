@@ -1,13 +1,31 @@
 # ZOO #
 
-- Version: 3.0.5
+- Version: 3.0.8
 - Date: October 2012
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
 
+    3.0.8
+    # fixed date display in items list view
+    # fixed issue with item counting introduced in 3.0.7
+
+	3.0.7
+    # fixed rss feed link
+    # fixed issue with category assignment (submission)
+	# fixed issue with limiting related layout (Related Items Element)
+
+    3.0.6
+    ^ improved Google geocoding, by trying to geocode during item save
+    + added application:configparams event (3rd party developers)
+    # fixed "Add Item" not clickable on MySubmissions view (iOS)
+    # fixed Smartsearch indexer (Joomla 3.0)
+    # fixed Joomla import (trashed categories are no longer imported)
+    # fixed Joomlamodule Element (doesn't show none published module any longer)
+
     3.0.5
+    + added item:beforeSaveCategoryRelations event (3rd party developers)
     # fixed Select Element submission
     # fixed settings on GoogleMaps element
     # fixed issue with element position assignment

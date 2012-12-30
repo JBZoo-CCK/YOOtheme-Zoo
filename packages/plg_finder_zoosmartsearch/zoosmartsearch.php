@@ -89,7 +89,11 @@ class plgFinderZOOSmartSearch extends FinderIndexerAdapter {
 
 		FinderIndexerHelper::getContentExtras($item);
 
-		FinderIndexer::index($item);
+        if ($this->app->joomla->version->isCompatible('3.0')) {
+            $this->indexer->index($item);
+        } else {
+            FinderIndexer::index($item);
+        }
 
 	}
 

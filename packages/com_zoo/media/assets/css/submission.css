@@ -762,6 +762,7 @@ ul.as-selections li.as-original input.ui-autocomplete-loading { background: url(
 }
 
 .mysubmissions .toolbar .submission-add .trigger {
+    display: block;
 	position: relative;
 	z-index: 2;
 	height: 28px;
@@ -792,7 +793,6 @@ ul.as-selections li.as-original input.ui-autocomplete-loading { background: url(
 	font-size: 12px;
 	line-height: 25px;
 }
-
 .mysubmissions .toolbar .submission-add:hover div.links { display: block; }
 
 .mysubmissions .toolbar input#zoo-search {
