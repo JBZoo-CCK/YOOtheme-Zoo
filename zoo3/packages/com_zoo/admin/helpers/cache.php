@@ -256,7 +256,7 @@ class AppApcCache {
     }
 
     public function clear() {
-        $cache = new APCIterator('user', '/^'.preg_quote($this->prefix, '/').'-/');
+        $cache = new APCIterator('user', '/^'.preg_quote($this->_prefix, '/').'-/');
 
         foreach ($cache as $entry) {
 			apc_delete($entry['key']);

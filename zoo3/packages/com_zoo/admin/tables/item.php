@@ -572,7 +572,7 @@ class ItemTable extends AppTable {
 	}
 
 	public function getItemCountByUser($application_id, $user_id, $type = null, $search = null, $published = false) {
-		return $this->count($this->_getByUserOptions($application_id, $user_id, $type, $search, $published));
+		return $this->count(array_merge($this->_getByUserOptions($application_id, $user_id, $type, $search, $published), array('select' => 'a.id')));
 	}
 
 	protected function _getByUserOptions($application_id, $user_id, $type = null, $search = null, $published = false) {

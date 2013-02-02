@@ -70,8 +70,11 @@ class CommentHelper extends AppHelper {
 			// get comments and build tree
 			$comments = $item->getCommentTree(Comment::STATE_APPROVED);
 
-			// Only on 2.5
-			$captcha = $this->app->joomla->version->isCompatible('2.5') && ($plugin = $params->get('captcha', false)) ? JCaptcha::getInstance($plugin) : false;
+			// build captcha
+			$captcha = false;
+			if ($plugin = $params->get('captcha', false) and (!$params->get('captcha_guest_only', 0) or !$this->app->user->get()->id)) {
+				$captcha = JCaptcha::getInstance($plugin);
+			}
 
 			if ($item->isCommentsEnabled() || count($comments)-1) {
 				// create comments html

@@ -334,7 +334,7 @@ class Application {
 	 * @since 2.0
 	 */
 	public function getCategoryCount() {
-		return $this->app->table->category->count(array('conditions' => array('application_id=?',$this->id)));
+		return $this->app->table->category->count(array('select' => 'id', 'conditions' => array('application_id=?',$this->id)));
 	}
 
 	/**

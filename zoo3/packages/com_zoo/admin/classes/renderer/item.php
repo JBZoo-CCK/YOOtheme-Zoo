@@ -64,7 +64,6 @@ class ItemRenderer extends PositionRenderer {
 	 */
 	public function checkPosition($position) {
 
-		$user = $this->app->user->get();
 		foreach ($this->_getConfigPosition($position) as $index => $data) {
             if ($element = $this->_item->getElement($data['element'])) {
 
@@ -72,7 +71,7 @@ class ItemRenderer extends PositionRenderer {
                 $data['_position'] = $position;
                 $data['_index'] = $index;
 
-                if ($element->canAccess($user) && $element->hasValue($this->app->data->create($data))) {
+                if ($element->canAccess() && $element->hasValue($this->app->data->create($data))) {
 
 					// trigger elements beforedisplay event
 					$render = true;
@@ -85,40 +84,6 @@ class ItemRenderer extends PositionRenderer {
             }
         }
 
-		return false;
-	}
-
-	/**
-	 * Check if any of the positions from a layout generates some output
-	 *
-	 * @param string $dir Point separated path to layout, last part is layout
-     * @param Item $item The Item to be checked (default: null)
-	 *
-	 * @return boolean If any of the positions generates some kind of output
-	 *
-	 * @since 3.0.4
-	 */
-	public function checkPositions($dir, $item = null) {
-
-		$positions = $this->getPositions($dir);
-		if (isset($positions['positions']) && is_array($positions['positions'])) {
-
-			// set item
-			$this->_item = isset($this->_item) ? $this->_item : $item;
-
-			// set layout
-			if (!isset($this->_layout)) {
-				$parts = explode('.', $dir);
-				$this->_layout = array_pop($parts);
-			}
-
-			// proceede with checking
-			foreach ($positions['positions'] as $position => $title) {
-				if ($this->checkPosition($position)) {
-					return true;
-				}
-			}
-		}
 		return false;
 	}
 
@@ -137,7 +102,6 @@ class ItemRenderer extends PositionRenderer {
 		// init vars
 		$elements = array();
 		$output   = array();
-		$user	  = $this->app->user->get();
 
 		// get style
 		$style = isset($args['style']) ? $args['style'] : 'default';
@@ -149,7 +113,7 @@ class ItemRenderer extends PositionRenderer {
 		foreach ($this->_getConfigPosition($position) as $index => $data) {
             if ($element = $this->_item->getElement($data['element'])) {
 
-				if (!$element->canAccess($user)) {
+				if (!$element->canAccess()) {
 					continue;
 				}
 

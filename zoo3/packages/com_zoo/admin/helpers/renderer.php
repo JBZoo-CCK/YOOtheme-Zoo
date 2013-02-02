@@ -413,6 +413,63 @@ abstract class PositionRenderer extends AppRenderer {
 		return (bool) $this->_getPath($dir);
 	}
 
+	/**
+	 * Check if any of the positions from a layout generates some output
+	 *
+	 * @param string $dir Point separated path to layout, last part is layout
+     * @param Item $item The Item to be checked (default: null)
+	 *
+	 * @return boolean If any of the positions generates some kind of output
+	 *
+	 * @since 3.0.4
+	 */
+	public function checkPositions($dir, $item = null) {
+
+		$positions = $this->getPositions($dir);
+		if (isset($positions['positions']) && is_array($positions['positions'])) {
+
+			// set item
+			$this->_item = isset($this->_item) ? $this->_item : $item;
+
+			// set layout
+			if (!isset($this->_layout)) {
+				$parts = explode('.', $dir);
+				$this->_layout = array_pop($parts);
+			}
+
+			// proceede with checking
+			foreach ($positions['positions'] as $position => $title) {
+				if ($this->checkPosition($position)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if a position generates some output
+	 *
+	 * @param string $position The name of the position to check
+	 *
+	 * @return boolean If the position generates some kind of output
+	 *
+	 * @since 2.0
+	 */
+	public abstract function checkPosition($position);
+
+	/**
+	 * Render the output of the position
+	 *
+	 * @param string $position The name of the position to render
+	 * @param array $args The list of arguments to pass on to the layout
+	 *
+	 * @return string The html code generated
+	 *
+	 * @since 2.0
+	 */
+	public abstract function renderPosition($position, $args = array());
+
 }
 
 /**

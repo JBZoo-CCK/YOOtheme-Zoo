@@ -7,7 +7,7 @@
 */
 
 /**
- * Exporter for Joomla 2.5 articles and categories
+ * Exporter for Joomla 2.5/3.0 articles and categories
  *
  * @package Component.Classes.Exporters
  */

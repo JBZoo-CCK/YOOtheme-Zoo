@@ -8,14 +8,14 @@
 
 /**
  * Render submissions for an item
- * 
+ *
  * @package Component.Classes.Renderers
  */
 class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * The item to render the submission for
-	 * 
+	 *
 	 * @var Item The item
 	 * @since 2.0
 	 */
@@ -23,7 +23,7 @@ class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * The submission object to render
-	 * 
+	 *
 	 * @var Submission The submission to render
 	 * @since 2.0
 	 */
@@ -31,12 +31,12 @@ class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * Render the submission using a layout
-	 * 
+	 *
 	 * @param string $layout The layout to use
 	 * @param array $args The list of arguments to pass on to the layout
-	 * 
+	 *
 	 * @return string The html code generated
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function render($layout, $args = array()) {
@@ -51,27 +51,47 @@ class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * Check if a position generates output
-	 * 
+	 *
 	 * @param string $position The position to check
-	 * 
+	 *
 	 * @return boolean If the position generates output
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function checkPosition($position) {
-		$data_array = $this->_getConfigPosition($position);
-		return (bool) count((array) $data_array);
+
+		foreach ($this->_getConfigPosition($position) as $index => $data) {
+            if ($element = $this->_item->getElement($data['element'])) {
+
+                $data['_layout'] = $this->_layout;
+                $data['_position'] = $position;
+                $data['_index'] = $index;
+
+                if ($element->canAccess()) {
+
+					// trigger elements beforesubmissiondisplay event
+					$render = true;
+					$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'element:beforesubmissiondisplay', array('render' => &$render, 'element' => $element, 'params' => $data)));
+
+					if ($render) {
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 	/**
 	 * Check if the submission position generates output
-	 * 
+	 *
 	 * @param string $position The position to check
-	 * 
+	 *
 	 * @return boolean If the position generates output
-	 * 
+	 *
 	 * @deprecated 2.5 Use SubmissionRenderer::checkPosition() instead
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function checkSubmissionPosition($position) {
@@ -80,12 +100,12 @@ class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * Render the output of a position
-	 * 
+	 *
 	 * @param string $position The position to render
 	 * @param array $args A list of arguments to pass on to the layout
-	 * 
+	 *
 	 * @return string The html code generated
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function renderPosition($position, $args = array()) {
@@ -103,12 +123,16 @@ class SubmissionRenderer extends PositionRenderer {
 		$layout = $this->_layout;
 
 		// render elements
-        foreach ($this->_getConfigPosition($position) as $data) {
+        foreach ($this->_getConfigPosition($position) as $index => $data) {
             if (($element = $this->_item->getElement($data['element']))) {
 
 				if (!$element->canAccess()) {
 					continue;
 				}
+
+				$data['_layout'] = $this->_layout;
+                $data['_position'] = $position;
+                $data['_index'] = $index;
 
                 // set params
                 $params = array_merge((array) $data, $args);
@@ -121,14 +145,14 @@ class SubmissionRenderer extends PositionRenderer {
         foreach ($elements as $i => $data) {
             $params = array_merge(array('first' => ($i == 0), 'last' => ($i == count($elements)-1)), compact('trusted_mode', 'show_tooltip'), $data['params']);
 
-			// trigger elements beforedisplay event
+			// trigger elements beforesubmissiondisplay event
 			$render = true;
 			$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'element:beforesubmissiondisplay', array('render' => &$render, 'element' => $data['element'], 'params' => $params)));
 
 			if ($render) {
 				$output[$i] = parent::render("element.$style", array('element' => $data['element'], 'params' => $params));
 
-				// trigger elements afterdisplay event
+				// trigger elements aftersubmissiondisplay event
 				$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'element:aftersubmissiondisplay', array('html' => &$output[$i], 'element' => $data['element'], 'params' => $params)));
 			}
 
@@ -142,27 +166,27 @@ class SubmissionRenderer extends PositionRenderer {
 
 	/**
 	 * Render the output of a position
-	 * 
+	 *
 	 * @param string $position The position to render
 	 * @param array $args A list of arguments to pass on to the layout
-	 * 
+	 *
 	 * @return string The html code generated
-	 * 
+	 *
 	 * @deprecated 2.5 Use SubmissionRenderer::renderPosition() instead
-	 * 
+	 *
 	 * @since 2.0
-	 */	
+	 */
 	public function renderSubmissionPosition($position, $args = array()) {
 		return $this->renderPosition($position, $args);
 	}
 
 	/**
 	 * Get the configuration for this position
-	 * 
+	 *
 	 * @param string $position The name of the position
-	 * 
+	 *
 	 * @return JSONData The configuration object
-	 * 
+	 *
 	 * @since 2.0
 	 */
     protected function _getConfigPosition($position) {
