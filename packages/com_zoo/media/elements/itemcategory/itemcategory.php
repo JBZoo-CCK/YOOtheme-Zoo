@@ -105,6 +105,10 @@ class ElementItemCategory extends Element implements iSubmittable {
 			}
 		}
 
+        if ($params->get('required') && !count($value)) {
+            throw new AppValidatorException('Please choose a category');
+        }
+
 		// connect to submission aftersave event
 		$this->app->event->dispatcher->connect('submission:saved', array($this, 'aftersubmissionsave'));
 

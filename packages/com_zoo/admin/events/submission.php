@@ -8,7 +8,7 @@
 
 /**
  * Deals with submission events.
- * 
+ *
  * @package Component.Events
  */
 class SubmissionEvent {

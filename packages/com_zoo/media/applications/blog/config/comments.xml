@@ -76,6 +76,10 @@
 		<param name="mollom_private_key" type="text" size="55" default="" label="Mollom Private Key" description="The Mollom private key." />
 		<param name="@spacer" type="spacer" />
 		<param name="captcha" type="zooplugin" default="" label="Enable Captcha" description="Enabled Captcha on comment submission" folder="captcha" />
+		<param name="captcha_guest_only" type="radio" default="1" label="Guests only" description="">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</param>
 		<param name="@spacer" type="spacer" />
 		<param name="blacklist" type="textarea" cols="40" rows="10" default="" label="Blacklist" description="BLACKLIST_DESCRIPTION" />
 	</params>

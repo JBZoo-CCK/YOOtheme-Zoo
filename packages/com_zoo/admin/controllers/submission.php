@@ -109,13 +109,9 @@ class SubmissionController extends AppController {
 		// item edit select
 		$this->lists['select_item_edit'] = $this->app->html->_('select.booleanlist', 'params[item_edit]', null, $this->submission->getParams()->get('item_edit', false));
 
-		// Only on 2.5
-		$this->lists['select_item_captcha'] = false;
-		if ($this->app->joomla->version->isCompatible('2.5')) {
-			// item captcha select
-			$options = array($this->app->html->_('select.option', '', '- '.JText::_('Select Plugin').' -'));
-			$this->lists['select_item_captcha'] = $this->app->html->_('zoo.pluginlist', $options, 'params[captcha]', '', 'value', 'text', $this->submission->getParams()->get('captcha', null), null, true, 'captcha');
-		}
+		// item captcha select
+		$options = array($this->app->html->_('select.option', '', '- '.JText::_('Select Plugin').' -'));
+		$this->lists['select_item_captcha'] = $this->app->html->_('zoo.pluginlist', $options, 'params[captcha]', '', 'value', 'text', $this->submission->getParams()->get('captcha', null), null, true, 'captcha');
 
         // type select
         $this->types = array();
@@ -167,7 +163,7 @@ class SubmissionController extends AppController {
 			if (!strlen(trim($submission->alias))) {
 				$submission->alias = $this->app->string->sluggify($submission->name);
 			}
-			
+
             // generate unique slug
             $submission->alias = $this->app->alias->submission->getUniqueAlias($submission->id, $this->app->string->sluggify($submission->alias));
 
@@ -179,6 +175,7 @@ class SubmissionController extends AppController {
 				->set('item_edit', @$post['params']['item_edit'])
 				->set('max_submissions', @$post['params']['max_submissions'])
 				->set('captcha', @$post['params']['captcha'])
+				->set('captcha_guest_only', @$post['params']['captcha_guest_only'])
 				->set('email_notification', @$post['params']['email_notification'])
 				->set('config.', @$post['params']['config'])
 				->set('content.', @$post['params']['content']);

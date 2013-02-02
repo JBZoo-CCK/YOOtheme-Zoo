@@ -1116,6 +1116,7 @@ fieldset {
 }
 
 /* slug */
+.creation-form .guests-only,
 .creation-form .slug {
 	margin-top: 5px;
 	overflow: hidden;
@@ -2551,6 +2552,10 @@ div.col { float: left; }
 
 div.col.width-60 { min-width: 660px; }
 
+div.field label,
+div.field input,
+div.field select,
+div.field button,
 div.element label,
 div.element input,
 div.element select,

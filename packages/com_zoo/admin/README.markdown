@@ -1,11 +1,20 @@
 # ZOO #
 
-- Version: 3.0.8
-- Date: October 2012
+- Version: 3.0.9
+- Date: January 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.0.9
+	+ added option to show Captchas for guests only
+    # fixed pagination on mysubmissions view
+    # fixed item category submission (required state)
+	^ moved sh404SEF plugin to separate Joomla plugin
+	^ updated jQuery to 1.9
+	^ updated jQuery UI to 1.9.2
+	^ updated mediaelement.js to 2.10.1
 
     3.0.8
     # fixed date display in items list view

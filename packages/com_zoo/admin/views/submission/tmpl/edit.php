@@ -63,7 +63,13 @@
 				<?php if($this->lists['select_item_captcha']): ?>
 				<div class="element element-item-captcha">
 					<strong class="hasTip" title="<?php echo JText::_('CAPTCHA_DESCRIPTION'); ?>"><?php echo JText::_('Use Captcha'); ?></strong>
-					<?php echo $this->lists['select_item_captcha']; ?>
+					<div>
+						<?php echo $this->lists['select_item_captcha']; ?>
+						<div class="guests-only">
+							<input id="guests-only" type="checkbox" name="params[captcha_guest_only]" <?php echo $this->submission->getParams()->get('captcha_guest_only', false) ? 'checked="checked"' : ''; ?> />
+							<label for="guests-only"><?php echo JText::_('Guests only'); ?></label>
+						</div>
+					</div>
 				</div>
 				<?php endif; ?>
 			</fieldset>

@@ -492,212 +492,214 @@ class ImportHelper extends AppHelper {
 		$alias_matches = array();
 
 		while (($data = fgetcsv($handle, 0, $field_separator, $field_enclosure)) !== FALSE) {
-			if (!($contains_headers)) {
+			if (!$contains_headers) {
+				$contains_headers = false;
+				continue;
+			}
 
-				$item = false;
+			$item = false;
 
-				// First check: is there an _id specified? if so, try to load the item
-				if (isset($assignments['_id']) && is_array($assignments['_id'])) {
-					$column = current($assignments['_id']);
-					if ($id = (int) @$data[$column]) {
-						$item = $item_table->get($id);
-                        if ($item->application_id != $application->id) {
-                            $item = false;
-                        }
+			// First check: is there an _id specified? if so, try to load the item
+			if (isset($assignments['_id']) && is_array($assignments['_id'])) {
+				$column = current($assignments['_id']);
+				if ($id = (int) @$data[$column]) {
+					$item = $item_table->get($id);
+					if ($item->application_id != $application->id) {
+						$item = false;
 					}
-				}
-
-				if (!$item) {
-					$item = $this->app->object->create('Item');
-					$item->application_id = $application->id;
-					$item->type = $type;
-
-					// set access
-					$item->access = $access;
-
-					// store created by
-					$item->created_by = $user_id;
-
-					// set created, modified
-					$item->created = $item->modified = $now;
-
-					// store modified_by
-					$item->modified_by = $user_id;
-				}
-
-				// store element_data and item name
-				$item_categories = array();
-				$tags = array();
-				$elements = $item->getElements();
-				foreach ($assignments as $assignment => $columns) {
-					$column = current($columns);
-					switch ($assignment) {
-						case '_name':
-							$item->name = @$data[$column];
-							break;
-						case '_alias':
-							$item->alias = $this->app->string->sluggify(@$data[$column]);
-							break;
-						case '_created_by_alias':
-							$item->created_by_alias = @$data[$column];
-							break;
-						case '_created':
-							if (!empty($data[$column])) {
-								$item->created = $data[$column];
-							}
-							break;
-						default:
-							if (substr($assignment, 0, 9) == '_category') {
-								foreach ($columns as $column) {
-									$item_categories[] = @$data[$column];
-								}
-							} else if (substr($assignment, 0, 4) == '_tag') {
-								foreach ($columns as $column) {
-									$tags[] = @$data[$column];
-								}
-							} else if (isset($elements[$assignment])) {
-								switch ($elements[$assignment]->getElementType()) {
-									case 'text':
-									case 'textarea':
-									case 'link':
-									case 'email':
-									case 'date':
-										$element_data = array();
-										foreach ($columns as $column) {
-											if (is_numeric($data[$column]) || !empty($data[$column])) {
-												$element_data[$column] = array('value' => $data[$column]);
-											}
-										}
-										$elements[$assignment]->bindData($element_data);
-										break;
-									case 'country':
-										$element_data = array();
-										foreach ($columns as $column) {
-											if (!empty($data[$column])) {
-												$element_data['country'][] = $data[$column];
-											}
-										}
-										$elements[$assignment]->bindData($element_data);
-										break;
-									case 'select':
-									case 'radio':
-									case 'checkbox':
-										$element_data = array();
-										foreach ($columns as $column) {
-											if (is_numeric($data[$column]) || !empty($data[$column])) {
-												$element_data['option'][] = $data[$column];
-											}
-										}
-										$elements[$assignment]->bindData($element_data);
-										break;
-									case 'gallery':
-										$data[$column] = trim(@$data[$column], '/\\');
-										$elements[$assignment]->bindData(array('value' => $data[$column]));
-										break;
-									case 'image':
-									case 'download':
-										$elements[$assignment]->bindData(array('file' => @$data[$column]));
-										break;
-									case 'googlemaps':
-										$elements[$assignment]->bindData(array('location' => @$data[$column]));
-										break;
-								}
-							}
-							break;
-					}
-				}
-
-				$item->setTags($tags);
-
-				// If not alias was set, use the name to generate it
-				if (!strlen(trim($item->alias))) {
-					$item->alias = $this->app->string->sluggify($item->name);
-				}
-
-				if (empty($item->alias)) {
-					$item->alias = '42';
-				}
-
-				// set a valid category alias
-				$item->alias = $this->app->alias->item->getUniqueAlias($item->id, $item->alias);
-
-				if (!empty($item->name)) {
-
-					try {
-
-						$item_table->save($item);
-
-						// store categories
-						$related_categories = array();
-						foreach ($item_categories as $category_name) {
-							$names = array_filter(explode('///', $category_name));
-							$previous_id = 0;
-							$found = true;
-
-							for ($i = 0; $i < count($names); $i++) {
-
-								list($name, $alias) = array_pad(explode('|||', $names[$i]), 2, false);
-
-								// did the alias change?
-								if ($alias && isset($alias_matches[$alias])) {
-									$alias =  $alias_matches[$alias];
-								}
-
-								// try to find category through alias, if category is not found, try to match name
-								if (!($id = array_search($alias, $app_category_alias)) && !$alias) {
-									$id = array_search($name, $app_category_names);
-									foreach (array_keys($app_category_names, $name) as $key) {
-										if ($previous_id && isset($app_categories[$key]) && $app_categories[$key]->parent == $previous_id) {
-											$id = $key;
-										}
-									}
-								}
-								if (!$found || !$id) {
-
-									$found = false;
-
-									$category = $this->app->object->create('Category');
-									$category->application_id = $application->id;
-									$category->name = $name;
-									$category->parent = $previous_id;
-
-									// set a valid category alias
-									$category->alias = $this->app->alias->category->getUniqueAlias(0, $this->app->string->sluggify($alias ? $alias : $name));
-
-									try {
-
-										$category_table->save($category);
-										$app_categories[$category->id] = $category;
-										$app_category_names[$category->id] = $category->name;
-										$app_category_alias[$category->id] = $alias_matches[$alias] = $category->alias;
-										$id = $category->id;
-
-									} catch (CategoryTableException $e) {}
-								}
-								if ($id && $i == count($names) - 1) {
-									$related_categories[] = $id;
-								} else {
-									$previous_id = $id;
-								}
-							}
-						}
-
-						// add category to item relations
-						if (!empty($related_categories)) {
-
-							$this->app->category->saveCategoryItemRelations($item, $related_categories);
-
-							// make first category found primary category
-							if (!$item->getPrimaryCategoryId()) {
-								$item->getParams()->set('config.primary_category', $related_categories[0]);
-								$item_table->save($item);
-							}
-						}
-
-					} catch (ItemTableException $e) {}
 				}
 			}
-			$contains_headers = false;
+
+			if (!$item) {
+				$item = $this->app->object->create('Item');
+				$item->application_id = $application->id;
+				$item->type = $type;
+
+				// set access
+				$item->access = $access;
+
+				// store created by
+				$item->created_by = $user_id;
+
+				// set created, modified
+				$item->created = $item->modified = $now;
+
+				// store modified_by
+				$item->modified_by = $user_id;
+			}
+
+			// store element_data and item name
+			$item_categories = array();
+			$tags = array();
+			$elements = $item->getElements();
+			foreach ($assignments as $assignment => $columns) {
+				$column = current($columns);
+				switch ($assignment) {
+					case '_name':
+						$item->name = trim(@$data[$column]);
+						break;
+					case '_alias':
+						$item->alias = $this->app->string->sluggify(@$data[$column]);
+						break;
+					case '_created_by_alias':
+						$item->created_by_alias = @$data[$column];
+						break;
+					case '_created':
+						if (!empty($data[$column])) {
+							$item->created = $data[$column];
+						}
+						break;
+					default:
+						if (substr($assignment, 0, 9) == '_category') {
+							foreach ($columns as $column) {
+								$item_categories[] = @$data[$column];
+							}
+						} else if (substr($assignment, 0, 4) == '_tag') {
+							foreach ($columns as $column) {
+								$tags[] = @$data[$column];
+							}
+						} else if (isset($elements[$assignment])) {
+							switch ($elements[$assignment]->getElementType()) {
+								case 'text':
+								case 'textarea':
+								case 'link':
+								case 'email':
+								case 'date':
+									$element_data = array();
+									foreach ($columns as $column) {
+										if (is_numeric($data[$column]) || !empty($data[$column])) {
+											$element_data[$column] = array('value' => $data[$column]);
+										}
+									}
+									$elements[$assignment]->bindData($element_data);
+									break;
+								case 'country':
+									$element_data = array();
+									foreach ($columns as $column) {
+										if (!empty($data[$column])) {
+											$element_data['country'][] = $data[$column];
+										}
+									}
+									$elements[$assignment]->bindData($element_data);
+									break;
+								case 'select':
+								case 'radio':
+								case 'checkbox':
+									$element_data = array();
+									foreach ($columns as $column) {
+										if (is_numeric($data[$column]) || !empty($data[$column])) {
+											$element_data['option'][] = $data[$column];
+										}
+									}
+									$elements[$assignment]->bindData($element_data);
+									break;
+								case 'gallery':
+									$data[$column] = trim(@$data[$column], '/\\');
+									$elements[$assignment]->bindData(array('value' => $data[$column]));
+									break;
+								case 'image':
+								case 'download':
+									$elements[$assignment]->bindData(array('file' => @$data[$column]));
+									break;
+								case 'googlemaps':
+									$elements[$assignment]->bindData(array('location' => @$data[$column]));
+									break;
+							}
+						}
+						break;
+				}
+			}
+
+			if (empty($item->name)) {
+				continue;
+			}
+
+			$item->setTags($tags);
+
+			// If not alias was set, use the name to generate it
+			if (!strlen(trim($item->alias))) {
+				$item->alias = $this->app->string->sluggify($item->name);
+			}
+
+			if (empty($item->alias)) {
+				$item->alias = '42';
+			}
+
+			// set a valid category alias
+			$item->alias = $this->app->alias->item->getUniqueAlias($item->id, $item->alias);
+
+			try {
+
+				$item_table->save($item);
+
+				// store categories
+				$related_categories = array();
+				foreach ($item_categories as $category_name) {
+					$names = array_filter(explode('///', $category_name));
+					$previous_id = 0;
+					$found = true;
+
+					for ($i = 0; $i < count($names); $i++) {
+
+						list($name, $alias) = array_pad(explode('|||', $names[$i]), 2, false);
+
+						// did the alias change?
+						if ($alias && isset($alias_matches[$alias])) {
+							$alias =  $alias_matches[$alias];
+						}
+
+						// try to find category through alias, if category is not found, try to match name
+						if (!($id = array_search($alias, $app_category_alias)) && !$alias) {
+							$id = array_search($name, $app_category_names);
+							foreach (array_keys($app_category_names, $name) as $key) {
+								if ($previous_id && isset($app_categories[$key]) && $app_categories[$key]->parent == $previous_id) {
+									$id = $key;
+								}
+							}
+						}
+						if (!$found || !$id) {
+
+							$found = false;
+
+							$category = $this->app->object->create('Category');
+							$category->application_id = $application->id;
+							$category->name = trim($name);
+							$category->parent = $previous_id;
+
+							// set a valid category alias
+							$category->alias = $this->app->alias->category->getUniqueAlias(0, $this->app->string->sluggify($alias ? $alias : $name));
+
+							try {
+
+								$category_table->save($category);
+								$app_categories[$category->id] = $category;
+								$app_category_names[$category->id] = $category->name;
+								$app_category_alias[$category->id] = $alias_matches[$alias] = $category->alias;
+								$id = $category->id;
+
+							} catch (CategoryTableException $e) {}
+						}
+						if ($id && $i == count($names) - 1) {
+							$related_categories[] = $id;
+						} else {
+							$previous_id = $id;
+						}
+					}
+				}
+
+				// add category to item relations
+				if (!empty($related_categories)) {
+
+					$this->app->category->saveCategoryItemRelations($item, $related_categories);
+
+					// make first category found primary category
+					if (!$item->getPrimaryCategoryId()) {
+						$item->getParams()->set('config.primary_category', $related_categories[0]);
+						$item_table->save($item);
+					}
+				}
+
+			} catch (ItemTableException $e) {}
 		}
 		fclose($handle);
 		return true;

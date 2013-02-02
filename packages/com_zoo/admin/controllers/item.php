@@ -126,13 +126,15 @@ class ItemController extends AppController {
 		}
 
 		$options = array(
-			'select' => $select,
+            'select' => 'a.id',
 			'from' =>  $from,
 			'conditions' => array(implode(' AND ', $where)),
-			'order' => $filter_order.' '.$filter_order_Dir,
 			'group' => 'a.id');
 
 		$count = $this->table->count($options);
+
+		$options['select'] = $select;
+        $options['order'] = $filter_order.' '.$filter_order_Dir;
 
 		// in case limit has been changed, adjust limitstart accordingly
 		$limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);

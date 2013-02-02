@@ -419,7 +419,7 @@ abstract class Element {
 
 		$data = array();
 		$type = $this->getElementType();
-		$xml  = simplexml_load_file($this->app->path->path("elements:$type/$type.xml"));
+		$xml  = $this->loadXML();
 
 		if (!$xml) {
 			return false;
@@ -442,6 +442,19 @@ abstract class Element {
 		$data = $this->app->data->create($data);
 
 		return $key == null ? $data : $data->get($key);
+	}
+
+	/**
+	 * Retrieve Element XML file info
+	 *
+	 * @return Object the XML loaded file
+	 *
+	 * @since 3.0.9
+	 */
+	public function loadXML() {
+
+		$type = $this->getElementType();
+		return simplexml_load_file($this->app->path->path("elements:$type/$type.xml"));
 	}
 
 	/*

@@ -102,11 +102,10 @@ class SubmissionController extends AppController {
             $limit = SubmissionController::PAGINATION_LIMIT;
             $state_prefix      = $this->option.'_'.$this->application->id.'.submission.'.$this->submission->id;
             $this->filter_type = $this->app->system->application->getUserStateFromRequest($state_prefix.'.filter_type', 'filter_type', '', 'string');
-			$search	           = $this->app->system->application->getUserStateFromRequest($state_prefix.'.search', 'search', '', 'string');
-			$search			   = $this->app->string->strtolower($search);
-            $page              = $this->app->system->application->getUserStateFromRequest($state_prefix.'.page', 'page', 1, 'int');
+			$search			   = $this->app->string->strtolower($this->app->system->application->getUserStateFromRequest($state_prefix.'.search', 'search', '', 'string'));
+            $this->page        = $this->app->request->getInt('page', 1);
 
-            $limitstart = ($page - 1) * $limit;
+            $limitstart = (max(array($this->page, 1)) - 1) * $limit;
 
             $this->types = $this->submission->getSubmittableTypes();
 
@@ -121,7 +120,7 @@ class SubmissionController extends AppController {
             }
 
             $this->items      = $this->app->table->item->getByUser($this->application->id, $this->user->id, $type, $search, $order, $limitstart, $limit);
-            $this->pagination = $this->app->pagination->create($this->app->table->item->getItemCountByUser($this->application->id, $this->user->id, $type, $search), $page, $limit, 'page', 'app');
+            $this->pagination = $this->app->pagination->create($this->app->table->item->getItemCountByUser($this->application->id, $this->user->id, $type, $search), $this->page, $limit, 'page', 'app');
 
             // type select
 			if (count($this->types) > 1) {
@@ -187,8 +186,11 @@ class SubmissionController extends AppController {
 				$this->pathway->addItem($this->item->id ? JText::_('Edit Submission') : JText::_('Add Submission'));
             }
 
-			// Only on 2.5
-			$this->captcha = $this->app->joomla->version->isCompatible('2.5') && ($plugin = $this->submission->getParams()->get('captcha', false)) ? JCaptcha::getInstance($plugin) : false;
+			// build captcha
+			$this->captcha = false;
+            if ($plugin = $this->submission->getParams()->get('captcha', false) and (!$this->submission->getParams()->get('captcha_guest_only', 0) || !$this->app->user->get()->id)) {
+                $this->captcha  = JCaptcha::getInstance($plugin);
+            }
 
             // display view
             $this->getView('submission')->addTemplatePath($this->template->getPath())->setLayout('submission')->display();
@@ -254,9 +256,11 @@ class SubmissionController extends AppController {
 
 			$error = $this->_bind($post);
 
-			// Check captcha (Only on 2.5)
-			if ($this->app->joomla->version->isCompatible('2.5') && $plugin = $this->submission->getParams()->get('captcha', false)) {
+			// Check captcha
+			if ($plugin = $this->submission->getParams()->get('captcha', false) and (!$this->submission->getParams()->get('captcha_guest_only', 0) or !$this->app->user->get()->id)) {
+
 				$captcha = JCaptcha::getInstance($plugin);
+
             	if (!$captcha->checkAnswer(@$post['captcha'])) {
             		$error = $captcha->getError();
 					if (!($error instanceof Exception)) {

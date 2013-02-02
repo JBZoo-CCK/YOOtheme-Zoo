@@ -35,7 +35,7 @@ $mysubmissions_link = $this->app->route->mysubmissions($this->submission);
 		<?php endif; ?>
 
 		<?php if (isset($this->lists['select_type'])) : ?>
-		<form class="submission-filter" action="<?php echo JRoute::_($mysubmissions_link); ?>" method="post" name="adminForm" id="adminForm" accept-charset="utf-8">
+		<form class="submission-filter" action="<?php echo JRoute::_($this->pagination->link($mysubmissions_link, 'page='.$this->page)); ?>" method="post" name="adminForm" id="adminForm" accept-charset="utf-8">
 			<?php echo $this->lists['select_type']; ?>
 			<input type="text" name="search" id="zoo-search" value="<?php echo $this->lists['search'];?>" />
 			<button onclick="this.form.submit();"><?php echo JText::_('Search'); ?></button>
@@ -76,7 +76,6 @@ $mysubmissions_link = $this->app->route->mysubmissions($this->submission);
 	<?php else : ?>
 
 		<?php if (empty($this->lists['search'])) : ?>
-		<?php $type = $this->filter_type; ?>
 		<p class="no-submissions"><?php echo sprintf(JText::_('You have not submitted any %s items yet.'), $this->filter_type); ?></p>
 		<?php else : ?>
 		<p class="no-submissions"><?php echo JText::_('SEARCH_NO_ITEMS').'!'; ?></p>
@@ -85,8 +84,7 @@ $mysubmissions_link = $this->app->route->mysubmissions($this->submission);
 	<?php endif; ?>
 
 	<div class="pagination">
-		<?php $pagination_link = !empty($this->filter_type) ? $mysubmissions_link . '&filter_type=' . $this->filter_type : $mysubmissions_link; ?>
-		<?php echo $this->pagination->render($pagination_link); ?>
+		<?php echo $this->pagination->render($mysubmissions_link); ?>
 	</div>
 
 </div>

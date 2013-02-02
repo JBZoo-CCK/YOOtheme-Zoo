@@ -84,16 +84,18 @@ class CommentController extends AppController {
 
 				try {
 
-					// Check captcha (Only on 2.5)
-					if ($this->app->joomla->version->isCompatible('2.5') && $plugin = $this->params->get('captcha', false)) {
+					// Check captcha
+					if ($plugin = $this->params->get('captcha', false) and (!$this->params->get('captcha_guest_only', 0) or !$this->app->user->get()->id)){
+
 						$captcha = JCaptcha::getInstance($plugin);
-		            	if (!$captcha->checkAnswer(@$post['captcha'])) {
+		            	if (!$captcha->checkAnswer($this->app->request->getString('captcha', ''))) {
 		            		$error = $captcha->getError();
 							if (!($error instanceof Exception)) {
 								$error = new JException($error);
 							}
 		                	throw new CommentControllerException(JText::_('ZOO_CHECK_CAPTCHA') . ' - ' . $error );
 		            	}
+
 					}
 
 					// get comment table
