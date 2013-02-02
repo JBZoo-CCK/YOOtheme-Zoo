@@ -1,4 +1,4 @@
-5612a6a6e3660d07f9e2e67be72790fb admin/README.markdown
+570ca282a9981cdf3ad3be5fd4186123 admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 ae7db64ce7690626d99007713f5aa4d6 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -127,7 +127,7 @@ bb9638b8ba0e972ee292084781463529 admin/framework/helpers/date.php
 34da6089aadf6067c5829b74577627e8 admin/framework/helpers/document.php
 f6416de83983a6f8b44c666597fad2cc admin/framework/helpers/error.php
 85273955c5ee408a09d8d2ffd3af48bb admin/framework/helpers/event.php
-cb315abc6e0e49e49283559db4e16ccc admin/framework/helpers/filesystem.php
+e317ce729f861b944614e533d7247962 admin/framework/helpers/filesystem.php
 a7c78fb0a4d1afe3800949694c4d48ce admin/framework/helpers/http.php
 8a3edb0428f11a404535d9134c90063f admin/framework/helpers/index.html
 d79538b06309312bf6d106e6de77bee4 admin/framework/helpers/joomla.php
@@ -198,7 +198,7 @@ efd2d2fd4afb65a065e26a151a9d0a05 admin/helpers/fields/zoolayout.php
 d1db0cf7fc88e5662a3d1b04f5124d37 admin/helpers/fields/zoomodule.php
 d2058b76d3b1dcf5fc776107b198f729 admin/helpers/fields/zooplugin.php
 2b573371fda0f286d567f29f91cda789 admin/helpers/fields/zoosubmission.css
-c0b3902e4002f395c4e512e2d641dff3 admin/helpers/fields/zoosubmission.js
+7e2e3e462e6437c650d4d5083cf59047 admin/helpers/fields/zoosubmission.js
 f63abbb004c31bf9c81d6fff73e37fee admin/helpers/fields/zoosubmission.php
 72325af08d40405af2f6c5e0c7ab2f60 admin/helpers/googlemaps.php
 f8f8cef1b08dd01dcedc3354b02b56f7 admin/helpers/html.php
@@ -635,7 +635,7 @@ be0b0d1bf77963c82e1cd88b16da16ad media/assets/js/comment.js
 0c903aae81bcb454e441c0f49e9a903a media/assets/js/date.js
 3417dcaf6631950c1d5e2edf61f0a0ec media/assets/js/finder.js
 8a3edb0428f11a404535d9134c90063f media/assets/js/index.html
-6c02e0475e3d96087bb112a2348903f8 media/assets/js/item.js
+e0978d335847edee8b174e011653e584 media/assets/js/item.js
 73f63e741540270ab0e73a7ce917dfbb media/assets/js/placeholder.js
 2951f10aa9b7f2a447f93252d4441fac media/assets/js/responsive.js
 922d2c4e5a4b6102623097fbcce2d403 media/assets/js/submission.js
@@ -688,7 +688,7 @@ ae83c58c9baacc84924d183e1cba3611 media/elements/download/assets/images/download_
 8a3edb0428f11a404535d9134c90063f media/elements/download/assets/index.html
 bdb91cffefae47c6de15f574129e5031 media/elements/download/assets/js/download.js
 8a3edb0428f11a404535d9134c90063f media/elements/download/assets/js/index.html
-617cd909f1b7999ffe44a2d1143eb2fc media/elements/download/download.php
+6a36e62468a914bf5c83d8e69b4091dc media/elements/download/download.php
 2be2e81157cae605870a64b64a6d828d media/elements/download/download.xml
 8a3edb0428f11a404535d9134c90063f media/elements/download/index.html
 d80c39776a1ce5999bbd3303838189a1 media/elements/download/tmpl/download.php
@@ -982,4 +982,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-5dcca96350cfd08c5e0eb77a6649500d zoo.xml
+b55b24e44df8b9345a6707a66eb700e9 zoo.xml

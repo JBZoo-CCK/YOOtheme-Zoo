@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.0.9
+- Version: 3.0.10
 - Date: January 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.0.10
+	# fixed jQuery 1.9 compatibility
 
     3.0.9
 	+ added option to show Captchas for guests only
