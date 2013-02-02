@@ -378,6 +378,7 @@ class FilesystemHelper extends AppHelper {
 		$mimes['gra'][] = 'application/x-graphite';
 		$mimes['gsf'][] = 'application/x-font-type1';
 		$mimes['gtar'][] = 'application/x-gtar';
+		$mimes['gz'][] = 'application/gzip';
 		$mimes['gz'][] = 'application/x-gzip';
 		$mimes['gz'][] = 'application/x-gzip-compressed'; // IE
 		$mimes['h'][] = 'text/x-chdr';

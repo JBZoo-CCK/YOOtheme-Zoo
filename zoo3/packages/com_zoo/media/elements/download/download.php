@@ -344,15 +344,15 @@ class ElementDownload extends ElementFile implements iSubmittable {
 				$extensions = array_map(create_function('$ext', 'return strtolower(trim($ext));'), explode(',', $this->config->get('upload_extensions', 'png,jpg,doc,mp3,mov,avi,mpg,zip,rar,gz')));
 
 				//get legal mime types
-				$legal_mime_types = $this->app->data->create(array_intersect_key($this->app->filesystem->getMimeMapping(), array_flip($extensions)))->flattenRecursive();
+				$mime_types = $this->app->data->create(array_intersect_key($this->app->filesystem->getMimeMapping(), array_flip($extensions)))->flattenRecursive();
 
 				// get max upload size
-				$max_upload_size = $this->config->get('max_upload_size', '512') * 1024;
-				$max_upload_size = empty($max_upload_size) ? null : $max_upload_size;
+				$max_size = $this->config->get('max_upload_size', '512') * 1024;
+				$max_size = empty($max_size) ? null : $max_size;
 
 				// validate
                 $file = $this->app->validator
-						->create('file', array('mime_types' => $legal_mime_types, 'max_size' => $max_upload_size))
+						->create('file', compact('mime_types', 'max_size'))
 						->addMessage('mime_types', 'Uploaded file is not of a permitted type.')
 						->clean($userfile);
 
