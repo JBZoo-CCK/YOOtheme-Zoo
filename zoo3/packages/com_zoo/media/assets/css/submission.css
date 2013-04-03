@@ -1019,6 +1019,8 @@ ul.as-selections li.as-original input.ui-autocomplete-loading { background: url(
     color: #0B55C4;
 }
 
+/* bootstrap reset */
+#yoo-zoo .row { margin-left: 0; }
 
 /* Clearfix
 ----------------------------------------------------------------------------------------------------*/

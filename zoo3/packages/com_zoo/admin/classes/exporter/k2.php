@@ -8,7 +8,7 @@
 
 /**
  * Exporter for K2 items and categories
- * 
+ *
  * @package Component.Classes.Exporters
  */
 class AppExporterK2 extends AppExporter {
@@ -20,12 +20,12 @@ class AppExporterK2 extends AppExporter {
 		parent::__construct();
 		$this->_name = 'K2';
 	}
-	
+
 	/**
 	 * If K2 is installed on the system
-	 * 
+	 *
 	 * @return boolean If K2 is installed on the system
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function isEnabled() {
@@ -39,9 +39,9 @@ class AppExporterK2 extends AppExporter {
 
 	/**
 	 * Do the real export of items and categories
-	 * 
+	 *
 	 * @return string The JSON dump of the items and categories
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function export() {
@@ -132,7 +132,7 @@ class AppExporterK2 extends AppExporter {
                     $type = JText::_('K2-Unassigned');
                 }
 
-                $this->_addItem($item, $extra_fields, $categories, $tags, $type);
+                $this->_addK2Item($item, $extra_fields, $categories, $tags, $type);
             }
 		}
 
@@ -142,16 +142,16 @@ class AppExporterK2 extends AppExporter {
 
 	/**
 	 * Add an item to the list of items to export
-	 * 
+	 *
 	 * @param object $item The item to export
 	 * @param array $extra_fields The extra fields for this item
 	 * @param array $categories The categories for this item
 	 * @param array $tags The item tags
 	 * @param string $group The item group
-	 * 
+	 *
 	 * @return AppExporterK2 $this for chaining support
 	 */
-	protected function _addItem($item, $extra_fields, $categories = array(), $tags = array(), $group = 'default') {
+	protected function _addK2Item($item, $extra_fields, $categories = array(), $tags = array(), $group = 'default') {
 
 		$data = array();
 		foreach ($this->item_attributes as $attribute) {

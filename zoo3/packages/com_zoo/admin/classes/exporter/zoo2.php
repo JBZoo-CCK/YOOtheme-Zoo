@@ -7,30 +7,30 @@
 */
 /**
  * Exporter for ZOO version 2
- * 
+ *
  * @package Component.Classes.Exporters
  */
 class AppExporterZoo2 extends AppExporter {
 
 	/**
 	 * The application for which we are running the exporter
-	 * 
+	 *
 	 * @var Application
 	 * @since 2.0
 	 */
 	protected $_application;
-	
+
 	/**
 	 * The list of categories to export
-	 * 
+	 *
 	 * @var array
 	 * @since 2.0
 	 */
 	protected $_categories;
-	
+
 	/**
 	 * Reference to the comment table object
-	 * 
+	 *
 	 * @var CommentTable
 	 * @since 2.0
 	 */
@@ -46,11 +46,11 @@ class AppExporterZoo2 extends AppExporter {
 
 	/**
 	 * Do the real exporting
-	 * 
+	 *
 	 * @return string The JSON dump of the items and categories
-	 * 
+	 *
 	 * @throws AppExporterException
-	 * 
+	 *
 	 * @since 2.0
 	 */
 	public function export() {
@@ -69,7 +69,7 @@ class AppExporterZoo2 extends AppExporter {
 		$this->_categories = $this->_application->getCategories();
 		$this->_categories[0] = $frontpage;
 		foreach ($this->_categories as $category) {
-			$this->_addCategory($category);
+			$this->_addZooCategory($category);
 		}
 
 		// export items
@@ -77,7 +77,7 @@ class AppExporterZoo2 extends AppExporter {
 		$item_table = $this->app->table->item;
 		foreach ($this->_application->getTypes() as $type) {
 			foreach ($item_table->getByType($type->id, $this->_application->id) as $key => $item) {
-				$this->_addItem($item, $type);
+				$this->_addZooItem($item, $type);
 				$item_table->unsetObject($key);
 			}
 		}
@@ -88,14 +88,14 @@ class AppExporterZoo2 extends AppExporter {
 
 	/**
 	 * Add a category to the exporing list
-	 * 
+	 *
 	 * @param Category $category The category to export
-	 * 
+	 *
 	 * @return AppExporterZoo2 $this for chaining support
-	 * 
+	 *
 	 * @since 2.0
 	 */
-	protected function _addCategory(Category $category) {
+	protected function _addZooCategory(Category $category) {
 
 		// store category attributes
 		$data = array();
@@ -121,15 +121,15 @@ class AppExporterZoo2 extends AppExporter {
 
 	/**
 	 * Add an item to the exporting list
-	 * 
+	 *
 	 * @param Item $item The item to export
 	 * @param Type $type The type of the item
-	 * 
+	 *
 	 * @return AppExporterZoo2 $this for chaining support
-	 * 
+	 *
 	 * @since 2.0
 	 */
-	protected function _addItem(Item $item, Type $type) {
+	protected function _addZooItem(Item $item, Type $type) {
 
 		$data = array();
 		foreach ($this->item_attributes as $attribute) {

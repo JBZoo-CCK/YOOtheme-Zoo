@@ -1,11 +1,20 @@
 # ZOO #
 
-- Version: 3.0.10
-- Date: January 2013
+- Version: 3.0.11
+- Date: Febuary 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.0.11
+    ^ refactored "Clean Database" function
+	^ updated jQuery to 1.9.1
+	^ updated jQuery UI to 1.10.1
+	^ updated mediaelement.js to 2.10.3
+	# fixed use of default values on submission (media element)
+	# fixed issue with deleting tags
+	# fixed issue with category/tag module showing wrong links
 
 	3.0.10
 	# fixed jQuery 1.9 compatibility

@@ -1,4 +1,4 @@
-570ca282a9981cdf3ad3be5fd4186123 admin/README.markdown
+41bf8fbdd1e361d5d13b7d990f5d4cd2 admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 ae7db64ce7690626d99007713f5aa4d6 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -65,9 +65,9 @@ b3457fb3a6b74bd6dc7f855389692a6b admin/classes/application.php
 52054c0531baa589273e756afa13718f admin/classes/comment.php
 1e7bcd1fc57033deaa9c0ea55241d7c3 admin/classes/commentauthor.php
 8a3edb0428f11a404535d9134c90063f admin/classes/exporter/index.html
-7175646ee913849b3dafe018e0f73d5c admin/classes/exporter/joomla.php
-be00cf7dbc835d74e26b64f39cca210d admin/classes/exporter/k2.php
-247b55cc406d9bb97d03d570c14f6dc0 admin/classes/exporter/zoo2.php
+533af1a33412b6daa62681728b7b53d5 admin/classes/exporter/joomla.php
+765e471c68123426140a7368f3b9403e admin/classes/exporter/k2.php
+a676727162d431f7c5403c53f30c4846 admin/classes/exporter/zoo2.php
 8a3edb0428f11a404535d9134c90063f admin/classes/index.html
 e7291c75d3ac5525afc35a9a00abef29 admin/classes/item.php
 99d7efaeafeadc787c900ee628e2220e admin/classes/menu.php
@@ -86,7 +86,7 @@ a7e0049ca182638c53b55dd5c669b8c8 admin/classes/template.php
 38767301d82d2396acacdcee9e0f7af5 admin/controllers/frontpage.php
 8a3edb0428f11a404535d9134c90063f admin/controllers/index.html
 def8748f0c761553a9da575dde6c62c3 admin/controllers/item.php
-f666716473199a94bd533606fbbd1740 admin/controllers/manager.php
+7ac18bfb9da7766cef496a51a1914a3e admin/controllers/manager.php
 af33fe006f59a7a0a0ba687a10c7fd9d admin/controllers/new.php
 7b3dabfabe697322ba31243016f039f8 admin/controllers/submission.php
 3f61745f93ca8d4304ec65850d97f247 admin/controllers/tag.php
@@ -203,7 +203,7 @@ f63abbb004c31bf9c81d6fff73e37fee admin/helpers/fields/zoosubmission.php
 72325af08d40405af2f6c5e0c7ab2f60 admin/helpers/googlemaps.php
 f8f8cef1b08dd01dcedc3354b02b56f7 admin/helpers/html.php
 75a31234ab84f6b0ff7613778ad5a9c7 admin/helpers/imagethumbnail.php
-388b6ff281bf90ee634fbb16b139197b admin/helpers/import.php
+d16ee123ebf346df8976d3f85b4404e8 admin/helpers/import.php
 8a3edb0428f11a404535d9134c90063f admin/helpers/index.html
 d359ce7d81de052f011ee9b091e44f88 admin/helpers/install.php
 2b1210998700c2191ea59b5562cf9037 admin/helpers/itemorder.php
@@ -213,7 +213,7 @@ a482b0d150ecef56da87d73afb9d335d admin/helpers/modification.php
 9d481e6045da919b4af72d5423544eb3 admin/helpers/parameterform.php
 9a7496bd8c024537e92cb633a0fd2ecd admin/helpers/plugin.php
 0dc34ddbaa91b0b25c666ec323e1dd42 admin/helpers/renderer.php
-badd8f6514643585c3773e860b639700 admin/helpers/route.php
+adc23a78689878b7a27b9918d5102c54 admin/helpers/route.php
 1adef405efe782508576f63bb96cfb8a admin/helpers/string.php
 25750959f1e3ca473af71db742ec7481 admin/helpers/submission.php
 2b443600c9dea48fbdec2ceaef485eff admin/helpers/tag.php
@@ -264,7 +264,7 @@ e7abca5c6baa3086b607a73adc20ce6b admin/partials/_message.php
 8a3edb0428f11a404535d9134c90063f admin/tables/index.html
 c36c2eac9fe6c07026ae619caa064651 admin/tables/item.php
 55d326ab7ee452a557b53d4cbb98b24f admin/tables/submission.php
-8c7ffacac411eb451d4bfcbd8ecabe98 admin/tables/tag.php
+13aa021f4b9af6bf871d4f21e1dc776c admin/tables/tag.php
 8a3edb0428f11a404535d9134c90063f admin/views/category/index.html
 3f37c52ba5b89f8512dc69c6d099b33c admin/views/category/tmpl/default.php
 541d69bc83339acaddf5a467f004aa9a admin/views/category/tmpl/edit.php
@@ -302,6 +302,7 @@ b90e64a095fa0ca8644339e646c75567 admin/views/manager/tmpl/_assignsubmittableelem
 320b9b66e52284227818094db90dbfaa admin/views/manager/tmpl/addelement.php
 059c130cac2fb7777f2758a120ee0746 admin/views/manager/tmpl/assignelements.php
 c696b4bf473b683bf16db3d2f2a82894 admin/views/manager/tmpl/assignsubmission.php
+8358f95662df993980ff6785afd41a27 admin/views/manager/tmpl/cleandb.php
 12b88dc78ce4eaa469b1653d93bbeb19 admin/views/manager/tmpl/default.php
 33b1d0045744b08bf061aec74221c61b admin/views/manager/tmpl/editelements.php
 e24062d411c9f9a21037086a7daab4e0 admin/views/manager/tmpl/edittype.php
@@ -340,7 +341,7 @@ cd4126ab5116adff7a1bb122756437d3 media/applications/blog/application.xml
 687f5eda1188ff21ce5f02c6e4777403 media/applications/blog/templates/default/_items.php
 aa3536a5cbda2d44cc51c4904cbfd466 media/applications/blog/templates/default/_pagination.php
 3a35a4851b19681a27ef64387c0d0d5c media/applications/blog/templates/default/assets/css/author.css
-322cdc9b96ff73e3a96e8284c444c15c media/applications/blog/templates/default/assets/css/category.css
+e8fb4e5b25881870856172807100d341 media/applications/blog/templates/default/assets/css/category.css
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/default/assets/css/index.html
 47cd9056765b4fbcec285a82e8e76205 media/applications/blog/templates/default/assets/css/item.css
 ce16886057e165cfcac8e2eacd9713f6 media/applications/blog/templates/default/assets/css/submission.css
@@ -380,7 +381,7 @@ ec57e6b81946f5451182bbdc55751456 media/applications/blog/templates/default/templ
 687f5eda1188ff21ce5f02c6e4777403 media/applications/blog/templates/expo/_items.php
 aa3536a5cbda2d44cc51c4904cbfd466 media/applications/blog/templates/expo/_pagination.php
 d18e2344d50fade58fcc516c30099247 media/applications/blog/templates/expo/assets/css/author.css
-e450a716235525711d425cd933064b2d media/applications/blog/templates/expo/assets/css/category.css
+e1e3e8229a8edbc1346eba6a709ef033 media/applications/blog/templates/expo/assets/css/category.css
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/expo/assets/css/index.html
 c692ce16f110a440f5cb579101924662 media/applications/blog/templates/expo/assets/css/item.css
 3a895e4392175ef9ee99daa0a340aeda media/applications/blog/templates/expo/assets/css/submission.css
@@ -422,7 +423,7 @@ dda7503b77aa6894410df44f7957efaa media/applications/blog/templates/expo/template
 687f5eda1188ff21ce5f02c6e4777403 media/applications/blog/templates/noble/_items.php
 aa3536a5cbda2d44cc51c4904cbfd466 media/applications/blog/templates/noble/_pagination.php
 8836b1e09612e2f2c2935ebbf88b80aa media/applications/blog/templates/noble/assets/css/author.css
-d4206bdf8bbe4b08b0af05483794d377 media/applications/blog/templates/noble/assets/css/category.css
+dbc821cada31ffaf5aeeb40640417680 media/applications/blog/templates/noble/assets/css/category.css
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/noble/assets/css/index.html
 6001a4b067385add4b527e71b52ff429 media/applications/blog/templates/noble/assets/css/item.css
 3a895e4392175ef9ee99daa0a340aeda media/applications/blog/templates/noble/assets/css/submission.css
@@ -463,7 +464,7 @@ f1a536abce4f697e64c5b988959c4d95 media/applications/blog/templates/noble/rendere
 687f5eda1188ff21ce5f02c6e4777403 media/applications/blog/templates/pure/_items.php
 aa3536a5cbda2d44cc51c4904cbfd466 media/applications/blog/templates/pure/_pagination.php
 ffb9533200d65177cdddf86994bb27e2 media/applications/blog/templates/pure/assets/css/author.css
-fcbe6c83a09edb64cbf233177edda51e media/applications/blog/templates/pure/assets/css/category.css
+4aaa560a42dafa5136c6cd7fb1a096d4 media/applications/blog/templates/pure/assets/css/category.css
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/pure/assets/css/index.html
 46f50192ed6c18c8bbd8b48489375455 media/applications/blog/templates/pure/assets/css/item.css
 3a895e4392175ef9ee99daa0a340aeda media/applications/blog/templates/pure/assets/css/submission.css
@@ -502,7 +503,7 @@ b934b9605075fda948f9feabc04a2be8 media/applications/blog/templates/pure/template
 687f5eda1188ff21ce5f02c6e4777403 media/applications/blog/templates/sans/_items.php
 aa3536a5cbda2d44cc51c4904cbfd466 media/applications/blog/templates/sans/_pagination.php
 0b946531ad311e7fd289667123fb04ca media/applications/blog/templates/sans/assets/css/author.css
-084a8b65a2b3cdd8ff589b7bb44f8554 media/applications/blog/templates/sans/assets/css/category.css
+b16d2b6dfa82a54328a159e5fefa90e8 media/applications/blog/templates/sans/assets/css/category.css
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/sans/assets/css/index.html
 dcd242310af12fca498693eeb7472d81 media/applications/blog/templates/sans/assets/css/item.css
 3a895e4392175ef9ee99daa0a340aeda media/applications/blog/templates/sans/assets/css/submission.css
@@ -615,7 +616,7 @@ b1f5e2d3dc6b0efbfb468cb670b6788d media/applications/page/types/page.config
 43d37354f627c97442aa5c964720bc46 media/assets/css/comments.css
 8a3edb0428f11a404535d9134c90063f media/assets/css/index.html
 ef297956c84c877a5f50cc5dd5b5facb media/assets/css/reset.css
-e9f094e2ebb46b514d06a319f23ae54a media/assets/css/submission.css
+c77ad68b90158ff58ac24bef9c3faf3d media/assets/css/submission.css
 1988c3cc1384a3ac9b9a4129183248f3 media/assets/images/add.png
 654be5bd86e5cdfe25a92793bef13006 media/assets/images/arrow.png
 eaffec48e4e2ccfde75d579e0c37474a media/assets/images/avatar.png
@@ -828,7 +829,7 @@ d5bdf3173f011b5bea27b123f7a0b378 media/elements/media/assets/mediaelement/mediae
 9bc621a6a87269851bd22d64f7ec6456 media/elements/media/assets/mediaelement/mejs-skins.css
 2fb1bc1a7f10d1dd54689a79b4cf53ac media/elements/media/assets/mediaelement/silverlightmediaelement.xap
 8a3edb0428f11a404535d9134c90063f media/elements/media/index.html
-8b2f828998a53a616edeed4fb5892a35 media/elements/media/media.php
+aa53fb3825d2416616d25a9927d4a343 media/elements/media/media.php
 55d5b23845ab082664e0d28ed2922dc9 media/elements/media/media.xml
 5aa62d66d776087d91c4c6c283b2273a media/elements/media/tmpl/edit.php
 8a3edb0428f11a404535d9134c90063f media/elements/media/tmpl/index.html
@@ -982,4 +983,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-b55b24e44df8b9345a6707a66eb700e9 zoo.xml
+b5f2a8ddfec0e6a0f6fb0cc94174f972 zoo.xml

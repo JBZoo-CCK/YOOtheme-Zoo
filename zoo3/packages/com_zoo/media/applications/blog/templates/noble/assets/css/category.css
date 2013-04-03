@@ -3,7 +3,6 @@
 /*
  * layout
  */
-
 #yoo-zoo .row,
 #yoo-zoo .floatbox { overflow: hidden; }
 
@@ -244,3 +243,6 @@
 }
 
 #yoo-zoo .zoo-pagination a { text-decoration: none; }
+
+/* bootstrap reset */
+#yoo-zoo .row { margin-left: 0; }

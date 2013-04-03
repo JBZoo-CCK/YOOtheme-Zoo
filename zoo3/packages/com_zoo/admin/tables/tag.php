@@ -179,7 +179,7 @@ class TagTable extends AppTable {
 	*/
 	public function delete($tags, $application_id = 0) {
 
-		if (empty($tags) || $application_id = 0) {
+		if (empty($tags) || $application_id == 0) {
 			return true;
 		}
 
@@ -201,7 +201,6 @@ class TagTable extends AppTable {
 		$this->app->event->dispatcher->notify($this->app->event->create($tags, 'tag:deleted', array('application' => $this->app->table->application->get($application_id))));
 
 		return $result;
-
 	}
 
 }
