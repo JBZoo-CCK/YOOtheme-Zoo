@@ -816,64 +816,126 @@ class ManagerController extends AppController {
 
 	public function cleanDB() {
 
+		// set toolbar items
+		$this->app->toolbar->title('Cleaning database, please don\'t leave this page');
+
+		$this->item_count = $this->app->table->item->count();
+		$this->steps = (int) (11 + ($this->item_count / 10));
+
+		// display view
+		$this->getView()->setLayout('cleandb')->display();
+
+	}
+
+	public function cleanDBStep() {
+
+		$step = $this->app->request->getInt('step', 0);
+		$row = $this->app->request->getInt('row', 0);
+		$offset = $this->app->request->getInt('offset', 0);
+
 		// init vars
-		$row = 0;
+		$items_per_run = 10;
 		$db = $this->app->database;
+		$msg = '';
+		$error = '';
 
-		if ($apps = $this->app->path->dirs('applications:')) {
-			$db->query(sprintf("DELETE FROM ".ZOO_TABLE_APPLICATION." WHERE application_group NOT IN ('%s')", implode("', '", $apps)));
-		}
+		switch ($step) {
+			case '1':
+				if ($apps = $this->app->path->dirs('applications:')) {
+					$db->query(sprintf("DELETE FROM ".ZOO_TABLE_APPLICATION." WHERE application_group NOT IN ('%s')", implode("', '", $apps)));
+				}
+				$msg = 'Cleaning application folders...';
+				break;
+			case '2':
+				$db->query("DELETE FROM ".ZOO_TABLE_ITEM." WHERE type = ''");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning items of undefined type...';
+				break;
+			case '3':
+				$db->query("DELETE FROM ".ZOO_TABLE_ITEM." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning items that don\'t belong to an application...';
+				break;
+			case '4':
+				$db->query("DELETE FROM ".ZOO_TABLE_CATEGORY." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning categories that don\'t belong to an application...';
+				break;
+			case '5':
+				$db->query("DELETE FROM ".ZOO_TABLE_SUBMISSION." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning submissions that don\'t belong to an application...';
+				break;
+			case '6':
+				$db->query("DELETE FROM ".ZOO_TABLE_TAG." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning tags that don\'t belong to an item...';
+				break;
+			case '7':
+				$db->query("DELETE FROM ".ZOO_TABLE_COMMENT." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning comments that don\'t belong to an item...';
+				break;
+			case '8':
+				$db->query("DELETE FROM ".ZOO_TABLE_RATING." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning ratings that don\'t belong to an item...';
+				break;
+			case '9':
+				$db->query("DELETE FROM ".ZOO_TABLE_SEARCH." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning search values that don\'t belong to an item...';
+				break;
+			case '10':
+				$db->query("DELETE FROM ".ZOO_TABLE_CATEGORY_ITEM." WHERE category_id != 0 AND (NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id) OR NOT EXISTS (SELECT id FROM ".ZOO_TABLE_CATEGORY." WHERE id = category_id))");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning category to item relations...';
+				break;
+			case '11':
+				// sanatize parent references
+				$db->query("UPDATE ".ZOO_TABLE_CATEGORY." SET parent = 0 WHERE parent != 0 AND NOT EXISTS (SELECT id FROM (SELECT id FROM ".ZOO_TABLE_CATEGORY.") as t WHERE t.id = parent)");
+				$db->query("UPDATE ".ZOO_TABLE_COMMENT." SET parent_id = 0 WHERE parent_id != 0 AND NOT EXISTS (SELECT id FROM (SELECT id FROM ".ZOO_TABLE_CATEGORY.") as t WHERE t.id = parent_id)");
+				$msg = 'Cleaning category and comment parent relations...';
+				break;
+			case '12':
 
-		$db->query("DELETE FROM ".ZOO_TABLE_ITEM." WHERE type = ''");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_ITEM." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_CATEGORY." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_SUBMISSION." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_APPLICATION." WHERE id = application_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_TAG." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_COMMENT." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_RATING." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_SEARCH." WHERE NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id)");
-		$row += $db->getAffectedRows();
-		$db->query("DELETE FROM ".ZOO_TABLE_CATEGORY_ITEM." WHERE category_id != 0 AND (NOT EXISTS (SELECT id FROM ".ZOO_TABLE_ITEM." WHERE id = item_id) OR NOT EXISTS (SELECT id FROM ".ZOO_TABLE_CATEGORY." WHERE id = category_id))");
-		$row += $db->getAffectedRows();
+				// get the item table
+				$table = $this->app->table->item;
 
-		// sanatize parent references
-		$db->query("UPDATE ".ZOO_TABLE_CATEGORY." SET parent = 0 WHERE parent != 0 AND NOT EXISTS (SELECT id FROM (SELECT id FROM ".ZOO_TABLE_CATEGORY.") as t WHERE t.id = parent)");
-		$db->query("UPDATE ".ZOO_TABLE_COMMENT." SET parent_id = 0 WHERE parent_id != 0 AND NOT EXISTS (SELECT id FROM (SELECT id FROM ".ZOO_TABLE_CATEGORY.") as t WHERE t.id = parent_id)");
-
-		// get the item table
-		$table = $this->app->table->item;
-
-		try {
-
-			$items = $table->all();
-			foreach ($items as $item) {
 				try {
 
-					$table->save($item);
+					$items = $table->all(array('offset' => $offset, 'limit' => $items_per_run));
+					if (empty($items)) {
+						echo json_encode(array('forward' => $this->baseurl, 'message' => JText::sprintf('Cleaned database (Removed %s entries) and items search data has been updated.', $row)));
+						return;
+					}
+					foreach ($items as $item) {
+						try {
+
+							$table->save($item);
+
+						} catch (Exception $e) {
+							$error = JText::sprintf("Error updating search data for item with id %s. (%s)", $item->id, $e);
+						}
+					}
 
 				} catch (Exception $e) {
-					$this->app->error->raiseNotice(0, JText::sprintf("Error updating search data for item with id %s. (%s)", $item->id, $e));
+
+					$msg = '';
+					$error = JText::sprintf("Error cleaning database. (%s)", $e);
+
 				}
-			}
-
-			$msg = JText::sprintf('Cleaned database (Removed %s entries) and items search data has been updated.', $row);
-
-		} catch (Exception $e) {
-
-			$msg = '';
-			$this->app->error->raiseNotice(0, JText::sprintf("Error cleaning database. (%s)", $e));
-
+				$msg = sprintf('Resaving items %s to %s', $offset, $offset + $items_per_run);
+				$step--;
+				$offset += $items_per_run;
 		}
 
-		$this->setRedirect($this->baseurl, $msg);
-
+		echo json_encode(array(
+			'error' => $error,
+			'message' => $msg,
+			'step' => $step + ($offset / $items_per_run),
+			'redirect' => $this->baseurl.sprintf('&task=cleandbstep&format=raw&step=%s&row=%s&offset=%s', ++$step, $row, $offset)
+		));
 	}
 
 	public function hideUpdateNotification() {

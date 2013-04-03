@@ -160,7 +160,7 @@ class RouteHelper extends AppHelper {
 
         if ($force_id && $force_id != $itemid) {
             $itemid = $force_id;
-            $link .= '&f=1';
+            $link .= '&f=1&task=category&category_id='.$category->id;
         }
 
         if ($itemid) {
@@ -436,7 +436,7 @@ class RouteHelper extends AppHelper {
 		if ($menu_item = $this->_find('frontpage', $application_id) or $menu_item = $this->app->menu->getActive()) {
             if ($force_id && $force_id != $menu_item->id) {
                 $item_id = '&Itemid='.$force_id;
-                $link .= '&f=1';
+                $link .= '&f=1&task=tag&tag='.$tag.'&app_id='.$application_id;
             } else {
                 $item_id = '&Itemid='.$menu_item->id;
             }

@@ -492,7 +492,7 @@ class ImportHelper extends AppHelper {
 		$alias_matches = array();
 
 		while (($data = fgetcsv($handle, 0, $field_separator, $field_enclosure)) !== FALSE) {
-			if (!$contains_headers) {
+			if ($contains_headers) {
 				$contains_headers = false;
 				continue;
 			}

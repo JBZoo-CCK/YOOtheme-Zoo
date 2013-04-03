@@ -260,9 +260,9 @@ class ElementMedia extends ElementFile implements iSubmittable {
 			throw new AppValidatorException('Not a valid video format.');
         }
 
-        $width     = (string) $this->app->validator->create('integer', array('required' => false), array('number' => 'The Width needs to be a number.'))->clean($value->get('width'));
-        $height    = (string) $this->app->validator->create('integer', array('required' => false), array('number' => 'The Height needs to be a number.'))->clean($value->get('height'));
-        $autoplay  = (bool) $value->get('autoplay');
+		$width     = (string) $this->app->validator->create('integer', array('required' => false), array('number' => 'The Width needs to be a number.'))->clean($value->get('width', $this->config->get('defaultwidth')));
+		$height    = (string) $this->app->validator->create('integer', array('required' => false), array('number' => 'The Height needs to be a number.'))->clean($value->get('height', $this->config->get('defaultheight')));
+		$autoplay  = (bool) $params->get('trusted_mode') ? $value->get('autoplay') : $this->config->get('defaultautoplay', false);
 
 		return compact('url', 'format', 'width', 'height', 'autoplay');
 	}

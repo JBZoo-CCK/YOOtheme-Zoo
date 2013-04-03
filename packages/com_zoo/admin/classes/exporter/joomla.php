@@ -103,7 +103,7 @@ class AppExporterJoomla extends AppExporter {
 
 		foreach ($articles as $article) {
 			if ($article->state != -2) {
-				$this->_addItem($article, 0, JText::_('Joomla article'));
+				$this->_addJoomlaItem($article, 0, JText::_('Joomla article'));
 			}
 		}
 
@@ -122,7 +122,7 @@ class AppExporterJoomla extends AppExporter {
 	 *
 	 * @since 2.0
 	 */
-	protected function _addItem($article, $parent, $group = 'default') {
+	protected function _addJoomlaItem($article, $parent, $group = 'default') {
 
 		if ($article->state > 1) {
 			$article->state = 0;
