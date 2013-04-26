@@ -25,3 +25,5 @@
 }
 
 #item-order .select-message { display: none; }
+
+#item-order > div { clear: both; }

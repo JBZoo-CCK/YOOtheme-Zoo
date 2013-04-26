@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<element type="download" group="Media">
+<element type="download" group="Media" orderable="true">
 	<name>Download</name>
 	<author>YOOtheme</author>
 	<creationDate>August 2011</creationDate>

@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.0.11
-- Date: Febuary 2013
+- Version: 3.0.12
+- Date: April 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.0.12
+	# fixed Joomla importer
 
 	3.0.11
     ^ refactored "Clean Database" function

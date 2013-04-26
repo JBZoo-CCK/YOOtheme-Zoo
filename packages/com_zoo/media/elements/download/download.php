@@ -35,6 +35,11 @@ class ElementDownload extends ElementFile implements iSubmittable {
 		}
 	}
 
+	public function getSearchData() {
+		$hits = $this->get('hits', 0);
+		return $hits;
+	}
+
 	/*
 		Function: getSize
 			Gets the download file size.
