@@ -1,4 +1,4 @@
-41bf8fbdd1e361d5d13b7d990f5d4cd2 admin/README.markdown
+e0a60fabd3acee9c947ddef68c4845cf admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 ae7db64ce7690626d99007713f5aa4d6 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -51,7 +51,7 @@ f62d71b5bdae49b06f74940fea76abe3 admin/assets/images/zoo.png
 87d0695113210dbec6f4e3634ed06155 admin/assets/images/zoo_16.png
 8a3edb0428f11a404535d9134c90063f admin/assets/index.html
 1d3e5267c6d33e7899d900a78fff3ab1 admin/assets/js/accordionmenu.js
-dafe4cf0bd0d78f1ff7d4c22d1356b8c admin/assets/js/alias.js
+1bf03f27f08c9647ee032195e11c76ab admin/assets/js/alias.js
 feaae1d47c1099a9338d012a374b631e admin/assets/js/category.js
 91d9cdf844b8ecfb949b13847203720f admin/assets/js/configuration.js
 9420959525fa90cba5f824cad158b685 admin/assets/js/default.js
@@ -65,7 +65,7 @@ b3457fb3a6b74bd6dc7f855389692a6b admin/classes/application.php
 52054c0531baa589273e756afa13718f admin/classes/comment.php
 1e7bcd1fc57033deaa9c0ea55241d7c3 admin/classes/commentauthor.php
 8a3edb0428f11a404535d9134c90063f admin/classes/exporter/index.html
-533af1a33412b6daa62681728b7b53d5 admin/classes/exporter/joomla.php
+4d1ea50bc38f03bf943d75aef005a7eb admin/classes/exporter/joomla.php
 765e471c68123426140a7368f3b9403e admin/classes/exporter/k2.php
 a676727162d431f7c5403c53f30c4846 admin/classes/exporter/zoo2.php
 8a3edb0428f11a404535d9134c90063f admin/classes/index.html
@@ -189,7 +189,7 @@ def4de8259c6eb23a6f51d6421f3c7e2 admin/helpers/fields/zoofeed.php
 9c31798f44de7d514b356631a6556080 admin/helpers/fields/zoofeedglobal.php
 9aaab4188248b6602650d1e162c1a09d admin/helpers/fields/zooimage.php
 0292fcfef70fe5c2758d3354ecfda4f3 admin/helpers/fields/zooitemauthor.php
-fa5e4580227fb07852e301763ef6c979 admin/helpers/fields/zooitemorder.css
+e1f05c7369906cd2879f8220bf19a0f9 admin/helpers/fields/zooitemorder.css
 27fd7b23d64f67289bc92941610f1434 admin/helpers/fields/zooitemorder.js
 d539d1dbbff9ec6e75ce198c4fc26541 admin/helpers/fields/zooitemorder.php
 4cba5883aa4bd6a652884677893d89d9 admin/helpers/fields/zooitemorderglobal.php
@@ -689,8 +689,8 @@ ae83c58c9baacc84924d183e1cba3611 media/elements/download/assets/images/download_
 8a3edb0428f11a404535d9134c90063f media/elements/download/assets/index.html
 bdb91cffefae47c6de15f574129e5031 media/elements/download/assets/js/download.js
 8a3edb0428f11a404535d9134c90063f media/elements/download/assets/js/index.html
-6a36e62468a914bf5c83d8e69b4091dc media/elements/download/download.php
-2be2e81157cae605870a64b64a6d828d media/elements/download/download.xml
+2e5e08a2ab3e507c6fec4f0abd2dec33 media/elements/download/download.php
+15470fcf482cb6389a62aefd3d46bc84 media/elements/download/download.xml
 8a3edb0428f11a404535d9134c90063f media/elements/download/index.html
 d80c39776a1ce5999bbd3303838189a1 media/elements/download/tmpl/download.php
 b98fbb4364f5b366f0a99880420f8b30 media/elements/download/tmpl/edit.php
@@ -983,4 +983,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-b5f2a8ddfec0e6a0f6fb0cc94174f972 zoo.xml
+ccfebc3d961a40e7c6e90eb8d1a7efa6 zoo.xml

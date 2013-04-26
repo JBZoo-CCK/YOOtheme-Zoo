@@ -28,14 +28,10 @@ if ($application = $zoo->table->application->get($params->get('application', 0))
 
 	$items = $zoo->module->getItems($params);
 
-	// load template
-	if (!empty($items)) {
+	// set renderer
+	$renderer = $zoo->renderer->create('item')->addPath(array($zoo->path->path('component.site:'), dirname(__FILE__)));
 
-		// set renderer
-		$renderer = $zoo->renderer->create('item')->addPath(array($zoo->path->path('component.site:'), dirname(__FILE__)));
+	$layout = $params->get('layout', 'default');
 
-		$layout = $params->get('layout', 'default');
-
-		include(JModuleHelper::getLayoutPath('mod_zooitem', $params->get('theme', 'list')));
-	}
+	include(JModuleHelper::getLayoutPath('mod_zooitem', $params->get('theme', 'list')));
 }
