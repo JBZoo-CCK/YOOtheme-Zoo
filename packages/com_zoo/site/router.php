@@ -133,10 +133,14 @@ function ZooBuildRoute(&$query) {
 		if (((@$query['task'] == $task || @$query['view'] == $task) && @$query['layout'] == 'submission')) {
 			$segments[] = $task;
 			$segments[] = @$query['layout'];
-			$segments[] = $app->alias->submission->translateIDToAlias((int) $query['submission_id']);
-			$segments[] = $query['type_id'];
-			$segments[] = $query['submission_hash'];
-			$segments[] = $app->alias->item->translateIDToAlias((int) @$query['item_id']);
+			if (isset($query['submission_id'], $query['type_id'], $query['submission_hash'])) {
+				$segments[] = $app->alias->submission->translateIDToAlias((int) $query['submission_id']);
+				$segments[] = $query['type_id'];
+				$segments[] = $query['submission_hash'];
+			}
+			if (isset($query['item_id'])) {
+				$segments[] = $app->alias->item->translateIDToAlias((int) @$query['item_id']);
+			}
 			unset($query['task'], $query['view'], $query['layout'], $query['submission_id'], $query['type_id'], $query['submission_hash'], $query['item_id']);
 		}
 

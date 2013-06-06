@@ -28,7 +28,7 @@ $align = ($this->checkPosition('media')) ? $view->params->get('template.item_med
 <?php if ($this->checkPosition('title') || $this->checkPosition('meta')) : ?>
 <header>
 
-	<?php if ($date = $params->get('template.date') == 'created' ? $item->created : $params->get('template.date') == 'publishup' ? $item->publish_up : null) : ?>
+	<?php if ($date = $params->get('template.date') == 'created' ? $item->created : ($params->get('template.date') == 'publishup' ? $item->publish_up : null)) : ?>
 	<time datetime="<?php echo substr($date, 0,10); ?>" pubdate>
 		<?php foreach (explode('||', $params->get('template.date_format', array())) as $format) : ?>
 			<span class="<?php echo preg_match('/%a|%A|%d|%e|%j|%u|%w/', $format) ? 'day' : (preg_match('/%b|%B|%h|%m/', $format) ? 'month' : 'year'); ?>"><?php echo $this->app->html->_('date', $date, $this->app->date->format($format), $this->app->date->getOffset()); ?></span>

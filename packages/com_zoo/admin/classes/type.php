@@ -85,7 +85,7 @@ class Type {
 		$this->identifier = $id;
 		$this->_application = $application;
 
-		$this->config = $this->app->data->create(JFile::exists($this->getConfigFile()) ? file_get_contents($this->getConfigFile()) : null);
+		$this->config = $this->app->data->create(($path = $this->getConfigFile() and JFile::exists($path)) ? file_get_contents($path) : null);
 
 	}
 

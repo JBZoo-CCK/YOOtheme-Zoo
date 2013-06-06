@@ -42,7 +42,7 @@ class ItemController extends AppController {
 	public function element() {
 
 		// include template css
-		$template = JApplication::getInstance('administrator')->getTemplate();
+		$template = $this->app->database->queryResult('SELECT name FROM #__extensions WHERE type = "template" AND client_id = 0 AND enabled = 1');
 		$this->app->document->addStylesheet("root:administrator/templates/$template/css/template.css");
 
 		jimport('joomla.html.pagination');
