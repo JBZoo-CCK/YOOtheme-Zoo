@@ -51,6 +51,7 @@ $author->name = $author->name ? $author->name : JText::_('Anonymous');
 
 	</div>
 
+	<?php if ($comment->hasChildren()) : ?>
 	<ul class="level<?php echo ++$level; ?>">
 		<?php
 		foreach ($comment->getChildren() as $comment) {
@@ -58,5 +59,6 @@ $author->name = $author->name ? $author->name : JText::_('Anonymous');
 		}
 		?>
 	</ul>
+	<?php endif ?>
 
 </li>

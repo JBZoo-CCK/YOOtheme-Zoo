@@ -1,4 +1,4 @@
-e0a60fabd3acee9c947ddef68c4845cf admin/README.markdown
+37301f03be50753a0e72d98e53ff2f25 admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 ae7db64ce7690626d99007713f5aa4d6 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -72,12 +72,12 @@ a676727162d431f7c5403c53f30c4846 admin/classes/exporter/zoo2.php
 e7291c75d3ac5525afc35a9a00abef29 admin/classes/item.php
 99d7efaeafeadc787c900ee628e2220e admin/classes/menu.php
 8a3edb0428f11a404535d9134c90063f admin/classes/renderer/index.html
-5f0f93f1d67f2b97fd407337618b1dfe admin/classes/renderer/item.php
+10ce61f88c529eebadf4bf2bc61966ff admin/classes/renderer/item.php
 e7f4277907886768ff18f3ca6cdb97b1 admin/classes/renderer/submission.php
 8c1a8d43fc69cda79e1d5d8f23731f01 admin/classes/submission.php
 a7e0049ca182638c53b55dd5c669b8c8 admin/classes/template.php
 8a1f078259c7651e25ad094d0c4b2531 admin/classes/tree.php
-1503883a0c47aae53a5be1bc75b97975 admin/classes/type.php
+412bffd4e53eba93d92229f724e44663 admin/classes/type.php
 08d2dc1bf144ad402bab78e517963316 admin/classes/validator.php
 558b3e22c8e2962b229aa39402cd37bd admin/config.php
 84c673d7929bb939a73eccf20023b8c1 admin/controllers/category.php
@@ -565,13 +565,13 @@ d94a5640014b83bac45f6f94ddff907c media/applications/blog/templates/warp6/mail.su
 acce95a0dc489e36b7f53a30ac884b8d media/applications/blog/templates/warp6/renderer/item/author/related.php
 06ea5759dad0b8fc4d3b3270502447df media/applications/blog/templates/warp6/renderer/item/author/submission.php
 e3dcb673cb84866448df01ad6d2f3e0c media/applications/blog/templates/warp6/renderer/item/feed.php
-5681ce6cc98e162a5c5a0c145ee280b5 media/applications/blog/templates/warp6/renderer/item/full.php
+d01a0fc488252449af32494790671c0e media/applications/blog/templates/warp6/renderer/item/full.php
 8a3edb0428f11a404535d9134c90063f media/applications/blog/templates/warp6/renderer/item/index.html
 d99554f2b463b3121773285dfb94c5b8 media/applications/blog/templates/warp6/renderer/item/metadata.xml
 c8f3517ff0624e421de6a7341ac2ddc6 media/applications/blog/templates/warp6/renderer/item/positions.config
 245c0f19afbc43458d9711dbe8863a01 media/applications/blog/templates/warp6/renderer/item/positions.xml
 6f3a4df72b9e7abb96e3fdf412f38114 media/applications/blog/templates/warp6/renderer/item/submission.php
-9e095d693600adce1324c937c1af51fb media/applications/blog/templates/warp6/renderer/item/teaser.php
+6089971b7022581c39f5f174eb677dd3 media/applications/blog/templates/warp6/renderer/item/teaser.php
 630c0fdd462dfe9a9f53a9d3864a566b media/applications/blog/templates/warp6/submission.php
 17cb469d432c4c0bec89aae6ed2a12c1 media/applications/blog/templates/warp6/tag.php
 b9ef6806e0db8246cf174443e5fa8654 media/applications/blog/templates/warp6/template.xml
@@ -938,12 +938,12 @@ bc5fcbc9fbf5ee26e2933dc1688a8d79 media/libraries/jquery/plugins/nestedsortable/j
 0160ff5188f72cb902180a883f7f2773 site/assets/js/default.js
 8a3edb0428f11a404535d9134c90063f site/assets/js/index.html
 0ceaa9a38144c61b1ed94c23a002407b site/controllers/comment.php
-728291b18c0a11de971f689caf67b730 site/controllers/default.php
+3da4c458d2279679a33cab1e38c0ddad site/controllers/default.php
 8a3edb0428f11a404535d9134c90063f site/controllers/index.html
-c578b674572ca654dc4b430dfd80b16f site/controllers/item.php
+371ecd7b36f4176ea443b8c90c9b9c4a site/controllers/item.php
 dc26ff3df850d6bb4d95e51f9aa62117 site/controllers/submission.php
 8a3edb0428f11a404535d9134c90063f site/index.html
-2f67f3a4e85aada7cc618f988f5b711d site/partials/_comment.php
+75554b17c549f68c688e4cea3aa7f4ff site/partials/_comment.php
 4af8a84d84a9691bfecb16b27830d7a7 site/partials/_comments.php
 ea224a3f240c7166e832d4b5ba3599ec site/partials/_mysubmissions.php
 21fe5008ed770eedbdf28da64f72e488 site/partials/_respond.php
@@ -961,7 +961,7 @@ bc5a9e60adf8654cc377421462cfd35c site/renderer/element/pipe.php
 f4a135a6e6f9f16ea86c96d3b8443e84 site/renderer/element/submission/block.php
 8a3edb0428f11a404535d9134c90063f site/renderer/element/submission/index.html
 8a3edb0428f11a404535d9134c90063f site/renderer/index.html
-985f10c913d5d9a252292348e8a5eab3 site/router.php
+3019de526ea376b15bc819d5a778a903 site/router.php
 a4baded49b06c56c5daad216a321d1f6 site/sef_ext/com_zoo.php
 8a3edb0428f11a404535d9134c90063f site/sef_ext/index.html
 8a3edb0428f11a404535d9134c90063f site/views/category/index.html
@@ -983,4 +983,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-ccfebc3d961a40e7c6e90eb8d1a7efa6 zoo.xml
+1edc6ba886aebf5b47599838f7b6b3c8 zoo.xml

@@ -36,17 +36,23 @@ class ItemRenderer extends PositionRenderer {
 		// set item
 		$this->_item = isset($args['item']) ? $args['item'] : null;
 
+		// init vars
+		$render = true;
+		$result = '';
+
 		// trigger beforedisplay event
 		if ($this->_item) {
-			$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'item:beforedisplay'));
+			$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'item:beforedisplay', array('render' => &$render, 'html' => &$result)));
 		}
 
 		// render layout
-		$result = parent::render($layout, $args);
+		if ($render) {
+			$result .= parent::render($layout, $args);
 
-		// trigger afterdisplay event
-		if ($this->_item) {
-			$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'item:afterdisplay', array('html' => &$result)));
+			// trigger afterdisplay event
+			if ($this->_item) {
+				$this->app->event->dispatcher->notify($this->app->event->create($this->_item, 'item:afterdisplay', array('html' => &$result)));
+			}
 		}
 
 		return $result;

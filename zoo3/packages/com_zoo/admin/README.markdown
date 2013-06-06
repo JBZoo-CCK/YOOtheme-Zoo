@@ -1,13 +1,18 @@
 # ZOO #
 
-- Version: 3.0.12
-- Date: April 2013
+- Version: 3.0.13
+- Date: June 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
 
+	3.0.13
+	# fixed a php notice on single submission view
+	# fixed bug with Joomla 3.1.0 RelatedItem element on submission
+
 	3.0.12
+	# fix for Joomla 3.1.0
 	# fixed Joomla importer
 
 	3.0.11
