@@ -86,14 +86,19 @@
 				</div>
 				<?php
 				foreach ($this->item->getElements() as $element) {
-					if ($edit = $element->edit()) {
+
+					// trigger beforeEdit event
+					$render = true;
+					$this->app->event->dispatcher->notify($this->app->event->create($element, 'element:beforeedit', array('render' => &$render)));
+
+					if ($render && $edit = $element->edit()) {
 						$element->loadAssets();
 
 						// set label
-						$name = $element->config->get('name');
+						$name = JText::_($element->config->get('name'));
 
 						if ($description = $element->config->get('description')) {
-							$description = ' class="editlinktip hasTip" title="'.$description.'"';
+							$description = ' class="editlinktip hasTip" title="'.JText::_($description).'"';
 						}
 
 						$html   = array();

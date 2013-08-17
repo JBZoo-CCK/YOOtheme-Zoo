@@ -42,7 +42,7 @@ class ItemController extends AppController {
 	public function element() {
 
 		// include template css
-		$template = $this->app->database->queryResult('SELECT name FROM #__extensions WHERE type = "template" AND client_id = 0 AND enabled = 1');
+		$template = $this->app->database->queryResult('SELECT template FROM #__template_styles WHERE client_id = 1 AND home = 1');
 		$this->app->document->addStylesheet("root:administrator/templates/$template/css/template.css");
 
 		jimport('joomla.html.pagination');
@@ -113,9 +113,9 @@ class ItemController extends AppController {
 
 		if ($search) {
 			$from   .= ' LEFT JOIN '.ZOO_TABLE_TAG.' AS t ON a.id = t.item_id';
-			$where[] = 'LOWER(a.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false)
+			$where[] = '(LOWER(a.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false)
 				. ' OR LOWER(t.name) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false)
-				. ' OR LOWER(a.alias) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false);
+				. ' OR LOWER(a.alias) LIKE '.$this->db->Quote('%'.$this->db->escape($search, true).'%', false).')';
 		}
 
 		// access filter

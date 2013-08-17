@@ -309,6 +309,10 @@ class DatabaseHelper extends AppHelper {
 	 * @since 1.0.0
 	 */
 	public function freeResult($result) {
+        
+        if ($this->app->system->config->get('debug', 0)) {
+            return;
+        }
 
 		if ($this->name == 'mysqli') {
 			return mysqli_free_result($result);

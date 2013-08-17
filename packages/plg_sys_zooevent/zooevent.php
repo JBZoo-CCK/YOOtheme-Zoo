@@ -96,6 +96,7 @@ class plgSystemZooevent extends JPlugin {
 //		$zoo->event->dispatcher->connect('element:beforedisplay', array('ElementEvent', 'beforeDisplay'));
 //		$zoo->event->dispatcher->connect('element:aftersubmissiondisplay', array('ElementEvent', 'afterSubmissionDisplay'));
 //		$zoo->event->dispatcher->connect('element:beforesubmissiondisplay', array('ElementEvent', 'beforeSubmissionDisplay'));
+//		$zoo->event->dispatcher->connect('element:beforeedit', array('ElementEvent', 'beforeEdit'));
 //		$zoo->event->dispatcher->connect('element:afteredit', array('ElementEvent', 'afterEdit'));
 //
 //		$zoo->event->register('LayoutEvent');

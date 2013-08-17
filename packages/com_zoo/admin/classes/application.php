@@ -126,14 +126,6 @@ class Application {
 	protected $_templates = array();
 
 	/**
-	 * Flag to check if the elements path has already been registered
-	 *
-	 * @var boolean
-	 * @since 2.0
-	 */
-	protected $_elements_path_registered = false;
-
-	/**
 	 * Flag to check if the item count of the categories has been retrieved
 	 *
 	 * @var boolean
@@ -716,22 +708,6 @@ class Application {
 	 */
 	public function isCommentsEnabled() {
 		return $this->getParams()->get('global.comments.enable_comments', 1);
-	}
-
-	/**
-	 * Register the elements path for this application
-	 *
-	 * @param boolean $new If the element path should be registered anew
-	 *
-	 * @return Application $this for chaining support
-	 */
-	public function registerElementsPath($new = false) {
-		if ($new || !$this->_elements_path_registered) {
-			$this->app->path->register($this->app->path->path($this->getResource().'elements'), 'elements');
-			$this->_elements_path_registered = true;
-		}
-
-		return $this;
 	}
 
 }

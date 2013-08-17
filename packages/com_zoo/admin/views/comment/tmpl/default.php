@@ -28,6 +28,11 @@ $this->app->document->addScript('assets:js/comment.js');
 			<button onclick="this.form.submit();"><?php echo JText::_('Search'); ?></button>
 			<button onclick="document.getElementById('search').value='';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_('Reset'); ?></button>
 		</li>
+        <?php if ($this->app->joomla->version->isCompatible('3.0')) : ?>
+            <li class="filter-right">
+                <?php echo str_replace(array('input-mini', 'size="1"'), '', $this->pagination->getLimitBox()); ?>
+            </li>
+        <?php endif ?>
 		<li class="filter-right">
 			<?php echo $this->lists['select_author'];?>
 		</li>

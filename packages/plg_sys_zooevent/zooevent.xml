@@ -12,6 +12,5 @@
 	<description>Event plugin for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename plugin="zooevent">zooevent.php</filename>
-		<filename>changelog.php</filename>
 	</files>
 </extension>

@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_category (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ALIAS_INDEX` (`alias`),
   KEY `PUBLISHED_INDEX` (`published`),
-  KEY `APPLICATIONID_ID_INDEX` (`published`,`id`)
+  KEY `APPLICATIONID_ID_INDEX` (`application_id`,`published`,`id`)
 ) ENGINE=MyISAM;
 
 -- --------------------------------------------------------

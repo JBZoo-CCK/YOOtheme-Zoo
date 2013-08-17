@@ -13,8 +13,10 @@
 	<files>
 		<filename plugin="zoosearch">zoosearch.php</filename>
 		<filename>changelog.php</filename>
+		<filename>file.script.php</filename>
 		<folder>renderer</folder>
 	</files>
+	<scriptfile>file.script.php</scriptfile>
 	<config>
 		<fields name="params" >
 			<fieldset name="basic">

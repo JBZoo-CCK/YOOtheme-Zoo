@@ -95,7 +95,37 @@ class AppPagination {
 		$this->_limit   = (int) max($limit, 1);
         $this->_range   = (int) max($range, 1);
 		$this->_pages   = (int) ceil($this->_total / $this->_limit);
+
+        // check if current page is valid
+        if ($this->_current > $this->_pages) {
+            $this->_current = $this->_pages;
+        }
+
 	}
+
+    public function name() {
+        return $this->_name;
+    }
+
+    public function total() {
+        return $this->_total;
+    }
+
+    public function current() {
+        return $this->_current;
+    }
+
+    public function limit() {
+        return $this->_limit;
+    }
+
+    public function range() {
+        return $this->_range;
+    }
+
+    public function pages() {
+        return $this->_pages;
+    }
 
 	/**
 	 * Get the show all items flag
@@ -105,7 +135,7 @@ class AppPagination {
 	 * @since 1.0.0
 	 */
 	public function getShowAll() {
-		return $this->_showall;
+		return $this->_showall || $this->_pages < 2;
 	}
 
  	/**
@@ -158,52 +188,51 @@ class AppPagination {
 	 *
 	 * @since 1.0.0
 	 */
-    public function render($url = 'index.php') {
+    public function render($url = 'index.php', $layout = null) {
 
-		$html = '';
+        $html = '';
 
-		// check if show all
-		if ($this->_showall) {
-			return $html;
-		}
+        // check if show all
+        if ($this->_showall) {
+            return $html;
+        }
 
-		// check if current page is valid
+        // check if current page is valid
         if ($this->_current > $this->_pages) {
             $this->_current = $this->_pages;
-		}
+        }
 
-		if ($this->_pages > 1) {
+        if ($this->_pages > 1) {
 
-			$range_start = max($this->_current - $this->_range, 1);
-			$range_end   = min($this->_current + $this->_range - 1, $this->_pages);
+            $range_start = max($this->_current - $this->_range, 1);
+            $range_end   = min($this->_current + $this->_range - 1, $this->_pages);
 
             if ($this->_current > 1) {
-				$link  = $url;
+                $link  = $url;
                 $html .= '<a class="start" href="'.JRoute::_($link).'">&lt;&lt;</a>&nbsp;';
-				$link  = $this->_current - 1 == 1 ? $url : $this->link($url, $this->_name.'='.($this->_current - 1));
-				$html .= '<a class="previous" href="'.JRoute::_($link).'">&lt;</a>&nbsp;';
+                $link  = $this->_current - 1 == 1 ? $url : $this->link($url, $this->_name.'='.($this->_current - 1));
+                $html .= '<a class="previous" href="'.JRoute::_($link).'">&lt;</a>&nbsp;';
             }
 
             for ($i = $range_start; $i <= $range_end; $i++) {
                 if ($i == $this->_current) {
-	                $html .= '[<span>'.$i.'</span>]';
+                    $html .= '[<span>'.$i.'</span>]';
                 } else {
-					$link  = $i == 1 ? $url : $this->link($url, $this->_name.'='.$i);
-	                $html .= '<a href="'.JRoute::_($link).'">'.$i.'</a>';
+                    $link  = $i == 1 ? $url : $this->link($url, $this->_name.'='.$i);
+                    $html .= '<a href="'.JRoute::_($link).'">'.$i.'</a>';
                 }
                 $html .= "&nbsp;";
             }
 
             if ($this->_current < $this->_pages) {
-				$link  = $this->link($url, $this->_name.'='.($this->_current + 1));
+                $link  = $this->link($url, $this->_name.'='.($this->_current + 1));
                 $html .= '<a class="next" href="'.JRoute::_($link).'">&gt;&nbsp;</a>&nbsp;';
-				$link  = $this->link($url, $this->_name.'='.($this->_pages));
+                $link  = $this->link($url, $this->_name.'='.($this->_pages));
                 $html .= '<a class="end" href="'.JRoute::_($link).'">&gt;&gt;&nbsp;</a>&nbsp;';
             }
 
-		}
+        }
 
         return $html;
     }
-
 }

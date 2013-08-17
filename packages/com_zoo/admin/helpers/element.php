@@ -28,23 +28,20 @@ class ElementHelper extends AppHelper{
 	}
 
 	/**
-	 * Returns an array of all Elements found for this application.
+	 * Returns an array of all Elements.
 	 *
-	 * @param Application $application The application object
-	 *
-	 * @return array applications elements
+	 * @return array elements
 	 *
 	 * @since 2.0
 	 */
-	public function getAll($application){
+	public function getAll(){
 
 		$elements = array();
-		$application->registerElementsPath();
 
 		foreach ($this->app->path->dirs('elements:') as $type) {
 
 			if ($type != 'element' && is_file($this->app->path->path("elements:$type/$type.php"))) {
-				if ($element = $this->create($type, $application)) {
+				if ($element = $this->create($type)) {
 					if ($element->getMetaData('hidden') != 'true') {
 						$elements[] = $element;
 					}
@@ -59,24 +56,17 @@ class ElementHelper extends AppHelper{
 	 * Creates element of given type
 	 *
 	 * @param string $type The type to create
-	 * @param Application $application The application object
 	 *
 	 * @return Element the created element
 	 *
 	 * @since 2.0
 	 */
-	public function create($type, $application = false) {
+	public function create($type) {
 
 		// load element class
 		$elementClass = 'Element'.$type;
 		if (!class_exists($elementClass)) {
-
-			if ($application) {
-				$application->registerElementsPath();
-			}
-
 			$this->app->loader->register($elementClass, "elements:$type/$type.php");
-
 		}
 
 		if (!class_exists($elementClass)) {

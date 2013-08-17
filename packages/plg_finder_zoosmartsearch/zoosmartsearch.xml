@@ -13,6 +13,8 @@
 	<files>
 		<filename plugin="zoosmartsearch">zoosmartsearch.php</filename>
     	<filename>index.html</filename>
+		<filename>file.script.php</filename>
 		<folder>renderer</folder>
 	</files>
+	<scriptfile>file.script.php</scriptfile>
 </extension>

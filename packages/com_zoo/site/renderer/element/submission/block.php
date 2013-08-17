@@ -14,12 +14,12 @@ $params = $this->app->data->create($params);
 // add tooltip
 $tooltip = '';
 if ($params->get('show_tooltip') && ($description = $element->config->get('description'))) {
-	$tooltip = ' class="hasTip" title="'.$description.'"';
+	$tooltip = ' class="hasTip" title="'.JText::_($description).'"';
 }
 
 // create label
 $label  = '<strong'.$tooltip.'>';
-$label .= $params->get('altlabel') ? $params->get('altlabel') : $element->config->get('name');
+$label .= JText::_($params->get('altlabel') ? $params->get('altlabel') : $element->config->get('name'));
 $label .= '</strong>';
 
 // create error
