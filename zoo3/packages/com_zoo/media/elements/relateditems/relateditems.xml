@@ -31,6 +31,11 @@
 			<option name="Unordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul>%s</ul>]]]></option>
 			<option name="Ordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ol>%s</ol>]]]></option>
 			<option name="Warp Item"><![CDATA[tag=[<article class="item">%s</article>]]]></option>
+			<option name="Blank"><![CDATA[tag=[%s]]]></option>
+			<option name="UIkit Block"><![CDATA[tag=[<div class="uk-margin">%s</div>]]]></option>
+			<option name="UIkit Article"><![CDATA[tag=[<article class="uk-article">%s</article>]]]></option>
+			<option name="UIkit List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul class="uk-list">%s</ul>]]]></option>
+			<option name="UIkit List Line"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul class="uk-list uk-list-line">%s</ul>]]]></option>
 		</param>
 	</params>
 </element>

@@ -39,5 +39,10 @@ if (empty($application)) {
 // get tags
 $tags = $zoo->tagmodule->buildTagCloud($application, $params);
 
+// filter output
+foreach ($tags as $tag) {
+    JFilterOutput::objectHTMLSafe($tag, ENT_QUOTES);
+}
+
 // load template
 include(JModuleHelper::getLayoutPath('mod_zootag', $params->get('theme', 'list')));

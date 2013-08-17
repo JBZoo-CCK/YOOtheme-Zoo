@@ -1,0 +1,41 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * download
+ */
+
+/* display: image link */
+[class*='zo-element-download-type'] {
+	display: block;
+	width: 100px;
+	height: 100px;
+	background: url(../../../../../../../../elements/download/assets/images/download_type_default.png) 0 0 no-repeat;
+}
+
+.zo-element-download-type-zip { background-image: url(../../../../../../../../elements/download/assets/images/download_type_zip.png); }
+.zo-element-download-type-tar { background-image: url(../../../../../../../../elements/download/assets/images/download_type_tar.png); }
+.zo-element-download-type-rar { background-image: url(../../../../../../../../elements/download/assets/images/download_type_rar.png); }
+.zo-element-download-type-bz2 { background-image: url(../../../../../../../../elements/download/assets/images/download_type_bz2.png); }
+.zo-element-download-type-gz { background-image: url(../../../../../../../../elements/download/assets/images/download_type_gz.png); }
+.zo-element-download-type-targz { background-image: url(../../../../../../../../elements/download/assets/images/download_type_tgz.png); }
+.zo-element-download-type-doc { background-image: url(../../../../../../../../elements/download/assets/images/download_type_doc.png); }
+.zo-element-download-type-jp2,
+.zo-element-download-type-jpg,
+.zo-element-download-type-jpe,
+.zo-element-download-type-jpeg { background-image: url(../../../../../../../../elements/download/assets/images/download_type_jpeg.png); }
+.zo-element-download-type-mov { background-image: url(../../../../../../../../elements/download/assets/images/download_type_mov.png); }
+.zo-element-download-type-mp3 { background-image: url(../../../../../../../../elements/download/assets/images/download_type_mp3.png); }
+.zo-element-download-type-mp2,
+.zo-element-download-type-mpe,
+.zo-element-download-type-mpeg,
+.zo-element-download-type-mpg { background-image: url(../../../../../../../../elements/download/assets/images/download_type_mpeg.png); }
+.zo-element-download-type-pdf { background-image: url(../../../../../../../../elements/download/assets/images/download_type_pdf.png); }
+.zo-element-download-type-png { background-image: url(../../../../../../../../elements/download/assets/images/download_type_png.png); }
+.zo-element-download-type-ppt { background-image: url(../../../../../../../../elements/download/assets/images/download_type_ppt.png); }
+.zo-element-download-type-psd { background-image: url(../../../../../../../../elements/download/assets/images/download_type_psd.png); }
+.zo-element-download-type-rtf { background-image: url(../../../../../../../../elements/download/assets/images/download_type_rtf.png); }
+.zo-element-download-type-tif,
+.zo-element-download-type-tiff { background-image: url(../../../../../../../../elements/download/assets/images/download_type_tiff.png); }
+.zo-element-download-type-wav { background-image: url(../../../../../../../../elements/download/assets/images/download_type_wav.png); }
+.zo-element-download-type-wmv { background-image: url(../../../../../../../../elements/download/assets/images/download_type_wmv.png); }
+.zo-element-download-type-xls { background-image: url(../../../../../../../../elements/download/assets/images/download_type_xls.png); }

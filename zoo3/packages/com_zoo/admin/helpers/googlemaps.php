@@ -76,19 +76,15 @@ class GooglemapsHelper extends AppHelper {
 			switch ($result->status) {
 				case 'OVER_QUERY_LIMIT':
 					throw new GooglemapsHelperException("Google Geocoding API error: You are over your quota.");
-					break;
 
 				case 'ZERO_RESULTS':
 					throw new GooglemapsHelperException("Google Geocoding API error: Couldn't find passed in address ($address).");
-					break;
 
 				case 'REQUEST_DENIED':
 					throw new GooglemapsHelperException("Google Geocoding API error: The request was denied.");
-					break;
 
 				case 'INVALID_REQUEST':
 					throw new GooglemapsHelperException("Google Geocoding API error: The request was invalid.");
-					break;
 
 				case 'OK':
 

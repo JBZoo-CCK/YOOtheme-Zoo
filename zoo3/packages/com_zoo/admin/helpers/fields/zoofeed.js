@@ -1,3 +1,3 @@
 /* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
 
-jQuery(function(a){a("div.zoo-feed").each(function(){var b=a(this).find("div.input"),c=a(this).find("input:radio");c.first().is(":checked")&&b.hide();c.bind("change",function(){b.slideToggle()})})});
+jQuery(function(i){i("div.zoo-feed").each(function(){var n=i(this).find("div.input");var d=i(this).find("input:radio");if(d.first().is(":checked"))n.hide();d.bind("change",function(){n.slideToggle()})})});

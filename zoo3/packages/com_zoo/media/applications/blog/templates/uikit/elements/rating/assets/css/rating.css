@@ -1,0 +1,50 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * rating
+ */
+
+.yoo-zoo.rating {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.yoo-zoo.rating div.rating-container,
+.yoo-zoo.rating div.previous-rating,
+.yoo-zoo.rating div.current-rating div.hover {
+	background-image: url(../images/stars.svg);
+	background-repeat: repeat-x;
+}
+
+.yoo-zoo.rating div.rating-container {
+	position: relative;
+	height: 20px;
+	background-position: 0 0;
+	overflow: hidden;
+}
+
+.yoo-zoo.rating div.previous-rating {
+	height: 20px;
+	background-position: 0 -20px;
+}
+
+.yoo-zoo.rating div.current-rating > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	cursor: pointer;
+}
+
+.yoo-zoo.rating div.current-rating > div.hover { background-position: 0 -40px; }
+
+.yoo-zoo.rating div.star1 { width: 20px; }
+.yoo-zoo.rating div.star2 { width: 40px; }
+.yoo-zoo.rating div.star3 { width: 60px; }
+.yoo-zoo.rating div.star4 { width: 80px; }
+.yoo-zoo.rating div.star5 { width: 100px; }
+.yoo-zoo.rating div.star6 { width: 120px; }
+.yoo-zoo.rating div.star7 { width: 140px; }
+.yoo-zoo.rating div.star8 { width: 160px; }
+.yoo-zoo.rating div.star9 { width: 180px; }
+.yoo-zoo.rating div.star10 { width: 200px; }

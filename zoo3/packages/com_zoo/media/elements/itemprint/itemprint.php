@@ -68,9 +68,9 @@ class ElementItemPrint extends Element {
 
 		} else {
 
-			$this->app->html->_('behavior.modal', 'a.modal');
+			$this->app->html->_('behavior.modal', 'a.modal-button');
 			$text  = $params->get('showicon') ? '' : JText::_('Print');
-			$class = $params->get('showicon') ? 'modal element-print-button' : 'modal';
+			$class = $params->get('showicon') ? 'modal-button element-print-button' : 'modal-button';
 
 			return '<a href="'.JRoute::_($this->app->route->item($this->_item, false).'&amp;tmpl=component&amp;print=1').'" title="'.JText::_('Print').'" rel="{handler: \'iframe\', size: {x: 850, y: 500}}" class="'.$class.'">'.$text.'</a>';
 

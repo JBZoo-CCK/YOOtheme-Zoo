@@ -71,9 +71,15 @@ class ElementLink extends ElementRepeatable implements iRepeatSubmittable {
 
 		$target = ($this->get('target', $this->config->get('default_target', ''))) ? 'target="_blank"' : '';
 		$rel	= $this->get('rel', '');
-		$rel	= !empty($rel) ? 'rel="' . $rel .'"' : '';
+		
+		// render layout
+		if ($layout = $this->getLayout()) {
+			return $this->renderLayout($layout,
+				compact('target', 'rel')
+			);
+		}
 
-		return '<a href="'.JRoute::_($this->get('value', '')).'" title="'.$this->getTitle().'" '.$target.' '. $rel .'>'.$this->getText().'</a>';
+		return null;
 
 	}
 
@@ -84,7 +90,7 @@ class ElementLink extends ElementRepeatable implements iRepeatSubmittable {
 	   Returns:
 	       String - html
 	*/
-	protected function _edit(){
+	protected function _edit() {
 		return $this->_editForm();
 	}
 
@@ -126,7 +132,7 @@ class ElementLink extends ElementRepeatable implements iRepeatSubmittable {
 
         $validator    = $this->app->validator->create('string', array('required' => false));
         $text         = $validator->clean($values->get('text'));
-        $target       = $validator->clean($values->get('target'));
+        $target       = $validator->clean($values->get('target', $this->config->get('default_target', '')));
         $custom_title = $validator->clean($values->get('custom_title'));
         $rel          = $validator->clean($values->get('rel'));
 

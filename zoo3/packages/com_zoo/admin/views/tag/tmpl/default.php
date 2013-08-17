@@ -12,6 +12,11 @@ defined('_JEXEC') or die('Restricted access');
 // add js
 $this->app->document->addScript('assets:js/tag.js');
 
+// filter output
+foreach ($this->tags as $tag) {
+    JFilterOutput::objectHTMLSafe($tag, ENT_QUOTES);
+}
+
 ?>
 
 <form class="tags-default" action="<?php echo $this->app->link(array('controller' => $this->controller)); ?>" method="post" name="adminForm" id="adminForm" accept-charset="utf-8">
@@ -28,6 +33,11 @@ $this->app->document->addScript('assets:js/tag.js');
 			<button onclick="this.form.submit();"><?php echo JText::_('Search'); ?></button>
 			<button onclick="document.getElementById('search').value='';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_('Reset'); ?></button>
 		</li>
+        <?php if ($this->app->joomla->version->isCompatible('3.0')) : ?>
+            <li class="filter-right">
+                <?php echo str_replace(array('input-mini', 'size="1"'), '', $this->pagination->getLimitBox()); ?>
+            </li>
+        <?php endif ?>
 	</ul>
 
 	<?php endif;

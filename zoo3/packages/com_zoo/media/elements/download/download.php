@@ -248,12 +248,7 @@ class ElementDownload extends ElementFile implements iSubmittable {
 		parent::bindData($data);
 
 		// add size to data
-		$filepath = $this->app->path->path('root:'.$this->get('file'));
-		if (is_readable($filepath) && is_file($filepath)) {
-			$this->set('size', sprintf('%u', filesize($filepath)));
-		} else {
-			$this->set('size', 0);
-		}
+        $this->_updateFileSize();
 	}
 
 	/*
@@ -418,16 +413,27 @@ class ElementDownload extends ElementFile implements iSubmittable {
 			$this->app->zoo->putIndexFile(dirname($file));
 
             $this->set('file', $this->app->path->relative($file));
-
+            $this->_updateFileSize();
         }
     }
 
-    protected function _inUploadPath($image) {
-        return $this->_getUploadPath() == dirname($image);
+    protected function _inUploadPath($file) {
+        return $this->_getUploadPath() == dirname($file);
     }
 
     protected function _getUploadPath() {
         return trim(trim($this->config->get('upload_directory', 'images/zoo/uploads/')), '\/');
+    }
+
+    protected function _updateFileSize() {
+        if (is_string($this->get('file'))) {
+            $filepath = $this->app->path->path('root:'.$this->get('file'));
+            if (is_readable($filepath) && is_file($filepath)) {
+                $this->set('size', sprintf('%u', filesize($filepath)));
+            } else {
+                $this->set('size', 0);
+            }
+        }
     }
 
 }

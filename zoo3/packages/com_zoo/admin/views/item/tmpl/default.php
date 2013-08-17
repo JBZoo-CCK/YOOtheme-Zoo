@@ -28,6 +28,11 @@ $this->app->document->addScript('assets:js/item.js');
 				<button onclick="this.form.submit();"><?php echo JText::_('Search'); ?></button>
 				<button onclick="document.getElementById('search').value='';this.form.submit();"><?php echo JText::_('Reset'); ?></button>
 			</li>
+            <?php if ($this->app->joomla->version->isCompatible('3.0')) : ?>
+            <li class="filter-right">
+                <?php echo str_replace(array('input-mini', 'size="1"'), '', $this->pagination->getLimitBox()); ?>
+            </li>
+            <?php endif ?>
 			<li class="filter-right">
 				<?php echo $this->lists['select_category'];?>
 			</li>
@@ -165,7 +170,7 @@ $this->app->document->addScript('assets:js/item.js');
 						$author = $this->users[$row->created_by]->name;
 
 						if ($this->app->user->get()->authorise('core.edit', 'com_users')) {
-							$author = '<a href="'.$this->app->component->users->link(array('task' => 'edit', 'layout' => 'edit', 'view' => 'user', 'id' => $row->created_by)).'" title="'.JText::_('Edit User').'">'. $author.'</a>';
+							$author = '<a href="'.$this->app->component->users->link(array('task' => 'user.edit', 'layout' => 'edit', 'view' => 'user', 'id' => $row->created_by)).'" title="'.JText::_('Edit User').'">'. $author.'</a>';
 						}
 					} else {
 						$author = JText::_('Guest');

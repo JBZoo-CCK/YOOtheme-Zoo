@@ -16,7 +16,7 @@ class mod_zooitemInstallerScript {
 
 	public function preflight($type, $parent) {
 
-		if ($type == 'Update') {
+		if (strtolower($type) == 'update') {
 
 			// load config
 			require_once(JPATH_ADMINISTRATOR.'/components/com_zoo/config.php');

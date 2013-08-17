@@ -6,8 +6,10 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-jimport('cms.controller.legacy');
-jimport('legacy.controller.legacy');
+if (!class_exists('JControllerLegacy', false)) {
+    jimport('cms.controller.legacy');
+    jimport('legacy.controller.legacy');
+}
 
 /**
  * The base Controller Class

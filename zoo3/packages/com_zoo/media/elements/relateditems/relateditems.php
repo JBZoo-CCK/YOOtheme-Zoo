@@ -213,7 +213,6 @@ class ElementRelatedItems extends Element implements iSubmittable {
 	public function renderSubmission($params = array()) {
 
 		// load assets
-		$this->app->html->_('behavior.modal', 'a.modal');
 		$this->app->document->addScript('elements:relateditems/relateditems.js');
 
 		return $this->_edit();
@@ -284,7 +283,6 @@ class ElementRelatedItems extends Element implements iSubmittable {
 			Void
 	*/
 	public function loadAssets() {
-		$this->app->html->_('behavior.modal', 'a.modal');
 		$this->app->document->addScript('elements:relateditems/relateditems.js');
 	}
 

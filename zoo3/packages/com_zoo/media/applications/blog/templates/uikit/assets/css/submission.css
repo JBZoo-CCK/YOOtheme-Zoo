@@ -1,0 +1,474 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * Name:			UIkit Submission CSS
+ * Description:		Defines styles for UIkit ZOO App themes
+ *
+ *
+ ========================================================================== */
+
+
+/* ZOO - General
+ ========================================================================== */
+
+/*
+ * Styling Joomla labels for input.radio
+ */
+
+.uk-form .controls label.radio input {
+	margin-top: 0;
+	margin-right: 5px;
+}
+.uk-form .controls label + label { margin-left: 10px; }
+.uk-form .controls .radio,
+.uk-form .controls .checkbox {
+	padding-left: 0;
+	line-height: 14px;
+}
+
+
+/* Bootstrap .row reset */
+.yoo-zoo .row { margin-left: 0 !important; }
+
+/*
+ * Loading UIkit icon font
+ */
+
+div.repeat-elements span.sort:before,
+div.repeat-elements span.delete:before,
+div.select-relateditems li div.item-sort:before,
+div.select-relateditems li div.item-delete:before,
+ul.as-selections li.as-selection-item a.as-close {
+	display: inline-block; /* 1 */
+	font-family: "FontAwesome";
+	font-weight: normal; /* 2 */
+	font-style: normal; /* 2 */
+	vertical-align: baseline; /* 3 */
+	line-height: 1; /* 4 */
+	-webkit-font-smoothing: antialiased; /* 5 */
+}
+
+
+/* ZOO - My Submissions
+ ========================================================================== */
+
+/*
+ * Submit input[type="file"] override
+ */
+
+.zo-upload {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.zo-upload input[type="text"],
+.zo-upload .zo-button-container,
+.zo-upload button.submit {
+	display: block;
+	margin-right: 5px;
+	float: left;
+}
+
+.zo-upload .zo-button-container {
+	position: relative;
+	width: 70px;
+	height: 32px;
+	margin-left: 10px;
+}
+
+.zo-upload .zo-button-container input[type="file"] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 30px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+/*
+ * Submit element
+ */
+
+.submission div.submit {
+	margin: 10px 0 10px 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.submission #cancel-button { margin-left: 10px; }
+
+/*
+ * Submit header
+ */
+
+.submissions .zo-header {
+	position: relative;
+	padding: 10px 15px !important;
+	margin: 0 0 5px 0;
+}
+.submissions .zo-header h3 {
+	margin: 0;
+	cursor: pointer;
+}
+.submissions .zo-header > a {
+	display: block;
+	float: right;
+}
+.submissions .zo-header > a + a { margin-right: 10px; }
+
+/*
+ * Submit preview
+ */
+
+.submissions .preview { padding: 20px 0; }
+.submissions .preview.hidden { display: none; }
+
+/*
+ * Element required
+ */
+
+.element.required label:after { content: " *"; }
+
+
+/* ZOO - More Options
+ ========================================================================== */
+
+.element .more-options {}
+.element .more-options .trigger.zo-absolute {
+	margin-top: 15px;
+}
+
+.element .more-options .options {
+	display: none;
+	padding: 15px 0;
+}
+
+.element .more-options .trigger .button { cursor: pointer; }
+
+/*
+ * Advanced options
+ */
+
+.element .more-options .trigger .button.advanced.hide { display: none; }
+.element .more-options.show-advanced .trigger .button.advanced { display: none; }
+.element .more-options.show-advanced .trigger .button.advanced.hide { display: inline-block; }
+
+.element .more-options.show-advanced .options.advanced,
+.element .more-options.show-title .options.title,
+.element .more-options.show-link .options.link,
+.element .more-options.show-lightbox .options.lightbox { display: block; }
+
+.element div.repeat-elements .hide-options .more-options .options { display: none; }
+.element div.repeat-elements li.repeatable-element.ghost .more-options .trigger { display: none; }
+
+
+/* ZOO - Repeatable Elements
+ ========================================================================== */
+
+div.repeat-elements { overflow: hidden; }
+
+div.repeat-elements ul.repeatable-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	overflow: hidden;
+	position: relative;
+}
+
+div.repeat-elements li.repeatable-element {
+	min-height: 20px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+
+div.repeat-elements li.repeatable-element.hidden {
+	width: 0;
+	height: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+div.repeat-elements li.repeatable-element div.repeatable-content {
+	float: left;
+}
+
+div.repeat-elements span.delete,
+div.repeat-elements span.sort {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	margin: 5px 0 0 5px;
+	visibility: hidden;
+}
+
+div.repeat-elements span.sort:before {
+	content: "\f047";
+	cursor: move;
+}
+div.repeat-elements span.delete:before {
+	content: "\f057";
+	cursor: pointer;
+}
+
+div.repeat-elements li.repeatable-element:hover span.delete,
+div.repeat-elements li.repeatable-element:hover span.sort { visibility: visible; }
+
+div.repeat-elements li.repeatable-element:first-child span.delete,
+div.repeat-elements li.repeatable-element[style*="absolute"]:first-child + li span.delete { visibility: hidden; }
+
+div.repeat-elements li.repeatable-element.ghost { overflow: visible; }
+
+div.repeat-elements li.repeatable-element.ghost .repeatable-content {
+	margin: 0;
+	padding: 5px;
+	background: rgba(0,0,0,0.03) !important;
+}
+div.repeat-elements li.repeatable-element.ghost input { background: none; }
+div.repeat-elements li.repeatable-element.ghost span.delete { visibility: hidden; }
+
+div.repeat-elements li.repeatable-element.dragging { border: 1px dashed rgba(0,0,0,0.08); }
+
+
+/* ZOO - Image Preview
+ ========================================================================== */
+
+div.image-preview {
+	position: relative;
+	width: 330px;
+}
+
+div.image-select.hidden,
+div.image-preview.hidden { display: none; }
+
+div.image-preview span.image-cancel {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 14px;
+	height: 14px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
+/* ZOO - Download Preview
+ ========================================================================== */
+
+div.download-select.hidden,
+div.download-preview.hidden { display: none; }
+
+div.download-preview span.download-cancel {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-left: 5px;
+	vertical-align: baseline;
+	cursor: pointer;
+}
+
+
+/* ZOO - Calendar
+ ========================================================================== */
+
+input.calendar-element { width: 140px !important; }
+
+/*
+ * Calendar icon image
+ */
+
+img.zoo-calendar { margin-left: 10px; }
+
+
+/* ZOO - Related Items
+ ========================================================================== */
+
+div.select-relateditems { overflow: hidden; }
+
+div.select-relateditems ul {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+div.select-relateditems li > div {
+	width: auto;
+	padding: 5px 0 5px 0;
+	overflow: hidden;
+}
+
+div.select-relateditems li:hover > div,
+div.select-relateditems li.ghost > div { background: rgba(0,0,0,0.03); }
+
+div.select-relateditems li div.item-name {
+	text-indent: 5px;
+	line-height: 18px;
+	float: left;
+}
+
+div.select-relateditems li div.item-sort,
+div.select-relateditems li div.item-delete {
+	display: none;
+	width: 16px;
+	height: 18px;
+	margin-right: 7px;
+	float: right;
+}
+
+div.select-relateditems li div.item-sort:before { content: "\f047"; cursor: move; }
+div.select-relateditems li div.item-delete:before { content: "\f057"; }
+
+div.select-relateditems li:hover div.item-sort,
+div.select-relateditems li:hover div.item-delete,
+div.select-relateditems li.ghost div.item-sort,
+div.select-relateditems li.ghost div.item-delete { display: block; }
+
+
+/* ZOO - Tags
+ ========================================================================== */
+
+#tag-area div.tag-cloud a {
+	margin: 5px 5px 0 0;
+	float: left;
+	cursor: pointer;
+}
+
+#tag-area input.as-input { transition: none; }
+
+
+/* ZOO - AutoSuggest
+ ========================================================================== */
+
+ul.as-selections {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+
+ul.as-selections li {
+	float: left;
+	margin: 0 4px 6px 0;
+}
+
+ul.as-selections li.add-tag-button { cursor: pointer; }
+
+ul.as-selections li.as-selection-item a.as-close {
+	margin: 0 0 0 5px;
+	line-height: 28px;
+	float: right;
+	cursor: pointer;
+}
+
+ul.as-selections li.as-selection-item a.as-close:before { content: "\f00d"; }
+
+ul.as-selections li.as-original input.ui-autocomplete-loading { background: url(../../../../../../assets/images/loader.gif) 100% 50% no-repeat; }
+
+
+/* Joomla - Tiny MCE
+ ========================================================================== */
+
+.mceEditor.defaultSkin table.mceLayout {
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+.mceEditor.defaultSkin table.mceLayout td { padding: 0px; }
+.mceEditor.defaultSkin td.mceCenter table { margin: 0px; }
+.mceEditor.defaultSkin table.mceLayout > tbody > tr { background: #ffffff; }
+.mceEditor.defaultSkin table.mceLayout > tbody > tr > td.mceFirst { white-space: normal; }
+
+.mceEditor.defaultSkin table.mceLayout tr.mceFirst td,
+.mceEditor.defaultSkin table.mceLayout tr.mceLast td { border: none; }
+
+.mceEditor.defaultSkin table.mceLayout tr.mceFirst > td {
+	padding: 2px 0px 2px 0px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background: #fafafa;
+	background: linear-gradient(to bottom, #fff, #f5f5f5);
+}
+
+.mceEditor.defaultSkin table.mceLayout tr.mceLast > td {
+	padding: 5px 0px 5px 0px;
+	border-radius: 3px;
+	background: #fafafa;
+	background: linear-gradient(to bottom, #fff, #f5f5f5);
+}
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar {
+	padding-left: 2px;
+	background: none;
+}
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar .mceButton {
+	border: 1px solid rgba(0,0,0,0.15);
+	border-top-color: rgba(0,0,0,0.1);
+	border-bottom-color: rgba(0,0,0,0.25);
+	border-radius: 3px;
+	background: #fafafa;
+	background: linear-gradient(to bottom, #fff, #f5f5f5);
+}
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar a.mceButtonEnabled:hover {
+	border: 1px solid rgba(0,0,0,0.15);
+	border-top-color: rgba(0,0,0,0.1);
+	border-bottom-color: rgba(0,0,0,0.25);
+	background: #efefef;
+	background: linear-gradient(to bottom, #f5f5f5, #eaeaea);
+}
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar a.mceButtonEnabled:hover span { cursor: pointer; }
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar .mceSeparator {
+	width: 0px;
+	margin: 0px;
+	padding: 0px;
+	background: none;
+}
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar .mceListBox .mceOpen {
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.mceEditor.defaultSkin table.mceLayout table.mceToolbar .mceListBox .mceText {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.mceEditor.defaultSkin table.mceLayout .mceIframeContainer { border-top: none; }
+
+.mceEditor.defaultSkin table.mceLayout .mceStatusbar { padding-left: 3px; }
+
+/* Boostrap Editor Buttons Reset */
+.yoo-zoo #editor-xtd-buttons {
+	margin: 0;
+	padding: 0;
+}
+
+.yoo-zoo .toggle-editor.pull-right { float: none; }
+
+.yoo-zoo .toggle-editor.pull-right,
+.yoo-zoo .toggle-editor.pull-left { margin-top: 10px; }
+
+.yoo-zoo .toggle-editor.pull-right a { margin-left: 5px; }
+
+.yoo-zoo .mce_editable {
+	width: 416px;
+	height: 300px;
+	display: block;
+}
+
+
+/* Joomla - Code Mirror
+ ========================================================================== */
+
+.yoo-zoo div.CodeMirror-wrapping {
+	width: 416px;
+	height: 300px;
+	border: 1px solid rgba(0,0,0,0.1);
+}

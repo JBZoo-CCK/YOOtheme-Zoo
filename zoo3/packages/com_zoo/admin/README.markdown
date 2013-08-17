@@ -1,15 +1,23 @@
 # ZOO #
 
-- Version: 3.0.13
-- Date: June 2013
+- Version: 3.1.0
+- Date: August 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
 
+	3.1.0
+    + added # items filter to pagination views (Joomla 3.0)
+    + added UIkit templates to all apps
+	# fixed user edit route in items view
+    # fixed link element submission "open in new window" by default
+    # fixed conflict issues with JViewLegacy and other components
+
 	3.0.13
 	# fixed a php notice on single submission view
 	# fixed bug with Joomla 3.1.0 RelatedItem element on submission
+	# fixed canonical links with Joomla 3.*
 
 	3.0.12
 	# fix for Joomla 3.1.0

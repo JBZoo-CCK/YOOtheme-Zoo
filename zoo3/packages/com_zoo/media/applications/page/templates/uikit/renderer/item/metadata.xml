@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout name="full">
+		<name>Full</name>
+		<description>An item is rendered with the full layout in the item view.</description>
+	</layout>
+</metadata>

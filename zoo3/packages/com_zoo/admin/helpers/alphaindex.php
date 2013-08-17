@@ -199,29 +199,34 @@ class AppAlphaindex {
 	/**
 	 * Render the alphaindex.
 	 *
+     * @param Application The app to use as base for the routes
 	 * @return string Alphaindex html
 	 *
 	 * @since 2.0
 	 */
-	public function render() {
+	public function render(Application $app = null) {
 
-		$html = '';
+        if (!$app) {
+            $app = $this->app->zoo->getApplication();
+        }
 
 		// check if index is empty
 		if (empty($this->_index)) {
-			return $html;
+			return '';
 		}
+
+        $html = array();
 
 		// create html
 		foreach ($this->_index as $key => $char) {
 			if (isset($this->_objects[$key]) && count($this->_objects[$key])) {
-				$html .= '<a href="'.JRoute::_($this->app->route->alphaindex($this->app->zoo->getApplication()->id, $key)).'" title="'.$char.'">'.$char.'</a>';
+				$html[] = '<a href="'.JRoute::_($this->app->route->alphaindex($app->id, $key)).'" title="'.$char.'">'.$char.'</a>';
 			} else {
-				$html .= '<span title="'.$char.'">'.$char.'</span>';
+				$html[] = '<span title="'.$char.'">'.$char.'</span>';
 			}
 		}
 
-		return $html;
+		return implode("\n", $html);
 	}
 
 }

@@ -12,4 +12,8 @@
 		<name>Layout 3</name>
 		<description>This is an alternative layout to render an item in the module themes.</description>
 	</layout>
+	<layout name="uikit">
+		<name>UIkit</name>
+		<description>This is an UIkit layout to render an item in the module themes.</description>
+	</layout>
 </metadata>

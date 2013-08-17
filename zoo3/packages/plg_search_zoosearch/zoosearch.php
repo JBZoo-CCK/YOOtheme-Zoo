@@ -167,7 +167,7 @@ class plgSearchZoosearch extends JPlugin {
 		             ." LEFT JOIN ".ZOO_TABLE_TAG." AS c ON a.id = c.item_id";
 		$conditions = array("(".$where.")"
                      ." AND a.searchable = 1"
-                     ." AND " . $this->app->user->getDBAccessString()
+                     ." AND a." . $this->app->user->getDBAccessString()
                      ." AND (a.state = 1"
 		             ." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 		             ." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now."))");

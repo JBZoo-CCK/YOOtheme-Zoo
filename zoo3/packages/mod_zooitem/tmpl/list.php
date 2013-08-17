@@ -12,11 +12,13 @@ defined('_JEXEC') or die('Restricted access');
 // include css
 $zoo->document->addStylesheet('mod_zooitem:tmpl/list/style.css');
 
+$css_class = $application->getGroup().'-'.$application->getTemplate()->name;
+
 ?>
 
 <?php if (!empty($items)) : ?>
 
-<ul class="zoo-item-list zoo-list">
+<ul class="zoo-item-list zoo-list <?php echo $css_class ?>">
 	<?php $i = 0; foreach ($items as $item) : ?>
 	<li><?php echo $renderer->render('item.'.$layout, compact('item', 'params')); ?></li>
 	<?php $i++; endforeach; ?>

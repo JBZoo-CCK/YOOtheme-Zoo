@@ -125,7 +125,7 @@ class Type {
 		// has element already been loaded?
 		if (!$element = isset($this->_elements[$identifier]) ? $this->_elements[$identifier] : null) {
 			if ($config = $this->getElementConfig($identifier)) {
-				if ($element = $this->app->element->create((string) $config->type, $this->_application)) {
+				if ($element = $this->app->element->create((string) $config->type)) {
 					$element->identifier = $identifier;
 					$element->config = $config;
 					$this->_elements[$identifier] = $element;

@@ -9,6 +9,8 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
+$this->app->html->_('behavior.modal', 'a.modal-button');
+
 ?>
 
 <div id="<?php echo $this->identifier; ?>" class="select-relateditems">
@@ -27,7 +29,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<?php endforeach; ?>
 	</ul>
-	<a class="item-add modal" rel="{handler: 'iframe', size: {x: 850, y: 500}}" title="<?php echo JText::_('Add Item'); ?>" href="<?php echo $link; ?>" ><?php echo JText::_('Add Item'); ?></a>
+	<a class="item-add modal-button" rel="{handler: 'iframe', size: {x: 850, y: 500}}" title="<?php echo JText::_('Add Item'); ?>" href="<?php echo $link; ?>" ><?php echo JText::_('Add Item'); ?></a>
 </div>
 
 <script type="text/javascript">

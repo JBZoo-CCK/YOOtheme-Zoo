@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>UIkit</name>
+	<version>3.1.0</version>
+	<creationDate>August 2013</creationDate>
+	<author>YOOtheme</author>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license></license>
+	<description>UIkit template for the Pages App</description>
+	<params group="category"></params>
+	<params group="item">
+		<param name="item_media_alignment" type="list" default="right" label="Item Media Alignment" description="MEDIA_ELEMENT_ALIGNEMENT">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="top">Top</option>
+		</param>
+		<param name="show_item_meta" type="radio" default="1" label="Item Meta Information" description="Show/Hide meta information.">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="show_item_related" type="radio" default="1" label="Item Related Information" description="Show/Hide related information.">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+	</params>
+</template>

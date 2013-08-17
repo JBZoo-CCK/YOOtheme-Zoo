@@ -178,7 +178,7 @@ class ZooHelper extends AppHelper {
 		$registry = new JRegistry('');
 		$registry->loadArray($params);
 		$dispatcher = JDispatcher::getInstance();
-		$article = JTable::getInstance('content');
+		$article = new stdClass;
 		$article->text = $text;
 
 		// disable loadmodule plugin on feed view

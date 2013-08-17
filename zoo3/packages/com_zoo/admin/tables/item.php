@@ -288,7 +288,7 @@ class ItemTable extends AppTable {
 			." FROM ".$this->name." AS a"
 			.($join ? $join : "")
 			." WHERE a.id IN (".implode(",", $ids).")"
-			." AND ".$this->app->user->getDBAccessString($user)
+			." AND a.".$this->app->user->getDBAccessString($user)
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -339,7 +339,7 @@ class ItemTable extends AppTable {
 			." JOIN ".$this->name." AS a ON a.id = ci.item_id"
 			.($join ? $join : "")
 			." WHERE a.application_id = ".(int) $application_id
-			." AND ".$this->app->user->getDBAccessString($user)
+			." AND a.".$this->app->user->getDBAccessString($user)
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -380,7 +380,7 @@ class ItemTable extends AppTable {
 				.($join ? $join : "")
 				." WHERE a.application_id = ".(int) $application_id
 				." AND b.name = '".$db->escape($tag)."'"
-				." AND ".$this->app->user->getDBAccessString($user)
+				." AND a.".$this->app->user->getDBAccessString($user)
 				.($published == true ? " AND a.state = 1"
 				." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 				." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -419,7 +419,7 @@ class ItemTable extends AppTable {
 			.($join ? $join : "")
 			." WHERE a.type = ".$db->Quote($type_id)
 			.($application_id !== false ? " AND a.application_id = ".(int) $application_id : "")
-			." AND ".$this->app->user->getDBAccessString($user)
+			." AND a.".$this->app->user->getDBAccessString($user)
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -458,11 +458,11 @@ class ItemTable extends AppTable {
 			." LEFT JOIN ".ZOO_TABLE_CATEGORY_ITEM." AS b ON a.id = b.item_id"
 			.($join ? $join : "")
 			." WHERE a.application_id = ".(int) $application_id
-			." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
-			." AND ".$this->app->user->getDBAccessString($user)
+			." AND a.".$this->app->user->getDBAccessString($user)
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
+            ." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
 			." GROUP BY a.id"
 			." ORDER BY ". (!$ignore_order_priority ? "a.priority DESC, " : "") . $order
 			.(($limit ? " LIMIT ".(int) $offset.",".(int) $limit : ""));
@@ -503,7 +503,7 @@ class ItemTable extends AppTable {
 						.($join ? $join : "")
 						." WHERE a.application_id = ".(int) $application_id
 						." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
-						." AND ".$this->app->user->getDBAccessString($user)
+						." AND a.".$this->app->user->getDBAccessString($user)
 						.($published == true ? " AND a.state = 1"
 						." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 						." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -526,7 +526,7 @@ class ItemTable extends AppTable {
 							.($join ? $join : "")
 							." WHERE a.application_id = ".(int) $application_id
 							." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
-							." AND ".$this->app->user->getDBAccessString($user)
+							." AND a.".$this->app->user->getDBAccessString($user)
 							.($published == true ? " AND a.state = 1"
 							." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 							." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
@@ -587,13 +587,13 @@ class ItemTable extends AppTable {
         $where = array();
 
         // application filter
-        $where[] = 'application_id = ' . (int) $application_id;
+        $where[] = 'a.application_id = ' . (int) $application_id;
 
         // author filter
-        $where[] = 'created_by = ' . (int) $user_id;
+        $where[] = 'a.created_by = ' . (int) $user_id;
 
         // user rights
-        $where[] = $this->app->user->getDBAccessString($this->app->user->get((int) $user_id));
+        $where[] = 'a.'.$this->app->user->getDBAccessString($this->app->user->get((int) $user_id));
 
 		// published
 		if ($published) {
@@ -614,17 +614,17 @@ class ItemTable extends AppTable {
         // Type
         if ($type) {
         	if (is_array($type)) {
-            	$where[] = 'type IN ("' . implode('", "', array_keys($type)) . '")';
+            	$where[] = 'a.type IN ("' . implode('", "', array_keys($type)) . '")';
         	} else {
-            	$where[] = 'type = "' . (string) $type . '"';
+            	$where[] = 'a.type = "' . (string) $type . '"';
         	}
 		}
 
 		// Search
 		if ($search) {
 			$from   .= ' LEFT JOIN '.ZOO_TABLE_TAG.' AS t ON a.id = t.item_id';
-			$where[] = 'LOWER(a.name) LIKE '.$this->app->database->Quote('%'.$this->app->database->escape($search, true).'%', false)
-				. ' OR LOWER(t.name) LIKE '.$this->app->database->Quote('%'.$this->app->database->escape($search, true).'%', false);
+			$where[] = '(LOWER(a.name) LIKE '.$this->app->database->Quote('%'.$this->app->database->escape($search, true).'%', false)
+				. ' OR LOWER(t.name) LIKE '.$this->app->database->Quote('%'.$this->app->database->escape($search, true).'%', false).')';
 		}
 
 		// conditions
@@ -666,7 +666,7 @@ class ItemTable extends AppTable {
 			." LEFT JOIN ".ZOO_TABLE_CATEGORY_ITEM." AS b ON a.id = b.item_id"
 			." WHERE a.application_id = ".(int) $application_id
 			." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
-			." AND ".$this->app->user->getDBAccessString($user)
+			." AND a.".$this->app->user->getDBAccessString($user)
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")

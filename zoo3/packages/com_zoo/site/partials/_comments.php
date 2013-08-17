@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js and css
-$this->app->document->addScript('libraries:jquery/plugins/cookie/jquery.cookie.js');
+$this->app->document->addScript('libraries:jquery/plugins/cookie/jquery-cookie.js');
 $this->app->document->addScript('assets:js/comment.js');
 $this->app->document->addStylesheet('assets:css/comments.css');
 
@@ -23,16 +23,17 @@ $css[] = $params->get('registered_users_only') && $active_author->isGuest() ? 'n
 
 <div id="comments">
 
-	<h3 class="comments-meta"><?php echo JText::_('Comments').' ('.(count($comments)-1).')'; ?></h3>
-
-		<ul class="<?php echo implode("\n", $css); ?>">
-			<?php
-			foreach ($comments[0]->getChildren() as $comment) {
-				echo $this->partial('comment', array('level' => 1, 'comment' => $comment, 'author' => $comment->getAuthor(), 'params' => $params));
-			}
-			?>
-		</ul>
-
+    <?php if ($count = count($comments)-1) : ?>
+	<h3 class="comments-meta"><?php echo JText::_('Comments').' ('.$count.')'; ?></h3>
+    
+    <ul class="<?php echo implode("\n", $css); ?>">
+        <?php
+        foreach ($comments[0]->getChildren() as $comment) {
+            echo $this->partial('comment', array('level' => 1, 'comment' => $comment, 'author' => $comment->getAuthor(), 'params' => $params));
+        }
+        ?>
+    </ul>
+    <?php endif; ?>
 	<?php
 		if($item->isCommentsEnabled()) :
 			echo $this->partial('respond', compact('active_author', 'params', 'item', 'captcha'));

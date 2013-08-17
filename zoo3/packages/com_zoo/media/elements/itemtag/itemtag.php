@@ -102,26 +102,16 @@ class ElementItemTag extends Element implements iSubmittable{
 	*/
 	public function renderSubmission($params = array()) {
 
-		$tags = isset($this->_tags) ? $this->_tags : $this->_item->getTags();
-
-		$html[] = '<div id="tag-area">';
-		$html[] = '<input type="text" value="'.implode(', ', $tags).'" placeholder="'.JText::_('Add tag').'" />';
-		$html[] = '<p>'.JText::_('Choose from the most used tags').':</p>';
-		$most = $this->app->table->tag->getAll($this->_item->getApplication()->id, null, null, 'items DESC, a.name ASC', null, 8);
-		if (count($most)) {
-			$html[] = '<div class="tag-cloud">';
-				foreach ($most as $tag) {
-					$html[] = '<a title="'.$tag->items . ' ' . ($tag->items == 1 ? JText::_('item') : JText::_('items')).'">'.$tag->name.'</a>';
-				}
-			$html[] = '</div>';
-		}
-		$html[] = '</div>';
-
 		// init vars
+        $tags = isset($this->_tags) ? $this->_tags : $this->_item->getTags();
+		$most = $this->app->table->tag->getAll($this->_item->getApplication()->id, null, null, 'items DESC, a.name ASC', null, 8);
 		$link = $this->app->link(array('controller' => 'submission', 'task' => 'loadtags', 'format' => 'raw'), false);
-		$this->app->document->addScriptDeclaration("jQuery(function($) { $('#tag-area').Tag({url: '".$link."', inputName: '".$this->getControlName('value', true)."'}); });");
 
-		return implode("\n", $html);
+        if ($layout = $this->getLayout('submission.php')) {
+            return $this->renderLayout($layout,
+                compact('tags', 'most', 'link')
+            );
+        }
 	}
 
 	/*

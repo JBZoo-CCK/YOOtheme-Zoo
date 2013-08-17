@@ -6,8 +6,10 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-jimport('cms.view.legacy');
-jimport('legacy.view.legacy');
+if (!class_exists('JViewLegacy', false)) {
+    jimport('cms.view.legacy');
+    jimport('legacy.view.legacy');
+}
 
 /**
  * Base View class

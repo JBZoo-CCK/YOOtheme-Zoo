@@ -3,7 +3,8 @@
 ALTER TABLE `#__zoo_category`
 	ADD UNIQUE `ALIAS_INDEX` (`alias`),
 	ADD INDEX `PUBLISHED_INDEX` (`published`),
-	ADD INDEX `APPLICATIONID_ID_INDEX` (`published`, `id`);
+	ADD INDEX `APPLICATIONID_ID_INDEX` (`application_id`, `published`, `id`),
+    ADD INDEX `APPLICATIONID_ID_INDEX2` (`application_id`, `id`);
 
 -- --------------------------------------------------------
 

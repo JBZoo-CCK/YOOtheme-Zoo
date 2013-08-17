@@ -22,10 +22,17 @@ class ApplicationEvent {
 	public static function init($event) {
 
 		$application = $event->getSubject();
+        $app         = $application->app;
+
+        $app->path->register($app->path->path($application->getResource().'elements'), 'elements');
 
 		// load site language
-		if ($application->app->system->application->isSite()) {
-			$application->app->system->language->load('com_zoo', $application->getPath(), null, true);
+		if ($app->system->application->isSite()) {
+			$app->system->language->load('com_zoo', $application->getPath(), null, true);
+
+            if ($template = $application->getTemplate()) {
+                $app->path->register($template->getPath().'/elements', 'elements');
+            }
 		}
 
 	}

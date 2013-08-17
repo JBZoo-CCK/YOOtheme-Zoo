@@ -398,7 +398,7 @@ class ManagerController extends AppController {
 
 		// sort elements by group
 		$this->elements = array();
-		foreach ($this->app->element->getAll($this->application) as $element) {
+		foreach ($this->app->element->getAll() as $element) {
 			$this->elements[$element->getGroup()][$element->getElementType()] = $element;
 		}
 		ksort($this->elements);
@@ -417,7 +417,7 @@ class ManagerController extends AppController {
 		$element = $this->app->request->getWord('element', 'text');
 
 		// load element
-		$this->element = $this->app->element->create($element, $this->application);
+		$this->element = $this->app->element->create($element);
 		$this->element->identifier = $this->app->utility->generateUUID();
 
 		// display view

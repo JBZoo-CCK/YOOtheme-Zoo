@@ -59,7 +59,8 @@ $this->app->document->addScript('assets:js/update.js');
 			<?php endif; ?>
 
 			<div class="wrapper changelog">
-				<textarea disabled="disabled" rows="20" cols="75" name="changelog"><?php echo JFilterOutput::cleanText(file_get_contents($this->app->path->path('component.admin:changelog.php'))); ?></textarea>
+                <?php $text = file_get_contents($this->app->path->path('component.admin:README.markdown')); ?>
+				<textarea disabled="disabled" rows="20" cols="75" name="changelog"><?php echo JFilterOutput::cleanText($text); ?></textarea>
 			</div>
 
 		</div>
