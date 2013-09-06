@@ -181,6 +181,17 @@ class Type {
 	}
 
 	/**
+	 * Get a list of elements filtered by type
+	 *
+	 * @return array The element list
+	 *
+	 * @since 3.1
+	 */
+	public function getElementsByType($type) {
+		return array_filter($this->getElements(), create_function('$element', 'return $element->getElementType() == "'.$type.'";'));
+	}
+
+	/**
 	 * 	Get the core elements
 	 *
 	 * @return array The list of core elements

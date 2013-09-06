@@ -317,29 +317,25 @@ class ItemController extends AppController {
 			$item->modified_by = $this->user->get('id');
 
 			// set created date
-			if ($item->created && strlen(trim($item->created)) <= 10) {
-				$item->created .= ' 00:00:00';
-			}
-			$date = $this->app->date->create($item->created, $tzoffset);
-			$item->created = $date->toSQL();
+			try {
+                $item->created = $this->app->date->create($item->created, $tzoffset)->toSQL();
+            } catch (\Exception $e) {
+                $item->created = $this->app->date->create()->toSQL();
+            }
 
 			// set publish up date
-			if (strlen(trim($item->publish_up)) <= 10) {
-				$item->publish_up .= ' 00:00:00';
-			}
-			$date = $this->app->date->create($item->publish_up, $tzoffset);
-			$item->publish_up = $date->toSQL();
+            try {
+                $item->publish_up = $this->app->date->create($item->publish_up, $tzoffset)->toSQL();
+            } catch (\Exception $e) {
+                $item->publish_up = $this->app->date->create()->toSQL();
+            }
 
 			// set publish down date
-			if (trim($item->publish_down) == JText::_('Never') || trim($item->publish_down) == '') {
-				$item->publish_down = $this->app->database->getNullDate();
-			} else {
-				if (strlen(trim($item->publish_down)) <= 10) {
-					$item->publish_down .= ' 00:00:00';
-				}
-				$date = $this->app->date->create($item->publish_down, $tzoffset);
-				$item->publish_down = $date->toSQL();
-			}
+            try {
+                $item->publish_down = $this->app->date->create($item->publish_down, $tzoffset)->toSQL();
+            } catch (\Exception $e) {
+                $item->publish_down = $this->app->database->getNullDate();
+            }
 
 			// get primary category
 			$primary_category = @$post['params']['primary_category'];

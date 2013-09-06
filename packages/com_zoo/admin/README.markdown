@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.1.0
+- Version: 3.1.1
 - Date: August 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.1.1
+	# fixed mysql index problem
 
 	3.1.0
     + added # items filter to pagination views (Joomla 3.0)

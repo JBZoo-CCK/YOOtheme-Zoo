@@ -2583,6 +2583,8 @@ fieldset .element-date img {
 
 fieldset .element-textarea textarea { margin: 0px; }
 
+fieldset .element-checkbox > div { width: 416px }
+
 fieldset .element-checkbox > div > div {
 	padding-top: 6px;
 	float:left;
