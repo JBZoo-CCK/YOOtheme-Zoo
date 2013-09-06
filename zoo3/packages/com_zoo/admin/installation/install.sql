@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_version (
     FROM information_schema.tables
     WHERE table_schema = (SELECT DATABASE()) AND table_name LIKE '%zoo_application'
   )
-  THEN '' ELSE '2.5.21' END as version;
+  THEN '' ELSE '3.1.1' END as version;
 
 -- --------------------------------------------------------
 
@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS #__zoo_category (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ALIAS_INDEX` (`alias`),
   KEY `PUBLISHED_INDEX` (`published`),
-  KEY `APPLICATIONID_ID_INDEX` (`application_id`,`published`,`id`)
+  KEY `APPLICATIONID_ID_INDEX` (`application_id`,`published`,`id`),
+  KEY `APPLICATIONID_ID_INDEX2` (`application_id`, `id`)
 ) ENGINE=MyISAM;
 
 -- --------------------------------------------------------

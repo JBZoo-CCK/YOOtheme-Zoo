@@ -62,9 +62,6 @@ EOD;
                 }
             }
         }
-
-		// refresh database indexes
-		$app->update->refreshDBTableIndexes();
 	}
 
 }
