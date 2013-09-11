@@ -1,4 +1,4 @@
-e6e1061b970548c4be22c58b63456906 admin/README.markdown
+6ea0462a84eba4fde6fc96cd180cd8ff admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 6a8d430f1d2895f47331bd34018bf102 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -85,7 +85,7 @@ a7e0049ca182638c53b55dd5c669b8c8 admin/classes/template.php
 7b5e41f1e6b5453c5d8758b1f62bef33 admin/controllers/configuration.php
 38767301d82d2396acacdcee9e0f7af5 admin/controllers/frontpage.php
 8a3edb0428f11a404535d9134c90063f admin/controllers/index.html
-727051a0c5d44c81259188288c65c1ff admin/controllers/item.php
+87ecc2298bf371fa08b299e76c048a18 admin/controllers/item.php
 0e38642128679c9b77ddbc5a151dca9c admin/controllers/manager.php
 af33fe006f59a7a0a0ba687a10c7fd9d admin/controllers/new.php
 7b3dabfabe697322ba31243016f039f8 admin/controllers/submission.php
@@ -228,8 +228,8 @@ c757ccbdb8631d5ceac34235bfdeef56 admin/helpers/type.php
 1fd3fbd1597dc24939d59c32d395a339 admin/installation/dependencies.config
 8a3edb0428f11a404535d9134c90063f admin/installation/index.html
 169ce29ddb1dae34112b80d0c98280ec admin/installation/index.sql
-3969e971e8896b6d89821946060bbd9b admin/installation/install.sql
-53b2ac0baf3c0df2fa921823e3c4bb72 admin/installation/requirements.php
+3be1cf1122ee5373dc87d2d5c0d758b4 admin/installation/install.sql
+9400a1fc8e70b89f0df45957ac3327f3 admin/installation/requirements.php
 13c02279b32a4ad01525b8aa088b7b0e admin/installation/uninstall.sql
 618bfe23bb621b1f8f2eb46e86e87412 admin/installation/updates/2.4.12.php
 0a88cff529dffb276927a8ad7ecf5436 admin/installation/updates/2.4.4.php
@@ -930,7 +930,7 @@ e544e5d870df86d2140e4a3d59ff2886 media/elements/itemprevnext/itemprevnext.xml
 301dcc60f987b18fd5346b8a7684fdb4 media/elements/itemprint/itemprint.php
 9a4943adc921963954096d7f4ca77f19 media/elements/itemprint/itemprint.xml
 8a3edb0428f11a404535d9134c90063f media/elements/itempublish_down/index.html
-89dfbdcdab9697d0fe9f569e0f7175ca media/elements/itempublish_down/itempublish_down.php
+5a2339b1f82b6c462dc04e917792e64e media/elements/itempublish_down/itempublish_down.php
 4f40c7262f888732243566e3b588626a media/elements/itempublish_down/itempublish_down.xml
 8a3edb0428f11a404535d9134c90063f media/elements/itempublish_up/index.html
 ff05476038558b819b597d7d905eaeb9 media/elements/itempublish_up/itempublish_up.php
@@ -1129,4 +1129,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-0d805156ec2a49177005ffb36f26d2d2 zoo.xml
+dbf79c24636f34a6ede03617f2f66574 zoo.xml

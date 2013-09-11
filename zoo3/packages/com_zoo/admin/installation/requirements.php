@@ -151,7 +151,7 @@ class AppRequirements {
 
 		if (extension_loaded('apc')) {
 			$status = $this->checkAPC();
-			$info 	= 'It is recommended to turn on APC (version 3.1.1+).';
+			$info 	= 'It is recommended to turn on APC (version 3.1.2+).';
 			$this->_addRecommendedResult('Alternative PHP Cache (APC) enabled', $status, $info);
 		}
 

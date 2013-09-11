@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.1.1
+- Version: 3.1.2
 - Date: August 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.1.2
+    # fixed problem with Publish Down Element submission not accepting "never"
 
 	3.1.1
 	# fixed mysql index problem
