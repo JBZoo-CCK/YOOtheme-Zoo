@@ -319,21 +319,21 @@ class ItemController extends AppController {
 			// set created date
 			try {
                 $item->created = $this->app->date->create($item->created, $tzoffset)->toSQL();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $item->created = $this->app->date->create()->toSQL();
             }
 
 			// set publish up date
             try {
                 $item->publish_up = $this->app->date->create($item->publish_up, $tzoffset)->toSQL();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $item->publish_up = $this->app->date->create()->toSQL();
             }
 
 			// set publish down date
             try {
                 $item->publish_down = $this->app->date->create($item->publish_down, $tzoffset)->toSQL();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $item->publish_down = $this->app->database->getNullDate();
             }
 

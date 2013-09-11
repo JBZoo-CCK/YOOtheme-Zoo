@@ -85,7 +85,7 @@ class ElementItemPublish_Down extends Element implements iSubmittable {
 	*/
 	public function validateSubmission($value, $params) {
 		$value = $value->get('value');
-		if (strtolower((trim($value)) == strtolower(JText::_('Never')) || trim($value) == '')) {
+		if ((strtolower(trim($value)) == strtolower(JText::_('Never'))) || trim($value) == '') {
 			return array('value' => $this->app->database->getNullDate());
 		}
         return array('value' => $this->app->validator->create('date', array('required' => $params->get('required')), array('required' => 'Please choose a date.'))
