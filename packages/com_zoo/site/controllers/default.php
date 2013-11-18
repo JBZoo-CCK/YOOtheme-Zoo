@@ -463,7 +463,7 @@ class DefaultController extends AppController {
 
 		$feed_limit = $this->app->system->config->get('feed_limit');
 
-		$feed_items = $this->app->table->item->getByCategory($this->application->id, array_keys($categories), true, null, array('_itemcreated', '_reversed'), 0, $feed_limit, true);
+		$feed_items = $this->app->table->item->getByCategory($this->application->id, array_keys($categories), true, null, array('_itempublish_up', '_reversed'), 0, $feed_limit, true);
 
 		// set title
 		if ($feed_title) {

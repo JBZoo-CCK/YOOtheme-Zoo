@@ -2759,3 +2759,14 @@ span.hide-update-notification {
 	vertical-align: text-top;
 	margin: 0 3px 0 0;
 }
+
+/* joomla 3.2 */
+
+.page-title .icon-zoo {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+    background: url(../images/zoo.png) 0 0 no-repeat;
+}
+
+ul#item-type { list-style: none; }

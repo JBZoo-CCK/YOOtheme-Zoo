@@ -120,6 +120,9 @@ class ManagerController extends AppController {
 			// set redirect message
 			$msg = JText::_('Application group uninstalled successful.');
 			$link = $this->baseurl;
+
+			// remove current group from redirect link
+			$link = str_replace('&group='.$this->group, '', $link);
 		} catch (InstallHelperException $e) {
 
 			// raise notice on exception

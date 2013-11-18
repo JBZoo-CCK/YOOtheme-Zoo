@@ -92,6 +92,19 @@ class plgSearchZoosearch extends JPlugin {
 		$fulltext = $params->get('search_fulltext', 0) && strlen($text) > 3 && intval($db->getVersion()) >= 4;
 		$limit    = $params->get('search_limit', 50);
 
+        $elements = array();
+        foreach ($this->app->application->groups() as $application) {
+            foreach($application->getTypes() as $type) {
+                foreach ($type->getElements() as $element) {
+                    if (!$element->canAccess()) {
+                        $elements[] = $db->Quote($element->identifier);
+                    }
+                }
+            }
+        }
+
+        $access = $elements ? 'NOT element_id in ('.implode(',', $elements).')' : '1';
+
 		// prepare search query
 		switch ($phrase) {
 			case 'exact':
@@ -99,14 +112,14 @@ class plgSearchZoosearch extends JPlugin {
 				if ($fulltext) {
 					$text    = $db->escape($text);
 					$where[] = "MATCH(a.name) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
-					$where[] = "MATCH(b.value) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
+					$where[] = "MATCH(b.value) AGAINST ('\"{$text}\"' IN BOOLEAN MODE) AND $access";
 					$where[] = "MATCH(c.name) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
 					$where   = implode(" OR ", $where);
 				} else {
 					$text	= $db->Quote('%'.$db->escape($text, true).'%', false);
 					$like   = array();
 					$like[] = 'a.name LIKE '.$text;
-					$like[] = 'b.value LIKE '.$text;
+					$like[] = "b.value LIKE $text AND $access";
 					$like[] = 'c.name LIKE '.$text;
 					$where 	= '(' .implode(') OR (', $like).')';
 				}
@@ -120,7 +133,7 @@ class plgSearchZoosearch extends JPlugin {
 				if ($fulltext) {
 					$text    = $db->escape($text);
 					$where[] = "MATCH(a.name) AGAINST ('{$text}' IN BOOLEAN MODE)";
-					$where[] = "MATCH(b.value) AGAINST ('{$text}' IN BOOLEAN MODE)";
+					$where[] = "MATCH(b.value) AGAINST ('{$text}' IN BOOLEAN MODE) AND $access";
 					$where[] = "MATCH(c.name) AGAINST ('{$text}' IN BOOLEAN MODE)";
 					$where   = implode(" OR ", $where);
 				} else {
@@ -131,7 +144,7 @@ class plgSearchZoosearch extends JPlugin {
 						$word     = $db->Quote('%'.$db->escape($word, true).'%', false);
 						$like     = array();
 						$like[]   = 'a.name LIKE '.$word;
-						$like[]   = 'EXISTS (SELECT value FROM '.ZOO_TABLE_SEARCH.' WHERE a.id = item_id AND value LIKE '.$word.')';
+						$like[]   = 'EXISTS (SELECT value FROM '.ZOO_TABLE_SEARCH.' WHERE a.id = item_id AND value LIKE '.$word.' AND '.$access.')';
 						$like[]   = 'EXISTS (SELECT name FROM '.ZOO_TABLE_TAG.' WHERE a.id = item_id AND name LIKE '.$word.')';
 						$wheres[] = implode(' OR ', $like);
 					}

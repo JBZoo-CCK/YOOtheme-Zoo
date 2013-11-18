@@ -55,11 +55,15 @@ class plgSystemZooevent extends JPlugin {
 		// register and connect events
 
 //		$zoo->event->register('ApplicationEvent');
+//		$zoo->event->dispatcher->connect('application:installed', array('ApplicationEvent', 'installed'));
 //		$zoo->event->dispatcher->connect('application:init', array('ApplicationEvent', 'init'));
 //		$zoo->event->dispatcher->connect('application:saved', array('ApplicationEvent', 'saved'));
 //		$zoo->event->dispatcher->connect('application:deleted', array('ApplicationEvent', 'deleted'));
 //		$zoo->event->dispatcher->connect('application:addmenuitems', array('ApplicationEvent', 'addmenuitems'));
 //		$zoo->event->dispatcher->connect('application:configparams', array('ApplicationEvent', 'configparams'));
+//		$zoo->event->dispatcher->connect('application:sefbuildroute', array('ApplicationEvent', 'sefbuildroute'));
+//		$zoo->event->dispatcher->connect('application:sefparseroute', array('ApplicationEvent', 'sefparseroute'));
+//		$zoo->event->dispatcher->connect('application:sh404sef', array('ApplicationEvent', 'sh404sef'));
 //
 //		$zoo->event->register('CategoryEvent');
 //		$zoo->event->dispatcher->connect('category:init', array('CategoryEvent', 'init'));
@@ -74,6 +78,8 @@ class plgSystemZooevent extends JPlugin {
 //		$zoo->event->dispatcher->connect('item:stateChanged', array('ItemEvent', 'stateChanged'));
 //		$zoo->event->dispatcher->connect('item:beforedisplay', array('ItemEvent', 'beforeDisplay'));
 //		$zoo->event->dispatcher->connect('item:afterdisplay', array('ItemEvent', 'afterDisplay'));
+//		$zoo->event->dispatcher->connect('item:beforeSaveCategoryRelations', array('ItemEvent', 'beforeSaveCategoryRelations'));
+//		$zoo->event->dispatcher->connect('item:orderquery', array('ItemEvent', 'orderquery'));
 //
 //		$zoo->event->register('CommentEvent');
 //		$zoo->event->dispatcher->connect('comment:init', array('CommentEvent', 'init'));
@@ -112,6 +118,8 @@ class plgSystemZooevent extends JPlugin {
 //		$zoo->event->dispatcher->connect('type:copied', array('TypeEvent', 'copied'));
 //		$zoo->event->dispatcher->connect('type:deleted', array('TypeEvent', 'deleted'));
 //		$zoo->event->dispatcher->connect('type:editdisplay', array('TypeEvent', 'editDisplay'));
+//		$zoo->event->dispatcher->connect('type:coreconfig', array('TypeEvent', 'coreconfig'));
+//		$zoo->event->dispatcher->connect('type:assignelements', array('TypeEvent', 'assignelements'));
 
 	}
 

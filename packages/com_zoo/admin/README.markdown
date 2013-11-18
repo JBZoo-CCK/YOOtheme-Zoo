@@ -1,11 +1,20 @@
 # ZOO #
 
-- Version: 3.1.2
-- Date: August 2013
+- Version: 3.1.3
+- Date: November 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.1.3
+    + added Joomla 3.2 compatibility
+	^ changed the feed order to publishing date
+	# fixed update notifications in PHP 5.4+
+	# minor uikit theme fix
+	# fixed size of image select box
+	# fixed element access issue on search
+	# fixed "show empty categories" for individual categories setting
 
     3.1.2
     # fixed problem with Publish Down Element submission not accepting "never"
