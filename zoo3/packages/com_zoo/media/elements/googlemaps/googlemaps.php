@@ -79,7 +79,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		// get geocode cache
 		$cache = $this->app->cache->create($this->app->path->path('cache:') . '/geocode_cache');
 		if (!$cache->check()) {
-			$this->app->system->application->enqueueMessage('Cache not writable please update the file permissions! (geocode_cache)', 'notice');
+			$this->app->system->application->enqueueMessage(sprintf('Cache not writable please update the file permissions! (%s)', $this->app->path->path('cache:') . '/geocode_cache'), 'notice');
 			return;
 		}
 

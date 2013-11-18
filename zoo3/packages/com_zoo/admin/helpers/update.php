@@ -275,7 +275,7 @@ class UpdateHelper extends AppHelper {
 		if ($xml = @simplexml_load_file($this->app->path->path('component.admin:zoo.xml'))) {
 
 			// update check
-			if ($url = current($xml->xpath('//updateUrl'))) {
+			if ($url = (string) current($xml->xpath('//updateUrl'))) {
 
 				// create check url
 				$url = sprintf('%s?application=%s&version=%s&format=raw', $url, 'zoo_j17', urlencode(current($xml->xpath('//version'))));
@@ -300,7 +300,12 @@ class UpdateHelper extends AppHelper {
 
 				// decode response and set message
 				if (!$cache->get('hideUpdateNotification') && @$data['status'] == 'update-available') {
-					$close = '<span onclick="jQuery.ajax(\''.$this->app->link(array('controller' => 'manager', 'task' => 'hideUpdateNotification')).'\'); jQuery(this).closest(\'ul\').hide();" class="hide-update-notification"></span>';
+					$close = $this->app->joomla->version->isCompatible('3.2') ?
+						'<script type="text/javascript">jQuery(function($) {$(\'#system-message-container [data-dismiss]\').bind(\'click\', function() { $.ajax(\'%s\') }); });</script>'
+						: '<span onclick="jQuery.ajax(\'%s\'); jQuery(this).closest(\'ul\').hide();" class="hide-update-notification"></span>';
+
+					$close = sprintf($close, $this->app->link(array('controller' => 'manager', 'task' => 'hideUpdateNotification', 'format' => 'raw'), false));
+
 					$this->app->system->application->enqueueMessage(@$data['message'].$close, 'notice');
 				}
 

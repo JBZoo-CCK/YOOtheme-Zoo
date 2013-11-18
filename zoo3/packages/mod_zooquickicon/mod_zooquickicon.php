@@ -36,17 +36,18 @@ $float = $zoo->system->language->isRTL() ? 'right' : 'left';
 
 <?php if ($zoo->joomla->version->isCompatible('3.0')) : ?>
 
-	<div class="row-striped">
+	<div class="sidebar-nav quick-icons">
+		<h2 class="nav-header">ZOO</h2>
+		<ul class="nav nav-list">
 		<?php foreach ($applications as $application) : ?>
-		<div class="row-fluid">
-			<div class="span12">
-				<a href="<?php echo JRoute::_('index.php?option='.$zoo->component->self->name.'&changeapp='.$application->id); ?>">
-					<img style="width:24px; height:24px;" alt="<?php echo $application->name; ?>" src="<?php echo $application->getIcon(); ?>" />
-					<span><?php echo $application->name; ?></span>
-				</a>
-			</div>
-		</div>
+		<li>
+			<a href="<?php echo JRoute::_('index.php?option='.$zoo->component->self->name.'&changeapp='.$application->id); ?>">
+				<img style="width:24px; height:24px;" alt="<?php echo $application->name; ?>" src="<?php echo $application->getIcon(); ?>" />
+				<span><?php echo $application->name; ?></span>
+			</a>
+		</li>
 		<?php endforeach; ?>
+		</ul>
 	</div>
 
 <?php else : ?>

@@ -75,7 +75,7 @@ class ElementSocialbuttons extends Element implements iSubmittable {
 							.($params->get('ggsize') ? ' data-size="'.$params->get('ggsize').'"' : '')
 							.($params->get('ggannotation') ? ' data-annotation="'.$params->get('ggannotation').'"' : '')
 							.($params->get('ggwidth') ? ' data-width="'.$params->get('ggwidth').'"' : '')
-							.($locale ? '' : ' data-lang="'.$locale.'"')
+							.($locale ? ' data-lang="'.$locale.'"' : '')
 							.'></div></div>';
 			}
 

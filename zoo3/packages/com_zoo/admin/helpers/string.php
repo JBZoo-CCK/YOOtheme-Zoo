@@ -75,7 +75,7 @@ class StringHelper extends AppHelper {
 		if ($force_safe) {
 			$string = JFilterOutput::stringURLSafe($string);
 		} else {
-			$string = $this->app->system->application->stringURLSafe($string);
+			$string = JApplication::stringURLSafe($string);
 		}
 
 		return trim($string);
