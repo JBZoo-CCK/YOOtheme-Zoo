@@ -93,6 +93,9 @@ class ZooHelper extends AppHelper {
 				}
 			}
 
+			// trigger event
+			$this->app->event->dispatcher->notify($this->app->event->create(null, 'zoo:initApp', array('application' => &$this->_application)));
+
 			return $this->_application;
 		}
 

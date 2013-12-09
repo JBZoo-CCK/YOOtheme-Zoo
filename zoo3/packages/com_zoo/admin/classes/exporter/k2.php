@@ -29,8 +29,9 @@ class AppExporterK2 extends AppExporter {
 	 * @since 2.0
 	 */
 	public function isEnabled() {
-		$path_to_xml = JPATH_ADMINISTRATOR . '/components/com_k2/manifest.xml';
-		if (JFile::exists($path_to_xml) && ($data = JApplicationHelper::parseXMLInstallFile($path_to_xml))) {
+		$path_to_xml = JPATH_ADMINISTRATOR . '/components/com_k2/';
+		if ((JFile::exists($path_to_xml.'manifest.xml') and $data = JApplicationHelper::parseXMLInstallFile($path_to_xml.'manifest.xml'))
+				or (JFile::exists($path_to_xml.'k2.xml') and $data = JApplicationHelper::parseXMLInstallFile($path_to_xml.'k2.xml'))) {
             return (version_compare($data['version'], '2.1') >= 0);
 		}
 

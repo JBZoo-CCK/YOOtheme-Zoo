@@ -129,10 +129,10 @@ class ExportHelper extends AppHelper {
 					case 'select':
 					case 'radio':
 					case 'checkbox':
-						$data[$i][$name] = @$item->elements[$identifier]['option'];
+						$data[$i][$name] = isset($item->elements[$identifier]['option']) ? $item->elements[$identifier]['option'] : array();
 						break;
 					case 'country':
-						$data[$i][$name] = @$item->elements[$identifier]['country'];
+						$data[$i][$name] = isset($item->elements[$identifier]['country']) ? $item->elements[$identifier]['country'] : array();
 						break;
 					case 'gallery':
 						$data[$i][$name] = @$item->elements[$identifier]['value'];
