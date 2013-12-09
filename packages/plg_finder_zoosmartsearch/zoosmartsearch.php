@@ -99,7 +99,9 @@ class plgFinderZOOSmartSearch extends FinderIndexerAdapter {
 
 	protected function setup() {
 
-		include_once JPATH_SITE . '/includes/application.php';
+		// workaround to make sure JSite is loaded
+		$this->app->loader->register('JSite', 'root:includes/application.php');
+        
 		$this->renderer = $this->app->renderer->create('item')->addPath(array($this->app->path->path('component.site:'), $this->app->path->path('plugins:finder/zoosmartsearch/')));
 
 		return true;

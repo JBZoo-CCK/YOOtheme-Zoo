@@ -15,14 +15,14 @@ defined('_JEXEC') or die('Restricted access');
 
 <div class="box-bottom">
 
-	<div id="progressbar">
-		<div class="message">Cleaning database...</div>
-	</div>
+    <div id="progressbar">
+        <div class="progress-message">Cleaning database...</div>
+    </div>
 
 </div>
 
 <style>
-	.message {
+	.progress-message {
 		float: left;
 		margin-left: 50%;
 		margin-top: 5px;
@@ -40,6 +40,7 @@ defined('_JEXEC') or die('Restricted access');
 		step('index.php?option=com_zoo&controller=manager&format=raw&task=cleandbstep');
 
         function step(url) {
+
             $.getJSON(url)
                 .success(function(data) {
 
@@ -48,7 +49,7 @@ defined('_JEXEC') or die('Restricted access');
                     }
 
                     if (data.message) {
-                        $('.message').text(data.message);
+                        $('.progress-message', progressbar).text(data.message);
                     }
 
                     if (data.step) {

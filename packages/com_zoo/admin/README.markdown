@@ -1,11 +1,17 @@
 # ZOO #
 
-- Version: 3.1.3
-- Date: November 2013
+- Version: 3.1.4
+- Date: December 2013
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.1.4
+	+ added zoo:initApp event
+	# fixed mysubmissions pagination renderer
+	# fixed CSV export of checkbox elements
+	# fixed K2 importer
 
 	3.1.3
     + added Joomla 3.2 compatibility

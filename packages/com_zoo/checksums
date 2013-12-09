@@ -1,4 +1,4 @@
-7e52cb59b7a4b588858d9e5df490c561 admin/README.markdown
+6ea54f9f910c313c3aab31c43d66f888 admin/README.markdown
 8a3edb0428f11a404535d9134c90063f admin/assets/css/index.html
 bcd4022819b8c0c0bf8cf9b191b73dc1 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -66,7 +66,7 @@ bb87bd781a17847c795b8424c441d724 admin/classes/application.php
 1e7bcd1fc57033deaa9c0ea55241d7c3 admin/classes/commentauthor.php
 8a3edb0428f11a404535d9134c90063f admin/classes/exporter/index.html
 4d1ea50bc38f03bf943d75aef005a7eb admin/classes/exporter/joomla.php
-765e471c68123426140a7368f3b9403e admin/classes/exporter/k2.php
+4d767bf8d5345eb0902eeea0104d14b9 admin/classes/exporter/k2.php
 a676727162d431f7c5403c53f30c4846 admin/classes/exporter/zoo2.php
 8a3edb0428f11a404535d9134c90063f admin/classes/index.html
 e7291c75d3ac5525afc35a9a00abef29 admin/classes/item.php
@@ -165,7 +165,7 @@ fd3bada9dba1857fe0590e117afb4625 admin/helpers/comment.php
 7bd245765715e7c4bafe0640b795f4cf admin/helpers/dependency.php
 d87af47bb46eed1903f8e0668657851b admin/helpers/editor.php
 bd95523172ed3b5b0652d56a59ea3393 admin/helpers/element.php
-fbc6ea67166b9126341dda6150983d42 admin/helpers/export.php
+486a975ae850832a56b750e060069dd1 admin/helpers/export.php
 9bc4d62c5c1555adea7024191d807135 admin/helpers/facebook.php
 b77ee2d5ba40b48f3d4c9bae55b2f7b4 admin/helpers/field.php
 450932b51ee54074191072e65dbda5c4 admin/helpers/fields/global.js
@@ -223,12 +223,12 @@ fbb986eb421af231d9229881da85e646 admin/helpers/twitter.php
 c757ccbdb8631d5ceac34235bfdeef56 admin/helpers/type.php
 e7c79e2fe4714b6eacf551df439bc843 admin/helpers/update.php
 32859fda7b5e4d0e9463cdfafb05f407 admin/helpers/validator.php
-0c2ad63a30976f0ade86b1cbd26adf9e admin/helpers/zoo.php
+f4758bb8cd382b31f9f7c0b437502a66 admin/helpers/zoo.php
 8a3edb0428f11a404535d9134c90063f admin/index.html
 1fd3fbd1597dc24939d59c32d395a339 admin/installation/dependencies.config
 8a3edb0428f11a404535d9134c90063f admin/installation/index.html
 169ce29ddb1dae34112b80d0c98280ec admin/installation/index.sql
-2adcee68b250c0d02d918a1df4c02665 admin/installation/install.sql
+0ab38f3c962e37469686ef0a26e662a9 admin/installation/install.sql
 9400a1fc8e70b89f0df45957ac3327f3 admin/installation/requirements.php
 13c02279b32a4ad01525b8aa088b7b0e admin/installation/uninstall.sql
 618bfe23bb621b1f8f2eb46e86e87412 admin/installation/updates/2.4.12.php
@@ -304,7 +304,7 @@ b90e64a095fa0ca8644339e646c75567 admin/views/manager/tmpl/_assignsubmittableelem
 320b9b66e52284227818094db90dbfaa admin/views/manager/tmpl/addelement.php
 059c130cac2fb7777f2758a120ee0746 admin/views/manager/tmpl/assignelements.php
 c696b4bf473b683bf16db3d2f2a82894 admin/views/manager/tmpl/assignsubmission.php
-8358f95662df993980ff6785afd41a27 admin/views/manager/tmpl/cleandb.php
+dadf4640d9ecda3ad368c29037628cdc admin/views/manager/tmpl/cleandb.php
 12b88dc78ce4eaa469b1653d93bbeb19 admin/views/manager/tmpl/default.php
 33b1d0045744b08bf061aec74221c61b admin/views/manager/tmpl/editelements.php
 e24062d411c9f9a21037086a7daab4e0 admin/views/manager/tmpl/edittype.php
@@ -543,7 +543,7 @@ d48e1c985666e0992c8f4f8e0bc1ad3c media/applications/blog/templates/sans/renderer
 d56695935b50a96fbb44d5b30263d1a3 media/applications/blog/templates/uikit/_comments.php
 6bab5d8fc1e442740637b5fbbb6085ab media/applications/blog/templates/uikit/_item.php
 c065ace3a28da86b22290a74fbb72af3 media/applications/blog/templates/uikit/_items.php
-3dafa24f145f839d34fed0e7ebc2b6f9 media/applications/blog/templates/uikit/_mysubmissions.php
+fe2e34a8d1e81fa0944dd05fcff37b27 media/applications/blog/templates/uikit/_mysubmissions.php
 8d4f3394708724e5ba24e4932982e8ea media/applications/blog/templates/uikit/_pagination.php
 7cc70b4fa421b4209853f5cecee53e28 media/applications/blog/templates/uikit/_respond.php
 bda2bd5fdbae4e6b656f288dde3eabc6 media/applications/blog/templates/uikit/_submission.php
@@ -1129,4 +1129,4 @@ ec7e7be2abbd85434827375c98c217bd site/views/item/tmpl/element.xml
 44ef89b9f1dddb4fcf7ced479f23d481 site/views/submission/tmpl/submission.php
 bea49ab47c9359c018ba09c22cabf775 site/views/submission/tmpl/submission.xml
 946631e368469e9a91662ba753844443 site/zoo.php
-198e7d607066cf8c2d9e0ef392a48556 zoo.xml
+2e23d157ce5fe4751d11b4941d2ea2ae zoo.xml

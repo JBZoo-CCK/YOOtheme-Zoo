@@ -2,14 +2,14 @@
 
 CREATE TABLE IF NOT EXISTS #__zoo_version (
   `version` varchar(255) NOT NULL
-) ENGINE=MyISAM
+) ENGINE=MyISAM DEFAULT CHARSET=utf8
   SELECT CASE WHEN
   (
     SELECT COUNT(*)
     FROM information_schema.tables
     WHERE table_schema = (SELECT DATABASE()) AND table_name LIKE '%zoo_application'
   )
-  THEN '' ELSE '3.1.3' END as version;
+  THEN '' ELSE '3.1.4' END as version;
 
 -- --------------------------------------------------------
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_application (
   `description` text NOT NULL,
   `params` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_category (
   KEY `PUBLISHED_INDEX` (`published`),
   KEY `APPLICATIONID_ID_INDEX` (`application_id`,`published`,`id`),
   KEY `APPLICATIONID_ID_INDEX2` (`application_id`, `id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_category_item (
   PRIMARY KEY (`category_id`,`item_id`),
   KEY `ITEMID_INDEX` (`item_id`),
   KEY `CATEGORYID_INDEX` (`category_id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_comment (
   KEY `ITEMID_INDEX` (`item_id`),
   KEY `AUTHOR_INDEX` (`author`),
   KEY `ITEMID_STATE_INDEX` (`item_id`, `state`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_item (
   KEY `MULTI_INDEX2` (`id`,`access`,`state`,`publish_up`,`publish_down`),
   KEY `ID_APPLICATION_INDEX` (`id`,`application_id`),
   FULLTEXT KEY `SEARCH_FULLTEXT` (`name`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_rating (
   `ip` varchar(255) default NULL,
   `created` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_search_index (
   `value` text NOT NULL,
   PRIMARY KEY (`item_id`,`element_id`),
   FULLTEXT KEY `SEARCH_FULLTEXT` (`value`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_submission (
   `params` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ALIAS_INDEX` (`alias`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -156,4 +156,4 @@ CREATE TABLE IF NOT EXISTS #__zoo_tag (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`item_id`,`name`),
   UNIQUE KEY `NAME_ITEMID_INDEX` (`name`,`item_id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

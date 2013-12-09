@@ -2,9 +2,9 @@
 <extension type="package" version="2.5" method="upgrade">
 	<name>ZOO Package</name>
 	<author>YOOtheme</author>
-	<creationDate>November 2013</creationDate>
+	<creationDate>December 2013</creationDate>
 	<packagename>zoo</packagename>
-	<version>3.1.3</version>
+	<version>3.1.4</version>
 	<updateUrl>http://www.yootheme.com/updates</updateUrl>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL</license>
