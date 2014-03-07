@@ -37,7 +37,7 @@ defined('_JEXEC') or die('Restricted access');
 
     <div class="uk-margin download-preview">
         <span class="preview"><?php echo $upload; ?></span>
-        <span class="download-cancel" title="<?php JText::_('Remove file'); ?>"><i class="uk-icon-remove"></i></span>
+        <span class="download-cancel" title="<?php JText::_('Remove file'); ?>"><i class="uk-icon-times"></i></span>
     </div>
 
     <?php if ($trusted_mode) : ?>

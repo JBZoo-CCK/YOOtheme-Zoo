@@ -30,7 +30,7 @@ $this->pagination_link = $this->app->route->mysubmissions($this->submission);
 					<?php foreach($this->types as $id => $type) : ?>
 						<li>
 							<?php $add_link = $this->app->route->submission($this->submission, $id, null, 0, 'mysubmissions'); ?>
-							<a href="<?php echo JRoute::_($add_link); ?>" title="<?php echo sprintf(JText::_('Add %s'), $type->name); ?>"><i class="uk-icon-plus-sign"></i> <?php echo $type->name; ?></a>
+							<a href="<?php echo JRoute::_($add_link); ?>" title="<?php echo sprintf(JText::_('Add %s'), $type->name); ?>"><i class="uk-icon-plus-circle"></i> <?php echo $type->name; ?></a>
 						</li>
 					<?php endforeach; ?>
 					</ul>
@@ -63,7 +63,7 @@ $this->pagination_link = $this->app->route->mysubmissions($this->submission);
 
 			<div class="uk-panel uk-panel-box zo-header">
 				<?php if ($this->submission->isInTrustedMode()) : ?>
-					<a href="<?php echo $this->app->link(array('controller' => 'submission', 'submission_id' => $this->submission->id, 'task' => 'remove', 'item_id' => $id)); ?>" title="<?php echo JText::_('Delete Item'); ?>" class="delete-item"><i class="uk-icon-remove"></i></a>
+					<a href="<?php echo $this->app->link(array('controller' => 'submission', 'submission_id' => $this->submission->id, 'task' => 'remove', 'item_id' => $id)); ?>" title="<?php echo JText::_('Delete Item'); ?>" class="delete-item"><i class="uk-icon-times"></i></a>
 				<?php endif; ?>
 				<?php $edit_link = $this->app->route->submission($this->submission, $item->type, null, $id, 'mysubmissions'); ?>
 				<a href="<?php echo JRoute::_($edit_link); ?>" title="<?php echo JText::_('Edit Item'); ?>"><i class="uk-icon-edit"></i></a>
