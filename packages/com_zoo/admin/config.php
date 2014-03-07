@@ -71,8 +71,7 @@ $zoo->loader->register('CommentAuthorJoomla', 'classes:commentauthor.php');
 $zoo->loader->register('CommentAuthorFacebook', 'classes:commentauthor.php');
 $zoo->loader->register('CommentAuthorTwitter', 'classes:commentauthor.php');
 $zoo->loader->register('Item', 'classes:item.php');
-$zoo->loader->register('ItemForm', 'classes:itemform.php');
-$zoo->loader->register('ItemRenderer', 'classes:itemrenderer.php');
+$zoo->loader->register('ItemRenderer', 'classes:renderer/item.php');
 $zoo->loader->register('Submission', 'classes:submission.php');
 
 // register and connect events

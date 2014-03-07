@@ -33,7 +33,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<div class="uk-margin image-preview">
 		<img class="uk-thumbnail uk-thumbnail-medium" src="<?php echo $image; ?>" alt="preview">
-		<span class="image-cancel" title="<?php JText::_('Remove image'); ?>"><i class="uk-icon-remove"></i></span>
+		<span class="image-cancel" title="<?php JText::_('Remove image'); ?>"><i class="uk-icon-times"></i></span>
 	</div>
 
 	<?php if ($trusted_mode) : ?>

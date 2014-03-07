@@ -20,9 +20,9 @@ $this->app->html->_('behavior.modal', 'a.modal-button');
 
 		<li>
 			<div>
-				<div class="item-name"><i class="uk-icon-picture"></i> <?php echo $item->name; ?></div>
+				<div class="item-name"><i class="uk-icon-picture-o"></i> <?php echo $item->name; ?></div>
 				<div class="item-sort" title="<?php echo JText::_('Sort Item'); ?>"><i class="uk-icon-sort"></i></div>
-				<div class="item-delete" title="<?php echo JText::_('Delete Item'); ?>"><i class="uk-icon-remove"></i></div>
+				<div class="item-delete" title="<?php echo JText::_('Delete Item'); ?>"><i class="uk-icon-times"></i></div>
 				<input type="hidden" name="<?php echo $this->getControlName('item', true); ?>" value="<?php echo $item->id; ?>"/>
 			</div>
 		</li>

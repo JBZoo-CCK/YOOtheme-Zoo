@@ -1,11 +1,17 @@
 # ZOO #
 
-- Version: 3.1.4
-- Date: December 2013
+- Version: 3.1.6
+- Date: March 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.1.6
+    # fixed missing matchHeight function Comments' Module Bubbles style
+
+	3.1.5
+	# updated UIkit icons markup to UIkit 2.0
 
 	3.1.4
 	+ added zoo:initApp event

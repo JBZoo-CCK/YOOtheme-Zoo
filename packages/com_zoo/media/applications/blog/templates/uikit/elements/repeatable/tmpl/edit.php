@@ -29,7 +29,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	</ul>
 	<p class="add uk-margin-remove">
-		<a href="javascript:void(0);"><i class="uk-icon-plus-sign"></i> <?php echo JText::sprintf('Add another %s', JText::_($this->app->string->ucfirst($this->getElementType()))); ?></a>
+		<a href="javascript:void(0);"><i class="uk-icon-plus-circle"></i> <?php echo JText::sprintf('Add another %s', JText::_($this->app->string->ucfirst($this->getElementType()))); ?></a>
 	</p>
 </div>
 

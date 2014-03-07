@@ -14,6 +14,9 @@ defined('_JEXEC') or die('Restricted access');
 Changelog
 ------------
 
+2.5.4
+# fixed missing matchHeight function Comments' Module Bubbles style
+
 2.5.3
 # minor css fix for list style
 
