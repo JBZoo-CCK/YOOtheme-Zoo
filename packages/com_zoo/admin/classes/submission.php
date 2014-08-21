@@ -15,7 +15,7 @@ class Submission {
 
     /**
      * Id of the submission
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -23,7 +23,7 @@ class Submission {
 
     /**
      * Id of the application which the submission belongs to
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -31,7 +31,7 @@ class Submission {
 
     /**
      * Name of the submission
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -39,7 +39,7 @@ class Submission {
 
     /**
      * Alias of the submission
-     * 
+     *
      * @var string
      * @since 2.0
      */
@@ -47,7 +47,7 @@ class Submission {
 
     /**
      * State of the submission
-     * 
+     *
      * @var integer
      * @since 2.0
      */
@@ -55,7 +55,7 @@ class Submission {
 
     /**
      * Submission access level
-     * 
+     *
      * @var int
      * @since 2.0
      */
@@ -63,7 +63,7 @@ class Submission {
 
    	/**
    	 * Submission parameters
-   	 * 
+   	 *
    	 * @var ParameterData
    	 * @since 2.0
    	 */
@@ -71,7 +71,7 @@ class Submission {
 
     /**
      * Reference to the global App object
-     * 
+     *
      * @var App
      * @since 2.0
      */
@@ -79,7 +79,7 @@ class Submission {
 
     /**
      * Related type objects
-     * 
+     *
      * @var array
      * @since 2.0
      */
@@ -97,9 +97,9 @@ class Submission {
 
 	/**
 	 * Check if the user can access the submission
-	 * 
+	 *
 	 * @param  JUser $user The user object
-	 * 
+	 *
 	 * @return boolean       If the user can access the submission
 	 *
 	 * @since 2.0
@@ -109,8 +109,8 @@ class Submission {
 	}
 
 	/**
-	 * Get the published state 
-	 * 
+	 * Get the published state
+	 *
 	 * @return int The published state
 	 *
 	 * @since 2.0
@@ -121,7 +121,7 @@ class Submission {
 
 	/**
 	 * Set the state of the submission
-	 * 
+	 *
 	 * @param int $val The state of the submission
 	 *
 	 * @since 2.0
@@ -132,7 +132,7 @@ class Submission {
 
 	/**
 	 * Get the submission parameters
-	 * 
+	 *
 	 * @return ParameterData The parameters
 	 *
 	 * @since 2.0
@@ -143,7 +143,7 @@ class Submission {
 
 	/**
 	 * Get the list of types for the submission
-	 * 
+	 *
 	 * @return array The list of types
 	 *
 	 * @since 2.0
@@ -162,9 +162,9 @@ class Submission {
 
 	/**
 	 * Get a type given its id
-	 * 
+	 *
 	 * @param  string $id The identifier of the type
-	 * 
+	 *
 	 * @return Type     The type object
 	 *
 	 * @since 2.0
@@ -181,7 +181,7 @@ class Submission {
 
 	/**
 	 * Get the submittable types
-	 * 
+	 *
 	 * @return array The list of types
 	 *
 	 * @since 2.0
@@ -202,9 +202,9 @@ class Submission {
 
 	/**
 	 * Get the parameters for a type
-	 * 
+	 *
 	 * @param  string $type_id The type identifier
-	 * 
+	 *
 	 * @return ParameterData          The params for the type
 	 *
 	 * @since 2.0
@@ -215,7 +215,7 @@ class Submission {
 
 	/**
 	 * Get the application object
-	 * 
+	 *
 	 * @return Application The application
 	 *
 	 * @since 2.0
@@ -226,7 +226,7 @@ class Submission {
 
 	/**
 	 * Check if the submission is in trusted mode
-	 * 
+	 *
 	 * @return boolean is in trusted mode
 	 *
 	 * @since 2.0
@@ -234,22 +234,10 @@ class Submission {
     public function isInTrustedMode() {
         return (bool) $this->getParams()->get('trusted_mode', false);
     }
-	
-	/**
-	 * Is the submission the item edit one?
-	 * 
-	 * @return boolean If it's the item edit submission
-	 *
-	 * @since 2.0
-	 */
-    public function isItemEditSubmission() {
-        return (bool) $this->getParams()->get('item_edit', false);
-    }	
 
-	
 	/**
 	 * Check if the tooltips should be shown
-	 * 
+	 *
 	 * @return boolean If the tooltips are to be displayed
 	 *
 	 * @since 2.0

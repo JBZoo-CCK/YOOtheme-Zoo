@@ -9,4 +9,10 @@
 		<position name="related">Related</position>
 		<position name="bottom">Bottom</position>
 	</positions>
+    <positions layout="edit">
+        <position name="content">Content</position>
+        <position name="media">Media</position>
+        <position name="meta">Meta</position>
+        <position name="administration">Administration</position>
+    </positions>
 </renderer>

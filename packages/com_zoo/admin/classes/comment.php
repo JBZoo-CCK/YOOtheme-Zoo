@@ -141,6 +141,19 @@ class Comment {
 	protected $_children = array();
 
 	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageComments($user = null) {
+	    return $this->getItem()->canManageComments($user);
+	}
+
+	/**
 	 * Get the item which the comment refers to
 	 *
 	 * @return Item The item to which the comments refers

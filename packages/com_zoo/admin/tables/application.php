@@ -69,6 +69,11 @@ class ApplicationTable extends AppTable {
 	*/
 	public function save($object) {
 
+		// Check ACL
+		if (!$object->isAdmin()) {
+			throw new ApplicationTableException('Invalid Access Permissions');
+		}
+
 		if ($object->name == '') {
 			throw new ApplicationTableException('Invalid name');
 		}
@@ -97,6 +102,11 @@ class ApplicationTable extends AppTable {
 	*/
 	public function delete($object) {
 
+		// Check ACL
+		if (!$object->isAdmin()) {
+			throw new ApplicationTableException('Invalid Access Permissions');
+		}
+
 		// delete related categories
 		$table = $this->app->table->category;
 		$categories = $table->all(array('conditions' => array('application_id=?', $object->id)));
@@ -120,6 +130,32 @@ class ApplicationTable extends AppTable {
 
 	}
 
+	/*
+		Function: find
+			Override. Find objects from database table.
+
+		Returns:
+			Boolean.
+	*/
+	public function find($mode = 'all', $options = null) {
+		$result = parent::find($mode, $options);
+		if ($this->app->system->application->isAdmin()) {
+			if (!$result) return false;
+
+			if (is_array($result)) {
+				foreach ($result as $name => $application) {
+					if (!$application->canManage()) {
+						unset($result[$name]);
+					}
+				}
+			} else {
+				if (!$result->canManage()) {
+					return false;
+				}
+			}
+		}
+		return $result;
+	}
 }
 
 /*

@@ -23,7 +23,7 @@ class ElementItemState extends Element implements iSubmittable {
 			Boolean - true, on success
 	*/
 	public function hasValue($params = array()) {
-		return true;
+		return $this->_item && $this->_item->canEditState();
 	}
 
 	/*

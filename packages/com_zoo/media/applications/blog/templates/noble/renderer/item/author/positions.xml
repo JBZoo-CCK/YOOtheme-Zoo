@@ -13,8 +13,14 @@
 		<position name="description">Description</position>
 		<position name="links">Links</position>
 	</positions>
-	<positions layout="submission">
-		<position name="content">Content</position>
-		<position name="administration">Administration</position>
-	</positions>
+<positions layout="submission">
+	<position name="content">Content</position>
+	<position name="administration">Administration</position>
+</positions>
+<positions layout="edit">
+	<position name="content">Content</position>
+	<position name="media">Media</position>
+	<position name="meta">Meta</position>
+	<position name="administration">Administration</position>
+</positions>
 </renderer>

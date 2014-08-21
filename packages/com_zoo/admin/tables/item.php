@@ -51,9 +51,9 @@ class ItemTable extends AppTable {
 		Returns:
 			Boolean.
 	*/
-	public function save($object) {
+	public function save($object, $checkAcl = true) {
 
-		if (!$object->getApplication()) {
+		if (!($application = $object->getApplication())) {
 			throw new ItemTableException('Invalid application id');
 		}
 
@@ -74,6 +74,15 @@ class ItemTable extends AppTable {
 		}
 
 		$new = !(bool) $object->id;
+
+		// Check ACL
+		if ($checkAcl && (($new && !$object->canCreate()) || (!$new && !$object->canEdit()))) {
+			throw new ItemTableException('Invalid Access Permission');
+		}
+
+		if (!$object->canEditState()) {
+			unset($object->state);
+		}
 
 		// first save to get id
 		if (empty($object->id)) {
@@ -122,6 +131,11 @@ class ItemTable extends AppTable {
 			Boolean.
 	*/
 	public function delete($object) {
+
+		// Check ACL
+		if (!$object->canDelete()) {
+			throw new ItemTableException('Invalid Access Permission');
+		}
 
 		// get database
 		$db = $this->database;

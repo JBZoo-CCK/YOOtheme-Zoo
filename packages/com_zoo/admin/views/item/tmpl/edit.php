@@ -60,10 +60,12 @@
 						</div>
 					</div>
 				</div>
+				<?php if ($this->item->canEditState()) : ?>
 				<div class="element element-published">
 					<strong><?php echo JText::_('Published'); ?></strong>
 					<?php echo $this->lists['select_published']; ?>
 				</div>
+				<?php endif; ?>
 				<div class="element element-searchable">
 					<strong><?php echo JText::_('Searchable'); ?></strong>
 					<?php echo $this->lists['select_searchable']; ?>
@@ -72,10 +74,12 @@
 					<strong><?php echo JText::_('Comments'); ?></strong>
 					<?php echo $this->lists['select_enable_comments']; ?>
 				</div>
+				<?php if ($this->item->canManageFrontpage()) : ?>
 				<div class="element element-frontpage">
 					<strong><?php echo JText::_('Frontpage'); ?></strong>
 					<?php echo $this->lists['select_frontpage']; ?>
 				</div>
+				<?php endif; ?>
 				<div class="element element-categories">
 					<strong><?php echo JText::_('Categories'); ?></strong>
 					<?php echo $this->lists['select_categories']; ?>

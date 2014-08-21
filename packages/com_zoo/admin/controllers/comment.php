@@ -23,6 +23,11 @@ class CommentController extends AppController {
 		// get application
 		$this->application 	= $this->app->zoo->getApplication();
 
+		// check ACL
+		if (!$this->application->canManageComments()) {
+			throw new CommentControllerException("Invalid Access Permissions!", 1);
+		}
+
 		// set base url
 		$this->baseurl = $this->app->link(array('controller' => $this->controller), false);
 

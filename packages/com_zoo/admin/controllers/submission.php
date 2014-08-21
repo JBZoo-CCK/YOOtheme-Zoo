@@ -23,6 +23,11 @@ class SubmissionController extends AppController {
 		// get application
 		$this->application 	= $this->app->zoo->getApplication();
 
+		// check ACL
+		if (!$this->application->isAdmin()) {
+			throw new ConfigurationControllerException("Invalid Access Permissions!", 1);
+		}
+
 		// set base url
 		$this->baseurl = $this->app->link(array('controller' => $this->controller), false);
 
@@ -106,9 +111,6 @@ class SubmissionController extends AppController {
         // tooltip select
 		$this->lists['select_tooltip'] = $this->app->html->_('select.booleanlist', 'params[show_tooltip]', null, $this->submission->showTooltip());
 
-		// item edit select
-		$this->lists['select_item_edit'] = $this->app->html->_('select.booleanlist', 'params[item_edit]', null, $this->submission->getParams()->get('item_edit', false));
-
 		// item captcha select
 		$options = array($this->app->html->_('select.option', '', '- '.JText::_('Select Plugin').' -'));
 		$this->lists['select_item_captcha'] = $this->app->html->_('zoo.pluginlist', $options, 'params[captcha]', '', 'value', 'text', $this->submission->getParams()->get('captcha', null), null, true, 'captcha');
@@ -172,7 +174,6 @@ class SubmissionController extends AppController {
                 ->set('form.', @$post['params']['form'])
                 ->set('trusted_mode', @$post['params']['trusted_mode'])
 				->set('show_tooltip', @$post['params']['show_tooltip'])
-				->set('item_edit', @$post['params']['item_edit'])
 				->set('max_submissions', @$post['params']['max_submissions'])
 				->set('captcha', @$post['params']['captcha'])
 				->set('captcha_guest_only', @$post['params']['captcha_guest_only'])
@@ -182,19 +183,6 @@ class SubmissionController extends AppController {
 
 			// save submission
 			$this->table->save($submission);
-
-			// Make sure there is at most one item edit submission
-			if (@$post['params']['item_edit'] == true) {
-				foreach ($this->application->getSubmissions() as $sub) {
-					if ($sub->id != $submission->id) {
-
-						// Disable item edit param
-						$sub->getParams()->set('item_edit', 0);
-						$this->table->save($sub);
-
-					}
-				}
-			}
 
 			// set redirect message
 			$msg = JText::_('Submission Saved');
@@ -343,14 +331,6 @@ class SubmissionController extends AppController {
 		$this->_editTrustedMode(0);
 	}
 
-	public function enableItemEdit() {
-		$this->_editItemEdit(1);
-	}
-
-	public function disableItemEdit() {
-		$this->_editItemEdit(0);
-	}
-
 	protected function _editTrustedMode($enabled) {
 
 		// check for request forgeries
@@ -378,53 +358,6 @@ class SubmissionController extends AppController {
 
 				$submission->getParams()
 					->set('trusted_mode', $enabled);
-
-				$this->table->save($submission);
-			}
-
-		} catch (AppException $e) {
-
-			// raise notice on exception
-			$this->app->error->raiseNotice(0, JText::_('Error enabling/disabling Submission Trusted Mode').' ('.$e.')');
-
-		}
-
-		$this->setRedirect($this->baseurl);
-	}
-
-	protected function _editItemEdit($enabled) {
-
-		// check for request forgeries
-		$this->app->session->checkToken() or jexit('Invalid Token');
-
-		// init vars
-		$cid = $this->app->request->get('cid', 'array', array());
-
-		if (count($cid) < 1) {
-			$this->app->error->raiseError(500, JText::_('Select a submission to enable/disable Item Edit Submission'));
-		}
-
-		try {
-
-			// update item state
-			foreach ($cid as $id) {
-				$submission = $this->table->get($id);
-
-				$submission->getParams()
-					->set('item_edit', $enabled);
-
-				// Make sure there is at most one item edit submission
-				if ($enabled) {
-					foreach ($this->application->getSubmissions() as $sub) {
-						if ($sub->id != $submission->id) {
-
-							// Disable item edit param
-							$sub->getParams()->set('item_edit', 0);
-							$this->table->save($sub);
-
-						}
-					}
-				}
 
 				$this->table->save($submission);
 			}

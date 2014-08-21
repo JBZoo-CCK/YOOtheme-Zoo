@@ -14,7 +14,6 @@ defined('_JEXEC') or die('Restricted access');
 <?php if ($this->checkPosition('top')) : ?>
 	<?php echo $this->renderPosition('top', array('style' => 'uikit_block')); ?>
 <?php endif; ?>
-
 <?php if ($this->checkPosition('title')) : ?>
 <h1 class="uk-h1"><?php echo $this->renderPosition('title'); ?></h1>
 <?php endif; ?>

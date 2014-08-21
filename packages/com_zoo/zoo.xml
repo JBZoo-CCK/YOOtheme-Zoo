@@ -2,14 +2,14 @@
 <extension type="component" version="2.5" method="upgrade">
 	<name>com_zoo</name>
 	<author>YOOtheme</author>
-	<creationDate>March 2014</creationDate>
+	<creationDate>August 2014</creationDate>
 	<updateUrl>http://www.yootheme.com/updates</updateUrl>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.1.6</version>
+	<version>3.2.0</version>
 	<description>ZOO component for Joomla 2.5+ developed by YOOtheme (http://www.yootheme.com)</description>
 	<languages folder="site/language">
 		<language tag="en-GB">en-GB.com_zoo.ini</language>
@@ -49,8 +49,10 @@
 			<language tag="en-GB">en-GB.com_zoo.sys.ini</language>
 		</languages>
 		<files folder="admin">
+            <filename>access.xml</filename>
 			<filename>index.html</filename>
 			<filename>config.php</filename>
+            <filename>config.xml</filename>
 			<filename>zoo.php</filename>
 			<filename>README.markdown</filename>
 			<folder>assets</folder>
@@ -62,6 +64,7 @@
 			<folder>installation</folder>
 			<folder>joomla</folder>
 			<folder>libraries</folder>
+            <folder>models</folder>
 			<folder>partials</folder>
 			<folder>tables</folder>
 			<folder>views</folder>

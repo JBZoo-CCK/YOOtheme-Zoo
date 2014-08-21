@@ -45,6 +45,19 @@ class SystemHelper extends AppHelper {
 	}
 
 	/**
+	 * Wraps Joomla hash method
+	 *
+	 * @param string $seed
+	 *
+	 * @return string Md5 hash
+	 *
+	 * @since 3.6
+	 */
+	public function getHash($seed) {
+		return JApplication::getHash($seed);
+	}
+
+	/**
 	 * Get a Joomla environment variable
 	 *
 	 * @param string $name The name of the variable to retrieve

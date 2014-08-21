@@ -25,7 +25,7 @@ $css[] = $params->get('registered_users_only') && $active_author->isGuest() ? 'n
 
     <?php if ($count = count($comments)-1) : ?>
 	<h3 class="comments-meta"><?php echo JText::_('Comments').' ('.$count.')'; ?></h3>
-    
+
     <ul class="<?php echo implode("\n", $css); ?>">
         <?php
         foreach ($comments[0]->getChildren() as $comment) {
@@ -38,6 +38,10 @@ $css[] = $params->get('registered_users_only') && $active_author->isGuest() ? 'n
 		if($item->isCommentsEnabled()) :
 			echo $this->partial('respond', compact('active_author', 'params', 'item', 'captcha'));
 		endif;
+
+        if($item->canManageComments()) :
+            echo $this->partial('edit');
+        endif;
 	?>
 
 </div>

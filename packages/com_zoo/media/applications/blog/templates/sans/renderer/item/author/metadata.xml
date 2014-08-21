@@ -12,4 +12,8 @@
 		<name>Submission</name>
 		<description>An author is rendered with the submission layout in the submission view.</description>
 	</layout>
+	<layout name="edit" type="edit">
+		<name>Edit</name>
+		<description>An item is rendered with the edit layout in the item edit view.</description>
+	</layout>
 </metadata>

@@ -184,7 +184,13 @@ $this->app->document->addScript('assets:js/item.js');
 					<td class="icon"></td>
 					<td class="name">
 						<span class="editlinktip hasTip" title="<?php echo JText::_('Edit Item');?>::<?php echo $row->name; ?>">
-							<a href="<?php echo $this->app->link(array('controller' => $this->controller, 'changeapp' => $this->application->id, 'task' => 'edit', 'cid[]' => $row->id));  ?>"><?php echo $row->name; ?></a>
+						<?php
+							if ($row->canEdit()) {
+								echo '<a href="' . $this->app->link(array('controller' => $this->controller, 'changeapp' => $this->application->id, 'task' => 'edit', 'cid[]' => $row->id)) . '">' . $row->name . '</a>';
+							} else {
+								echo $row->name;
+							}
+						?>
 						</span>
 					</td>
 					<td class="type">
@@ -192,30 +198,50 @@ $this->app->document->addScript('assets:js/item.js');
 					</td>
 					<td class="published">
 						<span class="editlinktip hasTip" title="<?php echo JText::_('Publish Information');?>::<?php echo $times; ?>">
+							<?php if ($row->canEditState()) : ?>
 							<a href="#" rel="task-<?php echo $row->state ? 'unpublish' : 'publish'; ?>">
 								<img src="<?php echo $this->app->path->url('assets:images/'.$img) ;?>" width="16" height="16" border="0" alt="<?php echo $alt; ?>" />
 							</a>
+							<?php else: ?>
+								<img src="<?php echo $this->app->path->url('assets:images/'.$img) ;?>" width="16" height="16" border="0" alt="<?php echo $alt; ?>" />
+							<?php endif; ?>
 						</span>
 					</td>
 					<td class="frontpage">
+					<?php if ($row->canManageFrontpage()) : ?>
 						<a href="#" rel="task-<?php echo 'toggleFrontpage'; ?>" title="<?php echo JText::_('Toggle frontpage state');?>">
 							<img src="<?php echo $this->app->path->url('assets:images/'.$frontpage_img); ?>" width="16" height="16" border="0" alt="<?php echo $frontpage_alt; ?>" />
 						</a>
+					<?php else: ?>
+					<img src="<?php echo $this->app->path->url('assets:images/'.$frontpage_img); ?>" width="16" height="16" border="0" alt="<?php echo $frontpage_alt; ?>" />
+					<?php endif; ?>
 					</td>
 					<td class="searchable">
+						<?php if ($row->canEdit()) : ?>
 						<a href="#" rel="task-<?php echo $row->searchable ? 'makenonesearchable' : 'makesearchable'; ?>" title="<?php echo JText::_('Edit searchable state');?>">
 							<img src="<?php echo $this->app->path->url('assets:images/'.$search_img); ?>" width="16" height="16" border="0" alt="<?php echo $search_alt; ?>" />
 						</a>
+						<?php else: ?>
+						<img src="<?php echo $this->app->path->url('assets:images/'.$search_img); ?>" width="16" height="16" border="0" alt="<?php echo $search_alt; ?>" />
+						<?php endif; ?>
 					</td>
 					<td class="comments">
+					<?php if ($row->canEdit()) : ?>
 						<a href="#" rel="task-<?php echo $comments_enabled ? 'disablecomments' : 'enablecomments'; ?>" title="<?php echo JText::_('Enable/Disable comments');?>">
 							<img src="<?php echo $this->app->path->url('assets:images/'.$comments_img); ?>" width="16" height="16" border="0" alt="<?php echo $comments_alt; ?>" />
 						</a>
+					<?php else: ?>
+					<img src="<?php echo $this->app->path->url('assets:images/'.$comments_img); ?>" width="16" height="16" border="0" alt="<?php echo $comments_alt; ?>" />
+					<?php endif; ?>
 					</td>
 					<td class="priority">
+					<?php if ($row->canEdit()) : ?>
 						<span class="minus"></span>
 						<input type="text" class="value" value="<?php echo $row->priority; ?>" size="5" name="priority[<?php echo $row->id; ?>]"/>
 						<span class="plus"></span>
+					<?php else: ?>
+					<input type="text" class="value" value="<?php echo $row->priority; ?>" size="5" name="priority[<?php echo $row->id; ?>]" disabled/>
+					<?php endif; ?>
 					</td>
 					<td class="access">
 						<span><?php echo JText::_($this->app->zoo->getGroup($row->access)->name); ?></span>

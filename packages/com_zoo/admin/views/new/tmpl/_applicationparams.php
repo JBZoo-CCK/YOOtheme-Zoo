@@ -26,4 +26,54 @@
 		echo $params_form->setValues($this->params->get('global.'.strtolower($name).'.'))->render('addons['.strtolower($name).']');
 	?>
 </div>
-<?php endforeach;
+<?php endforeach; ?>
+
+<h3 class="toggler"><?php echo JText::_('PERMISSIONS'); ?></h3>
+<div class="content">
+	<ul class="parameter-form">
+		<li class="parameter">
+			<div class="label"><label class="hasTip" title="Permissions"><?php echo JText::_('APPLICATION'); ?></label></div>
+			<div class="field">
+				<a href="#rules-modal" style="cursor:pointer" title="Show popup" rel="{handler: 'adopt', size: {x: 1000, y: 700}, onClose:function(){document.getElementById('rules-modal-wrapper').adopt(this.content.firstChild);} }" class="modal">Application</a>
+				<div id="rules-modal-wrapper" style="display:none">
+				<div id="rules-modal">
+					<h3>Application</h3>
+					<?php
+						if (!$this->app->joomla->isVersion('2.5')) {
+							echo $this->permissions->getInput('rules');
+						} else {
+							echo str_replace('pane-sliders',  'pane-sliders zoo-application-permissions', $this->permissions->getInput('rules'));
+						}
+					?>
+				</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="label"><label class="hasTip" title="Permissions">&nbsp;</label></div>
+			<div class="field">
+			</div>
+		</li>
+		<li>
+			<div class="label"><label class="hasTip" title="Permissions"><?php echo JText::_('TYPES'); ?></label></div>
+			<div class="field">
+				<?php foreach ($this->assetPermissions as $permissionName => $permissions) : ?>
+						<a href="#<?php echo $permissionName; ?>-rules-modal" style="cursor:pointer" title="Show popup" rel="{handler: 'adopt', size: {x: 1000, y: 700}, onClose:function(){document.getElementById('<?php echo $permissionName; ?>-rules-modal-wrapper').adopt(this.content.firstChild);}}" class="modal"><?php echo ucfirst($permissionName); ?></a>
+						<div id="<?php echo $permissionName; ?>-rules-modal-wrapper" style="display:none">
+						<div id="<?php echo $permissionName; ?>-rules-modal">
+							<h3><?php echo ucfirst($permissionName); ?></h3>
+							<?php
+								if (!$this->app->joomla->isVersion('2.5')) {
+									echo str_replace('permission-', 'permission-' . $permissionName . '-', $permissions->getInput('rules_' . $permissionName));
+								} else {
+									echo str_replace('pane-sliders',  'pane-sliders zoo-' . $permissionName . '-permissions', $permissions->getInput('rules_' . $permissionName));
+								}
+							?>
+						</div>
+						</div>
+						</br>
+				<?php endforeach; ?>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -49,6 +49,7 @@ class ManagerController extends AppController {
 		$this->app->toolbar->title(JText::_('App Manager'), $this->app->get('icon'));
 		JToolBar::getInstance('toolbar')->appendButton('Popup', 'stats', 'Check For Modifications', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkmodifications&tmpl=component', true, -1), 570, 350);
 		JToolBar::getInstance('toolbar')->appendButton('Popup', 'preview', 'Check Requirements', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkrequirements&tmpl=component', true, -1), 570, 350);
+		JToolBarHelper::preferences('com_zoo');
 		if ($this->app->get('cache_routes', false)) {
 			$this->app->toolbar->custom('disableRouteCaching', 'options', 'Disable Route Caching', 'Disable Route Caching', false);
 		} else {
@@ -901,6 +902,22 @@ class ManagerController extends AppController {
 				$msg = 'Cleaning category and comment parent relations...';
 				break;
 			case '12':
+
+				$assetNames = array();
+				foreach ($this->app->application->getApplications() as $application) {
+					foreach ($application->getTypes() as $type) {
+						$assetNames[] = $type->getAssetName();
+					}
+				}
+				$assetNames = "'".implode("','", $assetNames)."'";
+
+				$db->query("UPDATE ".ZOO_TABLE_APPLICATION." SET asset_id = 0 WHERE NOT EXISTS (SELECT id FROM #__assets WHERE id = asset_id AND name = CONCAT('com_zoo.application.', ".ZOO_TABLE_APPLICATION.".id))");
+				$row += $db->getAffectedRows();
+				$db->query("DELETE FROM #__assets WHERE name LIKE ('com_zoo.%') AND name NOT IN (". $assetNames .") AND id NOT IN (SELECT asset_id FROM ".ZOO_TABLE_APPLICATION.")");
+				$row += $db->getAffectedRows();
+				$msg = 'Cleaning asset to application and type relations...';
+				break;
+			case '13':
 
 				// get the item table
 				$table = $this->app->table->item;

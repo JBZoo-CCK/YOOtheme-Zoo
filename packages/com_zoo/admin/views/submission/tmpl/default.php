@@ -34,9 +34,6 @@ defined('_JEXEC') or die('Restricted access');
 					<th class="trusted">
 						<?php echo JText::_('Trusted Mode'); ?>
 					</th>
-					<th class="item_edit">
-						<?php echo JText::_('Item Edit'); ?>
-					</th>
 					<th class="published">
 						<?php echo $this->app->html->_('grid.sort', 'Published', 'state', @$this->lists['order_Dir'], @$this->lists['order']); ?>
 					</th>
@@ -68,11 +65,6 @@ defined('_JEXEC') or die('Restricted access');
 					$trusted_mode_img = $trusted_mode ? 'tick.png' : 'publish_x.png';
 					$trusted_mode_alt = $trusted_mode ? JText::_('Trusted Mode enabled') : JText::_('Trusted Mode disabled');
 
-					// item edit submission
-					$item_edit     = (int) $row->getParams()->get('item_edit', 0);
-					$item_edit_img = $item_edit ? 'tick.png' : 'publish_x.png';
-					$item_edit_alt = $item_edit ? JText::_('Set as Item Edit') : JText::_('Disable Item Edit');
-
 					?>
 					<tr>
 						<td class="checkbox">
@@ -99,11 +91,6 @@ defined('_JEXEC') or die('Restricted access');
 							<?php if (!$public) : ?>
 								</a>
 							<?php endif; ?>
-						</td>
-						<td class="item_edit">
-							<a href="#" rel="task-<?php echo $item_edit ? 'disableItemEdit' : 'enableItemEdit' ?>" title="<?php echo JText::_('Enable/Disable as Item Edit Submission');?>">
-								<img src="<?php echo $this->app->path->url('assets:images/'.$item_edit_img); ?>" border="0" alt="<?php echo $item_edit_alt; ?>" />
-							</a>
 						</td>
 						<td class="published">
 							<a href="#" rel="task-<?php echo $task; ?>" title="<?php echo $action; ?>">

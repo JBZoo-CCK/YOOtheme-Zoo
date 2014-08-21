@@ -36,6 +36,12 @@ $controller = $zoo->request->getWord('controller');
 $task       = $zoo->request->getWord('task');
 $group      = $zoo->request->getString('group');
 
+// check access level
+if (!$zoo->user->canManage() ||
+	(($controller === 'new' || $controller === 'manager') && !$zoo->user->isAdmin())) {
+    return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
 // does the zoo require to be updated?
 if ($zoo->update->required() && $controller != 'update') {
 	$zoo->system->application->redirect($zoo->link(array('controller' => 'update'), false));
@@ -82,10 +88,12 @@ foreach ($zoo->table->application->all(array('order' => 'name')) as $instance) {
 }
 
 // add "new" and "manager" menu item
-$new = $zoo->object->create('AppMenuItem', array('new', '<span class="icon"> </span>', $zoo->link(array('controller' => 'new')), array('class' => 'new')));
-$manager = $zoo->object->create('AppMenuItem', array('manager', '<span class="icon"> </span>', $zoo->link(array('controller' => 'manager')), array('class' => 'config')));
-$menu->addChild($new);
-$menu->addChild($manager);
+if ($zoo->user->isAdmin()) {
+	$new = $zoo->object->create('AppMenuItem', array('new', '<span class="icon"> </span>', $zoo->link(array('controller' => 'new')), array('class' => 'new')));
+	$manager = $zoo->object->create('AppMenuItem', array('manager', '<span class="icon"> </span>', $zoo->link(array('controller' => 'manager')), array('class' => 'config')));
+	$menu->addChild($new);
+	$menu->addChild($manager);
+}
 
 if ($controller == 'new' && $task == 'add' && $group) {
 	// add info item

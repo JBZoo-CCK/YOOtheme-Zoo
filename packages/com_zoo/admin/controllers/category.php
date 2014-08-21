@@ -23,6 +23,11 @@ class CategoryController extends AppController {
 		// get application
 		$this->application 	= $this->app->zoo->getApplication();
 
+		// check ACL
+		if (!$this->application->canManageCategories()) {
+			throw new CategorAppControllerException("Invalid access permissions", 1);
+		}
+
 		// set base url
 		$this->baseurl = $this->app->link(array('controller' => $this->controller), false);
 

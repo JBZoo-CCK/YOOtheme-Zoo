@@ -23,9 +23,9 @@ $author->name = $author->name ? $author->name : JText::_('Anonymous');
 			<?php endif; ?>
 
 			<?php if ($author->url) : ?>
-				<h4 class="uk-comment-title"><a href="<?php echo JRoute::_($author->url); ?>" title="<?php echo $author->url; ?>" rel="nofollow"><?php echo $author->name; ?></a></h3>
+				<h4 class="uk-comment-title"><a href="<?php echo JRoute::_($author->url); ?>" title="<?php echo $author->url; ?>" rel="nofollow"><?php echo $author->name; ?></a></h4>
 			<?php else: ?>
-				<h4 class="uk-comment-title"><?php echo $author->name; ?></h3>
+				<h4 class="uk-comment-title"><?php echo $author->name; ?></h4>
 			<?php endif; ?>
 
 			<div class="uk-comment-meta">
@@ -37,10 +37,25 @@ $author->name = $author->name ? $author->name : JText::_('Anonymous');
 
 		<div class="uk-comment-body">
 
-			<p><?php echo $this->app->comment->filterContentOutput($comment->content); ?></p>
+			<p class="content"><?php echo $this->app->comment->filterContentOutput($comment->content); ?></p>
 
 			<?php if ($comment->getItem()->isCommentsEnabled()) : ?>
-				<p class="reply"><a href="#" rel="nofollow"><?php echo JText::_('Reply'); ?></a></p>
+				<p><a class="reply" href="#" rel="nofollow"><?php echo JText::_('Reply'); ?></a>
+				<?php if ($comment->canManageComments()) : ?>
+					<?php echo ' | '; ?>
+					<a class="edit" href="#" rel="nofollow"><?php echo JText::_('Edit'); ?></a>
+					<?php echo ' | '; ?>
+					<?php if ($comment->state != Comment::STATE_APPROVED) : ?>
+						 <a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=approve&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Approve'); ?></a>
+					<?php else: ?>
+						<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=unapprove&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Unapprove'); ?></a>
+					<?php endif; ?>
+					<?php echo ' | '; ?>
+					<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=spam&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Spam'); ?></a>
+					<?php echo ' | '; ?>
+					<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=delete&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Delete'); ?></a>
+				<?php endif; ?>
+				</p>
 			<?php endif; ?>
 
 			<?php if ($comment->state != Comment::STATE_APPROVED) : ?>

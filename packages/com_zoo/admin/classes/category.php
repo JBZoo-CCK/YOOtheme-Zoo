@@ -162,6 +162,19 @@ class Category {
 		}
 	}
 
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canManageCategories($user = null) {
+        return $this->getApplication()->canManageCategories();
+    }
+
 	/**
 	 * Get the application
 	 *

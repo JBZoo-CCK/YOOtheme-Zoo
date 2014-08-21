@@ -40,7 +40,22 @@ $author->name = $author->name ? $author->name : JText::_('Anonymous');
 			<div class="content"><?php echo $this->app->comment->filterContentOutput($comment->content); ?></div>
 
 			<?php if ($comment->getItem()->isCommentsEnabled()) : ?>
-				<div class="reply"><a href="#" rel="nofollow"><?php echo JText::_('Reply'); ?></a></div>
+				<p><a class="reply" href="#" rel="nofollow"><?php echo JText::_('Reply'); ?></a>
+				<?php if ($comment->canManageComments()) : ?>
+					<?php echo ' | '; ?>
+					<a class="edit" href="#" rel="nofollow"><?php echo JText::_('Edit'); ?></a>
+					<?php echo ' | '; ?>
+					<?php if ($comment->state != Comment::STATE_APPROVED) : ?>
+						 <a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=approve&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Approve'); ?></a>
+					<?php else: ?>
+						<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=unapprove&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Unapprove'); ?></a>
+					<?php endif; ?>
+					<?php echo ' | '; ?>
+					<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=spam&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Spam'); ?></a>
+					<?php echo ' | '; ?>
+					<a href="<?php echo 'index.php?option=com_zoo&controller=comment&task=delete&comment_id='.$comment->id; ?>" rel="nofollow"><?php echo JText::_('Delete'); ?></a>
+				<?php endif; ?>
+				</p>
 			<?php endif; ?>
 
 			<?php if ($comment->state != Comment::STATE_APPROVED) : ?>

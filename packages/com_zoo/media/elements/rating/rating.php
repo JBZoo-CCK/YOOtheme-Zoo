@@ -224,7 +224,7 @@ class ElementRating extends Element {
 		}
 
 		//save item
-		$this->app->table->item->save($this->getItem());
+		$this->app->table->item->save($this->getItem(), false);
 
 		return json_encode(array(
 			'value' => intval($this->getRating() / $max_stars * 100),

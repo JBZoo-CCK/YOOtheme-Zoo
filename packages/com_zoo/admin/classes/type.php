@@ -90,6 +90,58 @@ class Type {
 	}
 
 	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canEdit($user = null, $created_by = null) {
+	    return $this->app->user->canEdit($user, $this->getAssetName(), $created_by);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canEditState($user = null) {
+	    return $this->app->user->canEditState($user, $this->getAssetName());
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canCreate($user = null) {
+	    return $this->app->user->canCreate($user, $this->getAssetName());
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canDelete($user = null) {
+	    return $this->app->user->canDelete($user, $this->getAssetName());
+	}
+
+	/**
 	 * Get the application object
 	 *
 	 * @return Application The application
@@ -98,6 +150,17 @@ class Type {
 	 */
 	public function getApplication() {
 		return $this->_application;
+	}
+
+	/**
+	 * Returns asset name of the type
+	 *
+	 * @return string Asset name
+	 *
+	 * @since 3.2
+	 */
+	public function getAssetName() {
+		return strtolower(preg_replace('#[\s\-]+#', '.', trim('com_zoo.application.' . $this->getApplication()->id . '.' . $this->id)));
 	}
 
 	/**

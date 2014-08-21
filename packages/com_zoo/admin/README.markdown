@@ -1,11 +1,17 @@
 # ZOO #
 
-- Version: 3.1.6
-- Date: March 2014
+- Version: 3.2.0
+- Date: August 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.2.0
+	+ added frontend editing for comments and items (ACL)
+	+ added ACL
+	# fixed submission security settings
+	# fixed UIkit templates comments headline markup
 
     3.1.6
     # fixed missing matchHeight function Comments' Module Bubbles style
