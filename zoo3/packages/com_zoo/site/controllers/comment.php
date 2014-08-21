@@ -178,6 +178,161 @@ class CommentController extends AppController {
 		$this->setRedirect($redirect);
 	}
 
+	public function edit() {
+		// init vars
+		$id       = $this->app->request->getInt('comment_id', 0);
+		$content  = $this->app->request->getString('content', '');
+		$msg      = null;
+		$table    = $this->app->table->comment;
+		$comment  = $table->get($id);
+
+		try {
+			if (!$comment) {
+
+				throw new CommentControllerException("Error Processing Request");
+
+			}
+
+			// set redirect
+			$redirect = $this->app->route->item($comment->getItem());
+			$redirect .= '#comment-'.$comment->id;
+
+			if (!$comment->canManageComments()) {
+
+				throw new CommentControllerException("Invalid Access Permissions");
+
+			}
+
+			// save content
+			$comment->content = $content;
+			$table->save($comment);
+
+			// set redirect message
+			$msg = JText::_('Comment Edited');
+
+		} catch (AppException $e) {
+
+			// raise notice on exception
+			$this->app->error->raiseWarning(0, JText::_('Error Editing Comment').' ('.$e.')');
+
+		}
+
+		$this->setRedirect($redirect, $msg);
+	}
+
+	public function delete() {
+
+		// init vars
+		$id       = $this->app->request->getInt('comment_id', 0);
+		$msg      = null;
+		$table    = $this->app->table->comment;
+		$comment  = $table->get($id);
+
+		try {
+			if (!$comment) {
+
+				throw new CommentControllerException("Error Processing Request");
+
+			}
+
+			// set redirect
+			$redirect = $this->app->route->item($comment->getItem());
+			$redirect .= $comment->parent_id != 0 ? '#comment-'.$comment->parent_id : '#comments';
+
+			if (!$comment->canManageComments()) {
+
+				throw new CommentControllerException("Invalid Access Permissions");
+
+			}
+
+			// delete comment
+			$table->delete($comment);
+
+
+			// set redirect message
+			$msg = JText::_('Comment Deleted');
+
+		} catch (AppException $e) {
+
+			// raise notice on exception
+			$this->app->error->raiseWarning(0, JText::_('Error Deleting Comment').' ('.$e.')');
+
+		}
+
+		$this->setRedirect($redirect, $msg);
+	}
+
+	/*
+		Function: approve
+			Approve a comment
+
+		Returns:
+			Void
+	*/
+	public function approve() {
+		$this->_editState(1);
+	}
+
+	/*
+		Function: unapprove
+			Unapprove a comment
+
+		Returns:
+			Void
+	*/
+	public function unapprove() {
+		$this->_editState(0);
+	}
+
+	/*
+		Function: spam
+			Mark comment as spam
+
+		Returns:
+			Void
+	*/
+	public function spam() {
+		$this->_editState(2);
+	}
+
+
+	protected function _editState($state) {
+
+		// init vars
+		$id       = $this->app->request->getInt('comment_id', 0);
+		$msg      = null;
+		$table    = $this->app->table->comment;
+		$comment  = $table->get($id);
+
+		try {
+			if (!$comment) {
+				throw new CommentControllerException("Error Processing Request");
+			}
+
+			// set redirect
+			$redirect = $this->app->route->item($comment->getItem());
+			$redirect .= $comment->parent_id != 0 ? '#comment-'.$comment->parent_id : '#comments';
+
+			if (!$comment->canManageComments()) {
+				throw new CommentControllerException("Invalid Access Permissions");
+			}
+
+			// set state and safe
+			$comment->setState($state, true);
+
+			// set redirect message
+			$msg = JText::_('Comment state edited');
+
+		} catch (CommentControllerException $e) {
+
+				// raise notice on exception
+				$this->app->error->raiseWarning(0, JText::_('Error editing Comment State').' ('.$e.')');
+
+		}
+
+		$this->setRedirect($redirect, $msg);
+	}
+
 	public function unsubscribe() {
 
 		// init vars

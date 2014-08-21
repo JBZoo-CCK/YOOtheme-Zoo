@@ -45,8 +45,27 @@ class NewController extends AppController {
 		// get applications
 		$this->applications = $this->app->application->groups();
 
+		// manipulate js in J25
+		if ($this->app->joomla->isVersion('2.5')) {
+			JDispatcher::getInstance()->attach(array('event' => 'onAfterDispatch', 'handler' => array($this, 'eventCallback')));
+		}
+
 		// display view
 		$this->getView()->display();
+	}
+
+	public function eventCallback() {
+
+		$script = $this->app->system->document->_script['text/javascript'];
+		$types  = array_keys($this->application->getTypes());
+		$types[]= 'application';
+
+		$i = 3;
+		$script = preg_replace_callback('/div#permissions-sliders\.pane-sliders/', function ($match) use (&$i, $types) {
+			return 'div .zoo-'.$types[(int) ($i++ / 3) - 1].'-permissions';
+		}, $script);
+
+		$this->app->system->document->_script['text/javascript'] = $script;
 	}
 
 	public function add() {
@@ -73,6 +92,20 @@ class NewController extends AppController {
 		}
 
 		$this->lists['select_template'] = $this->app->html->_('select.genericlist',  $options, 'template', '', 'value', 'text', $this->params->get('template'));
+
+		// get permission form
+		$xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
+
+		$this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
+		$this->permissions->bind(array('asset_id' => 'com_zoo'));
+		$this->assetPermissions = array();
+
+		foreach ($this->application->getTypes() as $typeName => $type) {
+			$xml->fieldset->field->attributes()->section = 'type';
+			$xml->fieldset->field->attributes()->name = 'rules_' . $typeName;
+			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
+			$this->assetPermissions[$typeName]->bind(array('asset_id' => 'com_zoo'));
+		}
 
 		// display view
 		$this->getView()->setLayout('application')->display();
@@ -109,6 +142,15 @@ class NewController extends AppController {
 			if (isset($post['addons']) && is_array($post['addons'])) {
 				foreach ($post['addons'] as $addon => $value) {
 					$params->set("global.$addon.", $value);
+				}
+			}
+
+			// add ACL rules to aplication object
+			$this->application->rules = $post['rules'];
+
+			foreach ($post as $key => $value) {
+				if (stripos($key, 'rules_') === 0) {
+					$this->application->assetRules[substr($key, 6)] = $value;
 				}
 			}
 

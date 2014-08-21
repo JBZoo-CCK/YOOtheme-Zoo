@@ -19,19 +19,19 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $this->renderPosition('media'); ?>
 		</div>
 		<?php endif; ?>
-		
+
 		<?php if ($this->checkPosition('title')) : ?>
 		<h4 class="pos-title">
 			<?php echo $this->renderPosition('title'); ?>
 		</h4>
 		<?php endif; ?>
-		
+
 		<?php if ($this->checkPosition('description')) : ?>
 		<div class="pos-description">
 			<?php echo $this->renderPosition('description', array('style' => 'block')); ?>
 		</div>
 		<?php endif; ?>
-		
+
 		<?php if ($this->checkPosition('links')) : ?>
 		<p class="pos-links">
 			<?php echo $this->renderPosition('links', array('style' => 'pipe')); ?>

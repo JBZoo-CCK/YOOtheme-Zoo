@@ -48,14 +48,40 @@ class ItemController extends AppController {
 		$this->db = $this->app->database;
 
 		// set toolbar items
+		$canCreate    = false;
+		$canDelete    = false;
+		$canEditState = false;
+
+		foreach ($this->application->getTypes() as $type) {
+			if ($type->canCreate()) {
+				$canCreate = true;
+			}
+			if ($type->canDelete()) {
+				$canDelete = true;
+			}
+			if ($type->canEditState()) {
+				$canEditState = true;
+			}
+		}
 		$this->app->system->application->JComponentTitle = $this->application->getToolbarTitle(JText::_('Items'));
-		$this->app->toolbar->addNew();
+		if ($canCreate) {
+			$this->app->toolbar->addNew();
+		}
 		$this->app->toolbar->editList();
-		$this->app->toolbar->publishList();
-		$this->app->toolbar->unpublishList();
-		$this->app->toolbar->custom('togglefrontpage', 'checkin', 'checkin', 'Toggle Frontpage', true);
-		$this->app->toolbar->custom('docopy', 'copy.png', 'copy_f2.png', 'Copy');
-		$this->app->toolbar->deleteList();
+		if ($canEditState) {
+			$this->app->toolbar->publishList();
+			$this->app->toolbar->unpublishList();
+		}
+		if ($this->application->canManageFrontpage()) {
+			$this->app->toolbar->custom('togglefrontpage', 'checkin', 'checkin', 'Toggle Frontpage', true);
+		}
+		if ($canCreate) {
+			$this->app->toolbar->custom('docopy', 'copy.png', 'copy_f2.png', 'Copy');
+		}
+		if ($canDelete) {
+			$this->app->toolbar->deleteList();
+		}
+
 		$this->app->zoo->toolbarHelp();
 
 		$this->app->html->_('behavior.tooltip');
@@ -186,7 +212,12 @@ class ItemController extends AppController {
 		$this->app->toolbar->cancel();
 
 		// get types
-		$this->types = $this->application->getTypes();
+		$this->types = array();
+		foreach ($this->application->getTypes() as $name => $type) {
+			if ($this->app->user->canCreate(null, $type->getAssetName())) {
+				$this->types[$name] = $type;
+			}
+		}
 
 		// no types available ?
 		if (count($this->types) == 0) {
@@ -219,12 +250,22 @@ class ItemController extends AppController {
 				$this->app->error->raiseError(500, JText::sprintf('Unable to access item with id %s', $cid));
 				return;
 			}
+
+			// check ACL
+			if (!$this->item->canEdit()) {
+				throw new ItemControllerException("Invalid access permissions", 1);
+			}
 		} else {
 			$this->item = $this->app->object->create('Item');
 			$this->item->application_id = $this->application->id;
 			$this->item->type = $this->app->request->getVar('type');
 			$this->item->publish_down = $this->app->database->getNullDate();
 			$this->item->access = $this->app->joomla->getDefaultAccess();
+
+			// check ACL
+			if (!$this->item->canCreate()) {
+				throw new ItemControllerException("Invalid access permissions", 1);
+			}
 		}
 
 		// get item params

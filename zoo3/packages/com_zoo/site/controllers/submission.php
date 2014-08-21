@@ -33,6 +33,7 @@ class SubmissionController extends AppController {
     public $layout;
     public $layout_path;
 	public $session_form_key;
+    public $edit;
 
  	/*
 		Function: Constructor
@@ -55,6 +56,9 @@ class SubmissionController extends AppController {
 		// get pathway
 		$this->pathway = $this->app->system->application->getPathway();
 
+        // in edit view?
+        $this->edit = 'itemedit' === $this->app->request->getString('redirect', '');
+
         // get submission info from Request
         if (!$submission_id = $this->app->request->getInt('submission_id')) {
 
@@ -66,8 +70,21 @@ class SubmissionController extends AppController {
             }
         }
 
-        // set submission
-        if ($this->submission  = $this->app->table->submission->get((int) $submission_id)) {
+        if ($this->edit) {
+
+            // set application
+            $this->application = $this->app->table->item->get($this->item_id)->getApplication();
+
+            // set submissiom
+            $this->submission = $this->application->getItemEditSubmission();
+
+            // set template
+            $this->template   = $this->application->getTemplate();
+
+            // set session form key
+            $this->session_form_key = self::SESSION_PREFIX . 'SUBMISSION_FORM_' . $this->submission->id;
+
+        } elseif ($this->submission  = $this->app->table->submission->get((int) $submission_id)) {
 
             // set application
             $this->application = $this->submission->getApplication();
@@ -154,11 +171,6 @@ class SubmissionController extends AppController {
 
             $this->_init();
 
-            // on edit: can access and is owner if frontend edit is disabled for the item
-            if ($this->item->id && (!$this->item->canAccess($this->user) || (!$this->submission->isItemEditSubmission() && $this->item->created_by != $this->user->id))) {
-                throw new AppControllerException('You are not allowed to edit this item.');
-            }
-
 			// If it's a new item and the user has reached the max number of submissions, trigger error
 			if (!$this->item->id && !$this->_checkMaxSubmissions()) {
 				return $this->app->error->raiseNotice(0, 'You have reached your maximum number of submissions');
@@ -211,7 +223,7 @@ class SubmissionController extends AppController {
 
         // init vars
         $post	  = $this->app->request->get('post:', 'array');
-		$msg	  = '';
+		$msg	  = null;
 
         try {
 
@@ -221,11 +233,6 @@ class SubmissionController extends AppController {
 			if (!$edit = (bool) $this->item->id) {
 				$this->item->name = JText::_('Submitted Item');
 			}
-
-            // on edit: can access and is owner if frontend edit is disabled for the item
-            if ($edit && (!$this->item->canAccess($this->user) || (!$this->submission->isItemEditSubmission() && $this->item->created_by != $this->user->id))) {
-                throw new AppControllerException('You are not allowed to make changes to this item.');
-            }
 
 			// If it's a new item and the user has reached the max number of submissions, trigger error
 			if (!$this->item->id && !$this->_checkMaxSubmissions()) {
@@ -315,7 +322,7 @@ class SubmissionController extends AppController {
 				$this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:beforesave', array('item' => $this->item, 'new' => !$edit)));
 
                 // save item
-                $this->app->table->item->save($this->item);
+                $this->app->table->item->save($this->item, false);
 
                 // save to default category
 				if (!$edit && ($category = $this->submission->getForm($this->type->id)->get('category'))) {
@@ -323,7 +330,7 @@ class SubmissionController extends AppController {
 				}
 
                 // set redirect message
-				$msg = JText::_($edit ? 'Submission saved' : ($this->submission->isInTrustedMode() ? 'Thanks for your submission.' : 'Thanks for your submission. It will be reviewed before being posted on the site.'));
+				$msg = JText::_($edit ? 'Item saved' : ($this->submission->isInTrustedMode() ? 'Thanks for your submission.' : 'Thanks for your submission. It will be reviewed before being posted on the site.'));
 
 				// trigger saved event
 				$this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:saved', array('item' => $this->item, 'new' => !$edit)));
@@ -427,7 +434,8 @@ class SubmissionController extends AppController {
             throw new SubmissionControllerException('Submissions are disabled.');
         }
 
-        if (!$this->submission->canAccess($this->user)) {
+        // Check ACL on item edit
+        if (!($this->edit && $this->app->table->item->get($this->item_id)->canEdit()) && !(!$this->edit && $this->submission->canAccess($this->user))) {
             throw new SubmissionControllerException('Insufficient User Rights.');
         }
     }
@@ -460,7 +468,7 @@ class SubmissionController extends AppController {
         // get submission info from request
         if ($type_id) {
 
-            if ($hash != $this->app->submission->getSubmissionHash($this->submission->id, $type_id, $this->item_id)) {
+            if ($hash != $this->app->submission->getSubmissionHash($this->submission->id, $type_id, $this->item_id, $this->edit)) {
                 throw new SubmissionControllerException('Hashes did not match.');
             }
 
@@ -481,7 +489,7 @@ class SubmissionController extends AppController {
         }
 
         // set hash
-        $this->hash = $hash ? $hash : $this->app->submission->getSubmissionHash($this->submission->id, $this->type->id, $this->item_id);
+        $this->hash = $hash ? $hash : $this->app->submission->getSubmissionHash($this->submission->id, $this->type->id, $this->item_id, $this->edit);
 
         // set layout
         $this->layout = $this->submission->getForm($this->type->id)->get('layout', '');

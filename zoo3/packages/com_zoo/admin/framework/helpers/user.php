@@ -273,6 +273,150 @@ class UserAppHelper extends AppHelper {
 	}
 
 	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 * @param int $created_by
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canEdit($user = null, $asset_id = 0, $created_by = 0) {
+		if (is_null($user)) {
+			$user = $this->get();
+		}
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'core.edit', $asset_id) || ($created_by === $user->id && $user->authorise('core.edit.own', $asset_id));
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canEditState($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'core.edit.state', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canCreate($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'core.create', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canDelete($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'core.delete', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManage($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'core.manage', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function isAdmin($user = null, $asset_id = 0) {
+		return $this->authorise($user, 'core.admin', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageCategories($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) ||  $this->authorise($user, 'zoo.categories.manage', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageComments($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) ||  $this->authorise($user, 'zoo.comments.manage', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageFrontpage($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) ||  $this->authorise($user, 'zoo.frontpage.manage', $asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageTags($user = null, $asset_id = 0) {
+		return $this->isAdmin($user, $asset_id) || $this->authorise($user, 'zoo.tags.manage', $asset_id);
+	}
+
+	/**
 	 * Wrapper method to get the users database access string
 	 *
 	 * @param JUser $user The user
@@ -292,4 +436,25 @@ class UserAppHelper extends AppHelper {
 
 	}
 
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 * @param string $action
+	 * @param int $asset_id
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	protected function authorise($user, $action, $asset_id) {
+		if (!$asset_id) {
+			$asset_id = 'com_zoo';
+		}
+		if (is_null($user)) {
+			$user = $this->get();
+		}
+
+		return (bool) $user->authorise($action, $asset_id);
+	}
 }

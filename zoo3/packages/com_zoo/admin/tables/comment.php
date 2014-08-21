@@ -80,15 +80,15 @@ class CommentTable extends AppTable {
 		Returns:
 			Array
 	*/
-	public function getCommentsForItem($item_id, $order = 'ASC', CommentAuthor $author = null) {
+	public function getCommentsForItem($item_id, $order = 'ASC', CommentAuthor $author = null, $state = Comment::STATE_APPROVED) {
 
 		// set query options
 		$order = 'created '.($order == 'ASC' ? 'ASC' : 'DESC');
 
 		if ($author) {
-			$conditions = array("item_id = ? AND (state = ? OR (author = '?' AND email = '?' AND user_id = '?' AND user_type = '?'))", $item_id, Comment::STATE_APPROVED, $author->name, $author->email, $author->user_id, $author->getUserType());
+			$conditions = array("item_id = ? AND (state = ? OR (author = '?' AND email = '?' AND user_id = '?' AND user_type = '?'))", $item_id, $state, $author->name, $author->email, $author->user_id, $author->getUserType());
 		} else {
-			$conditions = array("item_id = ? AND state = ?", $item_id, Comment::STATE_APPROVED);
+			$conditions = array("item_id = ? AND state = ?", $item_id, $state);
 		}
 
 		return $this->all(compact('conditions', 'order'));

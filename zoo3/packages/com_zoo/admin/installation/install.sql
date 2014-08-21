@@ -9,12 +9,13 @@ CREATE TABLE IF NOT EXISTS #__zoo_version (
     FROM information_schema.tables
     WHERE table_schema = (SELECT DATABASE()) AND table_name LIKE '%zoo_application'
   )
-  THEN '' ELSE '3.1.6' END as version;
+  THEN '' ELSE '3.2.0' END as version;
 
 -- --------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS #__zoo_application (
   `id` int(11) NOT NULL auto_increment,
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `name` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `application_group` varchar(255) NOT NULL,

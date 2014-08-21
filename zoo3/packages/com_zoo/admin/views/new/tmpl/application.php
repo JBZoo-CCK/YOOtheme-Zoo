@@ -9,6 +9,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js
+JHTML::_('behavior.modal');
 $this->app->document->addScript('assets:js/configuration.js');
 $this->app->document->addScript('assets:js/alias.js');
 

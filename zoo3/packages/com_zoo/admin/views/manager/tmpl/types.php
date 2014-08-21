@@ -84,7 +84,7 @@ $this->app->html->_('behavior.tooltip');
 							$path = $this->app->path->relative($template->getPath());
                             $link = '<a href="'.$this->app->link(array('controller' => $this->controller, 'task' => 'assignelements', 'group' => $this->group, 'type' => $type->id, 'path' => urlencode($path), 'layout' => $layout)).'">'.$metadata->get('name', $layout).'</a>';
 
-                        } else if ($metadata->get('type') == 'submission') {
+                        } else if ($metadata->get('type') == 'submission' || $metadata->get('type') == 'edit') {
 
 							// create link
 							$link = '<a href="'.$this->app->link(array('controller' => $this->controller, 'task' => 'assignsubmission', 'group' => $this->group, 'type' => $type->id, 'template' => $template->name, 'layout' => $layout)).'">'.$metadata->get('name', $layout).'</a>';

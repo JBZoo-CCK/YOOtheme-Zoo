@@ -9,6 +9,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js
+JHTML::_('behavior.modal');
 $this->app->document->addScript('assets:js/configuration.js');
 $this->app->document->addScript('assets:js/alias.js');
 
@@ -51,7 +52,6 @@ JFilterOutput::objectHTMLSafe($this->application, ENT_QUOTES, array('params'));
 			<?php echo $this->lists['select_template']; ?>
 		</div>
 		</fieldset>
-
 	</div>
 
 	<div class="col col-right width-40">

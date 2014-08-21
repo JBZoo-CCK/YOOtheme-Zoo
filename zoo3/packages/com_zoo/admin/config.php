@@ -78,6 +78,10 @@ $zoo->loader->register('Submission', 'classes:submission.php');
 $zoo->event->register('ApplicationEvent');
 $zoo->event->dispatcher->connect('application:init', array('ApplicationEvent', 'init'));
 
+$zoo->event->register('AssetEvent');
+$zoo->event->dispatcher->connect('application:saved', array('AssetEvent', 'saved'));
+$zoo->event->dispatcher->connect('application:deleted', array('AssetEvent', 'deleted'));
+
 $zoo->event->register('ItemEvent');
 $zoo->event->dispatcher->connect('item:saved', array('ItemEvent', 'saved'));
 $zoo->event->dispatcher->connect('item:deleted', array('ItemEvent', 'deleted'));

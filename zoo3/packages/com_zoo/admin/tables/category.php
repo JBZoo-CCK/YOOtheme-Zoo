@@ -56,6 +56,11 @@ class CategoryTable extends AppTable {
 	*/
 	public function save($object) {
 
+		// Check ACL
+		if (!$object->canManageCategories()) {
+			throw new CategoryTableException('Invalid Access Permissions');
+		}
+
 		if ($object->name == '') {
 			throw new CategoryTableException('Invalid name');
 		}
@@ -90,6 +95,11 @@ class CategoryTable extends AppTable {
 			Boolean.
 	*/
 	public function delete($object) {
+
+		// Check ACL
+		if (!$object->canManageCategories()) {
+			throw new CategoryTableException('Invalid Access Permissions');
+		}
 
 		// get database
 		$db = $this->database;

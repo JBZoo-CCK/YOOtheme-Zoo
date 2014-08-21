@@ -14,6 +14,12 @@ $css_class = $this->application->getGroup().'-'.$this->template->name;
 ?>
 
 <div class="yoo-zoo <?php echo $css_class; ?> <?php echo $css_class.'-'.$this->item->alias; ?>">
+<?php if ($this->item->canEdit()) : ?>
+    <?php $edit_link = $this->app->route->submission($this->item->getApplication()->getItemEditSubmission(), $this->item->type, null, $this->item->id, 'itemedit'); ?>
+    <div class="uk-align-right">
+        <a href="<?php echo JRoute::_($edit_link); ?>" title="<?php echo JText::_('Edit Item'); ?>" class="item-icon edit-item"><?php echo JText::_('Edit Item'); ?></a>
+    </div>
+<?php endif; ?>
 
 	<?php if ($this->renderer->pathExists('item/'.$this->item->type)) : ?>
 	<div class="<?php echo $this->item->type;?>">

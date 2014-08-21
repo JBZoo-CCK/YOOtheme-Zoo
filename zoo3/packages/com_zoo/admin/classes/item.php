@@ -237,6 +237,84 @@ class Item {
 
 	}
 
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canEdit($user = null) {
+        return $this->getType()->canEdit($user, $this->created_by);
+    }
+
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canEditState($user = null) {
+        return $this->getType()->canEditState($user);
+    }
+
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canCreate($user = null) {
+        return $this->getType()->canCreate($user);
+    }
+
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canDelete($user = null) {
+        return $this->getType()->canDelete($user);
+    }
+
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canManageComments($user = null) {
+        return $this->getApplication()->canManageComments($user);
+    }
+
+    /**
+     * Evaluates user permission
+     *
+     * @param JUser $user User Object
+     *
+     * @return boolean True if user has permission
+     *
+     * @since 3.2
+     */
+    public function canManageFrontpage($user = null) {
+        return $this->getApplication()->canManageFrontpage($user);
+    }
+
 	/**
 	 * Get the Application which the item belongs to
 	 *
@@ -309,6 +387,10 @@ class Item {
 	 * @since 2.0
 	 */
 	public function setState($state, $save = false) {
+        // check ACL
+        if (!$this->canEditState()) {
+            return false;
+        }
 
 		if ($this->state != $state) {
 
@@ -318,7 +400,7 @@ class Item {
 
 			// autosave comment ?
 			if ($save) {
-				$this->app->table->item->save($this);
+				$this->app->table->item->save($this, false);
 			}
 
 			// fire event
@@ -327,6 +409,17 @@ class Item {
 
 		return $this;
 	}
+
+    /**
+     * Returns asset name of the item
+     *
+     * @return string Asset name
+     *
+     * @since 3.2
+     */
+    public function getAssetName() {
+        return $this->getType()->getAssetName();
+    }
 
 	/**
 	 * If an item is searchable

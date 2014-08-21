@@ -133,8 +133,10 @@ function ZooBuildRoute(&$query) {
 		if (((@$query['task'] == $task || @$query['view'] == $task) && @$query['layout'] == 'submission')) {
 			$segments[] = $task;
 			$segments[] = @$query['layout'];
-			if (isset($query['submission_id'], $query['type_id'], $query['submission_hash'])) {
-				$segments[] = $app->alias->submission->translateIDToAlias((int) $query['submission_id']);
+            if (isset($query['submission_id'])) {
+                $segments[] = $app->alias->submission->translateIDToAlias((int) $query['submission_id']);
+            }
+			if (isset($query['type_id'], $query['submission_hash'])) {
 				$segments[] = $query['type_id'];
 				$segments[] = $query['submission_hash'];
 			}
@@ -280,19 +282,28 @@ function ZooParseRoute($segments) {
 	// submission
 	$task = 'submission';
     $layout = 'submission';
+    $redirect = urldecode($app->request->getString('redirect', ''));
 
 		if ($count == 2 && $segments[0] == $task && $segments[1] == $layout) {
 			$vars['task']   = $task;
 			$vars['layout'] = (string) $segments[1];
 		}
 
-		if ($count == 5 && $segments[0] == $task && $segments[1] == $layout) {
+		if ($count == 5 && $segments[0] == $task && $segments[1] == $layout && $redirect !== 'itemedit') {
 			$vars['task']            = $task;
 			$vars['layout']          = (string) $segments[1];
 			$vars['submission_id']   = (int) $app->alias->submission->translateAliasToID($segments[2]);
             $vars['type_id']         = (string) $segments[3];
             $vars['submission_hash'] = (string) $segments[4];
 		}
+
+        if ($count == 5 && $segments[0] == $task && $segments[1] == $layout && $redirect === 'itemedit') {
+            $vars['task']            = $task;
+            $vars['layout']          = (string) $segments[1];
+            $vars['type_id']         = (string) $segments[2];
+            $vars['submission_hash'] = (string) $segments[3];
+            $vars['item_id']         = (int) $app->alias->item->translateAliasToID($segments[4]);
+        }
 
 		if ($count == 6 && $segments[0] == $task && $segments[1] == $layout) {
 			$vars['task']            = $task;

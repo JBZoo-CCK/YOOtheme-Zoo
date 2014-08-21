@@ -21,6 +21,14 @@ class Application {
      */
 	public $id;
 
+	/**
+     * Asset id of the application record
+     *
+     * @var int
+     * @since 3.2
+     */
+	public $asset_id;
+
     /**
      * The name of the application
      *
@@ -76,6 +84,22 @@ class Application {
      * @since 2.0
      */
 	public $app;
+
+	/**
+	 * The ACL rules of the application
+	 *
+	 * @var array
+	 * @since 3.2
+	 */
+	public $rules;
+
+	/**
+	 * The ACL rules of the application types
+	 *
+	 * @var array
+	 * @since 3.2
+	 */
+	public $assetRules;
 
    	/**
    	 * The categories of the application
@@ -143,6 +167,121 @@ class Application {
 
 		// decorate data as object
 		$this->params = $app->parameter->create($this->params);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageComments($user = null) {
+		return $this->app->user->canManageComments($user, $this->asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageCategories($user = null) {
+		return $this->app->user->canManageCategories($user, $this->asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManageFrontpage($user = null) {
+		return $this->app->user->canManageFrontpage($user, $this->asset_id);
+	}
+
+	/**
+	 * Evaluates user permission
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user has permission
+	 *
+	 * @since 3.2
+	 */
+	public function canManage($user = null) {
+		return $this->app->user->canManage($user, $this->asset_id);
+	}
+
+	/**
+	 * Evaluates if user is admin
+	 *
+	 * @param JUser $user User Object
+	 *
+	 * @return boolean True if user is admin
+	 *
+	 * @since 3.2
+	 */
+	public function isAdmin($user = null) {
+		return $this->app->user->isAdmin($user, $this->asset_id);
+	}
+
+	/**
+	 * Returns the asset id of the parent
+	 *
+	 * @return int asset id
+	 *
+	 * @since 3.2
+	 */
+	public function getAssetParentId() {
+		$asset = JTable::getInstance('Asset');
+		if ($asset->loadByName('com_zoo')) {
+			return $asset->id;
+		} else {
+			return 1;
+		}
+	}
+
+	/**
+	 * Returns the asset id of the parent
+	 *
+	 * @return int asset id
+	 *
+	 * @since 3.2
+	 */
+	public function getAssetName() {
+		return 'com_zoo.application.' . $this->id;
+	}
+
+	/**
+	 * Returns the title of the asset
+	 *
+	 * @return string title
+	 *
+	 * @since 3.2
+	 */
+	public function getAssetTitle() {
+		return $this->name;
+	}
+
+	/**
+	 * Updates the asset id
+	 *
+	 * @param int asset id
+	 *
+	 * @since 3.2
+	 */
+	public function updateAssetId($asset_id) {
+		$this->asset_id = $asset_id;
+		$this->app->table->application->save($this);
 	}
 
 	/**
@@ -446,20 +585,20 @@ class Application {
 	}
 
 	/**
-	 * Get the submission object that is configured as the Item Edit Submission
+	 * Get the submission object for frontend editing
 	 *
 	 * @return Submission The Item Edit Submission
 	 *
 	 * @since 2.0
 	 */
 	public function getItemEditSubmission() {
-		foreach ($this->getSubmissions() as $submission) {
-			if ($submission->isItemEditSubmission()) {
-				return $submission;
-			}
-		}
+		$submission = $this->app->object->create('submission');
 
-		return null;
+		$submission->application_id = $this->id;
+		$submission->setState(1);
+		$submission->params = $this->app->submission->getSubmissionEditParams($this->getTypes());
+
+		return $submission;
 	}
 
 	/**
@@ -688,18 +827,34 @@ class Application {
             'submission'    => JText::_('Submissions')
 		);
 
+		// remove unauthorized menu items
+		if (!$this->canManageCategories()) {
+			unset($items['category']);
+		}
+		if (!$this->canManageFrontpage()) {
+			unset($items['frontpage']);
+		}
+		if (!$this->canManageComments()) {
+			unset($items['comment']);
+		}
+		if (!$this->isAdmin()) {
+			unset($items['submission']);
+		}
+
 		// add menu items
 		foreach ($items as $controller => $name) {
 			$tab->addChild($this->app->object->create('AppMenuItem', array($this->id.'-'.$controller, $name, $this->app->link(array('controller' => $controller, 'changeapp' => $this->id)))));
 		}
 
 		// add config menu item
-		$id     = $this->id.'-configuration';
-		$link   = $this->app->link(array('controller' => 'configuration', 'changeapp' => $this->id));
-		$config = $this->app->object->create('AppMenuItem', array($id, JText::_('Config'), $link));
-		$config->addChild($this->app->object->create('AppMenuItem', array($id, JText::_('Application'), $link)));
-		$config->addChild($this->app->object->create('AppMenuItem', array($id.'-importexport', JText::_('Import / Export'), $this->app->link(array('controller' => 'configuration', 'changeapp' => $this->id, 'task' => 'importexport')))));
-		$tab->addChild($config);
+		if ($this->isAdmin()) {
+			$id     = $this->id.'-configuration';
+			$link   = $this->app->link(array('controller' => 'configuration', 'changeapp' => $this->id));
+			$config = $this->app->object->create('AppMenuItem', array($id, JText::_('Config'), $link));
+			$config->addChild($this->app->object->create('AppMenuItem', array($id, JText::_('Application'), $link)));
+			$config->addChild($this->app->object->create('AppMenuItem', array($id.'-importexport', JText::_('Import / Export'), $this->app->link(array('controller' => 'configuration', 'changeapp' => $this->id, 'task' => 'importexport')))));
+			$tab->addChild($config);
+		}
 
 		// trigger event for adding custom menu items
 		$this->app->event->dispatcher->notify($this->app->event->create($this, 'application:addmenuitems', array('tab' => &$tab)));

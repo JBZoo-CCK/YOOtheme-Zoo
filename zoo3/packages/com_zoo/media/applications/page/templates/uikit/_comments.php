@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js and css
-$this->app->document->addScript('libraries:jquery/plugins/cookie/jquery.cookie.js');
+$this->app->document->addScript('libraries:jquery/plugins/cookie/jquery-cookie.js');
 $this->app->document->addScript('assets:js/comment.js');
 
 // css classes
@@ -37,6 +37,10 @@ $css[] = $params->get('registered_users_only') && $active_author->isGuest() ? 'n
 		if($item->isCommentsEnabled()) :
 			echo $this->partial('respond', compact('active_author', 'params', 'item', 'captcha'));
 		endif;
+
+        if($item->canManageComments()) :
+            echo $this->partial('edit');
+        endif;
 	?>
 
 </div>

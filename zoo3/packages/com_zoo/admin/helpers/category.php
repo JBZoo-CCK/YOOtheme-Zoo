@@ -79,6 +79,10 @@ class CategoryHelper extends AppHelper {
 	 * @since 2.0
 	 */
 	public function saveCategoryItemRelations($item, $categories) {
+		// check ACL
+		if (!$item->canManageFrontpage()) {
+			return false;
+		}
 
 		//init vars
 		$db = $this->app->database;
@@ -133,6 +137,10 @@ class CategoryHelper extends AppHelper {
 	 * @since 2.0
 	 */
 	public function deleteCategoryItemRelations($category_id) {
+		// check ACL
+		if (!$item->canManageFrontpage()) {
+			return false;
+		}
 
 		// delete category to item relations
 		$query = "DELETE FROM ".ZOO_TABLE_CATEGORY_ITEM

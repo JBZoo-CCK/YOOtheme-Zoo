@@ -54,18 +54,34 @@ class SubmissionHelper extends AppHelper {
 	 * @param int $submission_id
 	 * @param string $type_id
 	 * @param int $item_id
+	 * @param bool $edit
 	 *
 	 * @return string The resulting hash
 	 * @since 2.0
 	 */
-	public function getSubmissionHash($submission_id, $type_id, $item_id = 0) {
-
-		// get secret from config
-		$secret = $this->app->system->config->get('config.secret');
+	public function getSubmissionHash($submission_id, $type_id, $item_id = 0, $edit = false) {
 
 		$item_id = empty($item_id) ? 0 : $item_id;
 
-		return md5($submission_id.$type_id.$item_id.$secret);
+		return $this->app->system->getHash($submission_id.$type_id.$item_id.$edit);
+	}
+
+	/**
+	 * Retrieve params for frontend editing submisson
+	 *
+	 * @param array $types
+	 *
+	 * @return ParameterData submission params
+	 * @since 3.2
+	 */
+	public function getSubmissionEditParams(array $types) {
+		$params = $this->app->parameter->create();
+		foreach ($types as $type) {
+			$params->set('form.'.$type->id, array('layout' => 'edit', 'category' => ''));
+		}
+		$params->set('trusted_mode', 1);
+
+		return $params;
 	}
 
 	/**

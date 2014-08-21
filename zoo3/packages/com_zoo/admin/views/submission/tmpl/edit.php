@@ -56,10 +56,6 @@
 					<strong class="hasTip" title="<?php echo JText::_('EMAIL_NOTIFICATION_DESCRIPTION'); ?>"><?php echo JText::_('Email Notification'); ?></strong>
 					<input type="text" name="params[email_notification]" value="<?php echo $this->submission->getParams()->get('email_notification', ''); ?>" />
 				</div>
-				<div class="element element-item-edit">
-					<strong class="hasTip" title="<?php echo JText::_('ITEM_EDIT_DESCRIPTION'); ?>"><?php echo JText::_('Item Edit'); ?></strong>
-					<?php echo $this->lists['select_item_edit']; ?>
-				</div>
 				<?php if($this->lists['select_item_captcha']): ?>
 				<div class="element element-item-captcha">
 					<strong class="hasTip" title="<?php echo JText::_('CAPTCHA_DESCRIPTION'); ?>"><?php echo JText::_('Use Captcha'); ?></strong>
@@ -161,17 +157,6 @@
 
 <script type="text/javascript">
 	jQuery(function($) {
-
-		<?php
-			$groups = array();
-			foreach ($this->app->zoo->getGroups() as $group) {
-				if (!JAccess::checkGroup($group->id, 'core.login.site')) {
-					$groups[] = $group->id;
-				}
-			}
-		?>
-
-		$('#adminForm').EditSubmission({ groups: <?php echo json_encode($groups); ?> });
 		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->submission->id; ?> });
 		$('#name-edit').find('input[name="name"]').focus();
 	});

@@ -23,6 +23,11 @@ class FrontpageController extends AppController {
 		// get application
 		$this->application 	= $this->app->zoo->getApplication();
 
+		// check ACL
+		if (!$this->application->canManageFrontpage()) {
+			throw new FrontpageControllerException("Invalid Access Permissions", 1);
+		}
+
 		// set base url
 		$this->baseurl = $this->app->link(array('controller' => $this->controller), false);
 

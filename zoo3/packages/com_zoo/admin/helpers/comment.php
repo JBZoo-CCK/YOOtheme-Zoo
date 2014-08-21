@@ -68,7 +68,8 @@ class CommentHelper extends AppHelper {
 			$params->set('content', $content);
 
 			// get comments and build tree
-			$comments = $item->getCommentTree(Comment::STATE_APPROVED);
+			$approved = $item->canManageComments() ? Comment::STATE_UNAPPROVED : Comment::STATE_APPROVED;
+			$comments = $item->getCommentTree($approved);
 
 			// build captcha
 			$captcha = false;
@@ -200,11 +201,7 @@ class CommentHelper extends AppHelper {
 	 * @since 2.0
 	 */
 	public function getCookieHash($author, $email, $url) {
-
-		// get secret from config
-		$secret = $this->app->system->config->get('config.secret');
-
-		return md5($author.$email.$url.$secret);
+		return $this->app->system->getHash($author.$email.$url);
 	}
 
 	/**
@@ -400,7 +397,7 @@ class CommentHelper extends AppHelper {
 				'controller' => 'comment',
 				'task' => 'unsubscribe',
 				'item_id' => $item->id,
-				'email' => urldecode($email),
+				'email' => $email,
 				'hash' => $this->app->comment->getCookieHash($email, $item->id, '')
 			), '', '&');
 

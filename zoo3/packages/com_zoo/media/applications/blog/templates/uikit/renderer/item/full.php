@@ -20,7 +20,6 @@ $align = ($this->checkPosition('media')) ? $view->params->get('template.item_med
 <?php if ($this->checkPosition('top')) : ?>
 	<?php echo $this->renderPosition('top', array('style' => 'uikit_block')); ?>
 <?php endif; ?>
-
 <?php if ($align == "above") : ?>
 	<?php echo $this->renderPosition('media', array('style' => 'uikit_block')); ?>
 <?php endif; ?>

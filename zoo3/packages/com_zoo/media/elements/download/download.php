@@ -23,9 +23,6 @@ class ElementDownload extends ElementFile implements iSubmittable {
 		// call parent constructor
 		parent::__construct();
 
-		// set defaults
-		$this->config->set('secret', $this->app->system->config->get('config.secret'));
-
 		// set callbacks
 		$this->registerCallback('download');
 
@@ -184,7 +181,7 @@ class ElementDownload extends ElementFile implements iSubmittable {
 	       String - md5(file + secret + date)
 	*/
 	public function filecheck() {
-		return md5($this->get('file').$this->config->get('secret').date('Y-m-d'));
+		return $this->app->system->getHash($this->get('file').date('Y-m-d'));
 	}
 
 	/*
