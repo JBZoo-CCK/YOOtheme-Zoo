@@ -80,7 +80,7 @@ class CategoryHelper extends AppHelper {
 	 */
 	public function saveCategoryItemRelations($item, $categories) {
 		// check ACL
-		if (!$item->canManageFrontpage()) {
+		if (!$item->canEdit()) {
 			return false;
 		}
 
@@ -138,7 +138,7 @@ class CategoryHelper extends AppHelper {
 	 */
 	public function deleteCategoryItemRelations($category_id) {
 		// check ACL
-		if (!$item->canManageFrontpage()) {
+		if (!$this->app->zoo->getApplication()->canManageCategories()) {
 			return false;
 		}
 

@@ -26,12 +26,14 @@ class ApplicationHelper extends AppHelper {
     public function getApplications($group = false) {
         // get application instances for selected group
         $applications = array();
-        foreach ($this->app->table->application->all(array('order' => 'name')) as $application) {
-            if (!$group || $application->getGroup() == $group) {
-                $applications[$application->id] = $application;
-            }
+        if ($table = $this->app->table->application->all(array('order' => 'name'))) {
+	        foreach ($table as $application) {
+	            if (!$group || $application->getGroup() == $group) {
+	                $applications[$application->id] = $application;
+	            }
+	        }
         }
-        return $applications;
+	    return $applications;
     }
 
 	/**

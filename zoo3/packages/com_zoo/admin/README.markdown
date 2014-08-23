@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.2.0
+- Version: 3.2.1
 - Date: August 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.2.1
+	# fixed PHP 5.3 compatibility
+	# fixed submission hashes
 
 	3.2.0
 	+ added frontend editing for comments and items (ACL)

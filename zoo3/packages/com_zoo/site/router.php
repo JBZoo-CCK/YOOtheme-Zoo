@@ -131,9 +131,9 @@ function ZooBuildRoute(&$query) {
 	$task = 'submission';
 
 		if (((@$query['task'] == $task || @$query['view'] == $task) && @$query['layout'] == 'submission')) {
-			$segments[] = $task;
+            $segments[] = $task;
 			$segments[] = @$query['layout'];
-            if (isset($query['submission_id'])) {
+            if (isset($query['submission_id']) && !empty($query['submission_id']) ) {
                 $segments[] = $app->alias->submission->translateIDToAlias((int) $query['submission_id']);
             }
 			if (isset($query['type_id'], $query['submission_hash'])) {

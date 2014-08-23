@@ -83,8 +83,10 @@ if (!$controller) {
 $menu = $zoo->menu->get('nav');
 
 // add "app" menu items
-foreach ($zoo->table->application->all(array('order' => 'name')) as $instance) {
-	$instance->addMenuItems($menu);
+if ($instances = $zoo->table->application->all(array('order' => 'name'))) {
+	foreach ($instances as $instance) {
+		$instance->addMenuItems($menu);
+	}
 }
 
 // add "new" and "manager" menu item
