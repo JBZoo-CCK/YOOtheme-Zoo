@@ -393,7 +393,7 @@ class RouteHelper extends AppHelper {
 	 */
 	public function submission($submission, $type_id, $hash = null, $item_id = 0, $redirect = null) {
 
-		$hash = empty($hash) ? $this->app->submission->getSubmissionHash($submission->id, $type_id, $item_id, true) : $hash;
+		$hash = empty($hash) ? $this->app->submission->getSubmissionHash($submission->id, $type_id, $item_id, $redirect === 'itemedit') : $hash;
 
 		$redirect = !empty($redirect) ? '&redirect='.urlencode($redirect) : '';
 		$item_id = !empty($item_id) ? '&item_id='.$item_id : '';
