@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.2.1
+- Version: 3.2.2
 - Date: August 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.2.2
+	# fixed update script
 
 	3.2.1
 	# fixed PHP 5.3 compatibility

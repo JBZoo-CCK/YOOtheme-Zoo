@@ -6,7 +6,7 @@
 * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 */
 
-class Update32 implements iUpdate {
+class Update320 implements iUpdate {
 
     /*
         Function: getNotifications

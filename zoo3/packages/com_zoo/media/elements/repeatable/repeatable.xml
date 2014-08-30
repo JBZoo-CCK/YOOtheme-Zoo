@@ -9,7 +9,7 @@
 	<version>2.5.0</version>
 	<description>Repeatable Core System</description>
 	<params>
-		<param name="repeatable" type="radio" default="0" label="Repeatable" description="Add multiple text areas.">
+		<param name="repeatable" type="radio" default="0" label="Repeatable" description="Add multiple element instances.">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</param>
