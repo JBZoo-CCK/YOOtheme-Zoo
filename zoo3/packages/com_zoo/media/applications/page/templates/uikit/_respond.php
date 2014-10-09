@@ -99,7 +99,7 @@ $this->app->document->addScript('assets:js/placeholder.js');
 			<?php endif; ?>
 
 			<div class="uk-form-row actions">
-				<input class="uk-button uk-button-primary" name="submit" type="submit" value="<?php echo JText::_('Submit comment'); ?>" accesskey="s"/>
+				<button class="uk-button uk-button-primary" name="submit" type="submit" accesskey="s"><?php echo JText::_('Submit comment'); ?></button>
 			</div>
 
 			<input type="hidden" name="item_id" value="<?php echo $this->item->id; ?>"/>

@@ -1,11 +1,17 @@
 # ZOO #
 
-- Version: 3.2.2
+- Version: 3.2.3
 - Date: August 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.2.3
+	# improved backward compatibility for 3rd party extensions
+	# changed _respond.php input to button element for comments submission for UIKit templates
+	# fixed rating bug
+	# fixed image alignment in UIKit template for product app
 
 	3.2.2
 	# fixed update script

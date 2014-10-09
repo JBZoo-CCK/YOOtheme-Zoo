@@ -387,11 +387,6 @@ class Item {
 	 * @since 2.0
 	 */
 	public function setState($state, $save = false) {
-        // check ACL
-        if (!$this->canEditState()) {
-            return false;
-        }
-
 		if ($this->state != $state) {
 
 			// set state
@@ -400,7 +395,7 @@ class Item {
 
 			// autosave comment ?
 			if ($save) {
-				$this->app->table->item->save($this, false);
+				$this->app->table->item->save($this);
 			}
 
 			// fire event
