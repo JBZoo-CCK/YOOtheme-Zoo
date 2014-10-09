@@ -28,7 +28,7 @@ class Update322 implements iUpdate {
 
         foreach (array('blog', 'business', 'cookbook', 'documentation', 'download', 'movie', 'page', 'product') as $application) {
             foreach (array('media/zoo/applications/'.$application.'/templates/*/renderer/item', 'media/zoo/applications/'.$application.'/templates/*/renderer/item/*') as $dir) {
-                foreach(glob(JPATH_ROOT.'/'.$dir, GLOB_ONLYDIR) as $folder) {
+                foreach((array) glob(JPATH_ROOT.'/'.$dir, GLOB_ONLYDIR) as $folder) {
                     $file = "$folder/positions.xml";
                     if (JFile::exists($file) and $content = JFile::read($file) and false === strpos($content, 'positions layout="edit"')) {
                         if (false !== $pos = strpos($content, '</renderer>')) {

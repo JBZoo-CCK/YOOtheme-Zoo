@@ -33,7 +33,7 @@ class SubmissionController extends AppController {
     public $layout;
     public $layout_path;
 	public $session_form_key;
-    public $edit;
+    public $itemedit;
 
  	/*
 		Function: Constructor
@@ -57,7 +57,7 @@ class SubmissionController extends AppController {
 		$this->pathway = $this->app->system->application->getPathway();
 
         // in edit view?
-        $this->edit = 'itemedit' === $this->app->request->getString('redirect', '');
+        $this->itemedit = 'itemedit' === $this->app->request->getString('redirect', '');
 
         // get submission info from Request
         if (!$submission_id = $this->app->request->getInt('submission_id')) {
@@ -70,7 +70,7 @@ class SubmissionController extends AppController {
             }
         }
 
-        if ($this->edit) {
+        if ($this->itemedit) {
 
             // set application
             $this->application = $this->app->table->item->get($this->item_id)->getApplication();
@@ -322,7 +322,7 @@ class SubmissionController extends AppController {
 				$this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:beforesave', array('item' => $this->item, 'new' => !$edit)));
 
                 // save item
-                $this->app->table->item->save($this->item, false);
+                $this->app->table->item->save($this->item);
 
                 // save to default category
 				if (!$edit && ($category = $this->submission->getForm($this->type->id)->get('category'))) {
@@ -435,7 +435,7 @@ class SubmissionController extends AppController {
         }
 
         // Check ACL on item edit
-        if (!($this->edit && $this->app->table->item->get($this->item_id)->canEdit()) && !(!$this->edit && $this->submission->canAccess($this->user))) {
+        if (!($this->itemedit && $this->app->table->item->get($this->item_id)->canEdit()) && !(!$this->itemedit && $this->submission->canAccess($this->user))) {
             throw new SubmissionControllerException('Insufficient User Rights.');
         }
     }
@@ -468,7 +468,7 @@ class SubmissionController extends AppController {
         // get submission info from request
         if ($type_id) {
 
-            if ($hash != $this->app->submission->getSubmissionHash($this->submission->id, $type_id, $this->item_id, $this->edit)) {
+            if ($hash != $this->app->submission->getSubmissionHash($this->submission->id, $type_id, $this->item_id, $this->itemedit)) {
                 throw new SubmissionControllerException('Hashes did not match.');
             }
 
@@ -489,7 +489,7 @@ class SubmissionController extends AppController {
         }
 
         // set hash
-        $this->hash = $hash ? $hash : $this->app->submission->getSubmissionHash($this->submission->id, $this->type->id, $this->item_id, $this->edit);
+        $this->hash = $hash ? $hash : $this->app->submission->getSubmissionHash($this->submission->id, $this->type->id, $this->item_id, $this->itemedit);
 
         // set layout
         $this->layout = $this->submission->getForm($this->type->id)->get('layout', '');

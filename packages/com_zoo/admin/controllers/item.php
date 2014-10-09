@@ -330,6 +330,15 @@ class ItemController extends AppController {
 				$item->type = $this->app->request->getVar('type');
 			}
 
+			// Check ACL
+			if ($cid && !$item->canCreate() || !$cid && !$item->canEdit()) {
+				throw new ItemControllerException("Invalid access permissions", 1);
+			}
+
+			if (!$item->canEditState()) {
+				unset($item->state);
+			}
+
 			// bind item data
 			self::bind($item, $post, array('elements', 'params', 'created_by'));
             $created_by = isset($post['created_by']) ? $post['created_by'] : '';
@@ -466,6 +475,11 @@ class ItemController extends AppController {
 				$item       = $this->table->get($id);
 				$categories = $item->getRelatedCategoryIds();
 
+				// Check ACL
+				if (!$item->canCreate()) {
+					continue;
+				}
+
 				// copy item
 				$item->id          = 0;                         						// set id to 0, to force new item
 				$item->name       .= ' ('.JText::_('Copy').')'; 						// set copied name
@@ -515,6 +529,12 @@ class ItemController extends AppController {
 
 			// delete items
 			foreach ($cid as $id) {
+
+				// Check ACL
+				if (!$item->canDelete()) {
+					continue;
+				}
+
 				$this->table->delete($this->table->get($id));
 			}
 
@@ -548,8 +568,8 @@ class ItemController extends AppController {
 			foreach ($priority as $id => $value) {
 				$item = $this->table->get((int) $id);
 
-				// only update, if changed
-				if ($item->priority != $value) {
+				// only update, if changed and ACL is checked
+				if ($item->canEdit() && $item->priority != $value) {
 					$item->priority = $value;
 					$this->table->save($item);
 				}
@@ -587,6 +607,11 @@ class ItemController extends AppController {
 
 			// get item
 			$item = $this->table->get($cid);
+
+			// Check ACL
+			if (!$item->canEdit()) {
+				throw new ItemControllerException("Invalid access permissions", 1);
+			}
 
 			// reset hits
 			if ($item->hits > 0) {
@@ -650,7 +675,10 @@ class ItemController extends AppController {
 
 			// update item state
 			foreach ($cid as $id) {
-				$this->table->get($id)->setState($state, true);
+				// check ACL
+				if ($this->table->get($id)->canEditState()) {
+					$this->table->get($id)->setState($state, true);
+				}
 			}
 
 		} catch (AppException $e) {
@@ -680,6 +708,12 @@ class ItemController extends AppController {
 			// update item searchable
 			foreach ($cid as $id) {
 				$item = $this->table->get($id);
+
+				// Check ACL
+				if (!$item->canEdit()) {
+					continue;
+				}
+
 				$item->searchable = $searchable;
 				$this->table->save($item);
 			}
@@ -711,6 +745,11 @@ class ItemController extends AppController {
 			// update item comments
 			foreach ($cid as $id) {
 				$item = $this->table->get($id);
+
+				// Check ACL
+				if (!$item->canEdit()) {
+					continue;
+				}
 
 				$item->params = $item
 					->getParams()
@@ -746,6 +785,11 @@ class ItemController extends AppController {
 			// toggle item frontpage
 			foreach ($cid as $id) {
 				$item = $this->table->get($id);
+
+				// Check ACL
+				if (!$item->canEdit()) {
+					continue;
+				}
 
 				$categories = $item->getRelatedCategoryIds();
 				if (($key = array_search('0', $categories, true)) !== false) {
@@ -788,6 +832,11 @@ class ItemController extends AppController {
 			$item->application_id = $this->application->id;
 			$item->type = $type;
 		} else {
+			return;
+		}
+
+		// Check ACL
+		if (!$item->canEdit()) {
 			return;
 		}
 

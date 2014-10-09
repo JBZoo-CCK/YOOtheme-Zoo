@@ -240,7 +240,7 @@ class AppTable {
 		if ($obj->$key) {
 
 			// update object
-			$this->database->updateObject($this->name, $obj, $key);
+			$this->database->updateObject($this->name, $obj, $key, false);
 
 		} else {
 
