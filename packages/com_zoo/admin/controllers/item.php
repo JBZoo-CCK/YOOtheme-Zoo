@@ -529,13 +529,14 @@ class ItemController extends AppController {
 
 			// delete items
 			foreach ($cid as $id) {
+				$item = $this->table->get($id);
 
 				// Check ACL
 				if (!$item->canDelete()) {
 					continue;
 				}
 
-				$this->table->delete($this->table->get($id));
+				$this->table->delete($item);
 			}
 
 			// set redirect message

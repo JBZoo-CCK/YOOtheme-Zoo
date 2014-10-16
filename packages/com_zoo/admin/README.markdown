@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.2.3
-- Date: August 2014
+- Version: 3.2.4
+- Date: October 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.2.4
+	# fixed item deleting
 
 	3.2.3
 	# improved backward compatibility for 3rd party extensions
