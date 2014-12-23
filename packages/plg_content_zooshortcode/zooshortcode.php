@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   Content - ZOO Shortcode
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
-*/
+ * @package   Content - ZOO Shortcode
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -26,7 +26,7 @@ class plgContentZooshortcode extends JPlugin {
 	protected function _prepareContent(&$article, &$params, $page = 0) {
 
 		// simple performance check to determine whether text should be processed further
-		if (strpos($article->text, 'zooitem') === false && strpos($article->text, 'zoocategory') === false) {
+		if (strpos($article->text, 'zooitem') === false && strpos($article->text, 'zoocategory') === false && strpos($article->text, 'zoofrontpage') === false) {
 			return true;
 		}
 
@@ -42,6 +42,7 @@ class plgContentZooshortcode extends JPlugin {
 
 		$this->_doReplacement($article, 'item');
 		$this->_doReplacement($article, 'category');
+		$this->_doReplacement($article, 'frontpage');
 
 		return true;
 
@@ -49,7 +50,7 @@ class plgContentZooshortcode extends JPlugin {
 
 	protected function _doReplacement(&$article, $name) {
 		// expression to search for
-		$regex		= '/{zoo'.$name.':\s*(\S*)(?:\s*text:\s*(.*?))?}/i';
+		$regex		= '/{zoo'.$name.':\s*(\S*)(?:\s*text:\s*(.*?))?(?:\s*output:\s*(.*?))?}/i';
 		$matches	= array();
 
 		// find all instances of plugin and put in $matches
@@ -59,25 +60,43 @@ class plgContentZooshortcode extends JPlugin {
 
 			// $match[0] is full pattern match, $match[1] is the item id or alias
 			$id = $match[1];
-			if (!is_numeric($match[1])) {
-				$id = $this->app->alias->$name->translateAliasToID($match[1]);
+			$text = !empty($match[2]) ? $match[2] : '';
+			$output = !empty($match[3]) ? $match[3] : 'link'; // url | link
+
+			switch ($name) {
+				case 'frontpage':
+					if ($id && ($object = $this->app->table->application->get($id))) {
+						$result = $this->app->route->frontpage($id);
+					}
+					break;
+				
+				default:
+					if ($id && ($object = $this->app->table->$name->get($id))) {
+
+						// translate alias
+						if (!is_numeric($id)) {
+							$id = $this->app->alias->$name->translateAliasToID($id);
+						}
+
+						$result = $this->app->route->$name($object);
+					}
+					break;
 			}
 
-			if ($id && ($object = $this->app->table->$name->get($id))) {
+			if ($object) {
 
-				if (isset($match[2]) && !empty($match[2])) {
-					$text = $match[2];
-				} else {
-					$text = $object->name;
+				// make sure text is set
+				$text = $text ?: $object->name;
+
+				if ($output == 'link') {
+					$result = '<a title="'.$object->name.'" href="'.$result.'">'.$text.'</a>';
 				}
-
-				$output = '<a title="'.$object->name.'" href="'.$this->app->route->$name($object).'">'.$text.'</a>';
 			} else {
-				$output = '';
+				$result == '';
 			}
 
 			// We should replace only first occurrence in order to allow positions with the same name to regenerate their content:
-			$article->text = preg_replace("|$match[0]|", $output, $article->text, 1);
+			$article->text = preg_replace("|$match[0]|", $result, $article->text, 1);
 
 		}
 

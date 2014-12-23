@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /**
  * The comments helper class.
@@ -441,15 +441,20 @@ class CommentHelper extends AppHelper {
 			$url = preg_replace('#\/administrator#', '', $url, 1);
 		}
 
-		$prefix = JURI::getInstance()->toString(array('host', 'port'));
+		$url_vars = parse_url($url);
 
-		// Make sure our URL path begins with a slash.
-		if (!preg_match('#^/#', $url)) {
-			$url = '/' . $url;
+		if (!array_key_exists('scheme', $url_vars) && !array_key_exists('host', $url_vars)) {
+
+			$prefix = JURI::getInstance()->toString(array('host', 'port'));
+
+			// Make sure our URL path begins with a slash.
+			if (!preg_match('#^/#', $url)) {
+				$url = '/' . $url;
+			}
+
+			// Build the URL.
+			$url = 'http://' . $prefix . $url;
 		}
-
-		// Build the URL.
-		$url = 'http://' . $prefix . $url;
 
 		return $url;
 

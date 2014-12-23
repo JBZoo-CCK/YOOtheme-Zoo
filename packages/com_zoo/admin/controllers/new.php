@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /*
 	Class: NewController
@@ -63,12 +63,19 @@ class NewController extends AppController {
 		// get params
 		$this->params = $this->application->getParams();
 
-		// set default template
-		$this->params->set('template', 'default');
+		// check for Warp7 and set default template
+		$templates      = $this->application->getTemplates();
+		$defaulTemplate = $this->app->database->queryResult("SELECT template FROM #__template_styles WHERE client_id = 0 AND home = 1");
+
+		if (isset($templates['uikit']) && file_exists(JPATH_ROOT . '/templates/' . $defaulTemplate . '/warp.php')) {
+		    $this->params->set('template', 'uikit');
+		} elseif (isset($templates['default'])) {
+		    $this->params->set('template', 'default');
+		}
 
 		// template select
 		$options = array($this->app->html->_('select.option', '', '- '.JText::_('Select Template').' -'));
-		foreach ($this->application->getTemplates() as $template) {
+		foreach ($templates as $template) {
 			$options[] = $this->app->html->_('select.option', $template->name, $template->getMetaData('name'));
 		}
 

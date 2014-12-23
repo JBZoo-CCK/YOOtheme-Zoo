@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /**
  * Update helper class.
@@ -262,65 +262,6 @@ class UpdateHelper extends AppHelper {
 	protected function _createResponse($message, $error, $continue) {
 		$message = JText::_($message);
 		return compact('message', 'error', 'continue');
-	}
-
-	/**
-	 * Outputs a message if there is a new update available.
-	 *
-	 * @since 2.0
-	 */
-	public function available() {
-
-		// check for updates
-		if ($xml = @simplexml_load_file($this->app->path->path('component.admin:zoo.xml'))) {
-
-			// update check
-			if ($url = (string) current($xml->xpath('//updateUrl'))) {
-
-				// create check url
-				$url = sprintf('%s?application=%s&version=%s&format=raw', $url, 'zoo_j17', urlencode(current($xml->xpath('//version'))));
-
-				// only check once a day
-				$hash = md5($url.date('Y-m-d'));
-
-				$cache = $this->getCache();
-				$check = $cache->get('check');
-				$data  = $cache->get('data');
-				$prev_message = @$data['message'];
-
-				if ($check != $hash) {
-					if ($request = $this->app->http->get($url)) {
-						$check = $hash;
-						$data = json_decode($request['body'], true);
-					}
-					if ($prev_message != @$data['message']) {
-						$cache->set('hideUpdateNotification', false);
-					}
-				}
-
-				// decode response and set message
-				if (!$cache->get('hideUpdateNotification') && @$data['status'] == 'update-available') {
-					$close = $this->app->joomla->version->isCompatible('3.2') ?
-						'<script type="text/javascript">jQuery(function($) {$(\'#system-message-container [data-dismiss]\').bind(\'click\', function() { $.ajax(\'%s\') }); });</script>'
-						: '<span onclick="jQuery.ajax(\'%s\'); jQuery(this).closest(\'ul\').hide();" class="hide-update-notification"></span>';
-
-					$close = sprintf($close, $this->app->link(array('controller' => 'manager', 'task' => 'hideUpdateNotification', 'format' => 'raw'), false));
-
-					$this->app->system->application->enqueueMessage(@$data['message'].$close, 'notice');
-				}
-
-				$cache->set('check', $check)->set('data', $data)->save();
-			}
-		}
-	}
-
-	/**
-	 * Hides the update notifications for this session
-	 *
-	 * @since 2.0
-	 */
-	public function hideUpdateNotification() {
-		$this->getCache()->set('hideUpdateNotification', true)->save();
 	}
 
 	/**

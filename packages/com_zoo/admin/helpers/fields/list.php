@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 printf('<select %s>', $this->app->field->attributes(array('name' => "{$control_name}[{$name}]")));
 

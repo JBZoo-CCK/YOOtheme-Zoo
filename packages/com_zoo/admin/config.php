@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 require_once(dirname(__FILE__).'/framework/config.php');
 
 // set defines
-define('ZOO_COPYRIGHT', '<div class="copyright"><a target="_blank" href="http://zoo.yootheme.com">ZOO</a> is developed by <a target="_blank" href="http://www.yootheme.com">YOOtheme</a>. All Rights Reserved.</div>');
+define('ZOO_COPYRIGHT', '<div class="copyright"><a target="_blank" href="http://yootheme.com/zoo/">ZOO</a> is developed by <a target="_blank" href="http://www.yootheme.com">YOOtheme</a>. All Rights Reserved.</div>');
 define('ZOO_TABLE_APPLICATION', '#__zoo_application');
 define('ZOO_TABLE_CATEGORY', '#__zoo_category');
 define('ZOO_TABLE_CATEGORY_ITEM', '#__zoo_category_item');
@@ -59,7 +59,6 @@ $zoo->path->register($path.'/views', 'views');
 // create cache folder if none existent
 if (!JFolder::exists($cache_path) && $zoo->request->get('option', 'cmd') != 'com_cache') {
 	JFolder::create($cache_path);
-	$zoo->zoo->putIndexFile($cache_path);
 }
 
 // register classes

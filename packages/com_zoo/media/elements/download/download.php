@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 // register ElementFile class
 App::getInstance('zoo')->loader->register('ElementFile', 'elements:file/file.php');
@@ -406,8 +406,6 @@ class ElementDownload extends ElementFile implements iSubmittable {
             if (!JFile::upload($userfile['tmp_name'], $file)) {
                 throw new AppException('Unable to upload file.');
             }
-
-			$this->app->zoo->putIndexFile(dirname($file));
 
             $this->set('file', $this->app->path->relative($file));
             $this->_updateFileSize();

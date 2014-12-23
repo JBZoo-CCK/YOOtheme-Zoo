@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /**
  * Class representing an item
@@ -247,7 +247,7 @@ class Item {
      * @since 3.2
      */
     public function canEdit($user = null) {
-        return $this->getType()->canEdit($user, $this->created_by);
+        return $this->getType() ? $this->getType()->canEdit($user, $this->created_by) : false;
     }
 
     /**
@@ -260,7 +260,7 @@ class Item {
      * @since 3.2
      */
     public function canEditState($user = null) {
-        return $this->getType()->canEditState($user);
+        return $this->getType() ? $this->getType()->canEditState($user) : false;
     }
 
     /**
@@ -273,7 +273,7 @@ class Item {
      * @since 3.2
      */
     public function canCreate($user = null) {
-        return $this->getType()->canCreate($user);
+        return $this->getType() ? $this->getType()->canCreate($user) : false;
     }
 
     /**
@@ -286,7 +286,7 @@ class Item {
      * @since 3.2
      */
     public function canDelete($user = null) {
-        return $this->getType()->canDelete($user);
+        return $this->getType() ? $this->getType()->canDelete($user) : false;
     }
 
     /**

@@ -1,11 +1,22 @@
 # ZOO #
 
-- Version: 3.2.4
-- Date: October 2014
+- Version: 3.3.0
+- Date: December 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.0
+	+ 1-Click Updates support
+	+ default layout of an newly created app set to 'uikit'
+	+ added frontpage shortcode
+	+ added shortcode output param
+	^ removed index.html files from ZOO folders
+	# fixed usage of special chars in item names
+	# avoid errors display if the item is of unrecognised type
+	# fixed category:delete event name typo
+	# fixed comments email links generation
 
 	3.2.4
 	# fixed item deleting
