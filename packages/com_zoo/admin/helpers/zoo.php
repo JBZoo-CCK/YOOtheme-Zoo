@@ -153,6 +153,7 @@ class ZooHelper extends AppHelper {
 					JFile::copy($file, $thumbfile);
 				}
 			}
+			$this->putIndexFile(dirname($thumbfile));
 		}
 
 		if (is_file($thumbfile)) {
@@ -178,6 +179,7 @@ class ZooHelper extends AppHelper {
 			$text = preg_replace('/{loadposition\s*.*?}/i', '', $text);
 		}
 
+		jimport('joomla.html.html.content'); // J25 fix
 		return JHtmlContent::prepare($text, $params, $context);
 	}
 
@@ -237,6 +239,20 @@ class ZooHelper extends AppHelper {
 			return JText::sprintf('JPAGETITLE', $title, $this->app->system->config->get('sitename'));
 		}
 		return $title;
+	}
+
+	/**
+	 * Puts an index.html into given directory
+	 *
+	 * @param string $dir
+	 * @since 2.0
+	 */
+	public function putIndexFile($dir) {
+		$dir = rtrim($dir, "\\/");
+		if (!JFile::exists($dir.'/index.html')) {
+			$buffer = '<!DOCTYPE html><title></title>';
+			JFile::write($dir.'/index.html', $buffer);
+		}
 	}
 
 	/**
