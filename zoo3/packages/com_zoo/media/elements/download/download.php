@@ -407,6 +407,8 @@ class ElementDownload extends ElementFile implements iSubmittable {
                 throw new AppException('Unable to upload file.');
             }
 
+			$this->app->zoo->putIndexFile(dirname($file));
+
             $this->set('file', $this->app->path->relative($file));
             $this->_updateFileSize();
         }

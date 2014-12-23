@@ -1,4 +1,4 @@
-1332584f1248ebc6c86002d5a2ac2233 admin/README.markdown
+b776becb60103525bb423372c534af00 admin/README.markdown
 c401e41c4307e417b4627159beb6abc8 admin/access.xml
 9e020acbfc710933f0775673e280dbd3 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -73,7 +73,7 @@ d7f1fc027efc3b21e4c0c63d00f01f8c admin/classes/exporter/k2.php
 9d8805cbc0481f51c0f52c531412ff57 admin/classes/tree.php
 b515c266262fd5774f5e90f3cd4ccdea admin/classes/type.php
 cf2149f8c0328f8d558abf87b00c4366 admin/classes/validator.php
-ddf1b5902b4f0b30160cd3cd8e58f23b admin/config.php
+812406c6ff3a6d974a3a052ce262580b admin/config.php
 40cfeaeeca1b80b250cb15bee25ae654 admin/config.xml
 f665dfe62ee0ccc99941ad1ba8d449c0 admin/controllers/category.php
 f73ff14918ca75562546866115ec51c1 admin/controllers/comment.php
@@ -147,7 +147,7 @@ cfe6c17e6e33a228fb6c4a434bd09215 admin/helpers/alphaindex.php
 d32abe1b316bab96ae58dc89dae018fa admin/helpers/application.php
 19ccfdf3f5bb00cd55300ef72bf6ed60 admin/helpers/archive.php
 5df84802a89dce1819ae96b5761adb74 admin/helpers/backup.php
-49d82900f1f418c575534a479bd30ea8 admin/helpers/cache.php
+1ce427101d88aa840e20664bc9a80537 admin/helpers/cache.php
 79892e9c23a1527d9710af88a2fc66ea admin/helpers/category.php
 4be8e20edca34437687d3e5eddcc97ee admin/helpers/comment.php
 d3827b00a8404dc5626d1daba8131bb9 admin/helpers/commentauthor.php
@@ -210,10 +210,10 @@ e614e37a8cdf7ec710704f044e140e4b admin/helpers/tree.php
 509697ebedefcc17520d5110deb85c28 admin/helpers/type.php
 ddedb09bde656ee3e664729a29b9995a admin/helpers/update.php
 a2e76c3be8333d1cf6177823bd7cedfa admin/helpers/validator.php
-b3b2718c68e6fa4778e500f9cdf9d123 admin/helpers/zoo.php
+b6860ef6af6b1aac693d801c486eaa20 admin/helpers/zoo.php
 4677e7a02904bd8051fab075fe5a55e7 admin/installation/dependencies.config
 61fe1c3a7a7ac9d97703b86e3a46a801 admin/installation/index.sql
-4cfe7cec202c4c8500f5a662dbff7adb admin/installation/install.sql
+89ad6466ed3664cb07d59f2a639eb090 admin/installation/install.sql
 b2c0c389fe10c400f14d5bfacbda403c admin/installation/requirements.php
 868dec593b04291c5cbec44f446d4497 admin/installation/uninstall.sql
 4cd1ad2e64e4d695bab8f56ee6957325 admin/installation/updates/2.4.12.php
@@ -1278,7 +1278,7 @@ e6d56d9d750bc6ba4ad7eab46ace2970 media/elements/download/assets/images/download_
 8cedd63a4e643376262fb7a0a8077d25 media/elements/download/assets/images/download_type_xls.png
 ae83c58c9baacc84924d183e1cba3611 media/elements/download/assets/images/download_type_zip.png
 79469741f9214e0728b3b7894286b38b media/elements/download/assets/js/download.js
-af5f0f7c50bd2e10eb161df3f033e216 media/elements/download/download.php
+9219d08e12d34e5cdd9ab7f42ce69a17 media/elements/download/download.php
 5a5695947815bd19f19551bf253deefe media/elements/download/download.xml
 56cf7dc0ddb9e3e8922e38ab011a8d53 media/elements/download/tmpl/download.php
 0ece4f2b361e72c011f34855eb7240be media/elements/download/tmpl/edit.php
@@ -1301,7 +1301,7 @@ c590eceeba69cbf12eb721e95a0d74e6 media/elements/googlemaps/googlemaps.js
 5e202bb77f958794b801a2a85bc87a2b media/elements/googlemaps/tmpl/edit.php
 8f41648d9062ffa5e51d320848e224d1 media/elements/googlemaps/tmpl/googlemaps.php
 6b6868e8140ab0cdbe002b070d886ff7 media/elements/image/image.js
-8aad0287d5e0eb00fd7ce3a098ee5099 media/elements/image/image.php
+05337aad0962ce6cfbd55e95aa1bdf53 media/elements/image/image.php
 9995ebd629a0e1c036249bca44e9e224 media/elements/image/image.xml
 ae3d8e08fdea6a613774220e7e5cd0cf media/elements/image/tmpl/edit.php
 20a73b49345d0cec6d55185e357988f6 media/elements/image/tmpl/image.php
@@ -1478,4 +1478,4 @@ f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/mysubmissions.php
 f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/submission.php
 ee96a7f28b000f6b492c2d1247656a88 site/views/submission/tmpl/submission.xml
 0ef980e28a962ceacb2ccaf3064c603a site/zoo.php
-c1243ffb5dfdfb6e0910735b5ab5ff3e zoo.xml
+2a2112d1a85e9e73ac7a440c11f4a1e6 zoo.xml

@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.0
+- Version: 3.3.1
 - Date: December 2014
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.1
+	# Recovered index.html file creation in some areas
+	# Fixed j25 compatibility issues
 
 	3.3.0
 	+ 1-Click Updates support
