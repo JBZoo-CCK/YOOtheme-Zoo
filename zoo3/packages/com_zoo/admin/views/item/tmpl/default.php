@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -176,6 +176,9 @@ $this->app->document->addScript('assets:js/item.js');
 						$author = JText::_('Guest');
 					}
 				}
+
+				// type
+				$type = $this->application->getType($row->type);
 			?>
 				<tr>
 					<td class="checkbox">
@@ -194,7 +197,7 @@ $this->app->document->addScript('assets:js/item.js');
 						</span>
 					</td>
 					<td class="type">
-						<?php echo $this->application->getType($row->type)->name; ?>
+						<?php echo $type ? $type->name : JText::_('Unknown').': '.$row->type; ?>
 					</td>
 					<td class="published">
 						<span class="editlinktip hasTip" title="<?php echo JText::_('Publish Information');?>::<?php echo $times; ?>">

@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /*
 	Class: CategoryTable
@@ -116,7 +116,7 @@ class CategoryTable extends AppTable {
 		$result = parent::delete($object);
 
 		// trigger deleted event
-		$this->app->event->dispatcher->notify($this->app->event->create($object, 'categeory:deleted'));
+		$this->app->event->dispatcher->notify($this->app->event->create($object, 'category:deleted'));
 
 		return $result;
 	}

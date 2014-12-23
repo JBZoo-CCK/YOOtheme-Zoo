@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -46,9 +46,6 @@ if (!$zoo->user->canManage() ||
 if ($zoo->update->required() && $controller != 'update') {
 	$zoo->system->application->redirect($zoo->link(array('controller' => 'update'), false));
 }
-
-// check if update is available
-$zoo->update->available();
 
 // check for ZOO extension dependencies
 $zoo->dependency->check();

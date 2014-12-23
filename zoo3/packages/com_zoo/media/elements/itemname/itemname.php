@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /*
 	Class: ElementItemName
@@ -54,7 +54,7 @@ class ElementItemName extends Element implements iSubmittable {
 
 			if ($params->get('link_to_item', false) && $this->_item->getState()) {
 
-				return '<a title="'.$this->_item->name.'" href="' . $this->app->route->item($this->_item) . '">' . $this->_item->name . '</a>';
+				return '<a title="'.htmlspecialchars($this->_item->name).'" href="' . $this->app->route->item($this->_item) . '">' . $this->_item->name . '</a>';
 
 			} else {
 
@@ -76,7 +76,7 @@ class ElementItemName extends Element implements iSubmittable {
 			String - html
 	*/
 	public function renderSubmission($params = array()) {
-       return '<input type="text" name="'.$this->getControlName('value').'" size="60" value="'.$this->_item->name.'" />';
+       return '<input type="text" name="'.$this->getControlName('value').'" size="60" value="'.htmlspecialchars($this->_item->name).'" />';
 	}
 
 	/*

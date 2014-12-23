@@ -1,6 +1,8 @@
 <?php
 
-class pkg_zooInstallerScript {
+class pkg_zooInstallerScript extends ZooInstallerScript {}
+
+class ZooInstallerScript {
 
 	public function install($parent) {}
 
@@ -28,6 +30,17 @@ class pkg_zooInstallerScript {
 			$app->plugin->enable('zooevent');
 		}
 
+		// updateservers url update workaround
+		if ('update' == $type) {
+
+			JFactory::getDBO()->setQuery(
+				"DELETE a, b, c FROM `#__update_sites_extensions` a" .
+				" LEFT JOIN `#__update_sites` b ON b.update_site_id = a.update_site_id" .
+				" LEFT JOIN `#__updates` c ON c.update_site_id = a.update_site_id" .
+				" WHERE a.extension_id = (SELECT `extension_id` FROM `#__extensions` WHERE `type` = 'package' AND `element` = 'pkg_zoo')"
+			)->execute();
+		}
+
 		$extensions = array();
 		foreach($results as $result) {
 			$extensions[] = (object) array('name' => $result['name'] == 'com_zoo' ? 'ZOO extension' : $result['name'], 'status' => $result['result'], 'message' => $result['result'] ? ($type == 'update' ? 'Updated' : 'Installed').' successfully' : 'NOT Installed');
@@ -35,12 +48,9 @@ class pkg_zooInstallerScript {
 
 		// display extension installation results
 		self::displayResults($extensions, 'Extensions', 'Extension');
-
 	}
 
-	protected function displayResults($result, $name, $type) {
-
-?>
+	protected function displayResults($result, $name, $type) { ?>
 
 		<h3><?php echo JText::_($name); ?></h3>
 		<table class="adminlist table table-bordered table-striped" width="100%">
@@ -69,8 +79,6 @@ class pkg_zooInstallerScript {
 			</tbody>
 		</table>
 
-<?php
-
-	}
+<?php }
 
 }

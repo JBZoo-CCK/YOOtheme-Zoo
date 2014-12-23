@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /**
  * ZOOs generals helper class.
@@ -153,7 +153,6 @@ class ZooHelper extends AppHelper {
 					JFile::copy($file, $thumbfile);
 				}
 			}
-			$this->putIndexFile(dirname($thumbfile));
 		}
 
 		if (is_file($thumbfile)) {
@@ -174,29 +173,12 @@ class ZooHelper extends AppHelper {
 	 * @since 2.0
 	 */
 	public function triggerContentPlugins($text, $params = array(), $context = 'com_zoo') {
-
-		// import joomla content plugins
-		JPluginHelper::importPlugin('content');
-
-		$registry = new JRegistry('');
-		$registry->loadArray($params);
-		$dispatcher = JDispatcher::getInstance();
-		$article = new stdClass;
-		$article->text = $text;
-
 		// disable loadmodule plugin on feed view
-		if ($this->app->document->getType() == 'feed') {
-			$plugin = JPluginHelper::getPlugin('content', 'loadmodule');
-			if ($this->app->parameter->create($plugin->params)->get('enabled', 1)) {
-				// expression to search for
-				$regex = '/{loadposition\s*.*?}/i';
-				$article->text = preg_replace($regex, '', $article->text);
-			}
+		if ($this->app->document->getType() == 'feed' && $this->app->parameter->create(JPluginHelper::getPlugin('content', 'loadmodule')->params)->get('enabled', 1)) {
+			$text = preg_replace('/{loadposition\s*.*?}/i', '', $text);
 		}
 
-		$dispatcher->trigger('onContentPrepare', array($context, &$article, &$registry, 0));
-
-		return $article->text;
+		return JHtmlContent::prepare($text, $params, $context);
 	}
 
 	/**
@@ -255,20 +237,6 @@ class ZooHelper extends AppHelper {
 			return JText::sprintf('JPAGETITLE', $title, $this->app->system->config->get('sitename'));
 		}
 		return $title;
-	}
-
-	/**
-	 * Puts an index.html into given directory
-	 *
-	 * @param string $dir
-	 * @since 2.0
-	 */
-	public function putIndexFile($dir) {
-		$dir = rtrim($dir, "\\/");
-		if (!JFile::exists($dir.'/index.html')) {
-			$buffer = '<!DOCTYPE html><title></title>';
-			JFile::write($dir.'/index.html', $buffer);
-		}
 	}
 
 	/**

@@ -1,10 +1,10 @@
 <?php
 /**
-* @package   com_zoo
-* @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) YOOtheme GmbH
-* @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
-*/
+ * @package   com_zoo
+ * @author    YOOtheme http://www.yootheme.com
+ * @copyright Copyright (C) YOOtheme GmbH
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
+ */
 
 /**
  * The cache helper class.
@@ -31,7 +31,6 @@ class CacheHelper extends AppHelper {
 			$cache = $this->app->object->create('AppApcCache', array(md5($file), $lifetime));
 		} else {
 			$cache = $this->app->object->create('AppCache', array($file, $hash, $lifetime));
-			$this->app->zoo->putIndexFile(dirname($file));
 		}
 		return $cache;
 	}
