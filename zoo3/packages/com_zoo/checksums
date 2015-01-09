@@ -1,4 +1,4 @@
-b776becb60103525bb423372c534af00 admin/README.markdown
+2b79adb1d9acfd2930f9f1e319f22bb1 admin/README.markdown
 c401e41c4307e417b4627159beb6abc8 admin/access.xml
 9e020acbfc710933f0775673e280dbd3 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -213,7 +213,7 @@ a2e76c3be8333d1cf6177823bd7cedfa admin/helpers/validator.php
 b6860ef6af6b1aac693d801c486eaa20 admin/helpers/zoo.php
 4677e7a02904bd8051fab075fe5a55e7 admin/installation/dependencies.config
 61fe1c3a7a7ac9d97703b86e3a46a801 admin/installation/index.sql
-89ad6466ed3664cb07d59f2a639eb090 admin/installation/install.sql
+cb8b4398963dc1cb7fca7b33a07e49a0 admin/installation/install.sql
 b2c0c389fe10c400f14d5bfacbda403c admin/installation/requirements.php
 868dec593b04291c5cbec44f446d4497 admin/installation/uninstall.sql
 4cd1ad2e64e4d695bab8f56ee6957325 admin/installation/updates/2.4.12.php
@@ -1217,6 +1217,8 @@ ad74368b87f21db782e987ad527b64ac media/applications/product/types/cell-phone.con
 e1a5a9a8118f037f5adf642830a7a598 media/applications/product/types/shoe.config
 07463f5edb63c8f60e28ecbff2b25a00 media/applications/product/types/watch.config
 412d27255c9585843a1bda5ad6ef54bb media/assets/css/comments.css
+3bf622c69776c9262f1b747b46d4f517 media/assets/css/lightbox-rtl.css
+6088d873250004b39ccec11686e074ca media/assets/css/lightbox.css
 d60dc641da7404642a08cab120e17359 media/assets/css/reset.css
 bd251dd4bd0feda93e3684b44a6607dd media/assets/css/submission.css
 1988c3cc1384a3ac9b9a4129183248f3 media/assets/images/add.png
@@ -1228,6 +1230,10 @@ c16a5a47f8dfaebd53862e089282e855 media/assets/images/connect_twitter.png
 68461ca5187cd2c6af08786467085f2b media/assets/images/delete.png
 a3b6d7a5abfdd599f278eacdc222aa20 media/assets/images/delete_grey.png
 a34e71ab08a6d1162b948d26321dea50 media/assets/images/edit.png
+325472601571f31e1bf00674c368d335 media/assets/images/lightbox/blank.gif
+e6bf09ed12e24f9c2c568ef7592cc40b media/assets/images/lightbox/buttons.png
+fc50b59762a995c3424814f811c4c2de media/assets/images/lightbox/close.png
+b1d54c240cf06e7f41e372d56919b738 media/assets/images/lightbox/loading.png
 8f94dac6726dbc04fd0528a692179cbb media/assets/images/loader.gif
 55a687e848244b76f8d8249b111df860 media/assets/images/page_white.png
 66e90f773fac6cb8a7cc7420ecabb6b8 media/assets/images/sort.png
@@ -1236,8 +1242,10 @@ e2c9a30fc1dd897fce1e13eaceb830e1 media/assets/js/autosuggest.js
 12b6cc52e81ea6c6cd9de418b496778e media/assets/js/date.js
 b314b041e04bfd2fcc6997c326b09591 media/assets/js/finder.js
 32a1a37cf2fdbf373346a01e6b0aa6bf media/assets/js/item.js
+05e00870a2c0cc26d75735add7ff7cb0 media/assets/js/lightbox.js
 b5dc5822b6435b403db532923847285e media/assets/js/placeholder.js
 4a0f40ce120c5e84da5f7e31622b1ad7 media/assets/js/responsive.js
+29deb56923000397cebd0c0431a210e1 media/assets/js/slideshow.js
 d6c8fb570f7e7ae152ca45eb8270d121 media/assets/js/submission.js
 7897517747e02a9e5c325a19f5b2927a media/assets/js/tag.js
 fcecbd9cbe9b1955554ef9e2d8f045f2 media/elements/addthis/addthis.php
@@ -1293,6 +1301,13 @@ d0da374af53fed4f5b66f04949423822 media/elements/element/element.xml
 d485f332074dcb058d127667a24f61bc media/elements/flickr/flickr.php
 d25e68f33c5f41ee7e656602b51262a6 media/elements/flickr/flickr.xml
 8cc1a8c02c4354717d91414b2c8350f2 media/elements/flickr/tmpl/edit.php
+3085e9567aa64540a8ef25c5d4a34207 media/elements/gallery/gallery.css
+9dfcab41480840f75f6c02fc70001a8c media/elements/gallery/gallery.js
+f57ebfc08697cb2a0e57b56a351d25a5 media/elements/gallery/gallery.php
+8b23890299bb5e8ae0d1b48688c1bd3c media/elements/gallery/gallery.xml
+4452a54c47b1c744f3f46b5af355214a media/elements/gallery/tmpl/edit.php
+64e9ecabeea00fd28e69b3113fa5d995 media/elements/gallery/tmpl/lightbox.php
+5c5f982699813149206a77fc770fbb68 media/elements/gallery/tmpl/slideshow.php
 afd5a6c8a5c1a85f43db132cfeac7e62 media/elements/googlemaps/googlemaps.css
 c590eceeba69cbf12eb721e95a0d74e6 media/elements/googlemaps/googlemaps.js
 46168430f87e86f2a8a100d5151ecdc4 media/elements/googlemaps/googlemaps.php
@@ -1303,9 +1318,9 @@ c590eceeba69cbf12eb721e95a0d74e6 media/elements/googlemaps/googlemaps.js
 6b6868e8140ab0cdbe002b070d886ff7 media/elements/image/image.js
 05337aad0962ce6cfbd55e95aa1bdf53 media/elements/image/image.php
 9995ebd629a0e1c036249bca44e9e224 media/elements/image/image.xml
-ae3d8e08fdea6a613774220e7e5cd0cf media/elements/image/tmpl/edit.php
-20a73b49345d0cec6d55185e357988f6 media/elements/image/tmpl/image.php
-332477bbd269ba0d3b0d0eda332111e2 media/elements/image/tmpl/submission.php
+0dc38fa931934a0d4ea5412c4af6ea4b media/elements/image/tmpl/edit.php
+15f56b8f3f2c59b20ba10df5dc116ff4 media/elements/image/tmpl/image.php
+0bbdfa4f13816aeb87335e93d0a256c4 media/elements/image/tmpl/submission.php
 4607061427b8a256fa6057bc6bad7ee2 media/elements/intensedebate/intensedebate.php
 01265da595c869c44de8182ba5e9594d media/elements/intensedebate/intensedebate.xml
 9a24a74b3f610ddfcb4d021c9ce9c170 media/elements/intensedebate/tmpl/intensedebate.php
@@ -1356,8 +1371,8 @@ dd2d689b810fe5278bea776cef2db488 media/elements/itemstate/itemstate.xml
 0a30b5c3d4f0c1b7e791f932ee5570df media/elements/joomlamodule/joomlamodule.xml
 c457c0aa294e1059ce6bfd4a332550e0 media/elements/link/link.php
 1d09e6fce983863f3f8bcd5fce85d6c1 media/elements/link/link.xml
-0fdf0b6cb1b143e566532dec2a91a6f1 media/elements/link/tmpl/edit.php
-6c417a1791a3271579f3236d45dd84a6 media/elements/link/tmpl/link.php
+4b0c425bdc126b6ad2d663803f67d300 media/elements/link/tmpl/edit.php
+af473e72c1f7c04ecaaca9542c9c6260 media/elements/link/tmpl/link.php
 a6ab8a22794f6ef6d4189c5f5a63f1ef media/elements/media/assets/js/media.js
 5fb5452e910b86d68d6a7fe4b5d1ded1 media/elements/media/assets/js/swfobject.js
 703c659e4bf563a05c6338a1727e006c media/elements/media/assets/mediaelement/background.png
@@ -1478,4 +1493,4 @@ f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/mysubmissions.php
 f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/submission.php
 ee96a7f28b000f6b492c2d1247656a88 site/views/submission/tmpl/submission.xml
 0ef980e28a962ceacb2ccaf3064c603a site/zoo.php
-2a2112d1a85e9e73ac7a440c11f4a1e6 zoo.xml
+7f76b98f2e5cfecec760673046ca85d0 zoo.xml

@@ -1,11 +1,16 @@
 # ZOO #
 
-- Version: 3.3.1
-- Date: December 2014
+- Version: 3.3.2
+- Date: January 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.2
+	+ Gallery Element
+	+ Image Element Lightbox and Spotlight feature
+	+ Link Element Lightbox feature
 
 	3.3.1
 	# Recovered index.html file creation in some areas
