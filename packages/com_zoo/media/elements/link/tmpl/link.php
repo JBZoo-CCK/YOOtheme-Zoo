@@ -9,6 +9,13 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-$rel	= !empty($rel) ? 'data-lightbox="' . $rel .'"' : '';
+// init lightbox
+if (!empty($rel)) {
+	$rel = 'data-lightbox="' . $rel .'"';
+
+	$this->app->document->addScript('assets:js/lightbox.js');
+	$this->app->document->addStylesheet('assets:css/lightbox.css');
+	$this->app->document->addScriptDeclaration("jQuery(function($) { $('[data-lightbox]').lightbox(); });");
+}
 
 echo '<a href="'.JRoute::_($this->get('value', '')).'" title="'.$this->getTitle().'" '.$target.' '. $rel .'>'.$this->getText().'</a>';

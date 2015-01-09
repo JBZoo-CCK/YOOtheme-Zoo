@@ -41,7 +41,7 @@ defined('_JEXEC') or die('Restricted access');
 			</div>
 
 			<div class="row short">
-				<?php echo $this->app->html->_('control.text', $this->getControlName('rel'), $this->get('rel'), 'size="60" title="'.JText::_('Rel').'" placeholder="'.JText::_('Rel').'"'); ?>
+				<?php echo $this->app->html->_('control.text', $this->getControlName('rel'), $this->get('rel'), 'size="60" title="'.JText::_('Lightbox').'" placeholder="'.JText::_('Lightbox').'"'); ?>
 			</div>
 
 		</div>

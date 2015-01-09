@@ -1,0 +1,35 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/*
+ * RTL Style Sheet
+ */
+
+
+/* Previous/Next Navigation
+----------------------------------------------------------------------------------------------------*/
+
+#lightbox-left {
+	left: auto;
+	right: 0px;
+}
+#lightbox-right {
+	right: auto;
+	left: 0px;
+}
+
+#lightbox-left-ico,
+#lightbox-right-ico {
+	left: auto;
+	right: -9999px;
+	background-position: 0 -50px;
+}
+#lightbox-right-ico { background-position: 0 0; }
+
+#lightbox-left:hover span {
+	left: auto;
+	right: 30px;
+}
+#lightbox-right:hover span {
+	right: auto;
+	left: 30px;
+}

@@ -1,0 +1,129 @@
+/* Copyright (C) YOOtheme GmbH, http://www.gnu.org/licenses/gpl.html GNU/GPL */
+
+/* Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * General ZOO Style Sheet
+ */
+
+
+/* Grid and Clearing Tools
+----------------------------------------------------------------------------------------------------*/
+
+.clearfix:before,
+.clearfix:after {
+	content: "";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+/* Grid Units */
+.width20 { width: 20%; }
+.width25 { width: 25%; }
+.width33 { width: 33.333%; }
+.width50 { width: 50%; }
+
+/*
+ * ZOO Gallery Style Sheet
+ */
+
+.zoo-gallery .slides > li { position: absolute; }
+
+.zoo-gallery .slides,
+.zoo-gallery .nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.zoo-gallery .nav span {
+	display: block;
+	cursor: pointer;
+}
+
+.zoo-gallery .next,
+.zoo-gallery .prev {
+	position: absolute;
+	z-index: 5;
+	cursor: pointer;
+}
+
+.zoo-gallery .caption {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	padding: 10px;
+	background: rgba(0,0,0,0.5);
+}
+
+.zoo-gallery .caption,
+.zoo-gallery .caption a { color: #fff; }
+.zoo-gallery .caption a { text-decoration: underline; }
+
+.zoo-gallery article > *:first-child { margin-top: 0; }
+.zoo-gallery article > *:first-child { margin-bottom: 0; }
+
+.zoo-gallery article > a:first-child,
+.zoo-gallery article > img:first-child,
+.zoo-gallery article > a:first-child > img { display: block; }
+
+/*
+ * ZOO Gallery: Default Style
+ */
+
+.zoo-gallery-wall > * {
+	display: block;
+	float: left;
+}
+
+
+/* Margin
+----------------------------------------------------------------------------------------------------*/
+
+.zoo-gallery-wall.margin { margin: 0 -15px -15px 0; }
+.zoo-gallery-wall.margin > * { margin: 0 15px 15px 0; }
+
+
+/* Round Corners
+----------------------------------------------------------------------------------------------------*/
+
+.zoo-gallery-wall.round > *,
+.zoo-gallery-wall.round > * > img,
+.zoo-gallery-wall.round .spotlight > img + div {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+/* Webkit Fix */
+.zoo-gallery-wall.round .spotlight[data-spotlight*="top"] .overlay {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+
+}
+.zoo-gallery-wall.round .spotlight[data-spotlight*="bottom"] .overlay {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+
+/* Zoom Effect
+----------------------------------------------------------------------------------------------------*/
+
+.zoo-gallery-wall.zoom > * {
+	-moz-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	-webkit-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
+}
+
+.zoo-gallery-wall.zoom > *:hover {
+	z-index: 10;
+	box-shadow: 8px 8px 15px rgba(0,0, 0, 0.4);
+	-webkit-transform: rotate(0deg) scale(1.2);
+	-o-transform: rotate(0deg) scale(1.2);
+	-moz-transform: rotate(0deg) scale(1.2);
+	-ms-transform: rotate(0deg) scale(1.2);
+	transform: rotate(0deg) scale(1.2);
+}
