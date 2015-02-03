@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS #__zoo_version (
     FROM information_schema.tables
     WHERE table_schema = (SELECT DATABASE()) AND table_name LIKE '%zoo_application'
   )
-  THEN '' ELSE '3.3.2' END as version;
+  THEN '' ELSE '3.3.3' END as version;
 
 -- --------------------------------------------------------
 

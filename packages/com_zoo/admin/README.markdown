@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.2
-- Date: January 2015
+- Version: 3.3.3
+- Date: February 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.3
+	+ Renderer minor improvements
+	# Fixed content plugins triggering
 
 	3.3.2
 	+ Gallery Element

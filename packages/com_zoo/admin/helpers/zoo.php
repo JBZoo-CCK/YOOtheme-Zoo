@@ -179,8 +179,7 @@ class ZooHelper extends AppHelper {
 			$text = preg_replace('/{loadposition\s*.*?}/i', '', $text);
 		}
 
-		jimport('joomla.html.html.content'); // J25 fix
-		return JHtmlContent::prepare($text, $params, $context);
+		return JHtml::_('content.prepare', $text, $params, $context);
 	}
 
 	/**
