@@ -22,6 +22,21 @@ class ItemRenderer extends PositionRenderer {
 	protected $_item;
 
 	/**
+	 * Sets the item to render
+	 *
+	 * @param object $item The item to be set
+	 *
+	 * @return object The current class object
+	 *
+	 * @since 3.3
+	 */
+	public function setItem($item)
+    {
+        $this->_item = $item;
+        return $this;
+    }
+
+	/**
 	 * Render the item using the give layout
 	 *
 	 * @param string $layout The layout to use for rendering the items
@@ -92,6 +107,27 @@ class ItemRenderer extends PositionRenderer {
 
 		return false;
 	}
+
+	/**
+	 * Retrieve the elements from a position
+	 *
+	 * @param string $position The name of the position to check
+	 *
+	 * @return array The elements objects
+	 *
+	 * @since 3.3
+	 */
+	public function getPositionElements($position)
+    {
+        $elements = array();
+        foreach ($this->_getConfigPosition($position) as $index => $data) {
+            if ($element = $this->_item->getElement($data['element'])) {
+                $elements[] = $element;
+            }
+        }
+
+        return $elements;
+    }
 
 	/**
 	 * Render the output of the position

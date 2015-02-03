@@ -216,6 +216,21 @@ class AppRenderer {
 	}
 
 	/**
+	 * Sets the layout path
+	 *
+	 * @param string $layout The layout path to be set
+	 *
+	 * @return object The current class object
+	 *
+	 * @since 3.3
+	 */
+	public function setLayout($layout)
+    {
+        $this->_layout = $layout;
+        return $this;
+    }
+
+	/**
 	 * Retrieve an array of layout filenames.
 	 *
 	 * @param string $dir
