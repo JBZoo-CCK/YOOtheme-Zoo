@@ -29,7 +29,7 @@ class plgFinderZOOSmartSearch extends FinderIndexerAdapter {
 
 		// load ZOO config
 		jimport('joomla.filesystem.file');
-		if (!JFile::exists(JPATH_ADMINISTRATOR.'/components/com_zoo/config.php') || !JComponentHelper::getComponent('com_zoo', true)->enabled) {
+		if (!JFile::exists(JPATH_ADMINISTRATOR.'/components/com_zoo/config.php') || !JComponentHelper::getComponent('com_zoo', true)->enabled || !function_exists('iconv')) {
 			return;
 		}
 		require_once(JPATH_ADMINISTRATOR.'/components/com_zoo/config.php');

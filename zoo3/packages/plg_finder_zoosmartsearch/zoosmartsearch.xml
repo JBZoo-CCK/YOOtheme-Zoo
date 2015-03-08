@@ -2,13 +2,13 @@
 <extension version="2.5" type="plugin" group="finder" method="upgrade">
 	<name>Smart Search - ZOO</name>
 	<author>YOOtheme</author>
-	<creationDate>February 2015</creationDate>
+	<creationDate>March 2015</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.3</version>
+	<version>3.3.4</version>
 	<description>Smart Search plugin for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename plugin="zoosmartsearch">zoosmartsearch.php</filename>

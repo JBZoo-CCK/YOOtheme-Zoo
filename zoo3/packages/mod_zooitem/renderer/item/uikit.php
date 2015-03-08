@@ -19,6 +19,8 @@ $media_position = $params->get('media_position', 'top');
 	<div class="uk-thumbnail uk-align-<?php echo $media_position; ?> uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
 	<?php endif; ?>
 
+	<div class="uk-nbfc">
+
 	<?php if ($this->checkPosition('title')) : ?>
 	<h4 class="uk-h5 uk-margin-remove"><?php echo $this->renderPosition('title'); ?></h4>
 	<?php endif; ?>
@@ -44,5 +46,7 @@ $media_position = $params->get('media_position', 'top');
 		<?php echo $this->renderPosition('links', array('style' => 'uikit_subnav')); ?>
 	</ul>
 	<?php endif; ?>
+
+	</div>
 
 </div>

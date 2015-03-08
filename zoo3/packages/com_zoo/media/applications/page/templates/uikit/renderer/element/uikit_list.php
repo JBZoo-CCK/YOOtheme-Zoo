@@ -14,7 +14,7 @@ $label = '';
 if (isset($params['showlabel']) && $params['showlabel']) {
 	$label .= '<strong>';
 	$label .= ($params['altlabel']) ? $params['altlabel'] : $element->config->get('name');
-	$label .= ': </strong>';
+	$label .= ': </strong> ';
 }
 
 // create class attribute

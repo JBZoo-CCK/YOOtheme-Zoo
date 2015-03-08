@@ -353,7 +353,7 @@ abstract class PositionRenderer extends AppRenderer {
 		if ($xml = simplexml_load_file($this->_getPath($path.'/'.$this->_xml_file))) {
             if ($pos = current($xml->xpath('positions[@layout="'.$layout.'"]'))) {
 
-                $positions['name'] = ($name = current($pos->xpath('name')) ? (string) $name : $layout);
+				$positions['name'] = (string) current($pos->xpath('name')) ?: $layout;
                 $positions['positions'] = array();
 
                 foreach ($pos->xpath('position[@name]') as $position) {
