@@ -34,7 +34,7 @@ $id = $this->identifier.'-'.uniqid();
 
 	<?php if ($show_message) : ?>
 	<div class="vote-message">
-		<?php echo $rating.'/<strong>'.$stars.'</strong> '.JText::sprintf('rating %s votes', $votes); ?>
+		<?php echo $rating.'/<strong>'.$stars.'</strong> '.JText::sprintf($votes == 1 ? 'rating %s vote' : 'rating %s votes', $votes); ?>
 	</div>
 	<?php endif; ?>
 

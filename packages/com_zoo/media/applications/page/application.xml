@@ -2,7 +2,7 @@
 <application>
 	<name>Pages</name>
 	<group>page</group>
-	<version>2.5.0</version>
+	<version>3.3.4</version>
 	<creationDate>August 2011</creationDate>
 	<author>YOOtheme</author>
 	<authorEmail>info@yootheme.com</authorEmail>
@@ -13,7 +13,7 @@
 			]]>
 	</license>
 	<description><![CDATA[
-				This is the pages app for ZOO 2.0 developed by YOOtheme.
+				This is the pages app for ZOO developed by YOOtheme.
 				<br /><strong>NOTE:</strong> The icon of this app is copyrighted by YOOtheme. Re-use is strictly prohibited.
 				]]>
 	</description>

@@ -18,6 +18,8 @@ defined('_JEXEC') or die('Restricted access');
     </div>
     <?php endif; ?>
 
+    <div class="uk-nbfc">
+
     <?php if ($this->checkPosition('title')) : ?>
     <h4 class="uk-margin-remove">
     	<?php echo $this->renderPosition('title'); ?>
@@ -33,4 +35,7 @@ defined('_JEXEC') or die('Restricted access');
     	<?php echo $this->renderPosition('links', array('style' => 'uikit_subnav')); ?>
     </ul>
     <?php endif; ?>
+
+    </div>
+
 </div>

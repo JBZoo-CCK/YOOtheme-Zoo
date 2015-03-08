@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<element type="itemaccess" group="Core" hidden="true" orderable="true">
+<element type="itemaccess" group="Core" hidden="true">
 	<name>Item Access</name>
 	<author>YOOtheme</author>
 	<creationDate>January 2012</creationDate>

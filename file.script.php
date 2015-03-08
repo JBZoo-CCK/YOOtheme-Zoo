@@ -31,15 +31,23 @@ class ZooInstallerScript {
 		}
 
 		// updateservers url update workaround
-		if ('update' == $type) {
+        if ('update' == $type) {
 
-			JFactory::getDBO()->setQuery(
-				"DELETE a, b, c FROM `#__update_sites_extensions` a" .
-				" LEFT JOIN `#__update_sites` b ON b.update_site_id = a.update_site_id" .
-				" LEFT JOIN `#__updates` c ON c.update_site_id = a.update_site_id" .
-				" WHERE a.extension_id = (SELECT `extension_id` FROM `#__extensions` WHERE `type` = 'package' AND `element` = 'pkg_zoo')"
-			)->execute();
-		}
+            $db = JFactory::getDBO();
+
+            if ($parent->manifest->updateservers) {
+
+            	$servers = $parent->manifest->updateservers->children();
+
+                $db->setQuery(
+                    "UPDATE `#__update_sites` a" .
+                    " LEFT JOIN `#__update_sites_extensions` b ON b.update_site_id = a.update_site_id" .
+                    " SET location = " . $db->quote(trim((string) $servers[0])) . ', enabled = 1' .
+                    " WHERE b.extension_id = (SELECT `extension_id` FROM `#__extensions` WHERE `type` = 'package' AND `element` = 'pkg_widgetkit')"
+                )->execute();
+
+            }
+        }
 
 		$extensions = array();
 		foreach($results as $result) {

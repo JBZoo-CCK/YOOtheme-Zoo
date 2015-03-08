@@ -71,7 +71,7 @@ class ElementEmail extends ElementRepeatable implements iRepeatSubmittable {
 			$mailto	.= '?' . $subject . $body;
 		}
 
-		return ltrim($this->app->html->_('email.cloak', $mailto, true, $this->getText(), $mode));
+		return sprintf('<span>%s</span>', ltrim($this->app->html->_('email.cloak', $mailto, true, $this->getText(), $mode)));
 
 	}
 

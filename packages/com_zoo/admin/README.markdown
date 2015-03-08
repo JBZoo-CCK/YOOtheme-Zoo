@@ -1,11 +1,18 @@
 # ZOO #
 
-- Version: 3.3.3
-- Date: February 2015
+- Version: 3.3.4
+- Date: March 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.4
+	# Removed Item Access element as orderable option
+	# Fixed UIkit template display issues
+	# Fixed zoosmartsearch to no longer trigger an error if iconv is not present
+	# Fixed spotlight missing assets
+	# Fixed 1-Click Updates issues
 
 	3.3.3
 	+ Renderer minor improvements
