@@ -69,11 +69,6 @@ class ApplicationTable extends AppTable {
 	*/
 	public function save($object) {
 
-		// Check ACL
-		if (!$object->isAdmin()) {
-			throw new ApplicationTableException('Invalid Access Permissions');
-		}
-
 		if ($object->name == '') {
 			throw new ApplicationTableException('Invalid name');
 		}
@@ -101,11 +96,6 @@ class ApplicationTable extends AppTable {
 			Boolean.
 	*/
 	public function delete($object) {
-
-		// Check ACL
-		if (!$object->isAdmin()) {
-			throw new ApplicationTableException('Invalid Access Permissions');
-		}
 
 		// delete related categories
 		$table = $this->app->table->category;

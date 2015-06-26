@@ -18,6 +18,11 @@ class ManagerController extends AppController {
 	public function __construct($default = array()) {
 		parent::__construct($default);
 
+        // check ACL
+        if (!$this->app->user->isAdmin()) {
+            throw new ManagerControllerException("Invalid Access Permissions!", 1);
+        }
+
 		// set base url
 		$this->baseurl = $this->app->link(array('controller' => $this->controller), false);
 

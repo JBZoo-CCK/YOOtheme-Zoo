@@ -9,6 +9,10 @@
 	<version>2.5.0</version>
 	<description>HTML E-mail</description>
 	<params group="render">
+		<param name="cloak" type="radio" default="1" label="Cloak" description="CLOAKS THE EMAIL ADDRESS">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
 		<param name="separated_by" type="zoolist" default="Space" label="Separated by" description="CHOOSE_SEPARATOR_REPEATED_ELEMENTS">
 			<option name="Space"><![CDATA[separator=[ ]]]></option>
 			<option name="Comma"><![CDATA[separator=[, ]]]></option>

@@ -93,7 +93,7 @@ class ElementItemAccess extends Element implements iSubmittable {
 	public function validateSubmission($value, $params) {
 		$groups = $this->app->zoo->getGroups();
 		if (!isset($groups[$value->get('value')])) {
-			throw AppValidatorException('Please choose a valid access level');
+			throw new AppValidatorException('Please choose a valid access level');
 		}
         return (array) $value;
 	}

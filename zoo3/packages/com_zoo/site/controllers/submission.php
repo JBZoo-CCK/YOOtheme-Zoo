@@ -333,7 +333,7 @@ class SubmissionController extends AppController {
 				$msg = JText::_($edit ? 'Item saved' : ($this->submission->isInTrustedMode() ? 'Thanks for your submission.' : 'Thanks for your submission. It will be reviewed before being posted on the site.'));
 
 				// trigger saved event
-				$this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:saved', array('item' => $this->item, 'new' => !$edit)));
+				$this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:saved', array('item' => $this->item, 'new' => !$edit, 'msg' => &$msg)));
 
             } else {
 
@@ -509,17 +509,6 @@ class SubmissionController extends AppController {
         }
         $this->layout_path .= $this->layout;
 
-        // get positions
-        $positions = $this->renderer->getConfig('item')->get($this->application->getGroup().'.'.$this->type->id.'.'.$this->layout, array());
-
-        // get elements from positions
-        $this->elements_config = array();
-        foreach ($positions as $position) {
-            foreach ($position as $element) {
-				$this->elements_config[$element['element']] = $element;
-            }
-        }
-
         // get item
 		if (!$this->item_id || !($this->item = $this->app->table->item->get($this->item_id))) {
 
@@ -541,6 +530,22 @@ class SubmissionController extends AppController {
 				->set('config.primary_category', 0);
         }
 
+        // get positions
+        $positions = $this->renderer->getConfig('item')->get($this->application->getGroup().'.'.$this->type->id.'.'.$this->layout, array());
+
+        // get elements from positions
+        $this->elements_config = array();
+        foreach ($positions as $position) {
+            foreach ($position as $params) {
+                if ($el = $this->type->getElement($params['element']) and $el->canAccess()) {
+                    $params['_position'] = $position;
+                    if (false !== $this->app->event->dispatcher->notify($this->app->event->create($this->item, 'submission:elementinit', array('params' => $params, 'element' => $el)))->getReturnValue()) {
+                       $this->elements_config[$params['element']] = $params;
+                    }
+                }
+            }
+        }
+
     }
 
 	protected function _bind($post = array()) {
@@ -555,6 +560,10 @@ class SubmissionController extends AppController {
 					$params = $this->app->data->create(array_merge(array('trusted_mode' => $this->submission->isInTrustedMode()), $element_data));
 
 					$element->bindData($element->validateSubmission($this->app->data->create(@$post[$element->identifier]), $params));
+
+                    // trigger after element validation
+                    $this->app->event->dispatcher->notify($this->app->event->create($this->submission, 'submission:elementvalidate', array('element' => $element, 'params' => $params, 'post' => $post)));
+
 				}
 
 			} catch (AppValidatorException $e) {

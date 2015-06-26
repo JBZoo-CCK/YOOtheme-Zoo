@@ -73,6 +73,7 @@ class plgSystemZooevent extends JPlugin {
 //
 //		$zoo->event->register('ItemEvent');
 //		$zoo->event->dispatcher->connect('item:init', array('ItemEvent', 'init'));
+//		$zoo->event->dispatcher->connect('item:save', array('ItemEvent', 'save'));
 //		$zoo->event->dispatcher->connect('item:saved', array('ItemEvent', 'saved'));
 //		$zoo->event->dispatcher->connect('item:deleted', array('ItemEvent', 'deleted'));
 //		$zoo->event->dispatcher->connect('item:stateChanged', array('ItemEvent', 'stateChanged'));
