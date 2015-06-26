@@ -42,8 +42,6 @@ class AssetEvent {
                 $asset->loadByName($childName);
                 self::saveAsset($asset, $childName, $parentId, $title . ' (' . ucfirst($assetName) . ')', $rules);
             }
-        } else {
-            return false;
         }
     }
 
@@ -59,12 +57,7 @@ class AssetEvent {
 
         if ($asset->loadByName($name))
         {
-            if (!$asset->delete())
-            {
-                $this->setError($asset->getError());
-
-                return false;
-            }
+            $asset->delete();
         }
     }
 
@@ -87,7 +80,6 @@ class AssetEvent {
         $error = $asset->getError();
 
         if ($error) {
-            $this->setError($error);
             return false;
         } else {
             if (empty($asset->id) || $asset->parent_id != $parentId) {
@@ -104,7 +96,6 @@ class AssetEvent {
             }
             $asset->rules = json_encode($temp);
             if (!$asset->check() || !$asset->store()) {
-                $this->setError($asset->getError());
                 return false;
             } else {
                 return $asset->id;

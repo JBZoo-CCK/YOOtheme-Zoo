@@ -1,11 +1,25 @@
 # ZOO #
 
-- Version: 3.3.4
-- Date: March 2015
+- Version: 3.3.6
+- Date: June 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.6
+	+ Added item:save event
+	# Fixed query issues rised with previous release
+
+	3.3.5
+	^ Added cloak toggle parameter for Email element
+	^ Added item:changeorder event
+	# Fixed alignement in UIkit template
+	# Fixed submission deleting bug for users without joomla 'can delete' permission
+	# Fixed submission access levels
+	# Fixed documentation link
+	# Fixed Options element empty values check
+	# Fixed itemaccess element submission validation
 
 	3.3.4
 	# Removed Item Access element as orderable option

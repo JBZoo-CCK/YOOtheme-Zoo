@@ -240,16 +240,18 @@ class AppTable {
 		if ($obj->$key) {
 
 			// update object
-			$this->database->updateObject($this->name, $obj, $key, false);
+			$result = $this->database->updateObject($this->name, $obj, $key, false);
 
 		} else {
 
 			// insert object
-			$this->database->insertObject($this->name, $obj, $key);
+			$result = $this->database->insertObject($this->name, $obj, $key);
 
 			// set insert id
 			$object->$key = $obj->$key;
 		}
+
+		return $result;
 
 	}
 

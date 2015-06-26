@@ -108,7 +108,7 @@ class ZooHelper extends AppHelper {
 	 * @param string $ref Help url
 	 * @since 2.0
 	 */
-	public function toolbarHelp($ref = 'http://docs.yootheme.com/home/category/zoo-20') {
+	public function toolbarHelp($ref = 'http://yootheme.com/zoo/documentation') {
 		JToolBar::getInstance('toolbar')->appendButton('Link', 'help', 'Help', $ref);
 	}
 

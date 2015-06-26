@@ -75,10 +75,10 @@ class ItemTable extends AppTable {
 
 		$new = !(bool) $object->id;
 
-		// first save to get id
-		if (empty($object->id)) {
-			parent::save($object);
-		}
+		// trigger save event
+		$this->app->event->dispatcher->notify($this->app->event->create($object, 'item:save', compact('new')));
+
+		$result = parent::save($object);
 
 		// init vars
 		$db           = $this->database;
@@ -106,9 +106,7 @@ class ItemTable extends AppTable {
 		// save tags
 		$this->app->table->tag->save($object);
 
-		$result = parent::save($object);
-
-		// trigger save event
+		// trigger saved event
 		$this->app->event->dispatcher->notify($this->app->event->create($object, 'item:saved', compact('new')));
 
 		return $result;
@@ -122,11 +120,6 @@ class ItemTable extends AppTable {
 			Boolean.
 	*/
 	public function delete($object) {
-
-		// Check ACL
-		if (!$object->canDelete()) {
-			throw new ItemTableException('Invalid Access Permission');
-		}
 
 		// get database
 		$db = $this->database;
@@ -270,7 +263,7 @@ class ItemTable extends AppTable {
 		Returns:
 			Array - Array of items
 	*/
-	public function getByIds($ids, $published = false, $user = null, $orderby = ''){
+	public function getByIds($ids, $published = false, $user = null, $orderby = '', $ignore_order_priority = false){
 
 		$ids = (array) $ids;
 
@@ -287,7 +280,7 @@ class ItemTable extends AppTable {
 		$null = $db->Quote($db->getNullDate());
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT a.*"
 			." FROM ".$this->name." AS a"
@@ -297,7 +290,7 @@ class ItemTable extends AppTable {
 			.($published == true ? " AND a.state = 1"
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
-			." ORDER BY a.priority DESC".($order ? ", $order" : "");
+			.($order ? " ORDER BY " . $order : "");
 
 		return $this->_queryObjectList($query);
 	}
@@ -319,7 +312,7 @@ class ItemTable extends AppTable {
 		Returns:
 			Array - Array of items
 	*/
-	public function getByCharacter($application_id, $char, $not_in = false, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0){
+	public function getByCharacter($application_id, $char, $not_in = false, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0, $ignore_order_priority = false){
 
 		// get database
 		$db = $this->database;
@@ -337,7 +330,7 @@ class ItemTable extends AppTable {
 		}
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT a.*"
 			." FROM ".ZOO_TABLE_CATEGORY_ITEM." AS ci"
@@ -349,8 +342,8 @@ class ItemTable extends AppTable {
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
 			." AND BINARY LOWER(LEFT(a.name, 1)) ".(is_array($char) ? ($not_in ? "NOT" : null)." IN (".implode(",", $char).")" : " = '".$db->escape($char)."'")
-			." ORDER BY a.priority DESC".($order ? ", $order" : "")
-			.(($limit ? " LIMIT ".(int) $offset.",".(int) $limit : ""));
+			.($order ? " ORDER BY " . $order : "")
+			.($limit ? " LIMIT ".(int) $offset.",".(int) $limit : "");
 
 		return $this->_queryObjectList($query);
 	}
@@ -366,8 +359,7 @@ class ItemTable extends AppTable {
 		Returns:
 			Array - Array of items
 	*/
-	public function getByTag($application_id, $tag, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0){
-
+	public function getByTag($application_id, $tag, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0, $ignore_order_priority = false){
 		// get database
 		$db = $this->database;
 
@@ -377,7 +369,7 @@ class ItemTable extends AppTable {
 		$null = $db->Quote($db->getNullDate());
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT a.*"
 				." FROM ".$this->name." AS a "
@@ -390,8 +382,8 @@ class ItemTable extends AppTable {
 				." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 				." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
 				." GROUP BY a.id"
-				." ORDER BY a.priority DESC".($order ? ", $order" : "")
-				.(($limit ? " LIMIT ".(int) $offset.",".(int) $limit : ""));
+				.($order ? " ORDER BY " . $order : "")
+				.($limit ? " LIMIT ".(int) $offset.",".(int) $limit : "");
 
 		return $this->_queryObjectList($query);
 	}
@@ -406,7 +398,7 @@ class ItemTable extends AppTable {
 		Returns:
 			Array - Items
 	*/
-	public function getByType($type_id, $application_id = false, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0){
+	public function getByType($type_id, $application_id = false, $published = false, $user = null, $orderby = "", $offset = 0, $limit = 0, $ignore_order_priority = false){
 
 		// get database
 		$db = $this->database;
@@ -417,7 +409,7 @@ class ItemTable extends AppTable {
 		$null = $db->Quote($db->getNullDate());
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT a.*"
 			." FROM ".$this->name." AS a"
@@ -429,8 +421,8 @@ class ItemTable extends AppTable {
 			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
 			." GROUP BY a.id"
-			." ORDER BY a.priority DESC".($order ? ", $order" : "")
-			.(($limit ? " LIMIT ".(int) $offset.",".(int) $limit : ""));
+			.($order ? " ORDER BY " . $order : "")
+			.($limit ? " LIMIT ".(int) $offset.",".(int) $limit : "");
 
 		return $this->_queryObjectList($query);
 	}
@@ -456,7 +448,7 @@ class ItemTable extends AppTable {
 		$null = $db->Quote($db->getNullDate());
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT a.*"
 			." FROM ".$this->name." AS a"
@@ -469,8 +461,8 @@ class ItemTable extends AppTable {
 			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
             ." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
 			." GROUP BY a.id"
-			." ORDER BY ". (!$ignore_order_priority ? "a.priority DESC, " : "") . $order
-			.(($limit ? " LIMIT ".(int) $offset.",".(int) $limit : ""));
+			.($order ? " ORDER BY " . $order : "")
+			.($limit ? " LIMIT ".(int) $offset.",".(int) $limit : "");
 
 		return $this->_queryObjectList($query);
 	}
@@ -495,7 +487,7 @@ class ItemTable extends AppTable {
 		$null = $db->Quote($db->getNullDate());
 
 		// get item ordering
-		list($join, $order) = $this->_getItemOrder($orderby);
+		list($join, $order) = $this->_getItemOrder($orderby, $ignore_order_priority);
 
 		$query = "SELECT ROWNUM"
 				." FROM ("
@@ -513,7 +505,7 @@ class ItemTable extends AppTable {
 						." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 						." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
 						." GROUP BY a.id"
-						." ORDER BY ". (!$ignore_order_priority ? "a.priority DESC, " : "") . $order
+						.($order ? " ORDER BY " . $order : "")
 					.") t1"
 				.") t2"
 				." WHERE id = ".(int) $item_id;
@@ -536,7 +528,7 @@ class ItemTable extends AppTable {
 							." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
 							." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
 							." GROUP BY a.id"
-							." ORDER BY ". (!$ignore_order_priority ? "a.priority DESC, " : "") . $order
+							.($order ? " ORDER BY " . $order : "")
 						.") t1"
 					.") t2"
 					." WHERE ROWNUM = ".((int) $row-1) ." OR ROWNUM = ".((int) $row+1);
@@ -778,7 +770,7 @@ class ItemTable extends AppTable {
 		return $this->has($key);
 	}
 
-	protected function _getItemOrder($order) {
+	protected function _getItemOrder($order, $ignore_order_priority = false) {
 
 		// if string, try to convert ordering
 		if (is_string($order)) {
@@ -787,6 +779,13 @@ class ItemTable extends AppTable {
 
 		$result = array(null, null);
 		$order = (array) $order;
+
+		if ($ignore_order_priority) {
+			$order[] = '_ignore_priority';
+		}
+
+		// trigger order event
+		$this->app->event->dispatcher->notify($this->app->event->create($order, 'item:changeorder'));
 
 		// remove empty and duplicate values
 		$order = array_unique(array_filter($order));
@@ -824,6 +823,7 @@ class ItemTable extends AppTable {
 
 		// order by core attribute
 		foreach ($order as $element) {
+
 			if (strpos($element, '_item') === 0) {
 				$var = str_replace('_item', '', $element);
 				if ($alphanumeric) {
@@ -843,6 +843,11 @@ class ItemTable extends AppTable {
 			} else {
 				$result[1] = $reversed == 'ASC' ? "s.value" : "s.value DESC";
 			}
+		}
+
+		// If there wasn't _ignore_priority in the order array, prefix priority
+		if (!in_array('_ignore_priority', $order)) {
+			$result[1] = $result[1] ? 'a.priority DESC, ' . $result[1] : 'a.priority DESC';
 		}
 
 		// trigger init event

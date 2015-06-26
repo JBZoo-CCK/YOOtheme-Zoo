@@ -24,7 +24,7 @@ abstract class ElementOption extends Element implements iSubmittable {
 	*/
 	public function hasValue($params = array()) {
 		foreach ($this->get('option', array()) as $option) {
-            if (!empty($option)) {
+            if (strlen($option) > 0) {
                 return true;
             }
         }

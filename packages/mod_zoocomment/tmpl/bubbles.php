@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 $zoo->document->addStylesheet('mod_zoocomment:tmpl/bubbles/style.css');
 
 // include js
+$zoo->document->addScript('assets:js/responsive.js');
 $zoo->document->addScript('component.site:assets/js/default.js');
 $zoo->document->addScript('mod_zoocomment:tmpl/bubbles/bubbles.js');
 

@@ -18,6 +18,11 @@ class NewController extends AppController {
 	public function __construct($default = array()) {
 		parent::__construct($default);
 
+        // check ACL
+        if (!$this->app->user->isAdmin()) {
+            throw new NewControllerException("Invalid Access Permissions!", 1);
+        }
+
 		// get application group
 		$this->group = $this->app->request->getString('group');
 

@@ -25,7 +25,24 @@ class ItemEvent {
 	}
 
 	/**
-	 * Triggers joomla content plugins on the item and clears the route cache
+	 * Placeholder for the save event
+	 *
+	 * @param  AppEvent $event The event triggered
+	 */
+	public static function save($event) {
+
+		// get Item object
+		$item = $event->getSubject();
+
+		// is the item new (we have the id anyway)
+		$new = $event['new'];
+
+		// Change something
+		$item->name = 'newname';
+	}
+
+	/**
+	 * Placeholder for the saved event
 	 *
 	 * @param  AppEvent $event The event triggered
 	 */
@@ -48,7 +65,7 @@ class ItemEvent {
 	}
 
 	/**
-	 * Triggers joomla content plugins on the item and clears the route cache
+	 * Placeholder for the deleted event
 	 *
 	 * @param  AppEvent $event The event triggered
 	 */
@@ -65,7 +82,7 @@ class ItemEvent {
 	}
 
 	/**
-	 * Triggers joomla content plugins on the item and clears the route cache
+	 * Placeholder for the stateChanged event
 	 *
 	 * @param  AppEvent $event The event triggered
 	 */

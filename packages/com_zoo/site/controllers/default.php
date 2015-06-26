@@ -226,12 +226,13 @@ class DefaultController extends AppController {
 		$this->category   = $this->categories[$category_id];
 		$params	          = $category_id ? $this->category->getParams('site') : $this->application->getParams('frontpage');
 		$this->item_order = $params->get('config.item_order');
+		$ignore_priority  = $params->get('config.ignore_item_priority', false);
 		$layout 		  = $category_id == 0 ? 'frontpage' : 'category';
 		$items_per_page   = $params->get('config.items_per_page', 15);
 		$offset			  = max(($page - 1) * $items_per_page, 0);
 
 		// get categories and items
-		$this->items      = $this->app->table->item->getByCategory($this->application->id, $category_id, true, null, $this->item_order, $offset, $items_per_page);
+		$this->items      = $this->app->table->item->getByCategory($this->application->id, $category_id, true, null, $this->item_order, $offset, $items_per_page, $ignore_priority);
 		$item_count		  = $this->category->id == 0 ? $this->app->table->item->getItemCountFromCategory($this->application->id, $category_id, true) : $this->category->itemCount();
 
 		// set categories to display
@@ -330,6 +331,7 @@ class DefaultController extends AppController {
 		// get params
 		$params 	      = $this->application->getParams('site');
 		$items_per_page   = $params->get('config.items_per_page', 15);
+		$ignore_priority  = $params->get('config.ignore_item_priority', false);
 		$this->item_order = $params->get('config.item_order');
 		$add_alpha_index  = $params->get('config.alpha_index', 0);
 
@@ -345,9 +347,9 @@ class DefaultController extends AppController {
 		if ($add_alpha_index == 2 || $add_alpha_index == 3) {
 			$table = $this->app->table->item;
 			if ($this->alpha_char == $this->alpha_index->getOther()) {
-				$this->items = $table->getByCharacter($this->application->id, $this->alpha_index->getIndex(), true, true, null, $this->item_order);
+				$this->items = $table->getByCharacter($this->application->id, $this->alpha_index->getIndex(), true, true, null, $this->item_order, 0, 0, $ignore_priority);
 			} else {
-				$this->items = $table->getByCharacter($this->application->id, $this->alpha_char, false, true, null, $this->item_order);
+				$this->items = $table->getByCharacter($this->application->id, $this->alpha_char, false, true, null, $this->item_order, 0, 0, $ignore_priority);
 			}
 		}
 
@@ -393,10 +395,11 @@ class DefaultController extends AppController {
 		$params 	 	  = $this->application->getParams('site');
 		$items_per_page   = $params->get('config.items_per_page', 15);
 		$this->item_order = $params->get('config.item_order');
+		$ignore_priority  = $params->get('config.ignore_item_priority', false);
 
 		// get categories and items
 		$this->categories = $this->application->getCategoryTree(true);
-		$this->items = $this->app->table->item->getByTag($this->application->id, $this->tag, true, null, $this->item_order);
+		$this->items = $this->app->table->item->getByTag($this->application->id, $this->tag, true, null, $this->item_order, 0, 0, $ignore_priority);
 
 		// get item pagination
 		$this->pagination = $this->app->pagination->create(count($this->items), $page, $items_per_page, 'page', 'app');

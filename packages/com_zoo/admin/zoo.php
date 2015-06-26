@@ -36,12 +36,6 @@ $controller = $zoo->request->getWord('controller');
 $task       = $zoo->request->getWord('task');
 $group      = $zoo->request->getString('group');
 
-// check access level
-if (!$zoo->user->canManage() ||
-	(($controller === 'new' || $controller === 'manager') && !$zoo->user->isAdmin())) {
-    return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-}
-
 // does the zoo require to be updated?
 if ($zoo->update->required() && $controller != 'update') {
 	$zoo->system->application->redirect($zoo->link(array('controller' => 'update'), false));
