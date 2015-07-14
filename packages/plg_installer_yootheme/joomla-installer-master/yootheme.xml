@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="installer" method="upgrade">
+    <name>Installer - YOOtheme</name>
+    <version>1.0.0</version>
+    <description>PLG_INSTALLER_YOOTHEME_DESCRIPTION</description>
+    <creationDate>December 2014</creationDate>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license>GNU General Public License v2 or later</license>
+    <author>YOOtheme</author>
+    <authorEmail>info@yootheme.com</authorEmail>
+    <authorUrl>http://yootheme.com</authorUrl>
+    <scriptfile>script.php</scriptfile>
+    <files>
+        <filename plugin="yootheme">yootheme.php</filename>
+        <filename>script.php</filename>
+        <filename>CHANGELOG.md</filename>
+        <filename>README.md</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="apikey" type="textarea" label="PLG_INSTALLER_YOOTHEME_API_KEY" />
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="YOOtheme Installer">http://yootheme.com/api/update/installer_yootheme_j33.xml</server>
+    </updateservers>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_installer_yootheme.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_installer_yootheme.sys.ini</language>
+    </languages>
+</extension>

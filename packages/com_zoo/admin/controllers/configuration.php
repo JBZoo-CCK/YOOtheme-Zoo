@@ -159,6 +159,27 @@ class ConfigurationController extends AppController {
 		// get params
 		$this->params = $this->application->getParams();
 
+        // get permission form
+        $xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
+
+        $this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
+        $this->permissions->bind(array('asset_id' => $this->application->asset_id));
+        $this->assetPermissions = array();
+        $asset = JTable::getInstance('Asset');
+
+        foreach ($this->application->getTypes() as $typeName => $type) {
+            $xml->fieldset->field->attributes()->section = 'type';
+            $xml->fieldset->field->attributes()->name = 'rules_' . $typeName;
+            $this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
+
+            if ($asset->loadByName($type->getAssetName())) {
+                $assetName = $type->getAssetName();
+            } else {
+                $assetName = $this->application->asset_id;
+            }
+            $this->assetPermissions[$typeName]->bind(array('asset_id' => $assetName));
+        }
+
 		// set template
 		$this->params->set('template', $template);
 
