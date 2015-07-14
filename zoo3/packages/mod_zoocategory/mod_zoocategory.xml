@@ -2,13 +2,13 @@
 <extension type="module" version="2.5" method="upgrade" client="site">
 	<name>ZOO Category</name>
 	<author>YOOtheme</author>
-	<creationDate>June 2015</creationDate>
+	<creationDate>July 2015</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.6</version>
+	<version>3.3.7</version>
 	<description>Category module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename module="mod_zoocategory">mod_zoocategory.php</filename>

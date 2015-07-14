@@ -193,6 +193,20 @@ class NewController extends AppController {
 		$template     = $this->app->request->getCmd('template');
 		$this->params = $this->application->getParams();
 
+		// get permission form
+		$xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
+
+		$this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
+		$this->permissions->bind(array('asset_id' => 'com_zoo'));
+		$this->assetPermissions = array();
+
+		foreach ($this->application->getTypes() as $typeName => $type) {
+			$xml->fieldset->field->attributes()->section = 'type';
+			$xml->fieldset->field->attributes()->name = 'rules_' . $typeName;
+			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
+			$this->assetPermissions[$typeName]->bind(array('asset_id' => 'com_zoo'));
+		}
+
 		// set template
 		$this->params->set('template', $template);
 

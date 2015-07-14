@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.3.6
-- Date: June 2015
+- Version: 3.3.7
+- Date: July 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.7
+    # Fixed application template switching
 
 	3.3.6
 	+ Added item:save event
