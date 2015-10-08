@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js
-$this->app->system->document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=$locale&key=$key");
+$this->app->system->document->addScript("//maps.google.com/maps/api/js?sensor=false&amp;language=$locale&amp;key=$key");
 $this->app->document->addScript('elements:googlemaps/googlemaps.js');
 
 ?>
@@ -23,4 +23,4 @@ $this->app->document->addScript('elements:googlemaps/googlemaps.js');
 	<div id="<?php echo $maps_id ?>" style="<?php echo $css_module_width . $css_module_height ?>"></div>
 
 </div>
-<?php echo "<script type=\"text/javascript\" defer=\"defer\">\n// <!--\n$javascript\n// -->\n</script>\n";
+<?php echo "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";

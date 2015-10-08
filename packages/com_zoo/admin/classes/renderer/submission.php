@@ -113,7 +113,7 @@ class SubmissionRenderer extends PositionRenderer {
 		// init vars
 		$elements = array();
 		$output   = array();
-        $trusted_mode = !$this->app->user->get()->guest && $this->_submission->isInTrustedMode();
+        $trusted_mode = $this->_submission->isInTrustedMode();
 		$show_tooltip = $this->_submission->showTooltip();
 
 		// get style

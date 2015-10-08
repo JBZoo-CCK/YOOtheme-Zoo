@@ -232,7 +232,7 @@ class Submission {
 	 * @since 2.0
 	 */
     public function isInTrustedMode() {
-        return (bool) $this->getParams()->get('trusted_mode', false);
+        return (bool) !$this->app->user->get()->guest && $this->getParams()->get('trusted_mode', false);
     }
 
 	/**

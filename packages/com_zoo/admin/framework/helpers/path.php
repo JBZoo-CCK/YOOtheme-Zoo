@@ -148,7 +148,7 @@ class PathHelper extends AppHelper {
 
 		foreach ($res['paths'] as $path) {
 			if (file_exists($path.'/'.$res['path'])) {
-				foreach ($this->_list(realpath($path.'/'.$res['path']), '', $mode, $recursive, $filter) as $file) {
+				foreach ($this->_list($this->normalizePath($path.'/'.$res['path']), '', $mode, $recursive, $filter) as $file) {
 					if (!in_array($file, $files)) {
 						$files[] = $file;
 					}
@@ -208,7 +208,7 @@ class PathHelper extends AppHelper {
 		$file  = ltrim($file, "\\/");
 
 		foreach ($paths as $path) {
-			if ($fullpath = realpath("$path/$file") and file_exists($fullpath) and (stripos($fullpath, JPATH_ROOT, 0) === 0 || JPATH_ROOT === '')) {
+			if ($fullpath = $this->normalizePath($path.'/'.$file) and file_exists($fullpath)) {
 				return $fullpath;
 			}
 		}
@@ -296,5 +296,32 @@ class PathHelper extends AppHelper {
 	public function relative($path) {
 		return ltrim(preg_replace('/^'.preg_quote(str_replace(DIRECTORY_SEPARATOR, '/', JPATH_ROOT), '/').'/i', '', str_replace(DIRECTORY_SEPARATOR, '/', $path)), '/');
 	}
+
+    /**
+    * Normalizes the given path
+    *
+    * @param  string $path
+    * @return string
+    *
+    * @since 3.3.8
+    */
+    protected function normalizePath($path)
+    {
+        $path  = str_replace(array('\\', '//'), '/', $path);
+        $prefix = preg_match('|^(?P<prefix>([a-zA-Z]+:)?//?)|', $path, $matches) ? $matches['prefix'] : '';
+        $path  = substr($path, strlen($prefix));
+        $parts  = array_filter(explode('/', $path), 'strlen');
+        $tokens = array();
+
+        foreach ($parts as $part) {
+            if ('..' === $part) {
+                array_pop($tokens);
+            } elseif ('.' !== $part) {
+                array_push($tokens, $part);
+            }
+        }
+
+        return $prefix . implode('/', $tokens);
+    }
 
 }

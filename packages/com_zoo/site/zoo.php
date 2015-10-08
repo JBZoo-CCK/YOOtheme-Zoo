@@ -16,7 +16,7 @@ require_once(JPATH_ADMINISTRATOR.'/components/com_zoo/config.php');
 $zoo = App::getInstance('zoo');
 
 // init vars
-$path = dirname(__FILE__);
+$path = JPATH_SITE.'/components/com_zoo';
 
 // register paths
 $zoo->path->register($path.'/assets', 'assets');

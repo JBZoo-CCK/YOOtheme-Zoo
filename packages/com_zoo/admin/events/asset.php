@@ -27,6 +27,10 @@ class AssetEvent {
         $title          = $application->getAssetTitle();
         $asset          = JTable::getInstance('Asset');
 
+        if ($application->rules === null) {
+            return true;
+        }
+
         $asset->loadByName($name);
         $application->asset_id = $asset->id;
 

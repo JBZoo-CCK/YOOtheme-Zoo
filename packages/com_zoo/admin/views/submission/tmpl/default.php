@@ -61,7 +61,7 @@ defined('_JEXEC') or die('Restricted access');
 					$public = !JAccess::checkGroup($group->id, 'core.login.site');
 
 					// trusted mode
-					$trusted_mode     = (int) $row->isInTrustedMode();
+					$trusted_mode     = $row->isInTrustedMode();
 					$trusted_mode_img = $trusted_mode ? 'tick.png' : 'publish_x.png';
 					$trusted_mode_alt = $trusted_mode ? JText::_('Trusted Mode enabled') : JText::_('Trusted Mode disabled');
 

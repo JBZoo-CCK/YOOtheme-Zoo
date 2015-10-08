@@ -780,8 +780,9 @@ class ItemTable extends AppTable {
 		$result = array(null, null);
 		$order = (array) $order;
 
-		if ($ignore_order_priority) {
-			$order[] = '_ignore_priority';
+		if (in_array('_ignore_priority', $order)) {
+			$ignore_order_priority = true;
+			unset($order['_ignore_priority']);
 		}
 
 		// trigger order event
@@ -846,7 +847,7 @@ class ItemTable extends AppTable {
 		}
 
 		// If there wasn't _ignore_priority in the order array, prefix priority
-		if (!in_array('_ignore_priority', $order)) {
+		if (!$ignore_order_priority) {
 			$result[1] = $result[1] ? 'a.priority DESC, ' . $result[1] : 'a.priority DESC';
 		}
 

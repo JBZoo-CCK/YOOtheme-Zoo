@@ -52,8 +52,8 @@ class ManagerController extends AppController {
 
 		// set toolbar items
 		$this->app->toolbar->title(JText::_('App Manager'), $this->app->get('icon'));
-		JToolBar::getInstance('toolbar')->appendButton('Popup', 'stats', 'Check For Modifications', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkmodifications&tmpl=component', true, -1), 570, 350);
-		JToolBar::getInstance('toolbar')->appendButton('Popup', 'preview', 'Check Requirements', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkrequirements&tmpl=component', true, -1), 570, 350);
+		JToolBar::getInstance('toolbar')->appendButton('Popup', 'warning', 'Check For Modifications', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkmodifications&tmpl=component', true, -1), 570, 350);
+		JToolBar::getInstance('toolbar')->appendButton('Popup', 'checkmark', 'Check Requirements', JRoute::_(JUri::root() . 'administrator/index.php?option='.$this->app->component->self->name.'&controller='.$this->controller.'&task=checkrequirements&tmpl=component', true, -1), 570, 350);
 		JToolBarHelper::preferences('com_zoo');
 		if ($this->app->get('cache_routes', false)) {
 			$this->app->toolbar->custom('disableRouteCaching', 'options', 'Disable Route Caching', 'Disable Route Caching', false);

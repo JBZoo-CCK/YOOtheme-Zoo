@@ -26,10 +26,10 @@ class ElementAddthis extends Element implements iSubmittable {
 
 		// render html
 		if (($account = $this->config->get('account')) && $this->get('value', $this->config->get('default'))) {
-			$html[] = "<a class=\"addthis_button\" href=\"http://www.addthis.com/bookmark.php?v=250&amp;username=$account\">";
-			$html[] = "<img src=\"http://s7.addthis.com/static/btn/v2/lg-share-en.gif\" width=\"125\" height=\"16\" alt=\"Bookmark and Share\" style=\"border:0\"/>";
+			$html[] = "<a class=\"addthis_button\" href=\"//www.addthis.com/bookmark.php?v=250&amp;username=$account\">";
+			$html[] = "<img src=\"//s7.addthis.com/static/btn/v2/lg-share-en.gif\" width=\"125\" height=\"16\" alt=\"Bookmark and Share\" style=\"border:0\"/>";
 			$html[] = "</a>";
-			$html[] = "<script type=\"text/javascript\" src=\"http://s7.addthis.com/js/250/addthis_widget.js#username=$account\"></script>";
+			$html[] = "<script type=\"text/javascript\" src=\"//s7.addthis.com/js/250/addthis_widget.js#username=$account\"></script>";
 			return implode("\n", $html);
 		}
 

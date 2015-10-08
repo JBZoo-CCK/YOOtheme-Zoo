@@ -146,7 +146,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		$locale = $this->config->get('locale');
 		$key	= $this->config->get('key');
 
-		$this->app->system->document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=$locale&key=$key&libraries=places");
+		$this->app->system->document->addScript("//maps.google.com/maps/api/js?sensor=false&amp;language=$locale&amp;key=$key&amp;libraries=places");
 		$this->app->document->addScript('elements:googlemaps/jquery.geocomplete.js');
 	}
 
