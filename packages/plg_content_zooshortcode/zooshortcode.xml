@@ -8,7 +8,7 @@
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.8</version>
+	<version>3.3.9</version>
 	<description>Shortcode plugin for ZOO developed by YOOtheme (http://www.yootheme.com) Usage: {zooitem OR zoocategory: ID OR alias} Optionally: {zooitem: ID text: MYTEXT}</description>
 	<files>
 		<filename plugin="zooshortcode">zooshortcode.php</filename>

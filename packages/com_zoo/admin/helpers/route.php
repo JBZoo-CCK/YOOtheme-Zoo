@@ -292,63 +292,59 @@ class RouteHelper extends AppHelper {
 			$link = $this->getLinkBase().'&task=item&item_id='.$item->id;
 
 			// are we in category view?
-			if ($application = $this->app->table->application->get($item->application_id)) {
-				$application->getCategoryTree(true);
+			$this->app->table->application->get($item->application_id)->getCategoryTree(true);
+			$categories = null;
+			if ($category_id) {
+				$categories  = array_filter($item->getRelatedCategoryIds(true));
+				$category_id = in_array($category_id, $categories) ? $category_id : null;
+			}
 
-				$categories = null;
-				if ($category_id) {
-					$categories  = array_filter($item->getRelatedCategoryIds(true));
-					$category_id = in_array($category_id, $categories) ? $category_id : null;
-				}
+			if (!$category_id) {
 
-				if (!$category_id) {
+				$primary_id = $item->getPrimaryCategoryId();
 
-					$primary_id = $item->getPrimaryCategoryId();
+				// Priority 2: direct link to primary category
+				if ($primary_id && $menu_item = $this->_find('category', $primary_id)) {
+					$itemid = $menu_item->id;
+					// Priority 3: find in primary category path
+				} else if ($primary_id and $primary = $item->getPrimaryCategory() and $menu_item = $this->_findInCategoryPath($primary)) {
+					$itemid = $menu_item->id;
+				} else {
+					$categories = is_null($categories) ? array_filter($item->getRelatedCategoryIds(true)) : $categories;
+					foreach ($categories as $category) {
+						// Priority 4: direct link to any related category
+						if ($menu_item = $this->_find('category', $category)) {
+							$itemid = $menu_item->id;
+							break;
+						}
+					}
 
-					// Priority 2: direct link to primary category
-					if ($primary_id && $menu_item = $this->_find('category', $primary_id)) {
-						$itemid = $menu_item->id;
-						// Priority 3: find in primary category path
-					} else if ($primary_id and $primary = $item->getPrimaryCategory() and $menu_item = $this->_findInCategoryPath($primary)) {
-						$itemid = $menu_item->id;
-					} else {
-						$categories = is_null($categories) ? array_filter($item->getRelatedCategoryIds(true)) : $categories;
+					if (!$itemid) {
+						$categories = $item->getRelatedCategories(true);
 						foreach ($categories as $category) {
-							// Priority 4: direct link to any related category
-							if ($menu_item = $this->_find('category', $category)) {
+							// Priority 5: find in any related categorys path
+							if ($menu_item = $this->_findInCategoryPath($category)) {
 								$itemid = $menu_item->id;
 								break;
 							}
 						}
-
-						if (!$itemid) {
-							$categories = $item->getRelatedCategories(true);
-							foreach ($categories as $category) {
-								// Priority 5: find in any related categorys path
-								if ($menu_item = $this->_findInCategoryPath($category)) {
-									$itemid = $menu_item->id;
-									break;
-								}
-							}
-						}
-
-						// Priority 6: link to frontpage
-						if (!$itemid && $menu_item = $this->_find('frontpage', $item->application_id)) {
-							$itemid = $menu_item->id;
-						}
 					}
 
-				} elseif ($category_id != $item->getPrimaryCategoryId()) {
-					$link .= '&category_id='.$category_id;
+					// Priority 6: link to frontpage
+					if (!$itemid && $menu_item = $this->_find('frontpage', $item->application_id)) {
+						$itemid = $menu_item->id;
+					}
 				}
+			} elseif ($category_id != $item->getPrimaryCategoryId()) {
+				$link .= '&category_id='.$category_id;
 			}
-		}
 
-		if (!empty($itemid)) {
-			$link .= '&Itemid='.$itemid;
-			// Priority 7: current item id
-		} else if ($menu_item = $this->app->menu->getActive()) {
-			$link .= '&Itemid='.$menu_item->id;
+			if ($itemid) {
+				$link .= '&Itemid='.$itemid;
+				// Priority 7: current item id
+			} else if ($menu_item = $this->app->menu->getActive()) {
+				$link .= '&Itemid='.$menu_item->id;
+			}
 		}
 
 		if ($route) {

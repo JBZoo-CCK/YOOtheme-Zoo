@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.3.8
+- Version: 3.3.9
 - Date: October 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.9
+	# Fixed item routing
 
 	3.3.8
 	# Removed open/unclosed </div> from cookbook UIkit template
@@ -14,7 +17,8 @@
 	# Fixed Google Maps element HTML validation
 	# ZOO source files can now be symlinked
 	# Fixed frontpage editing for non super users
-	# Improved item routing fixing some potential issues
+    # Improved item routing fixing some potential issues
+
 
     3.3.7
     # Fixed application template switching
