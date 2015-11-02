@@ -44,7 +44,7 @@ class ElementSocialbuttons extends Element implements iSubmittable {
 			//init vars
 			$params = $this->app->data->create($params);
 			$html = array();
-			$item_route = JRoute::_($this->app->route->item($this->_item, false), true, -1);
+			$item_route = JRoute::_($this->app->route->item($this->_item, false), true, 2);
 			$locale		= $this->config->get('locale') ? '' : str_replace('-', '_', $this->app->system->getLanguage()->getTag());
 
 			// Facebook and Google only seem to support es_ES and es_LA for all of LATAM

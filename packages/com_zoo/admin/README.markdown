@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.3.9
+- Version: 3.3.10
 - Date: October 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.10
+	# Fixed canonical links
 
 	3.3.9
 	# Fixed item routing
