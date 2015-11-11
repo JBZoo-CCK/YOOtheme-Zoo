@@ -76,7 +76,7 @@ class InstallHelper extends AppHelper {
 		$tmp_directory = $this->app->path->path('tmp:').'/';
 		$archivename = $tmp_directory.$userfile['name'];
 
-		if (!JFile::upload($userfile['tmp_name'], $archivename)) {
+		if (!JFile::upload($userfile['tmp_name'], $archivename, false, true)) {
 			throw new InstallHelperException("Could not move uploaded file to ($archivename)");
 		}
 

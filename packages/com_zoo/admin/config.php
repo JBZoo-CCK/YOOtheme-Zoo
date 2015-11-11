@@ -28,8 +28,8 @@ define('ZOO_TABLE_VERSION', '#__zoo_version');
 // init vars
 $zoo = App::getInstance('zoo');
 $path = JPATH_ADMINISTRATOR.'/components/com_zoo';
-$cache_path = JPATH_ROOT.'/cache/com_zoo';
 $media_path = JPATH_ROOT.'/media/zoo';
+$cache_path = JPATH_ROOT.'/cache/com_zoo';
 
 // register paths
 $zoo->path->register(JPATH_ROOT.'/modules', 'modules');

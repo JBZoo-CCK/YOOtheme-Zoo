@@ -128,7 +128,7 @@ class ZooHelper extends AppHelper {
 		$width = (int) $width;
 		$height = (int) $height;
 		$file_info = pathinfo($file);
-		$thumbfile = $this->app->path->path('cache:').'/images/'.$file_info['filename'].'_'.md5($file.$width.$height).'.'.$file_info['extension'];
+		$thumbfile = $this->app->path->path('media:zoo').'/images/'.$file_info['filename'].'_'.md5($file.$width.$height).'.'.$file_info['extension'];
 		$cache_time = 86400; // cache time 24h
 		// check thumbnail directory
 		if (!JFolder::exists(dirname($thumbfile))) {

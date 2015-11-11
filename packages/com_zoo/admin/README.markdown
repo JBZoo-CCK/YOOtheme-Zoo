@@ -1,11 +1,18 @@
 # ZOO #
 
-- Version: 3.3.10
-- Date: October 2015
+- Version: 3.3.12
+- Date: November 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.12
+	# Moved images cache folder to media
+
+	3.3.11
+	# Fixed App install security restriction introduced in Joomla! 3.4.5
+	# Fixed Item Feed date display
 
 	3.3.10
 	# Fixed canonical links
@@ -21,7 +28,6 @@
 	# ZOO source files can now be symlinked
 	# Fixed frontpage editing for non super users
     # Improved item routing fixing some potential issues
-
 
     3.3.7
     # Fixed application template switching
