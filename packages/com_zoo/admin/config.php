@@ -59,7 +59,6 @@ $zoo->path->register($path.'/views', 'views');
 // create cache folder if none existent
 if (!JFolder::exists($cache_path) && $zoo->request->get('option', 'cmd') != 'com_cache') {
 	JFolder::create($cache_path);
-	$zoo->zoo->putIndexFile($cache_path);
 }
 
 // register classes

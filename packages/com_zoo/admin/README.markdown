@@ -1,11 +1,16 @@
 # ZOO #
 
-- Version: 3.3.12
+- Version: 3.3.13
 - Date: November 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.13
+    + Added images and links to Joomla importer
+    ^ Removed index.html files from ZOO folders
+    # Fixed thumbnail cache
 
 	3.3.12
 	# Moved images cache folder to media

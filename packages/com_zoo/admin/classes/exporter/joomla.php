@@ -149,6 +149,30 @@ class AppExporterJoomla extends AppExporter {
 		$data['elements'][0]['name'] = 'Article';
 		$data['elements'][0]['data'] = array(array('value' => $article->introtext), array('value' => $article->fulltext));
 
+		$images = @json_decode($article->images, true) ?: array();
+
+		$data['elements'][1]['type'] = 'image';
+		$data['elements'][1]['name'] = 'Intro Image';
+		$data['elements'][1]['data'] = array('file' => @$images['image_intro'], 'title' => @$images['image_intro_caption']);
+
+		$data['elements'][2]['type'] = 'image';
+		$data['elements'][2]['name'] = 'Fulltext Image';
+		$data['elements'][2]['data'] = array('file' => @$images['image_fulltext'], 'title' => @$images['image_fulltext_caption']);
+
+		$urls = @json_decode($article->urls, true) ?: array();
+
+		$data['elements'][3]['type'] = 'link';
+		$data['elements'][3]['name'] = 'Link A';
+		$data['elements'][3]['data'] = array(array('value' => @$urls['urla'] ?: '', 'text' => @$urls['urlatext']));
+
+		$data['elements'][4]['type'] = 'link';
+		$data['elements'][4]['name'] = 'Link B';
+		$data['elements'][4]['data'] = array(array('value' => @$urls['urlb'] ?: '', 'text' => @$urls['urlbtext']));
+
+		$data['elements'][5]['type'] = 'link';
+		$data['elements'][5]['name'] = 'Link C';
+		$data['elements'][5]['data'] = array(array('value' => @$urls['urlc'] ?: '', 'text' => @$urls['urlctext']));
+
 		parent::_addItem($article->title, $article->alias, $group, $data);
 	}
 

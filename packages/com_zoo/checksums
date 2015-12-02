@@ -1,4 +1,4 @@
-3bfdfa4caf8e31d1f2cdead2843c300d admin/README.markdown
+9562085e791d316863cb460d9f93d51f admin/README.markdown
 c401e41c4307e417b4627159beb6abc8 admin/access.xml
 9e020acbfc710933f0775673e280dbd3 admin/assets/css/ui.css
 1988c3cc1384a3ac9b9a4129183248f3 admin/assets/images/add.png
@@ -61,7 +61,7 @@ a90f8ddfba8c39acd9517e8945be8b19 admin/assets/js/import.js
 bd886b03d372b7aae0eef3f4fa10645a admin/classes/category.php
 f1743caf220a609c4ff171dfd37ad809 admin/classes/comment.php
 fe41e9ff0b1daf4c5031bb36e3771e74 admin/classes/commentauthor.php
-17d3f5c2078b01b4efd9e38ee59f4374 admin/classes/exporter/joomla.php
+6d3c1dd3b166ad11ed4447ff3cc86141 admin/classes/exporter/joomla.php
 d7f1fc027efc3b21e4c0c63d00f01f8c admin/classes/exporter/k2.php
 6081ab3d4d2390ea951e35f0001ac03a admin/classes/exporter/zoo2.php
 9a817651e0f02ab2ae3799edc4db93f2 admin/classes/item.php
@@ -73,7 +73,7 @@ ebfb3d80875a6976cdfc6354f96e163c admin/classes/submission.php
 9d8805cbc0481f51c0f52c531412ff57 admin/classes/tree.php
 b515c266262fd5774f5e90f3cd4ccdea admin/classes/type.php
 cf2149f8c0328f8d558abf87b00c4366 admin/classes/validator.php
-88424b9cc4cbd325cb358be9f74acff9 admin/config.php
+390aeeb0bbe8fcbbad2e0b08484b8b33 admin/config.php
 40cfeaeeca1b80b250cb15bee25ae654 admin/config.xml
 f665dfe62ee0ccc99941ad1ba8d449c0 admin/controllers/category.php
 f73ff14918ca75562546866115ec51c1 admin/controllers/comment.php
@@ -147,7 +147,7 @@ cfe6c17e6e33a228fb6c4a434bd09215 admin/helpers/alphaindex.php
 d32abe1b316bab96ae58dc89dae018fa admin/helpers/application.php
 19ccfdf3f5bb00cd55300ef72bf6ed60 admin/helpers/archive.php
 5df84802a89dce1819ae96b5761adb74 admin/helpers/backup.php
-1ce427101d88aa840e20664bc9a80537 admin/helpers/cache.php
+ac8169fe126080d56d4be5c083b21c8b admin/helpers/cache.php
 0a1d9b21bc1d90530d921b40b4464a63 admin/helpers/category.php
 4be8e20edca34437687d3e5eddcc97ee admin/helpers/comment.php
 d3827b00a8404dc5626d1daba8131bb9 admin/helpers/commentauthor.php
@@ -210,10 +210,10 @@ e614e37a8cdf7ec710704f044e140e4b admin/helpers/tree.php
 509697ebedefcc17520d5110deb85c28 admin/helpers/type.php
 ddedb09bde656ee3e664729a29b9995a admin/helpers/update.php
 a2e76c3be8333d1cf6177823bd7cedfa admin/helpers/validator.php
-8233c25a95d50db0c26f374655408572 admin/helpers/zoo.php
+9e94c64da6dc2ddd0735e3bf6d6ccbcc admin/helpers/zoo.php
 4677e7a02904bd8051fab075fe5a55e7 admin/installation/dependencies.config
 61fe1c3a7a7ac9d97703b86e3a46a801 admin/installation/index.sql
-f2db685683819adfa187a80995c0e40a admin/installation/install.sql
+bc09fda3f1785a0e7f8e4090e462fc27 admin/installation/install.sql
 b2c0c389fe10c400f14d5bfacbda403c admin/installation/requirements.php
 868dec593b04291c5cbec44f446d4497 admin/installation/uninstall.sql
 4cd1ad2e64e4d695bab8f56ee6957325 admin/installation/updates/2.4.12.php
@@ -287,7 +287,7 @@ b35f1b309153dd6b1a4283936426543f admin/views/submission/tmpl/edit.php
 264231cd17f3c44dd887215b9adacaab file.script.php
 da8b512832e61949f35f432c88960dff media/applications/blog/application.php
 1fff946c04b8cdbfeba7b497e070f147 media/applications/blog/application.png
-7030482109650246a8cebdf77fbf0500 media/applications/blog/application.xml
+47711a52084085a8a629616d304e87dd media/applications/blog/application.xml
 1a599c28ad48251b2d1f165e598dd414 media/applications/blog/application_info.png
 ad8036cb23379fc552f41a49f7d8870f media/applications/blog/config/comments.xml
 0ae29003d553b2479c4fc37f9246d8cb media/applications/blog/elements/readme.txt
@@ -555,7 +555,7 @@ dabbc88907fa05c02e3691ea55a4425c media/applications/blog/types/article.config
 8860b870b3fb6d615263e6e35b7a684d media/applications/blog/types/author.config
 557f2af8d01a361cce61c684248bf4a0 media/applications/business/application.php
 6d48814d4d8bab607d02adbb434c9680 media/applications/business/application.png
-68af81bb9f957bed5569b8c221cf2b55 media/applications/business/application.xml
+94ee1f55fd62478d2c3312ecc144d6d5 media/applications/business/application.xml
 d492bd3e961abffcc47dd58bcd161ae2 media/applications/business/application_info.png
 32487090b594c79a84f822e230ebe7e5 media/applications/business/config/alphaindex.xml
 ad8036cb23379fc552f41a49f7d8870f media/applications/business/config/comments.xml
@@ -662,7 +662,7 @@ f77d7c77f82f1d0330a4900d154747be media/applications/business/templates/uikit/tag
 e7a5c9e016903cfe487cc07c2ac83793 media/applications/business/types/employee.config
 3f8fdc6c97abbdbefa7bd001a084f8f1 media/applications/cookbook/application.php
 13fcc6c31814c06a60a68d22fd88e426 media/applications/cookbook/application.png
-74bdf3d00193cb9a5200b4f7a4e8f3df media/applications/cookbook/application.xml
+fc628061d021283ca433e395443e2923 media/applications/cookbook/application.xml
 68682cb08c13a2192a3ca09ee1368376 media/applications/cookbook/application_info.png
 32487090b594c79a84f822e230ebe7e5 media/applications/cookbook/config/alphaindex.xml
 ad8036cb23379fc552f41a49f7d8870f media/applications/cookbook/config/comments.xml
@@ -761,7 +761,7 @@ e31a4169d371174e40006d327aaead23 media/applications/cookbook/templates/uikit/tem
 3fc0f593dde334d1e312edda98b23836 media/applications/cookbook/types/recipe.config
 04e3ac1a494775958183a286545a677e media/applications/documentation/application.php
 c7208440a655967aa829912b35fe7b8e media/applications/documentation/application.png
-b43ad0270aeddbd3d12b1e547885149c media/applications/documentation/application.xml
+3cb97c911f5d8d963ace3e24f6c65c82 media/applications/documentation/application.xml
 d36ff58b8dc12f24b92990af2564cb03 media/applications/documentation/application_info.png
 ad8036cb23379fc552f41a49f7d8870f media/applications/documentation/config/comments.xml
 0ae29003d553b2479c4fc37f9246d8cb media/applications/documentation/elements/readme.txt
@@ -854,7 +854,7 @@ c5ac80b20a08a8c915db2c1787f74543 media/applications/documentation/templates/uiki
 e23d1b3bd7d41c41bb22fa3acab3d528 media/applications/documentation/types/page.config
 5427739076adf5143f1211882cb9ccce media/applications/download/application.php
 84033c0b1b1dfb78ca3493c15699763a media/applications/download/application.png
-9a2b286b25981385ddfd0df6fd6898d4 media/applications/download/application.xml
+dd31544219bb96347c7cea1ebd724d01 media/applications/download/application.xml
 c3ce1fac17831f322754f14aba857ef3 media/applications/download/application_info.png
 32487090b594c79a84f822e230ebe7e5 media/applications/download/config/alphaindex.xml
 ad8036cb23379fc552f41a49f7d8870f media/applications/download/config/comments.xml
@@ -947,7 +947,7 @@ f4f753909336ec06e6dff84cbb5e010e media/applications/download/templates/uikit/tem
 bffcd993a18c733a1e90ac0e3f47fdc1 media/applications/download/types/file.config
 4bf9402aa4ea149af72f8e6f54759363 media/applications/movie/application.php
 6cace8b2b84e8f77e84fc310335d6376 media/applications/movie/application.png
-8156ed9f489f876bf1d703ff75dc1194 media/applications/movie/application.xml
+5fd00c6d600254be2cb2da769e8ecfba media/applications/movie/application.xml
 50d86d51d5216d6a7c4572b067643b5c media/applications/movie/application_info.png
 32487090b594c79a84f822e230ebe7e5 media/applications/movie/config/alphaindex.xml
 ad8036cb23379fc552f41a49f7d8870f media/applications/movie/config/comments.xml
@@ -1054,7 +1054,7 @@ d86a2b979a799ff0de026ffaddeb1e10 media/applications/movie/types/movie.config
 a9ae1de7629f4527c445c41ad3e3019e media/applications/movie/types/person.config
 8fdf5721c0fe44c5b21e90bcc6c70a76 media/applications/page/application.php
 0089c014e4f6b722ba2255e869443157 media/applications/page/application.png
-cc119b56216140601a7886a1bec75f25 media/applications/page/application.xml
+36e7ee3a3cd71081005cb2baea9278bb media/applications/page/application.xml
 7225c1f8b62fa9fb1b662613193ced9c media/applications/page/application_info.png
 8c80ef42a54a032bcdbcaf88aa4bca26 media/applications/page/config/comments.xml
 0ae29003d553b2479c4fc37f9246d8cb media/applications/page/elements/readme.txt
@@ -1115,7 +1115,7 @@ e898578b07ada0023f5b39e533cda01a media/applications/page/templates/uikit/templat
 f3ccee652295f9b5caf96f8fe0124f6a media/applications/page/types/page.config
 cff5339ed1dbe0acebed92b0a3799c4c media/applications/product/application.php
 a8177bbcf30a7b1d872c02b635379b6d media/applications/product/application.png
-41281a27fcf729d587bb67a02e6ee46a media/applications/product/application.xml
+393c9b28e9c0ddffedf8cc9f4f53444f media/applications/product/application.xml
 1c3f3e624ca5e3ddc23faa604a5c6b12 media/applications/product/application_info.png
 32487090b594c79a84f822e230ebe7e5 media/applications/product/config/alphaindex.xml
 ad8036cb23379fc552f41a49f7d8870f media/applications/product/config/comments.xml
@@ -1287,7 +1287,7 @@ e6d56d9d750bc6ba4ad7eab46ace2970 media/elements/download/assets/images/download_
 8cedd63a4e643376262fb7a0a8077d25 media/elements/download/assets/images/download_type_xls.png
 ae83c58c9baacc84924d183e1cba3611 media/elements/download/assets/images/download_type_zip.png
 79469741f9214e0728b3b7894286b38b media/elements/download/assets/js/download.js
-9219d08e12d34e5cdd9ab7f42ce69a17 media/elements/download/download.php
+2e1d25ae8f4053766de3d4e8e6c47840 media/elements/download/download.php
 5a5695947815bd19f19551bf253deefe media/elements/download/download.xml
 56cf7dc0ddb9e3e8922e38ab011a8d53 media/elements/download/tmpl/download.php
 0ece4f2b361e72c011f34855eb7240be media/elements/download/tmpl/edit.php
@@ -1317,7 +1317,7 @@ c590eceeba69cbf12eb721e95a0d74e6 media/elements/googlemaps/googlemaps.js
 5e202bb77f958794b801a2a85bc87a2b media/elements/googlemaps/tmpl/edit.php
 c678eb77f2aa865b33139f4505335bf3 media/elements/googlemaps/tmpl/googlemaps.php
 6b6868e8140ab0cdbe002b070d886ff7 media/elements/image/image.js
-05337aad0962ce6cfbd55e95aa1bdf53 media/elements/image/image.php
+88ab1f4b739160bc5cca2330b9a0a7aa media/elements/image/image.php
 9995ebd629a0e1c036249bca44e9e224 media/elements/image/image.xml
 0dc38fa931934a0d4ea5412c4af6ea4b media/elements/image/tmpl/edit.php
 15f56b8f3f2c59b20ba10df5dc116ff4 media/elements/image/tmpl/image.php
@@ -1493,4 +1493,4 @@ f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/mysubmissions.php
 f879bb4d332204ae52124f9410bb2e72 site/views/submission/tmpl/submission.php
 ee96a7f28b000f6b492c2d1247656a88 site/views/submission/tmpl/submission.xml
 a1c3ff8293b72db60e0bf7e0c309529c site/zoo.php
-ea8e24543c25942d9338aa2aa250cd6b zoo.xml
+f71d5b8e860316f5b42a028832f2f30a zoo.xml

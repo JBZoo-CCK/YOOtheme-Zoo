@@ -31,7 +31,6 @@ class CacheHelper extends AppHelper {
 			$cache = $this->app->object->create('AppApcCache', array(md5($file), $lifetime));
 		} else {
 			$cache = $this->app->object->create('AppCache', array($file, $hash, $lifetime));
-			$this->app->zoo->putIndexFile(dirname($file));
 		}
 		return $cache;
 	}

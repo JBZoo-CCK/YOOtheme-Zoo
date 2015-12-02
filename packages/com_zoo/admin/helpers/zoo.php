@@ -129,14 +129,14 @@ class ZooHelper extends AppHelper {
 		$height = (int) $height;
 		$file_info = pathinfo($file);
 		$thumbfile = $this->app->path->path('media:zoo').'/images/'.$file_info['filename'].'_'.md5($file.$width.$height).'.'.$file_info['extension'];
-		$cache_time = 86400; // cache time 24h
+
 		// check thumbnail directory
 		if (!JFolder::exists(dirname($thumbfile))) {
 			JFolder::create(dirname($thumbfile));
 		}
 
 		// create or re-cache thumbnail
-		if ($this->app->imagethumbnail->check() && (!is_file($thumbfile) || ($cache_time > 0 && time() > (filemtime($thumbfile) + $cache_time)))) {
+		if ($this->app->imagethumbnail->check() && (!is_file($thumbfile) || filemtime($file) > filemtime($thumbfile))) {
 			$thumbnail = $this->app->imagethumbnail->create($file);
 
 			if ($width > 0 && $height > 0) {
@@ -153,7 +153,6 @@ class ZooHelper extends AppHelper {
 					JFile::copy($file, $thumbfile);
 				}
 			}
-			$this->putIndexFile(dirname($thumbfile));
 		}
 
 		if (is_file($thumbfile)) {
@@ -245,6 +244,8 @@ class ZooHelper extends AppHelper {
 	 *
 	 * @param string $dir
 	 * @since 2.0
+	 *
+	 * @deprecated 3.3.13
 	 */
 	public function putIndexFile($dir) {
 		$dir = rtrim($dir, "\\/");
