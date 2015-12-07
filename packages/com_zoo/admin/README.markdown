@@ -1,11 +1,14 @@
 # ZOO #
 
-- Version: 3.3.13
-- Date: November 2015
+- Version: 3.3.14
+- Date: December 2015
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.14
+    # Fixed shortcode plugin issues
 
     3.3.13
     + Added images and links to Joomla importer

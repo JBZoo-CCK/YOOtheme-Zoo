@@ -50,8 +50,8 @@ class plgContentZooshortcode extends JPlugin {
 
 	protected function _doReplacement(&$article, $name) {
 		// expression to search for
-		$regex		= '/{zoo'.$name.':\s*(\S*)(?:\s*text:\s*(.*?))?(?:\s*output:\s*(.*?))?}/i';
-		$matches	= array();
+		$regex   = '/{zoo'.$name.':\s*(\S*)(?:\s*text:\s*(.*?))?(?:\s*output:\s*(.*?))?}/i';
+		$matches = array();
 
 		// find all instances of plugin and put in $matches
 		preg_match_all($regex, $article->text, $matches, PREG_SET_ORDER);
@@ -65,34 +65,36 @@ class plgContentZooshortcode extends JPlugin {
 
 			switch ($name) {
 				case 'frontpage':
+
 					if ($id && ($object = $this->app->table->application->get($id))) {
-						$result = $this->app->route->frontpage($id);
+						$result = JRoute::_($this->app->route->frontpage($id));
 					}
 					break;
-				
+
 				default:
+
+					// translate alias
+					if (!is_numeric($id)) {
+						$id = $this->app->alias->$name->translateAliasToID($id);
+					}
+
 					if ($id && ($object = $this->app->table->$name->get($id))) {
-
-						// translate alias
-						if (!is_numeric($id)) {
-							$id = $this->app->alias->$name->translateAliasToID($id);
-						}
-
 						$result = $this->app->route->$name($object);
 					}
 					break;
 			}
 
-			if ($object) {
+			if (isset($object)) {
 
 				// make sure text is set
 				$text = $text ?: $object->name;
 
 				if ($output == 'link') {
-					$result = '<a title="'.$object->name.'" href="'.$result.'">'.$text.'</a>';
+					$result = sprintf('<a title="%s" href="%s">%s</a>', $object->name, $result, $text);
 				}
+
 			} else {
-				$result == '';
+				$result = '';
 			}
 
 			// We should replace only first occurrence in order to allow positions with the same name to regenerate their content:
