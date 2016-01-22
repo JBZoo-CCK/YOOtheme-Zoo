@@ -63,7 +63,6 @@ class ElementSocialbuttons extends Element implements iSubmittable {
 							. ($params->get('twvia') ? ' data-via="'.$params->get('twvia').'"' : '')
 							. ($params->get('twtext') ? ' data-text="'.$params->get('twtext').'"' : '')
 							. ($params->get('twrelated') ? ' data-related="'.$params->get('twrelated').'"' : '')
-							. ($params->get('twcount') ? ' data-count="'.$params->get('twcount').'"' : '')
 							. ($locale ? ' data-lang="'.$locale.'"' : '')
 							.'>'.JText::_('Tweet').'</a></div>';
 			}

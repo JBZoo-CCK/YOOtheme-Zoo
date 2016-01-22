@@ -1,11 +1,19 @@
 # ZOO #
 
-- Version: 3.3.14
-- Date: December 2015
+- Version: 3.3.15
+- Date: January 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.15
+    ^ Itemcategory element's submission view adapts in height
+    + Updated EU countries list
+	# Fixed submissions.css checkbox/radio for UIKit app templates
+    # Fixed Twitter oAuth, using API 1.1
+    # Fixed Submission redirect after saving
+    # Fixed Print element button display
 
     3.3.14
     # Fixed shortcode plugin issues

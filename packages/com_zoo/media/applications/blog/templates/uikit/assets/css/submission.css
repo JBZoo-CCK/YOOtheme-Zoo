@@ -20,11 +20,9 @@
 	margin-right: 5px;
 }
 .uk-form .controls label + label { margin-left: 10px; }
+
 .uk-form .controls .radio,
-.uk-form .controls .checkbox {
-	padding-left: 0;
-	line-height: 14px;
-}
+.uk-form .controls .checkbox { line-height: 14px; }
 
 
 /* Bootstrap .row reset */

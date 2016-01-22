@@ -2,13 +2,13 @@
 <extension type="module" version="2.5" method="upgrade" client="site">
 	<name>ZOO Comment</name>
 	<author>YOOtheme</author>
-	<creationDate>December 2015</creationDate>
+	<creationDate>January 2016</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.14</version>
+	<version>3.3.15</version>
 	<description>Comment module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename module="mod_zoocomment">mod_zoocomment.php</filename>

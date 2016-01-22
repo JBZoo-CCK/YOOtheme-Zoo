@@ -15,7 +15,7 @@ $multiple = $params->get('multiple', true) ? ' multiple="multiple"' : '';
 ?>
 
 <div>
-	<?php echo $this->app->html->_('zoo.categorylist', $this->_item->getApplication(), array(), $this->getControlName('value', true), 'title="'.JText::_('Category').'" size="15"'.$multiple, 'value', 'text', $selected); ?>
+	<?php echo $this->app->html->_('zoo.categorylist', $this->_item->getApplication(), array(), $this->getControlName('value', true), 'title="'.JText::_('Category').'" size="'.min($this->_item->getApplication()->getCategoryCount(), 15).'"'.$multiple, 'value', 'text', $selected); ?>
 	<?php if ($params->get('primary', false)) : ?>
 		<div><?php echo JText::_('Select Primary Category'); ?></div>
 		<?php echo $this->app->html->_('zoo.categorylist', $this->_item->getApplication(), array($this->app->html->_('select.option', '', JText::_('COM_ZOO_NONE'))), $this->getControlName('primary'), 'title="'.JText::_('Primary Category').'"', 'value', 'text', $this->_item->getPrimaryCategoryId()); ?>

@@ -522,7 +522,7 @@ class CountryHelper extends AppHelper {
 		"LV", "LT", "LU", "MT", "NL",
 		"AT", "PL", "PT", "RO", "SE",
 		"SK", "SI", "ES", "CZ", "HU",
-		"CY", "GB");
+		"CY", "GB", "HR");
 
 	/**
 	 * Convert isocode2 to country name

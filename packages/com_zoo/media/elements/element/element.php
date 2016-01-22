@@ -418,7 +418,6 @@ abstract class Element {
 	public function getMetaData($key = null) {
 
 		$data = array();
-		$type = $this->getElementType();
 		$xml  = $this->loadXML();
 
 		if (!$xml) {

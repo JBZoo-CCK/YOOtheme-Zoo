@@ -66,10 +66,5 @@
 		<param name="twvia" type="text" default="" label="Twitter Via User" description="Screen name of the user to attribute the Tweet to" />
 		<param name="twtext" type="text" default="" label="Twitter Tweet text" description="Default Tweet text" />
 		<param name="twrelated" type="text" default="" label="Twitter Recommended Accounts" description="Related accounts" />
-		<param name="twcount" type="list" default="none" label="Twitter Count Box Position" description="Count box position" >
-			<option value="none">COM_ZOO_NONE</option>
-			<option value="horizontal">Horizontal</option>
-			<option value="vertical">Vertical</option>
-		</param>
 	</params>
 </element>

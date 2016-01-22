@@ -4,6 +4,7 @@
  * itemprint
  */
 
+a.element-print-button,
 .element-itemprint a.element-print-button {
 	display: inline-block;
 	width: 16px;
