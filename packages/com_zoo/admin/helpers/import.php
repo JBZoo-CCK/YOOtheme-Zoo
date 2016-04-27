@@ -220,8 +220,8 @@ class ImportHelper extends AppHelper {
 					}
 				}
 
-				// fix access if j16
-				if ($this->app->joomla->version->isCompatible('1.6') && $item_obj->access == 0) {
+				// fix access
+				if ($item_obj->access == 0) {
 					$item_obj->access = $this->app->joomla->getDefaultAccess();
 				}
 

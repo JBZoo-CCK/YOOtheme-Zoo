@@ -29,7 +29,7 @@ class AppExporterJoomla extends AppExporter {
 	 * @since 2.0
 	 */
 	public function isEnabled() {
-		return $this->app->joomla->version->isCompatible('2.5');
+		return $this->app->joomla->version->isCompatible('3.0');
 	}
 
 	/**

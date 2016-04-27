@@ -17,7 +17,7 @@ if (!$params->get('link_to_item', false) && !$this->get('link') && $this->get('l
     $url = JURI::root() . $this->app->path->relative($this->app->zoo->resizeImage(JPATH_ROOT.'/'.$this->get('lightbox_image', ''), 0 , 0));
 }
 
-$link_enabled = !empty($url);
+$link_enabled = !empty($url) && !$this->app->request->getBool('print', 0);
 $lightbox = !$params->get('link_to_item') && $this->get('lightbox_image') && $link_enabled;
 
 $overlay = $spotlight = '';

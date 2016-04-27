@@ -42,8 +42,13 @@ class AppRequirements {
 
 	var $_recommended_classes = array();
 
+	function checkJoomla() {
+		JLoader::import('joomla.version');
+		return !version_compare(JVersion::RELEASE, '3.2', '<');
+	}
+
 	function checkPHP() {
-		return !version_compare(PHP_VERSION, '5.2.7', '<');
+		return !version_compare(PHP_VERSION, '5.3.10', '<');
 	}
 
 	function checkSafeMode() {
@@ -90,10 +95,15 @@ class AppRequirements {
 
 	function _checkRequired() {
 
+		// check Joomla
+		$status = $this->checkJoomla();
+		$info 	= 'Zoo requires Joomla 3.2+. Please upgrade your Joomla installation (http://www.joomla.org).';
+		$this->_addRequiredResult('Joomla 3.2+', $status, $info);
+
 		// check php
 		$status = $this->checkPHP();
-		$info 	= 'Zoo requires PHP 5.2.7+. Please upgrade your PHP version (http://www.php.net).';
-		$this->_addRequiredResult('PHP 5.2.7+', $status, $info);
+		$info 	= 'Zoo requires PHP 5.3.10+. Please upgrade your PHP version (http://www.php.net).';
+		$this->_addRequiredResult('PHP 5.3.10+', $status, $info);
 
 		foreach ($this->_required_extensions as $extension) {
 			$status = extension_loaded($extension['extension']);

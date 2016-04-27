@@ -30,39 +30,18 @@ if (empty($applications)) {
 	return;
 }
 
-$float = $zoo->system->language->isRTL() ? 'right' : 'left';
-
 ?>
 
-<?php if ($zoo->joomla->version->isCompatible('3.0')) : ?>
-
-	<div class="sidebar-nav quick-icons">
-		<h2 class="nav-header">ZOO</h2>
-		<ul class="nav nav-list">
-		<?php foreach ($applications as $application) : ?>
-		<li>
-			<a href="<?php echo JRoute::_('index.php?option='.$zoo->component->self->name.'&changeapp='.$application->id); ?>">
-				<img style="width:24px; height:24px;" alt="<?php echo $application->name; ?>" src="<?php echo $application->getIcon(); ?>" />
-				<span><?php echo $application->name; ?></span>
-			</a>
-		</li>
-		<?php endforeach; ?>
-		</ul>
-	</div>
-
-<?php else : ?>
-
-	<div id="cpanel">
-		<?php foreach ($applications as $application) : ?>
-		<div class="icon-wrapper" style="float:<?php echo $float; ?>;">
-			<div class="icon">
-				<a href="<?php echo JRoute::_('index.php?option='.$zoo->component->self->name.'&changeapp='.$application->id); ?>">
-					<img style="width:48px; height:48px;" alt="<?php echo $application->name; ?>" src="<?php echo $application->getIcon(); ?>" />
-					<span><?php echo $application->name; ?></span>
-				</a>
-			</div>
-		</div>
-		<?php endforeach; ?>
-	</div>
-
-<?php endif; ?>
+<div class="sidebar-nav quick-icons">
+	<h2 class="nav-header">ZOO</h2>
+	<ul class="nav nav-list">
+	<?php foreach ($applications as $application) : ?>
+	<li>
+		<a href="<?php echo JRoute::_('index.php?option='.$zoo->component->self->name.'&changeapp='.$application->id); ?>">
+			<img style="width:24px; height:24px;" alt="<?php echo $application->name; ?>" src="<?php echo $application->getIcon(); ?>" />
+			<span><?php echo $application->name; ?></span>
+		</a>
+	</li>
+	<?php endforeach; ?>
+	</ul>
+</div>

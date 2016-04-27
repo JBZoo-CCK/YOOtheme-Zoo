@@ -8,4 +8,10 @@
 	<authorUrl>http://www.yootheme.com</authorUrl>
 	<version>2.5.0</version>
 	<description>Item Frontpage Core System</description>
+    <params group="submission">
+        <param name="default" type="radio" default="0" label="Default Value" description="Default value for the field in submission">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </param>
+    </params>
 </element>

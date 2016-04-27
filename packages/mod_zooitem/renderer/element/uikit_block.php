@@ -17,7 +17,9 @@ if (isset($params['showlabel']) && $params['showlabel']) {
 	$label .= '</h3>';
 }
 
+// create class attribute
+$class = 'element element-'.$element->getElementType();
 ?>
-<div class="uk-margin">
+<div class="uk-margin <?php echo $class; ?>">
 	<?php echo $label.$element->render($params); ?>
 </div>

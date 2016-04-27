@@ -50,14 +50,7 @@ class DocumentHelper extends AppHelper {
 		$version = $this->getVersion($version);
 
 		// load jQuery, if not loaded before
-		if (!$this->app->joomla->version->isCompatible('3.0')) {
-			if (!$this->app->system->application->get('jquery')) {
-				$this->app->system->application->set('jquery', true);
-				$this->app->system->document->addScript($this->app->path->url('libraries:jquery/jquery.js').$version);
-			}
-		} else {
-			JHtml::_('jquery.framework');
-		}
+		JHtml::_('jquery.framework');
 
 		if ($file = $this->app->path->url($path)) {
 			$this->app->system->document->addScript($file.$version);

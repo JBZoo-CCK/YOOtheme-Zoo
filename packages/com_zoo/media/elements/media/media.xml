@@ -15,5 +15,6 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</param>
+        <param name="defaultposter_image" type="text" default="" label="Default Poster Image" description="" />
 	</params>
 </element>

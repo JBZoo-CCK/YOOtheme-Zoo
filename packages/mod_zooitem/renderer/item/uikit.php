@@ -16,7 +16,7 @@ $media_position = $params->get('media_position', 'top');
 <div class="layout-uikit <?php if ($media_position == 'top' || $media_position == 'middle' || $media_position == 'bottom') echo 'uk-text-center'; ?>">
 
 	<?php if (($media_position == 'top' || $media_position == 'left' || $media_position == 'right') && $this->checkPosition('media')) : ?>
-	<div class="uk-thumbnail uk-align-<?php echo $media_position; ?> uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
+	<div class="uk-thumbnail uk-align-<?php echo in_array($media_position, array('left', 'right')) ? 'medium-' . $media_position : 'center'; ?> uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
 	<?php endif; ?>
 
 	<div class="uk-nbfc">
@@ -30,7 +30,7 @@ $media_position = $params->get('media_position', 'top');
 	<?php endif; ?>
 
 	<?php if (($media_position == 'middle') && $this->checkPosition('media')) : ?>
-	<div class="uk-thumbnail uk-align-<?php echo $media_position; ?> uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
+	<div class="uk-thumbnail uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
 	<?php endif; ?>
 
 	<?php if ($this->checkPosition('description')) : ?>
@@ -38,7 +38,7 @@ $media_position = $params->get('media_position', 'top');
 	<?php endif; ?>
 
 	<?php if (($media_position == 'bottom') && $this->checkPosition('media')) : ?>
-	<div class="uk-thumbnail uk-align-<?php echo $media_position; ?> uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
+	<div class="uk-thumbnail uk-margin-bottom-remove"><?php echo $this->renderPosition('media'); ?></div>
 	<?php endif; ?>
 
 	<?php if ($this->checkPosition('links')) : ?>

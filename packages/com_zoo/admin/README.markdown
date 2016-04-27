@@ -1,11 +1,24 @@
 # ZOO #
 
-- Version: 3.3.15
-- Date: January 2016
+- Version: 3.3.16
+- Date: April 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.16
+	+ Added defaultvalues for core submission fields
+	+ Added Poster image to HTML5 video
+	^ Updated mediaelement.js to 2.20.1
+    ^ Redirect to login page if guest user has no access to submissions
+	^ Removed J25 reverse compatibility
+	# Hide image link on print page
+	# Fix image alignment on mobile module ZOOitem
+	# Fixed full screen display video iframes
+	# Fixed wrong class name in UIkit template renderer for movie App
+	# Fixed missing controls attibute in media element
+	# Fixed select author in item edit
 
     3.3.15
     ^ Itemcategory element's submission view adapts in height

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5" method="upgrade">
+<extension type="component" version="3.2" method="upgrade">
 	<name>com_zoo</name>
 	<author>YOOtheme</author>
-	<creationDate>January 2016</creationDate>
+	<creationDate>April 2016</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.15</version>
+	<version>3.3.16</version>
 	<description>ZOO component for Joomla developed by YOOtheme (http://www.yootheme.com)</description>
 	<languages folder="site/language">
 		<language tag="en-GB">en-GB.com_zoo.ini</language>

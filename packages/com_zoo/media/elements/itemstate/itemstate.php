@@ -76,7 +76,8 @@ class ElementItemState extends Element implements iSubmittable {
 			String - html
 	*/
 	public function renderSubmission($params = array()) {
-		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), null, $this->_item->state);
+		$value = $this->_item->id == null ? $params->get('default', 0) : $this->_item->state;
+		return $this->app->html->_('select.booleanlist', $this->getControlName('value'), null, $value);
 	}
 
 	/*

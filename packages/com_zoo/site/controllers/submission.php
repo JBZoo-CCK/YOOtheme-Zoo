@@ -110,7 +110,7 @@ class SubmissionController extends AppController {
             $this->_checkConfig();
 
 			if (!$this->app->user->canAccess($this->user, 1)) {
-				throw new SubmissionControllerException('Insufficient User Rights.');
+				throw new SubmissionAccessException('Insufficient User Rights.');
 			}
 
 			// get request vars
@@ -156,6 +156,22 @@ class SubmissionController extends AppController {
 
             // display view
             $this->getView('submission')->addTemplatePath($this->template->getPath())->setLayout('mysubmissions')->display();
+
+        } catch (SubmissionAccessException $e) {
+			// redirect to login for guest users
+			if ($this->user->id == 0) {
+
+				$return = urlencode(base64_encode(JUri::getInstance()->toString()));
+				$link = JRoute::_(sprintf('index.php?option=com_users&view=login&return=%s', $return), false);
+
+				$this->setRedirect($link, JText::_('Unable to access submissions'), 'error');
+				$this->redirect();
+
+			} else {
+
+				$this->app->error->raiseWarning(0, (string) JText::_($e));
+
+			}
 
         } catch (SubmissionControllerException $e) {
 
@@ -436,7 +452,7 @@ class SubmissionController extends AppController {
 
         // Check ACL on item edit
         if (!($this->itemedit && $this->app->table->item->get($this->item_id)->canEdit()) && !(!$this->itemedit && $this->submission->canAccess($this->user))) {
-            throw new SubmissionControllerException('Insufficient User Rights.');
+            throw new SubmissionAccessException('Insufficient User Rights.');
         }
     }
 
@@ -616,3 +632,4 @@ class SubmissionController extends AppController {
 	Class: SubmissionControllerException
 */
 class SubmissionControllerException extends AppException {}
+class SubmissionAccessException extends SubmissionControllerException {}

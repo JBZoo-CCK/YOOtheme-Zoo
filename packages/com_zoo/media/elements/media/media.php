@@ -93,6 +93,7 @@ class ElementMedia extends ElementFile implements iSubmittable {
 		$width    = $this->get('width', $this->config->get('defaultwidth'));
 		$height   = $this->get('height', $this->config->get('defaultheight'));
 		$autoplay = $this->get('autoplay', $this->config->get('defaultautoplay', false));
+		$poster_image = $this->get('poster_image', $this->config->get('defaultposter_image', false));
 		$source   = $this->get('file') ? $this->app->path->url('root:'.$this->get('file')) : $this->get('url');
 
 		if ($format = $this->getVideoFormat($source)) {
@@ -161,7 +162,7 @@ class ElementMedia extends ElementFile implements iSubmittable {
 											if (w > parent_width) {
 												ele.css({width:'',height:''}).data('mediaelement').setPlayerSize('100%%', '100%%');
 											} else {
-												ele.css({width:'',height:''}).data('mediaelement').setPlayerSize(w, h);
+												ele.css({width:w,height:h}).data('mediaelement').setPlayerSize(w, h);
 											}
 										}
 									});
@@ -174,11 +175,12 @@ class ElementMedia extends ElementFile implements iSubmittable {
 							});
 						});", count($options) ? json_encode($options) : '{}'));
 
+					$poster_image = $poster_image ? sprintf(' poster="%s"', $this->app->path->url('root:'.$poster_image)) : '';
 					$autoplay = $autoplay ? ' autoplay="autoplay"' : '';
 					$tag	  = $format == 'mp3' ? 'audio' : 'video';
 					$type	  = " type=\"$tag/$format\"";
 
-					return '<'.$tag.' src="'.$source.'"'.$width_attr.$height_attr.$autoplay.$type.'></'.$tag.'>';
+					return '<'.$tag.' controls src="'.$source.'"'.$width_attr.$height_attr.$autoplay.$type.$poster_image.'></'.$tag.'>';
 
 			}
 
@@ -196,7 +198,7 @@ class ElementMedia extends ElementFile implements iSubmittable {
 
 			$autoplay = $autoplay && !preg_match('/autoplay=/', $source)? (strpos($source, '?') === false ? '?' : '&').'autoplay=1' : '';
 			$wmode = !preg_match('/wmode=/', $source) ? (!$autoplay && strpos($source, '?') === false ? '?' : '&').'wmode=transparent' : '';
-			return '<iframe src="'.$source.$autoplay.$wmode.'"'.$width_attr.$height_attr.'></iframe>';
+			return '<iframe src="'.$source.$autoplay.$wmode.'"'.$width_attr.$height_attr.' allowfullscreen></iframe>';
 
 		}
 

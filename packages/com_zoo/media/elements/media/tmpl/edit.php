@@ -25,9 +25,18 @@ defined('_JEXEC') or die('Restricted access');
 			<div>
 				<div class="file button"><?php echo JText::_('Video/Audio File'); ?></div>
 				<div class="url button"><?php echo JText::_('Video Provider'); ?></div>
+				<div class="poster button"><?php echo JText::_('Poster'); ?></div>
 				<div class="advanced button hide"><?php echo JText::_('Hide Options'); ?></div>
 				<div class="advanced button"><?php echo JText::_('Show Options'); ?></div>
 			</div>
+		</div>
+
+		<div class="poster options">
+
+			<div class="row">
+				<?php echo $this->app->html->_('control.text', $this->getControlName('poster_image'), $this->get('poster_image'), 'class="image-select" size="60" style="width:200px;margin-right:5px;" title="'.JText::_('Poster image').'"'); ?>
+			</div>
+
 		</div>
 
 		<div class="advanced options">

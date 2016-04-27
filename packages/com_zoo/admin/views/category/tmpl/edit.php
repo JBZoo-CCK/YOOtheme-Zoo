@@ -10,13 +10,7 @@
 
 	$this->app->html->_('behavior.tooltip');
 
-	// Add chosen in Joomla 2.5
-	if ($this->app->joomla->isVersion('2.5')) {
-		$this->app->document->addScript('libraries:jquery/plugins/chosen/chosen.jquery.min.js');
-		$this->app->document->addStylesheet('libraries:jquery/plugins/chosen/chosen.css');
-	} else {
-		JHtml::_('formbehavior.chosen', '#parent');
-	}
+	JHtml::_('formbehavior.chosen', '#parent');
 
 	// add script
 	$this->app->document->addScript('assets:js/alias.js');
@@ -136,10 +130,6 @@
 		$('#adminForm').EditCategory();
 		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->category->id; ?> });
 		$('#name-edit').find('input[name="name"]').focus();
-
-		<?php if ($this->app->joomla->isVersion('2.5')) : ?>
-		$('#parent').chosen({ disable_search_threshold : 10, allow_single_deselect : true });
-		<?php endif; ?>
 
 		// Add here since on 3.0 the options are hardcoded in the constructor of the PHP method
 		$('#parent').data('chosen').search_contains = true;

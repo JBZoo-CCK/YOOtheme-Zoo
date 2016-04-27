@@ -10,14 +10,8 @@
 
 	$this->app->html->_('behavior.tooltip');
 
-	// Add chosen in Joomla 2.5
-	if ($this->app->joomla->isVersion('2.5')) {
-		$this->app->document->addScript('libraries:jquery/plugins/chosen/chosen.jquery.min.js');
-		$this->app->document->addStylesheet('libraries:jquery/plugins/chosen/chosen.css');
-	} else {
-		JHtml::_('formbehavior.chosen', '#categories');
-		JHtml::_('formbehavior.chosen', '#paramsprimary_category');
-	}
+	JHtml::_('formbehavior.chosen', '#categories');
+	JHtml::_('formbehavior.chosen', '#paramsprimary_category');
 
 	// add script
 	$this->app->document->addScript('assets:js/autosuggest.js');
@@ -290,10 +284,6 @@
 		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->item->id; ?> });
 		$('#name-edit').find('input[name="name"]').focus();
 		$('#tag-area').Tag({ url: 'index.php?option=com_zoo&controller=item&format=raw&task=loadtags', addButtonText: '<?php echo JText::_('Add Tag'); ?>' });
-
-		<?php if ($this->app->joomla->isVersion('2.5')) : ?>
-		$('#categories, #paramsprimary_category').chosen({ disable_search_threshold : 10, allow_single_deselect : true });
-		<?php endif; ?>
 
 		// Add here since on 3.0 the options are hardcoded in the constructor of the PHP method
 		$('#categories, #paramsprimary_category').data('chosen').search_contains = true;

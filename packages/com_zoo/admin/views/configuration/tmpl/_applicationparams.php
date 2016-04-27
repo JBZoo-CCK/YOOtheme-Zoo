@@ -41,13 +41,7 @@
 				<div id="rules-modal-wrapper" style="display:none">
 				<div id="rules-modal">
 					<h3>Application</h3>
-					<?php
-					if (!$this->app->joomla->isVersion('2.5')) {
-						echo $this->permissions->getInput('rules');
-					} else {
-						echo str_replace('pane-sliders',  'pane-sliders zoo-application-permissions', $this->permissions->getInput('rules'));
-					}
-					?>
+					<?php echo $this->permissions->getInput('rules'); ?>
 				</div>
 				</div>
 			</div>
@@ -66,15 +60,11 @@
 						<div id="<?php echo $permissionName; ?>-rules-modal">
 							<h3><?php echo ucfirst($permissionName); ?></h3>
 							<?php
-							if (!$this->app->joomla->isVersion('2.5')) {
 								echo str_replace('permission-', 'permission-' . $permissionName . '-', $permissions->getInput('rules_' . $permissionName));
-							} else {
-								echo str_replace('pane-sliders',  'pane-sliders zoo-' . $permissionName . '-permissions', $permissions->getInput('rules_' . $permissionName));
-							}
 							?>
 						</div>
 						</div>
-						</br>
+						<br/>
 				<?php endforeach; ?>
 			</div>
 		</li>

@@ -75,27 +75,8 @@ class ConfigurationController extends AppController {
 			$this->assetPermissions[$typeName]->bind(array('asset_id' => $assetName));
 		}
 
-		// manipulate js in J25
-		if ($this->app->joomla->isVersion('2.5')) {
-			JDispatcher::getInstance()->attach(array('event' => 'onAfterDispatch', 'handler' => array($this, 'eventCallback')));
-		}
-
 		// display view
 		$this->getView()->setLayout('application')->display();
-	}
-
-	public function eventCallback() {
-
-		$script = $this->app->system->document->_script['text/javascript'];
-		$types  = array_keys($this->application->getTypes());
-		$types[]= 'application';
-
-		$i = 3;
-		$script = preg_replace_callback('/div#permissions-sliders\.pane-sliders/', function ($match) use (&$i, $types) {
-			return 'div .zoo-'.$types[(int) ($i++ / 3) - 1].'-permissions';
-		}, $script);
-
-		$this->app->system->document->_script['text/javascript'] = $script;
 	}
 
 	public function save() {

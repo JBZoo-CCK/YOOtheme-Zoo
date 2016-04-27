@@ -374,17 +374,10 @@ class Application {
 	 */
 	public function getToolbarTitle($title) {
 
-        if ($this->app->joomla->version->isCompatible('3.2')) {
-            $html   = array('<h1 class="page-title">');
-            $html[] = $this->hasIcon() ? '<img src="'.$this->getIcon().'" width="48" height="48" />' : null;
-            $html[] = $title;
-            $html[] = '</h1>';
-        } else {
-            $html   = array('<div class="header icon-48-'.(($this->hasIcon()) ? 'application"' : 'zoo"').'>');
-            $html[] = $this->hasIcon() ? '<img src="'.$this->getIcon().'" width="48" height="48" style="margin-left:-55px;vertical-align:middle;" />' : null;
-            $html[] = $title;
-            $html[] = '</div>';
-        }
+		$html   = array('<h1 class="page-title">');
+		$html[] = $this->hasIcon() ? '<img src="'.$this->getIcon().'" width="48" height="48" />' : null;
+		$html[] = $title;
+		$html[] = '</h1>';
 
 		return implode("\n", $html);
 	}
