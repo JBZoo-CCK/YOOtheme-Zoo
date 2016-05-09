@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.16
-- Date: April 2016
+- Version: 3.3.17
+- Date: May 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.17
+	# Fixed push/pull classes in uikit templates for cookbook, movie and business
+	# Fixed invalid ID in textarea
 
 	3.3.16
 	+ Added defaultvalues for core submission fields

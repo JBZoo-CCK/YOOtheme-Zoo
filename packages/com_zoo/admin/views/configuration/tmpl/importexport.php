@@ -49,6 +49,25 @@ $app_item_count 	= (int) $this->application->getItemCount();
 
 	<div class="importbox">
 		<div>
+			<h3><?php echo JText::_('IMPORT_INSTALLED_SOFTWARE'); ?></h3>
+
+			<?php foreach ($this->exporter as $exporter) : ?>
+				<?php if ($exporter->isEnabled()) : ?>
+					<a id="<?php echo $exporter->getType();?>" class="button-grey exporter-link" href="javascript:void(0);">
+						<?php echo $exporter->getName(); ?>
+					</a>
+				<?php else : ?>
+					<a id="<?php echo $exporter->getType();?>" class="button-disabled" href="javascript:void(0);">
+						<?php echo $exporter->getName(); ?>
+					</a>
+				<?php endif; ?>
+			<?php endforeach; ?>
+
+		</div>
+	</div>
+
+	<div class="importbox">
+		<div>
 			<h3><?php echo JText::_('EXPORT_APP_INSTANCE'); ?></h3>
 
 
@@ -73,25 +92,6 @@ $app_item_count 	= (int) $this->application->getItemCount();
 				<?php echo JText::_('NO_CATEGORIES_NO_ITEMS')?>
 
 			<?php endif; ?>
-
-		</div>
-	</div>
-
-	<div class="importbox">
-		<div>
-			<h3><?php echo JText::_('IMPORT_INSTALLED_SOFTWARE'); ?></h3>
-
-			<?php foreach ($this->exporter as $exporter) : ?>
-				<?php if ($exporter->isEnabled()) : ?>
-					<a id="<?php echo $exporter->getType();?>" class="button-grey exporter-link" href="javascript:void(0);">
-						<?php echo $exporter->getName(); ?>
-					</a>
-				<?php else : ?>
-					<a id="<?php echo $exporter->getType();?>" class="button-disabled" href="javascript:void(0);">
-						<?php echo $exporter->getName(); ?>
-					</a>
-				<?php endif; ?>
-			<?php endforeach; ?>
 
 		</div>
 	</div>

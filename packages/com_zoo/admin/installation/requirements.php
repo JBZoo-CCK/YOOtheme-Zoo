@@ -44,7 +44,8 @@ class AppRequirements {
 
 	function checkJoomla() {
 		JLoader::import('joomla.version');
-		return !version_compare(JVersion::RELEASE, '3.2', '<');
+		$version = new JVersion();
+		return !version_compare($version->RELEASE, '3.2', '<');
 	}
 
 	function checkPHP() {

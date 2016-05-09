@@ -204,7 +204,7 @@ class ElementTextarea extends ElementRepeatable implements iSubmittable {
 	protected function _addEditor($index, $value = '', $trusted_mode = true) {
 		$html[] = '<div class="repeatable-content">';
 		if ($trusted_mode) {
-			$html[] = $this->app->editor->display($this->getControlName('value', false, $index), htmlspecialchars($value, ENT_QUOTES, 'UTF-8'), null, null, self::COLS, self::ROWS, array('pagebreak', 'readmore', 'article'));
+			$html[] = $this->app->editor->display($this->getControlName('value', false, $index), htmlspecialchars($value, ENT_QUOTES, 'UTF-8'), null, null, self::COLS, self::ROWS, array('pagebreak', 'readmore', 'article'), "elements{$this->identifier}{$index}value");
         } else {
 			$html[] = $this->app->html->_('control.textarea', $this->getControlName('value', false, $index), $value, 'cols='.self::COLS.' rows='.self::ROWS);
 		}
