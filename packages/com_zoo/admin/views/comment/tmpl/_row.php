@@ -12,6 +12,9 @@ defined('_JEXEC') or die('Restricted access');
 // get comment author
 $author = $this->comment->getAuthor();
 
+// filter output
+JFilterOutput::objectHTMLSafe($author, ENT_QUOTES, array('app', 'application'));
+
 ?>
 <tr class="comment-row <?php if ($this->comment->state == Comment::STATE_UNAPPROVED) echo 'unapproved' ?>">
 	<td class="checkbox">

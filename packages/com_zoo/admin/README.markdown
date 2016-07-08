@@ -1,11 +1,18 @@
 # ZOO #
 
-- Version: 3.3.17
-- Date: May 2016
+- Version: 3.3.18
+- Date: July 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.18
+	^ Updated loading gravatar images
+    # Fixed encoding errors on non-utf8 folder/filenames
+    # Fixed setting system value for robots metatag
+	# Fixed positions.config in default template for download app
+    # Fixed cross-site scripting vulnerabilities
 
 	3.3.17
 	# Fixed push/pull classes in uikit templates for cookbook, movie and business

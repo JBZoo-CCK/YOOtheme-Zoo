@@ -92,7 +92,7 @@ class CommentAuthor {
 		$default = JURI::root().'media/zoo/assets/images/avatar.png';
 
 		if ($this->email) {
-			return '<img title="'.$this->name.'" src="http://www.gravatar.com/avatar/'.md5($this->app->string->strtolower(trim($this->email))).'?s='.$size.'&amp;d='.urlencode($default).'" height="'.$size.'" width="'.$size.'" alt="'.$this->name.'" />';
+			return '<img title="'.$this->name.'" src="https://www.gravatar.com/avatar/'.md5($this->app->string->strtolower(trim($this->email))).'?s='.$size.'&amp;d='.urlencode($default).'" height="'.$size.'" width="'.$size.'" alt="'.$this->name.'" />';
 		} else {
 			return '<img title="'.$this->name.'" src="'.$default.'" height="'.$size.'" width="'.$size.'" alt="'.$this->name.'" />';
 		}

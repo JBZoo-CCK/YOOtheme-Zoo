@@ -63,6 +63,9 @@ class CommentHelper extends AppHelper {
 			// get active author
 			$active_author = $this->activeAuthor();
 
+			// filter author output
+			JFilterOutput::objectHTMLSafe($active_author, ENT_QUOTES, array('app', 'application'));
+
 			// get comment content from session
 			$content = $this->app->system->session->get('com_zoo.comment.content');
 			$params->set('content', $content);
@@ -76,6 +79,9 @@ class CommentHelper extends AppHelper {
 			if ($plugin = $params->get('captcha', false) and (!$params->get('captcha_guest_only', 0) or !$this->app->user->get()->id)) {
 				$captcha = JCaptcha::getInstance($plugin);
 			}
+
+			// filter redirect url
+			$view->set('redirect', htmlspecialchars(JUri::getInstance()->toString()));
 
 			if ($item->isCommentsEnabled() || count($comments)-1) {
 				// create comments html

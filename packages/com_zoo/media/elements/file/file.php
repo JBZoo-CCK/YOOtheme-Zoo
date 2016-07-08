@@ -89,9 +89,11 @@ abstract class ElementFile extends Element {
 		$path = ltrim($this->app->request->get('path', 'string'), '/');
 		$path = empty($path) ? '' : $path.'/';
 		foreach ($this->app->path->dirs('root:'.$this->getDirectory().$path) as $dir) {
+			$dir = mb_convert_encoding($dir, "UTF-8");
 			$files[] = array('name' => basename($dir), 'path' => $path.$dir, 'type' => 'folder');
 		}
 		foreach ($this->app->path->files('root:'.$this->getDirectory().$path, false, '/^.*('.$this->_extensions.')$/i') as $file) {
+			$file = mb_convert_encoding($file, "UTF-8");
 			$files[] = array('name' => basename($file), 'path' => $this->getDirectory().$path.$file, 'type' => 'file');
 		}
 

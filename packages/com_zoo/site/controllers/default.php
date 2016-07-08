@@ -177,10 +177,13 @@ class DefaultController extends AppController {
 
 	 	// set metadata
 		$this->app->document->setTitle($this->app->zoo->buildPageTitle($title));
+		$system_params = $this->app->parameter->create($this->app->system->application->getParams());
 		if ($this->app->system->config->get('MetaAuthor')) $this->app->document->setMetadata('author', $this->item->getAuthor());
 		if ($description = $this->item->getParams()->get('metadata.description')) $this->app->document->setDescription($description);
 		foreach (array('keywords', 'author', 'robots') as $meta) {
-			if ($value = $this->item->getParams()->get("metadata.$meta")) $this->app->document->setMetadata($meta, $value);
+			if ($value = $this->item->getParams()->get("metadata.$meta") or $value = $system_params->get($meta)){
+				$this->app->document->setMetadata($meta, $value);
+			}
 		}
 
 		// get template and params
@@ -290,8 +293,11 @@ class DefaultController extends AppController {
 		}
 
 		// set metadata
+		$system_params = $this->app->parameter->create($this->app->system->application->getParams());
 		foreach (array('author', 'robots') as $meta) {
-			if ($value = $params->get("metadata.$meta")) $this->app->document->setMetadata($meta, $value);
+			if ($value = $params->get("metadata.$meta") or $value = $system_params->get($meta)){
+				$this->app->document->setMetadata($meta, $value);
+			}
 		}
 
 		// add feed links
@@ -390,6 +396,11 @@ class DefaultController extends AppController {
 		// get request vars
 		$page      = $this->app->request->getInt('page', 1);
 		$this->tag = $this->app->request->getString('tag', '');
+
+		// raise 404 if tag does not exist
+		if (!$this->app->table->tag->getAll($this->application->id, $this->tag)) {
+			return $this->app->error->raiseError(404, JText::_('Tag not found'));
+		}
 
 		// get params
 		$params 	 	  = $this->application->getParams('site');

@@ -102,7 +102,7 @@ $this->app->document->addScript('assets:js/placeholder.js');
 
 			<input type="hidden" name="item_id" value="<?php echo $this->item->id; ?>"/>
 			<input type="hidden" name="parent_id" value="0"/>
-			<input type="hidden" name="redirect" value="<?php echo str_replace('&', '&amp;', $this->app->request->getString('REQUEST_URI', '', 'server')); ?>"/>
+			<input type="hidden" name="redirect" value="<?php echo $this->redirect; ?>"/>
 			<?php echo $this->app->html->_('form.token'); ?>
 
 		<?php endif; ?>

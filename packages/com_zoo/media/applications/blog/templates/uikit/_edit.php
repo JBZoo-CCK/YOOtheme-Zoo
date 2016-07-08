@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
 			</div>
 
 			<input type="hidden" name="comment_id" value="0"/>
-			<input type="hidden" name="redirect" value="<?php echo str_replace('&', '&amp;', $this->app->request->getString('REQUEST_URI', '', 'server')); ?>"/>
+			<input type="hidden" name="redirect" value="<?php echo $this->redirect; ?>"/>
 			<?php echo $this->app->html->_('form.token'); ?>
 	</form>
 </div>
