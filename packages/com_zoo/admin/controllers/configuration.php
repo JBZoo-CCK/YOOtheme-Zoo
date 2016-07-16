@@ -68,11 +68,11 @@ class ConfigurationController extends AppController {
 			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
 
 			if ($asset->loadByName($type->getAssetName())) {
-				$assetName = $type->getAssetName();
+				$assetId = $asset->id;
 			} else {
-				$assetName = $this->application->asset_id;
+				$assetId = $this->application->asset_id;
 			}
-			$this->assetPermissions[$typeName]->bind(array('asset_id' => $assetName));
+			$this->assetPermissions[$typeName]->bind(array('asset_id' => $assetId));
 		}
 
 		// display view
@@ -154,11 +154,11 @@ class ConfigurationController extends AppController {
             $this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
 
             if ($asset->loadByName($type->getAssetName())) {
-                $assetName = $type->getAssetName();
+                $assetId = $asset->id;
             } else {
-                $assetName = $this->application->asset_id;
+				$assetId = $this->application->asset_id;
             }
-            $this->assetPermissions[$typeName]->bind(array('asset_id' => $assetName));
+            $this->assetPermissions[$typeName]->bind(array('asset_id' => $assetId));
         }
 
 		// set template

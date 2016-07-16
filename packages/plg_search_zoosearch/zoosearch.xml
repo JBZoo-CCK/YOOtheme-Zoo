@@ -8,7 +8,7 @@
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.18</version>
+	<version>3.3.19</version>
 	<description>Search plugin for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename plugin="zoosearch">zoosearch.php</filename>

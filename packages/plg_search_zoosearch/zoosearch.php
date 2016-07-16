@@ -24,19 +24,19 @@ class plgSearchZoosearch extends JPlugin {
 
 		Parameters:
 	      $subject - Array
-	      $params - Array
+	      $config - Array
 
 	   Returns:
 	      Void
 	*/
-	public function plgSearchZoosearch($subject, $params) {
+	public function __construct($subject, $config) {
 
 		// make sure ZOO exists
 		if (!JComponentHelper::getComponent('com_zoo', true)->enabled) {
 			return;
 		}
 
-		parent::__construct($subject, $params);
+		parent::__construct($subject, $config);
 
 		// load config
 		jimport('joomla.filesystem.file');

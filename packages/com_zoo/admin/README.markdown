@@ -1,11 +1,16 @@
 # ZOO #
 
-- Version: 3.3.18
+- Version: 3.3.19
 - Date: July 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.19
+    # Fixed error in loading configuration (J3.6)
+    # Fixed alignment of category image business app
+    # Fixed declaration of constructor zoosearch
 
 	3.3.18
 	^ Updated loading gravatar images
