@@ -32,7 +32,7 @@
 <?php endforeach; ?>
 
 <h3 class="toggler"><?php echo JText::_('PERMISSIONS'); ?></h3>
-<div class="content">
+<div id="zoo-permissions" class="content">
 	<ul class="parameter-form">
 		<li class="parameter">
 			<div class="label"><label class="hasTip" title="Permissions"><?php echo JText::_('APPLICATION'); ?></label></div>
@@ -41,7 +41,7 @@
 				<div id="rules-modal-wrapper" style="display:none">
 				<div id="rules-modal">
 					<h3>Application</h3>
-					<?php echo $this->permissions->getInput('rules'); ?>
+					<?php echo str_replace('onchange="sendPermissions.call(this, event)"', 'onchange=""', $this->permissions->getInput('rules_application')); ?>
 				</div>
 				</div>
 			</div>
@@ -60,7 +60,10 @@
 						<div id="<?php echo $permissionName; ?>-rules-modal">
 							<h3><?php echo ucfirst($permissionName); ?></h3>
 							<?php
-								echo str_replace('permission-', 'permission-' . $permissionName . '-', $permissions->getInput('rules_' . $permissionName));
+								echo str_replace(
+									array('permission-', 'onchange="sendPermissions.call(this, event)"'),
+									array('permission-' . $permissionName . '-', 'onchange=""'),
+									$permissions->getInput('rules_' . $permissionName));
 							?>
 						</div>
 						</div>

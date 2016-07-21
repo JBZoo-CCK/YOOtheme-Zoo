@@ -78,6 +78,11 @@ JFilterOutput::objectHTMLSafe($this->application, ENT_QUOTES, array('params'));
 		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->application->id; ?> });
 		$('#name-edit').find('input[name="name"]').focus();
 	});
+	//catch save to remove rules fiels from request
+	Joomla.submitbutton = function(task) {
+		jQuery("#zoo-permissions select").attr("disabled", "disabled");
+		Joomla.submitform(task, document.getElementById("adminForm"));
+	};
 </script>
 
 <?php echo ZOO_COPYRIGHT;

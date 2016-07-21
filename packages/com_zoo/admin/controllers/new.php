@@ -86,20 +86,6 @@ class NewController extends AppController {
 
 		$this->lists['select_template'] = $this->app->html->_('select.genericlist',  $options, 'template', '', 'value', 'text', $this->params->get('template'));
 
-		// get permission form
-		$xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
-
-		$this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
-		$this->permissions->bind(array('asset_id' => 'com_zoo'));
-		$this->assetPermissions = array();
-
-		foreach ($this->application->getTypes() as $typeName => $type) {
-			$xml->fieldset->field->attributes()->section = 'type';
-			$xml->fieldset->field->attributes()->name = 'rules_' . $typeName;
-			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
-			$this->assetPermissions[$typeName]->bind(array('asset_id' => 'com_zoo'));
-		}
-
 		// display view
 		$this->getView()->setLayout('application')->display();
 	}
@@ -138,13 +124,10 @@ class NewController extends AppController {
 				}
 			}
 
-			// add ACL rules to aplication object
-			$this->application->rules = $post['rules'];
-
-			foreach ($post as $key => $value) {
-				if (stripos($key, 'rules_') === 0) {
-					$this->application->assetRules[substr($key, 6)] = $value;
-				}
+			// add empty rules to application object
+			$this->application->rules = array();
+			foreach ($this->application->getTypes() as $typeName => $type) {
+				$this->application->assetRules[$typeName] = array();
 			}
 
 			// save application
@@ -173,20 +156,6 @@ class NewController extends AppController {
 		// init vars
 		$template     = $this->app->request->getCmd('template');
 		$this->params = $this->application->getParams();
-
-		// get permission form
-		$xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
-
-		$this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
-		$this->permissions->bind(array('asset_id' => 'com_zoo'));
-		$this->assetPermissions = array();
-
-		foreach ($this->application->getTypes() as $typeName => $type) {
-			$xml->fieldset->field->attributes()->section = 'type';
-			$xml->fieldset->field->attributes()->name = 'rules_' . $typeName;
-			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
-			$this->assetPermissions[$typeName]->bind(array('asset_id' => 'com_zoo'));
-		}
 
 		// set template
 		$this->params->set('template', $template);

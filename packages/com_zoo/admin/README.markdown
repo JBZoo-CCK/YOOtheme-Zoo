@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.19
+- Version: 3.3.20
 - Date: July 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.20
+    # Fixed error in creating application (J3.6)
+    # Fixed ajax saving of permission rules
 
     3.3.19
     # Fixed error in loading configuration (J3.6)

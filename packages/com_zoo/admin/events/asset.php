@@ -30,7 +30,7 @@ class AssetEvent {
         if ($application->rules === null) {
             return true;
         }
-
+		//@todo cleanup. This is now only used to set empty values at application creation. Assets are saved by ajax.
         $asset->loadByName($name);
         $application->asset_id = $asset->id;
 

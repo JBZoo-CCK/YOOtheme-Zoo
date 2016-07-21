@@ -56,6 +56,7 @@ class ConfigurationController extends AppController {
 
 		// get permission form
 		$xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
+		$xml->fieldset->field->attributes()->name = 'rules_application';
 
 		$this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
 		$this->permissions->bind(array('asset_id' => $this->application->asset_id));
@@ -68,11 +69,8 @@ class ConfigurationController extends AppController {
 			$this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
 
 			if ($asset->loadByName($type->getAssetName())) {
-				$assetId = $asset->id;
-			} else {
-				$assetId = $this->application->asset_id;
+				$this->assetPermissions[$typeName]->bind(array('asset_id' => $asset->id));
 			}
-			$this->assetPermissions[$typeName]->bind(array('asset_id' => $assetId));
 		}
 
 		// display view
@@ -106,15 +104,6 @@ class ConfigurationController extends AppController {
 				}
 			}
 
-			// add ACL rules to aplication object
-			$this->application->rules = $post['rules'];
-
-			foreach ($post as $key => $value) {
-				if (stripos($key, 'rules_') === 0) {
-					$this->application->assetRules[substr($key, 6)] = $value;
-				}
-			}
-
 			// save application
 			$this->table->save($this->application);
 
@@ -142,6 +131,7 @@ class ConfigurationController extends AppController {
 
         // get permission form
         $xml = simplexml_load_file(JPATH_COMPONENT . '/models/forms/permissions.xml');
+		$xml->fieldset->field->attributes()->name = 'rules_application';
 
         $this->permissions = JForm::getInstance('com_zoo.new', $xml->asXML());
         $this->permissions->bind(array('asset_id' => $this->application->asset_id));
@@ -154,11 +144,8 @@ class ConfigurationController extends AppController {
             $this->assetPermissions[$typeName] = JForm::getInstance('com_zoo.new.' . $typeName, $xml->asXML());
 
             if ($asset->loadByName($type->getAssetName())) {
-                $assetId = $asset->id;
-            } else {
-				$assetId = $this->application->asset_id;
-            }
-            $this->assetPermissions[$typeName]->bind(array('asset_id' => $assetId));
+				$this->assetPermissions[$typeName]->bind(array('asset_id' => $asset->id));
+			}
         }
 
 		// set template
