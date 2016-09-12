@@ -1,11 +1,16 @@
 # ZOO #
 
-- Version: 3.3.20
-- Date: July 2016
+- Version: 3.3.21
+- Date: September 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.21
+	# Fixed select author in item edit
+	# Fixed closing of modals
+	# Fixed ACL check for new items
 
     3.3.20
     # Fixed error in creating application (J3.6)

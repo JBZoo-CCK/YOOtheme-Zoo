@@ -8,7 +8,7 @@
 
 // Initialize variables.
 $html = array();
-$link = 'index.php?option=com_users&amp;view=users&amp;layout=modal&amp;tmpl=component&amp;field='.$name;
+$link = 'index.php?option=com_users&amp;view=users&amp;layout=modal&amp;tmpl=component&amp;ismoo=0&amp;field='.$name;
 
 // Initialize some field attributes.
 $attr = (string) $node->attributes()->class ? ' class="field-user-input-name '.(string) $node->attributes()->class.'"' : ' class="field-user-input-name"';

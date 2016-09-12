@@ -331,7 +331,7 @@ class ItemController extends AppController {
 			}
 
 			// Check ACL
-			if ($cid && !$item->canCreate() || !$cid && !$item->canEdit()) {
+			if (!$cid && !$item->canCreate() || $cid && !$item->canEdit()) {
 				throw new ItemControllerException("Invalid access permissions", 1);
 			}
 

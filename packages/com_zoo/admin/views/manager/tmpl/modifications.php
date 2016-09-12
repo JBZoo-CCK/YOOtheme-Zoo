@@ -76,11 +76,7 @@
 		});
 
 		$('button.close').bind('click', function (event) {
-			if (window.parent.document.getElementById('sbox-window').close) {
-				window.top.setTimeout('window.parent.document.getElementById(\'sbox-window\').close()', 300);
-			} else {
-				window.top.setTimeout('window.parent.SqueezeBox.close()', 300);
-			}
+            jModalClose();
 		});
 
 	});
