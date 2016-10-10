@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.21
-- Date: September 2016
+- Version: 3.3.22
+- Date: October 2016
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+	3.3.22
+	+ Added new core element Item Primary Category
+	+ Added UIkit 3 templates for all apps
 
     3.3.21
 	# Fixed select author in item edit

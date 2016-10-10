@@ -74,6 +74,8 @@ class NewController extends AppController {
 
 		if (isset($templates['uikit']) && file_exists(JPATH_ROOT . '/templates/' . $defaulTemplate . '/warp.php')) {
 		    $this->params->set('template', 'uikit');
+		} elseif (isset($templates['uikit3']) && $defaulTemplate == 'yootheme') {
+			$this->params->set('template', 'uikit3');
 		} elseif (isset($templates['default'])) {
 		    $this->params->set('template', 'default');
 		}

@@ -233,14 +233,12 @@ class ElementRelatedItems extends Element implements iSubmittable {
 			$query['item_filter'] = $this->_item->id;
 		}
 
-		if ($layout = $this->getLayout('edit.php')) {
-            return $this->renderLayout($layout,
-                array(
-                    'data' => $this->_getRelatedItems($published),
-					'link' => $this->app->link($query)
-                )
-            );
-        }
+		return $this->renderLayout($this->app->path->path("elements:relateditems/tmpl/edit.php"),
+            array(
+                'data' => $this->_getRelatedItems($published),
+				'link' => $this->app->link($query)
+            )
+        );
 	}
 
 	/*

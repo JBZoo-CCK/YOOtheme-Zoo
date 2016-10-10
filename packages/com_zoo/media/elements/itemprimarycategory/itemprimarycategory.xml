@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemprimarycategory" group="Core" hidden="true">
+	<name>Item Primary Category</name>
+	<author>YOOtheme</author>
+	<creationDate>September 2016</creationDate>
+	<copyright>Copyright (C) YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>3.3.22</version>
+	<description>Item Primary Category Core System</description>
+	<params group="render">
+		<param name="linked" type="radio" default="1" label="Link Category" description="Wrap category in with a link">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</param>
+	</params>
+</element>

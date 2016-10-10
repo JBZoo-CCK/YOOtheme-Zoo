@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<renderer>
+	<positions layout="full">
+		<position name="top">Top</position>
+		<position name="title">Title</position>
+		<position name="meta">Meta</position>
+		<position name="media">Media</position>
+		<position name="content">Content</position>
+		<position name="related">Related</position>
+		<position name="bottom">Bottom</position>
+	</positions>
+    <positions layout="edit">
+        <position name="content">Content</position>
+        <position name="media">Media</position>
+        <position name="meta">Meta</position>
+        <position name="administration">Administration</position>
+    </positions>
+</renderer>

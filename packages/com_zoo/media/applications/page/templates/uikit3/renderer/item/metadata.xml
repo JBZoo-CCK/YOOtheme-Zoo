@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout name="full">
+		<name>Full</name>
+		<description>An item is rendered with the full layout in the item view.</description>
+	</layout>
+    <layout name="edit" type="edit">
+        <name>Edit</name>
+        <description>An item is rendered with the edit layout in the item edit view.</description>
+    </layout>
+</metadata>
