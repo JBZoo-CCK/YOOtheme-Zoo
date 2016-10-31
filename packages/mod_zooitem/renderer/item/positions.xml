@@ -28,4 +28,11 @@
 		<position name="description">Description</position>
 		<position name="links">Links</position>
 	</positions>
+	<positions layout="uikit3">
+		<position name="title">Title</position>
+		<position name="media">Media</position>
+		<position name="meta">Meta</position>
+		<position name="description">Description</position>
+		<position name="links">Links</position>
+	</positions>
 </renderer>

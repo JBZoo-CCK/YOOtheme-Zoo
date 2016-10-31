@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.1" type="plugin" group="installer" method="upgrade">
     <name>Installer - YOOtheme</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>PLG_INSTALLER_YOOTHEME_DESCRIPTION</description>
-    <creationDate>December 2014</creationDate>
+    <creationDate>October 2016</creationDate>
     <copyright>Copyright (C) YOOtheme GmbH</copyright>
     <license>GNU General Public License v2 or later</license>
     <author>YOOtheme</author>

@@ -4,8 +4,6 @@
  * general
  */
 
-html { overflow-y: scroll; }
-
 a:focus { outline: none; }
 
 hr {
