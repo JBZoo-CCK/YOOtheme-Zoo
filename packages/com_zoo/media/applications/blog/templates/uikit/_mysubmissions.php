@@ -20,7 +20,7 @@ $this->pagination_link = $this->app->route->mysubmissions($this->submission);
 
 	<div class="uk-clearfix">
 
-		<div class="uk-align-medium-left">
+		<div class="uk-align-left@m">
 
 			<?php if($this->show_add): ?>
 			<div class="uk-button-dropdown" data-uk-dropdown>
@@ -40,7 +40,7 @@ $this->pagination_link = $this->app->route->mysubmissions($this->submission);
 
 		</div>
 
-		<div class="uk-align-medium-right">
+		<div class="uk-align-right@m">
 
 			<?php if (isset($this->lists['select_type'])) : ?>
 			<form class="uk-form" action="<?php echo JRoute::_($this->pagination->link($this->pagination_link, 'page='.$this->page)); ?>" method="post" name="adminForm" id="adminForm" accept-charset="utf-8">

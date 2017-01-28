@@ -38,7 +38,7 @@ $align = ($this->checkPosition('media')) ? $params->get('template.teaseritem_med
 <?php endif; ?>
 
 <?php if ($align == "left" || $align == "right") : ?>
-<div class="uk-align-medium-<?php echo $align; ?>">
+<div class="uk-align-<?php echo $align; ?>@m">
 	<?php echo $this->renderPosition('media'); ?>
 </div>
 <?php endif; ?>

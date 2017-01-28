@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 
 <?php if ($this->checkPosition('media')) : ?>
-<div class="uk-align-medium-left">
+<div class="uk-align-left@m">
 	<?php echo $this->renderPosition('media'); ?>
 </div>
 <?php endif; ?>

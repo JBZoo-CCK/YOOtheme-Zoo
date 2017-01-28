@@ -1,11 +1,15 @@
 # ZOO #
 
-- Version: 3.3.23
-- Date: October 2016
+- Version: 3.3.24
+- Date: January 2017
 - Author: YOOtheme GmbH
 - Website: <http://www.yootheme.com>
 
 ## Changelog
+
+    3.3.24
+    ^ Updated UIkit 3 templates
+    ^ Updated module positions when using a YOOtheme Pro template (ZOO demo package)
 
 	3.3.23
 	+ Added UIkit 3 templates for ZOO modules
