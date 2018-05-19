@@ -1,11 +1,30 @@
 # ZOO #
 
-- Version: 3.3.24
-- Date: January 2017
+- Version: 3.3.28
+- Date: March 2018
 - Author: YOOtheme GmbH
-- Website: <http://www.yootheme.com>
+- Website: <https://www.yootheme.com>
 
 ## Changelog
+
+    3.3.28
+    ^ Updated installation sql for GTID consistency compatibility
+    ^ Updated URL validator regex 
+    # Fixed use https:// in google geolocate API
+
+	3.3.27
+	# Fixed keep current protocol in canonical links
+	# Fixed use API key in google geolocate
+
+    3.3.26
+    # Fixed bug using PDO database driver
+    # Fixed error in demo package installation (J3.7)
+    # Fixed gallery slideshow element
+
+    3.3.25
+    # Fixed PHP 7 warning
+    # Fixed UIkit 2 templates
+    # Fixed alpha-index in UIkit 3 themes
 
     3.3.24
     ^ Updated UIkit 3 templates

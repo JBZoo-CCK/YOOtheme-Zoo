@@ -258,6 +258,10 @@ class DatabaseHelper extends AppHelper {
 			return mysqli_fetch_row($result);
 		}
 
+        if ($this->name == 'pdomysql') {
+            return $result->fetch();
+        }
+
 		return mysql_fetch_row($result);
 	}
 
@@ -277,6 +281,14 @@ class DatabaseHelper extends AppHelper {
 			return mysqli_fetch_array($result, $type);
 		}
 
+        if ($this->name == 'pdomysql') {
+		    if ($type == MYSQL_BOTH) {
+                $type = PDO::FETCH_BOTH;
+            }
+
+            return $result->fetchAll($type);
+        }
+
 		return mysql_fetch_array($result, $type);
 	}
 
@@ -295,6 +307,10 @@ class DatabaseHelper extends AppHelper {
 		if ($this->name == 'mysqli') {
 			return $class != 'stdClass' ? mysqli_fetch_object($result, $class) : mysqli_fetch_object($result);
 		}
+
+        if ($this->name == 'pdomysql') {
+            return $class != 'stdClass' ? $result->fetchObject($class) : $result->fetchObject();
+        }
 
 		return $class != 'stdClass' ? mysql_fetch_object($result, $class) : mysql_fetch_object($result);
 	}
@@ -317,6 +333,10 @@ class DatabaseHelper extends AppHelper {
 		if ($this->name == 'mysqli') {
 			return mysqli_free_result($result);
 		}
+
+        if ($this->name == 'pdomysql') {
+            return $result->closeCursor();
+        }
 
 		return mysql_free_result($result);
 	}

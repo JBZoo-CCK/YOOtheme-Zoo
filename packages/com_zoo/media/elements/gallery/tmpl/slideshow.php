@@ -17,7 +17,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 $this->app->document->addScript('assets:js/slideshow.js');
-$this->app->document->addScriptDeclaration("jQuery(function($) { $('.zoo-gallery[data-widgetkit=\"slideshow\"]').slideshow(); });");
+$this->app->document->addScriptDeclaration("jQuery(function($) { $('.zoo-gallery[data-widgetkit=\"slideshow\"]').each(function(){ $(this).slideshow($(this).data('options')); }) });");
 
 $css_classes  = ($params->get('corners', 'square') == 'round') ? 'round ' : '';
 $css_classes .= ($params->get('effect') == 'zoom') ? 'zoom ' : '';

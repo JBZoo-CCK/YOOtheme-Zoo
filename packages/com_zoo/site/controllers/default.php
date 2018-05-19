@@ -128,10 +128,10 @@ class DefaultController extends AppController {
 
 		// add canonical
 		if ($this->app->system->document instanceof JDocumentHTML) {
-			$this->app->system->document->addHeadLink(JRoute::_($this->app->route->item($this->item, false), true, 2), 'canonical');
+			$this->app->system->document->addHeadLink(JRoute::_($this->app->route->item($this->item, false), true, 0), 'canonical');
 			$headData = $this->app->system->document->getHeadData();
 				foreach ($headData['links'] as $key => $value) {
-					if ($value['relation'] == 'canonical' && $key != JRoute::_($this->app->route->item($this->item, false), true, 2)) {
+					if ($value['relation'] == 'canonical' && $key != JRoute::_($this->app->route->item($this->item, false), true, 0)) {
 						unset($headData['links'][$key]);
 				}
 			}

@@ -41,7 +41,7 @@ $align = ($this->checkPosition('media')) ? $view->params->get('template.item_med
 <?php endif; ?>
 
 <?php if ($align == "left" || $align == "right") : ?>
-<div class="uk-align-<?php echo $align; ?>@m">
+<div class="uk-align-medium-<?php echo $align; ?>">
 	<?php echo $this->renderPosition('media'); ?>
 </div>
 <?php endif; ?>

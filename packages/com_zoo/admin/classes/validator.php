@@ -755,7 +755,7 @@ class AppValidatorEmail extends AppValidatorRegex {
  */
 class AppValidatorUrl extends AppValidatorRegex {
 
-    const REGEX_URL ='/^(%s):\/\/(([a-z0-9-\\x80-\\xff]+\.)+[a-z]{2,6}|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(:[0-9]+)?(\/?|\/\S+)$/i';
+    const REGEX_URL ='/^(%s):\/\/(([a-z0-9-\\x80-\\xff]+\.)+[a-z]{2,63}|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(:[0-9]+)?(\/?|\/\S+)$/i';
 
     /**
      * Configure the validator, adding the protocol options, the url regexp and the message

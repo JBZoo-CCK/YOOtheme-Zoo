@@ -37,7 +37,7 @@ class GooglemapsHelper extends AppHelper {
 	 * @return string The geocoded location
 	 * @since 2.0
 	 */
-	public function locate($location, $cache = null) {
+	public function locate($location, $cache = null, $key = '') {
 		// check if location are lng / lat values
 		$location = trim($location);
 
@@ -48,7 +48,7 @@ class GooglemapsHelper extends AppHelper {
 		}
 
 		// use geocode to translate location
-		return $this->geoCode($location, $cache);
+		return $this->geoCode($location, $cache, $key);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class GooglemapsHelper extends AppHelper {
 	 * @return array coordinates
 	 * @since 2.0
 	 */
-	public function geoCode($address, $cache = null) {
+	public function geoCode($address, $cache = null, $key = '') {
 		// use cache result
 		if ($cache !== null && $value = $cache->get($address)) {
 			if (preg_match('/^([-]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+)),\s?([-]?(?:[0-9]+(?:\.[0-9]+)?|\.[0-9]+))$/i', $value, $regs)) {
@@ -69,7 +69,7 @@ class GooglemapsHelper extends AppHelper {
 		}
 
 		// query google maps geocoder and parse result
-		$result = $this->queryGeoCoder($address);
+		$result = $this->queryGeoCoder($address, $key);
 		$coordinates = null;
 
 		if (isset($result->status)) {
@@ -113,10 +113,10 @@ class GooglemapsHelper extends AppHelper {
 	 * @return array result array
 	 * @since 2.0
 	 */
-	public function queryGeoCoder($address) {
+	public function queryGeoCoder($address, $key = '') {
 
 		// query use http helper
-		$response = $this->app->http->get(sprintf('http://maps.google.com/maps/api/geocode/json?address=%s&sensor=false', urlencode($address)));
+		$response = $this->app->http->get(sprintf('https://maps.google.com/maps/api/geocode/json?address=%s&sensor=false&key=%s', urlencode($address), $key));
 
 		if (isset($response['body'])) {
 			return json_decode($response['body']);

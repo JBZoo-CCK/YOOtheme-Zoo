@@ -86,7 +86,7 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		// get map center coordinates
 		try {
 
-			$center = $this->app->googlemaps->locate($location, $cache);
+			$center = $this->app->googlemaps->locate($location, $cache, $key);
 
 		} catch (GooglemapsHelperException $e) {
 			$this->app->system->application->enqueueMessage($e, 'notice');
