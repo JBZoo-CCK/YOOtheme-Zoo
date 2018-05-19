@@ -273,11 +273,13 @@ class AppMenuDecorator {
 
 			// set order/first/last for li
 			$count = count($node->children());
-			foreach ($node->children() as $i => $child) {
+			$i = 0;
+			foreach ($node->children() as $child) {
 				$child->addAttribute('level', $level);
 				$child->addAttribute('order', $i + 1);
 				if ($i == 0) $child->addAttribute('first', 1);
 				if ($i == $count - 1) $child->addAttribute('last', 1);
+				$i++;
 			}
 
 		}

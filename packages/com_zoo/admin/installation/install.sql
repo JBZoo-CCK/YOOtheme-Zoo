@@ -2,14 +2,14 @@
 
 CREATE TABLE IF NOT EXISTS #__zoo_version (
   `version` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8
-  SELECT CASE WHEN
-  (
-    SELECT COUNT(*)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO #__zoo_version
+SELECT '3.3.28' FROM DUAL WHERE NOT EXISTS (
+    SELECT *
     FROM information_schema.tables
     WHERE table_schema = (SELECT DATABASE()) AND table_name LIKE '%zoo_application'
-  )
-  THEN '' ELSE '3.3.24' END as version;
+);
 
 -- --------------------------------------------------------
 

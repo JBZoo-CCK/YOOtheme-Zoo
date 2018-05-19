@@ -2,4 +2,7 @@
 
 .yoo-zoo ul.zoo-alphaindex li { padding-left: 10px; }
 
-.yoo-zoo ul.zoo-alphaindex > :nth-child(n+2):not(.uk-first-column)::before { margin-right: 10px; }
+.yoo-zoo ul.zoo-alphaindex > :nth-child(n+2):not(.uk-first-column)::before {
+    margin-right: 10px;
+    margin-left: 0px;
+}
