@@ -36,23 +36,31 @@ $controller = $zoo->request->getWord('controller');
 $task       = $zoo->request->getWord('task');
 $group      = $zoo->request->getString('group');
 
-// does the zoo require to be updated?
-if ($zoo->update->required() && $controller != 'update') {
-	$zoo->system->application->redirect($zoo->link(array('controller' => 'update'), false));
+if (($zoo->jbconfig->getList('config.zoohack')->get('jbzoo_zoo_update_disabled') == 1)) {
+	// does the zoo require to be updated?
+	if ($zoo->update->required() && $controller != 'update') {
+		$zoo->system->application->redirect($zoo->link(array('controller' => 'update'), false));
+	}
 }
 
-// check for ZOO extension dependencies
-$zoo->dependency->check();
-
-// cache writable ?
-if (!($cache_path = $zoo->path->path('cache:')) || !is_writable($cache_path)) {
-	$zoo->error->raiseNotice(0, sprintf("Zoo cache folder is not writable! Please check directory permissions (%s)", $cache_path));
+if (($zoo->jbconfig->getList('config.zoohack')->get('jbzoo_zoo_dependency_disabled') == 1)) {
+	// check for ZOO extension dependencies
+	$zoo->dependency->check();
 }
 
-// media folders writable ?
-foreach (array_merge(array(''), $zoo->path->dirs('media:zoo', true)) as $dir) {
-	if (!is_writable($zoo->path->path('media:zoo/'.$dir))) {
-		$zoo->error->raiseNotice(0, sprintf("Zoo media folder is not writable! Please check directory permissions (%s)", $zoo->path->path('media:zoo/'.$dir)));
+if (($zoo->jbconfig->getList('config.zoohack')->get('jbzoo_zoo_cache_writable_disabled') == 1)) {
+	// cache writable ?
+	if (!($cache_path = $zoo->path->path('cache:')) || !is_writable($cache_path)) {
+		$zoo->error->raiseNotice(0, sprintf("Zoo cache folder is not writable! Please check directory permissions (%s)", $cache_path));
+	}
+}
+
+if (($zoo->jbconfig->getList('config.zoohack')->get('jbzoo_zoo_media_is_writable') == 1)) {
+	// media folders writable ?
+	foreach (array_merge(array(''), $zoo->path->dirs('media:zoo', true)) as $dir) {
+		if (!is_writable($zoo->path->path('media:zoo/'.$dir))) {
+			$zoo->error->raiseNotice(0, sprintf("Zoo media folder is not writable! Please check directory permissions (%s)", $zoo->path->path('media:zoo/'.$dir)));
+		}
 	}
 }
 
