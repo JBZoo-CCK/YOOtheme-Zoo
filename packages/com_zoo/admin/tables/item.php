@@ -165,23 +165,27 @@ class ItemTable extends AppTable {
 			Boolean.
 	*/
 	public function hit($object) {
-
-		// get database
-		$db  = $this->database;
-		$key = $this->key;
-
-		// increment hits
-		if ($object->$key) {
-			$query = "UPDATE ".$this->name
-				." SET hits = (hits + 1)"
-				." WHERE $key = ".(int) $object->$key;
-			$db->query($query);
-			$object->hits++;
+		if (($this->app->jbconfig->getList('config.zoohack')->get('jbzoo_hit_disabled') == 1)) {
 			return true;
 		}
+		else {
+				// get database
+				$db  = $this->database;
+				$key = $this->key;
 
-		return false;
-	}
+				// increment hits
+				if ($object->$key) {
+					$query = "UPDATE ".$this->name
+						." SET hits = (hits + 1)"
+						." WHERE $key = ".(int) $object->$key;
+					$db->query($query);
+					$object->hits++;
+					return true;
+				}
+			}
+			return false;
+		}
+	
 
 	/*
 		Function: getApplicationItemCount
