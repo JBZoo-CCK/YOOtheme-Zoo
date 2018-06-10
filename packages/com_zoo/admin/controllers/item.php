@@ -116,7 +116,9 @@ class ItemController extends AppController {
 		$where = array();
 
 		// application filter
-		$where[] = 'a.application_id = ' . (int) $this->application->id;
+		if ($this->app->request->get('func') != 'selectRelateditem') {
+            $where[] = 'a.application_id = ' . (int) $this->application->id;
+        }
 
 		// category filter
 		if ($filter_category_id === '') {
