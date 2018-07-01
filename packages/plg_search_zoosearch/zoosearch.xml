@@ -2,13 +2,13 @@
 <extension version="3.2" type="plugin" group="search" method="upgrade" >
 	<name>Search - ZOO</name>
 	<author>YOOtheme</author>
-	<creationDate>March 2018</creationDate>
+	<creationDate>June 2018</creationDate>
 	<copyright>Copyright (C) YOOtheme GmbH</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
 	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-	<version>3.3.28</version>
+	<version>3.3.29</version>
 	<description>Search plugin for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
 	<files>
 		<filename plugin="zoosearch">zoosearch.php</filename>
