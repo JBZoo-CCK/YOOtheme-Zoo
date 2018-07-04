@@ -3,7 +3,7 @@
 <update>
 <name>Zoo 3.3 - Joomla 3.x Extension</name>
 <version>3.3.29</version>
-<downloads><downloadurl type="full" format="zip"><![CDATA[https://github.com/JBZoo/YOOtheme-Zoo/releases/download/3.3.29/zoo_update.zip]]></downloadurl></downloads>
+<downloads><downloadurl type="full" format="zip"><![CDATA[https://github.com/JBZoo/YOOtheme-Zoo/releases/download/3.3.29/zoo.zip]]></downloadurl></downloads>
 <targetplatform name="joomla" version="3.[0123456789]"/>
 <element>pkg_zoo</element>
 <type>package</type>
