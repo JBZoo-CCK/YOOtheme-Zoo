@@ -26,6 +26,6 @@
     </files>
     <scriptfile>file.script.php</scriptfile>
     <updateservers>
-          <server type="extension" priority="1" name="ZOO">https://raw.githubusercontent.com/JBZoo/YOOtheme-Zoo/master/zoo_update.xml</server>
+          <server type="extension" priority="1" name="ZOO">http://yootheme.com/api/update/zoo_j33.xml</server>
     </updateservers>
 </extension>
